@@ -17,7 +17,7 @@ public class SplashScreenWindow extends JWindow {
 		//TODO  : Figure out how to access gif directly from Sixes Wild
 		// Also figure out how to quit the splash window 
 		window.getContentPane().add(
-		    new JLabel("", new ImageIcon("/Users/katiegandomi/Documents/workspace/SixesWild/src/Bunny.gif"), SwingConstants.CENTER));
+		    new JLabel("", new ImageIcon("src/Bunny.gif"), SwingConstants.CENTER));
 		window.setBounds(500, 150, 300, 200);
 		window.setVisible(true);
 		try {
