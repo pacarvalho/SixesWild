@@ -31,6 +31,7 @@ public class SplashPanel extends JWindow implements IApplication{
 		this.frame.getContentPane().add(image);
 		this.frame.getContentPane().add(credits);
 		this.frame.setVisible(true);
+		// Show for 5 seconds
 		try {
 		    Thread.sleep(5000);
 		} catch (InterruptedException e) {
