@@ -29,7 +29,7 @@ public class GameSelectorPanel extends JPanel implements IApplication{
 		setBackground(UIManager.getColor("FormattedTextField.selectionBackground"));
 		
 		JLabel lblNewLabel = new JLabel("Sixes Wild ! ");
-		lblNewLabel.setFont(new Font("Comic Sans MS", Font.PLAIN, 45));
+		lblNewLabel.setFont(new Font("Source Sans Pro Black", Font.PLAIN, 45));
 		
 		JLabel lblSelectAGame = new JLabel("Select a Game Mode : ");
 		

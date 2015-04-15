@@ -38,7 +38,7 @@ public class LevelSelectorPanel extends JPanel implements IApplication{
 		this.frame = frame;
 		
 		JLabel lblSelectLevel = new JLabel(title);
-		lblSelectLevel.setFont(new Font("Comic Sans MS", Font.PLAIN, 45));
+		lblSelectLevel.setFont(new Font("Source Sans Pro Black", Font.PLAIN, 45));
 		
 		JLabel lblPuzzleLevels = new JLabel("Select Level ");
 		
