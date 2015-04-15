@@ -177,5 +177,11 @@ public class BuilderPanel2 extends JPanel implements IApplication{
 		add(slider_7, gbc_slider_7);
 	}
 
+	@Override
+	public JFrame getFrame() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 }

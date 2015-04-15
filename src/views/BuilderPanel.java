@@ -24,6 +24,9 @@ import java.awt.ComponentOrientation;
 import javax.swing.JScrollBar;
 import javax.swing.JSpinner;
 import javax.swing.JSlider;
+import java.awt.Color;
+import javax.swing.JTable;
+import javax.swing.DefaultComboBoxModel;
 
 /*
  * 
@@ -41,17 +44,12 @@ public class BuilderPanel extends JPanel implements IApplication {
 	public BuilderPanel(JFrame frame){
 		super();
 		this.frame = frame;
-		this.frame.setMinimumSize(new Dimension(6*w, 5*w));
+		this.frame.setMinimumSize(new Dimension(7*w, 5*w));
 		
 
 		/*
 		 * Create the board and make it appear
 		 */
-		BoardView boardView = new BoardView(this.frame);
-		boardView.setToolTipText("");
-		boardView.setAlignmentX(Component.RIGHT_ALIGNMENT);
-		boardView.setBounds(100, 100, 504, 504);
-		this.add(boardView);
 		
 		/* 
 		 * Create button to return to main menu and bind it to its controller
@@ -77,6 +75,7 @@ public class BuilderPanel extends JPanel implements IApplication {
 		JLabel lblfilename = new JLabel("fileName");
 		
 		JComboBox comboBox = new JComboBox();
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Select Mode"}));
 		
 		JLabel lblX = new JLabel("X:");
 		
@@ -93,6 +92,11 @@ public class BuilderPanel extends JPanel implements IApplication {
 		JPanel panel = new JPanel();
 		panel.setAlignmentY(Component.TOP_ALIGNMENT);
 		panel.setAlignmentX(Component.LEFT_ALIGNMENT);
+		BoardView boardView = new BoardView(this.frame);
+		boardView.setToolTipText("");
+		boardView.setAlignmentX(Component.RIGHT_ALIGNMENT);
+		boardView.setBounds(100, 100, 504, 504);
+		this.add(boardView);
 		
 		
 		GroupLayout groupLayout = new GroupLayout(this);
@@ -101,34 +105,39 @@ public class BuilderPanel extends JPanel implements IApplication {
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(273)
-							.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-								.addGroup(groupLayout.createSequentialGroup()
-									.addComponent(lblLevelBuilder, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-									.addGap(180))
-								.addGroup(groupLayout.createSequentialGroup()
-									.addGap(24)
-									.addComponent(lblfilename, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-									.addGap(202)))
-							.addComponent(btnMenu))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addContainerGap()
-							.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, 88, GroupLayout.PREFERRED_SIZE))
-						.addGroup(groupLayout.createSequentialGroup()
 							.addContainerGap()
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING, false)
-									.addComponent(panel, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-									.addComponent(statsPanel, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 112, Short.MAX_VALUE))
+								.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+									.addComponent(statsPanel, GroupLayout.PREFERRED_SIZE, 245, Short.MAX_VALUE)
+									.addGroup(groupLayout.createSequentialGroup()
+										.addComponent(lblX)
+										.addPreferredGap(ComponentPlacement.RELATED)
+										.addComponent(textField, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
+										.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+										.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+											.addComponent(panel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+											.addGroup(groupLayout.createSequentialGroup()
+												.addGap(4)
+												.addComponent(lblY)
+												.addPreferredGap(ComponentPlacement.RELATED)
+												.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)))
+										.addPreferredGap(ComponentPlacement.UNRELATED)))
 								.addGroup(groupLayout.createSequentialGroup()
-									.addComponent(lblX)
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(textField, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(lblY)
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE))))
-						.addComponent(filePanel, GroupLayout.PREFERRED_SIZE, 478, GroupLayout.PREFERRED_SIZE))
+									.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, 88, GroupLayout.PREFERRED_SIZE)
+									.addPreferredGap(ComponentPlacement.RELATED)))
+							.addComponent(boardView, GroupLayout.PREFERRED_SIZE, 518, GroupLayout.PREFERRED_SIZE)
+							.addGap(8))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addGroup(groupLayout.createSequentialGroup()
+									.addGap(309)
+									.addComponent(lblfilename, GroupLayout.PREFERRED_SIZE, 75, GroupLayout.PREFERRED_SIZE))
+								.addGroup(groupLayout.createSequentialGroup()
+									.addGap(297)
+									.addComponent(lblLevelBuilder, GroupLayout.DEFAULT_SIZE, 421, Short.MAX_VALUE)))
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(btnMenu))
+						.addComponent(filePanel, GroupLayout.PREFERRED_SIZE, 439, GroupLayout.PREFERRED_SIZE))
 					.addContainerGap())
 		);
 		groupLayout.setVerticalGroup(
@@ -136,27 +145,34 @@ public class BuilderPanel extends JPanel implements IApplication {
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(17)
-							.addComponent(btnMenu))
+							.addComponent(lblLevelBuilder)
+							.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+							.addComponent(lblfilename)
+							.addGap(18)
+							.addComponent(filePanel, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addContainerGap()
-							.addComponent(lblLevelBuilder)
-							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addComponent(lblfilename)))
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(filePanel, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblX)
-						.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblY)
-						.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED, 98, Short.MAX_VALUE)
-					.addComponent(statsPanel, GroupLayout.PREFERRED_SIZE, 179, GroupLayout.PREFERRED_SIZE))
+							.addComponent(btnMenu)))
+					.addGap(18)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addComponent(boardView, GroupLayout.PREFERRED_SIZE, 504, GroupLayout.PREFERRED_SIZE)
+							.addContainerGap())
+						.addGroup(groupLayout.createSequentialGroup()
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+								.addComponent(lblX)
+								.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblY)
+								.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(panel, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED, 251, Short.MAX_VALUE)
+							.addComponent(statsPanel, GroupLayout.PREFERRED_SIZE, 179, GroupLayout.PREFERRED_SIZE)
+							.addGap(75))))
 		);
 		
 		textField_2 = new JTextField();
@@ -168,6 +184,7 @@ public class BuilderPanel extends JPanel implements IApplication {
 		panel.add(textField_3);
 		
 		JSlider slider = new JSlider();
+		slider.setForeground(Color.CYAN);
 		statsPanel.add(slider);
 		
 		JSlider slider_1 = new JSlider();
