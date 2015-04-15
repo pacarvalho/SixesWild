@@ -31,11 +31,11 @@ import java.awt.Component;
 public class LevelSelectorPanel extends JPanel implements IApplication{
 	JFrame frame;
 	Image background;
-	public LevelSelectorPanel(JFrame frame) {
+	public LevelSelectorPanel(JFrame frame, String title) {
 		
 		this.frame = frame;
 		
-		JLabel lblSelectLevel = new JLabel("Puzzle Level");
+		JLabel lblSelectLevel = new JLabel(title);
 		lblSelectLevel.setFont(new Font("Comic Sans MS", Font.PLAIN, 45));
 		
 		JLabel lblPuzzleLevels = new JLabel("Select Level ");

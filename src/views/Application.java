@@ -32,7 +32,7 @@ public class Application extends JFrame implements IApplication{
 		this.gameSelectorPanel = new GameSelectorPanel(this.frame);
 		
 		/* Set Frame Attributes */
-		this.frame.setTitle("SixesWild Is Wilder!");
+		this.frame.setTitle("SixesWild?");
 		
 		/* Show the wrath of the splash */
 		splashPanel.showSplash();
