@@ -49,8 +49,7 @@ public class BuilderPanel extends JPanel implements IApplication {
 		 */
 		BoardView boardView = new BoardView(this.frame);
 		boardView.setToolTipText("");
-		boardView.setAlignmentY(Component.TOP_ALIGNMENT);
-		boardView.setAlignmentX(Component.LEFT_ALIGNMENT);
+		boardView.setAlignmentX(Component.RIGHT_ALIGNMENT);
 		boardView.setBounds(100, 100, 504, 504);
 		this.add(boardView);
 		
@@ -112,7 +111,6 @@ public class BuilderPanel extends JPanel implements IApplication {
 									.addComponent(lblfilename, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 									.addGap(202)))
 							.addComponent(btnMenu))
-						.addComponent(filePanel, GroupLayout.PREFERRED_SIZE, 416, GroupLayout.PREFERRED_SIZE)
 						.addGroup(groupLayout.createSequentialGroup()
 							.addContainerGap()
 							.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, 88, GroupLayout.PREFERRED_SIZE))
@@ -129,7 +127,8 @@ public class BuilderPanel extends JPanel implements IApplication {
 									.addPreferredGap(ComponentPlacement.RELATED)
 									.addComponent(lblY)
 									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)))))
+									.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE))))
+						.addComponent(filePanel, GroupLayout.PREFERRED_SIZE, 478, GroupLayout.PREFERRED_SIZE))
 					.addContainerGap())
 		);
 		groupLayout.setVerticalGroup(

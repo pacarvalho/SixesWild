@@ -1,5 +1,7 @@
 package views;
 
+import java.awt.Dimension;
+
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -15,6 +17,7 @@ public class SplashPanel extends JWindow implements IApplication{
 	
 	public SplashPanel(JFrame frame){	
 		this.frame = frame;
+		
 	}
 	
 	public void showSplash(){
@@ -26,7 +29,7 @@ public class SplashPanel extends JWindow implements IApplication{
 		JLabel credits = new JLabel("", new ImageIcon("resources/namesSplash.gif"), SwingConstants.CENTER);
 		credits.setBounds(150, 300, 600, 200);
 		
-		this.frame.setBounds(150, 150, 600, 600);
+		this.frame.setBounds(150, 150, 600, 500);;
 		
 		this.frame.getContentPane().add(image);
 		this.frame.getContentPane().add(credits);
