@@ -62,5 +62,11 @@ public class BuilderPanel2 extends JPanel implements IApplication{
 		add(btnMenu, gbc_btnMenu);
 	}
 
+	@Override
+	public JFrame getFrame() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 }
