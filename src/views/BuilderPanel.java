@@ -39,6 +39,7 @@ public class BuilderPanel extends JPanel implements IApplication {
 	private JTextField textField_3;
 
 	public BuilderPanel(JFrame frame){
+		super();
 		this.frame = frame;
 		this.frame.setMinimumSize(new Dimension(6*w, 5*w));
 		

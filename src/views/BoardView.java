@@ -15,6 +15,7 @@ public class BoardView extends JPanel{
 	TileView[][] tiles = new TileView[9][9];
 	
 	public BoardView(JFrame frame){
+		super();
 		this.frame = frame;
 		
 		for (int i=0; i<9; i++){
