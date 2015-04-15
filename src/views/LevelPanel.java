@@ -1,5 +1,7 @@
 package views;
 
+import java.awt.Dimension;
+
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -9,6 +11,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JButton;
 
 import controllers.ExitController;
+import javax.swing.SwingConstants;
 
 /*
  * 
@@ -20,10 +23,12 @@ public class LevelPanel extends JPanel implements IApplication{
 	public LevelPanel(JFrame frame, String title){
 		
 		this.frame = frame;
+		this.frame.setMinimumSize(new Dimension(700, 700));
+		JLabel lblTitle = new JLabel("gameMode");
+		lblTitle.setHorizontalAlignment(SwingConstants.CENTER);
 		
-		JLabel lblTitle = new JLabel(title);
-		
-		JLabel lblNewLabel = new JLabel("gameMode");
+		JLabel lblNewLabel = new JLabel(title);
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		
 		JLabel lblNewLabel_1 = new JLabel("time");
 		

@@ -2,6 +2,7 @@ package views;
 
 import java.awt.CardLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -31,6 +32,7 @@ public class Application extends JFrame implements IApplication{
 		this.splashPanel = new SplashPanel(this.frame);
 		this.gameSelectorPanel = new GameSelectorPanel(this.frame);
 		
+
 		/* Set Frame Attributes */
 		this.frame.setTitle("SixesWild?");
 		
@@ -39,9 +41,10 @@ public class Application extends JFrame implements IApplication{
 		
 		/* After splash vanishes, show the game selector menu */
 		this.frame.getContentPane().add(this.gameSelectorPanel);
-		this.frame.setBounds(100, 100, 1000, 1000);
+		this.frame.setBounds(100, 100, 1200, 1200);
 		this.frame.pack();
 		this.frame.setVisible(true);
+		
 		
 		/* Close everything when done */
 		this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

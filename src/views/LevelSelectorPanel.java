@@ -52,7 +52,7 @@ public class LevelSelectorPanel extends JPanel implements IApplication{
 		JButton btnLevel4 = new JButton("Level 4");
 		
 		ChooseLevelController chooseLevelController = new ChooseLevelController(this, btnLevel1, btnLevel2,
-				btnLevel3, btnLevel4);
+				btnLevel3, btnLevel4, title);
 		
 		btnLevel1.addActionListener(chooseLevelController);
 		btnLevel2.addActionListener(chooseLevelController);

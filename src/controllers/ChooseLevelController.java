@@ -17,7 +17,7 @@ public class ChooseLevelController implements ActionListener{
 	
 	
 	public ChooseLevelController(IApplication view, JButton btnLevel1, JButton btnLevel2,
-				JButton btnLevel3, JButton btnLevel4){
+				JButton btnLevel3, JButton btnLevel4, String title){
 		this.view = view;
 		
 		this.btnLevel1 = btnLevel1;
@@ -37,7 +37,7 @@ public class ChooseLevelController implements ActionListener{
 		if(e.getSource() == this.btnLevel1){
 			JFrame frame = this.view.getFrame();
 			LevelPanel levelPanel = new LevelPanel(frame, 
-					"Level 1");
+					"Level 1"); //title once entity is implemented
 			frame.getContentPane().removeAll();
 			frame.getContentPane().add(levelPanel);
 			frame.pack();
