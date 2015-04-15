@@ -26,6 +26,8 @@ import java.awt.event.ActionEvent;
 
 import org.eclipse.wb.swing.FocusTraversalOnArray;
 
+import controllers.ChooseLevelController;
+
 import java.awt.Component;
 
 public class LevelSelectorPanel extends JPanel implements IApplication{
@@ -40,13 +42,24 @@ public class LevelSelectorPanel extends JPanel implements IApplication{
 		
 		JLabel lblPuzzleLevels = new JLabel("Select Level ");
 		
-		JButton btnLevel_1 = new JButton("Level 1");
+		/*
+		 * Create the buttons and bind them to their controllers
+		 */
 		
-		JButton btnLevel = new JButton("Level 2");
+		JButton btnLevel1 = new JButton("Level 1");
+		JButton btnLevel2 = new JButton("Level 2");
+		JButton btnLevel3 = new JButton("Level 3");
+		JButton btnLevel4 = new JButton("Level 4");
 		
-		JButton btnLevel_2 = new JButton("Level 3");
+		ChooseLevelController chooseLevelController = new ChooseLevelController(this, btnLevel1, btnLevel2,
+				btnLevel3, btnLevel4);
 		
-		JButton btnLevel_3 = new JButton("Level 4");
+		btnLevel1.addActionListener(chooseLevelController);
+		btnLevel2.addActionListener(chooseLevelController);
+		btnLevel3.addActionListener(chooseLevelController);
+		btnLevel4.addActionListener(chooseLevelController);
+		
+		
 		
 		/*
 		 * Automatically generated code
@@ -60,13 +73,13 @@ public class LevelSelectorPanel extends JPanel implements IApplication{
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(17)
-							.addComponent(btnLevel_1, GroupLayout.PREFERRED_SIZE, 97, GroupLayout.PREFERRED_SIZE)
+							.addComponent(btnLevel1, GroupLayout.PREFERRED_SIZE, 97, GroupLayout.PREFERRED_SIZE)
 							.addGap(6)
-							.addComponent(btnLevel, GroupLayout.PREFERRED_SIZE, 97, GroupLayout.PREFERRED_SIZE)
+							.addComponent(btnLevel2, GroupLayout.PREFERRED_SIZE, 97, GroupLayout.PREFERRED_SIZE)
 							.addGap(12)
-							.addComponent(btnLevel_2, GroupLayout.PREFERRED_SIZE, 97, GroupLayout.PREFERRED_SIZE)
+							.addComponent(btnLevel3, GroupLayout.PREFERRED_SIZE, 97, GroupLayout.PREFERRED_SIZE)
 							.addGap(6)
-							.addComponent(btnLevel_3, GroupLayout.PREFERRED_SIZE, 97, GroupLayout.PREFERRED_SIZE))
+							.addComponent(btnLevel4, GroupLayout.PREFERRED_SIZE, 97, GroupLayout.PREFERRED_SIZE))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(140)
 							.addComponent(btnNewButton))
@@ -87,10 +100,10 @@ public class LevelSelectorPanel extends JPanel implements IApplication{
 					.addComponent(lblPuzzleLevels)
 					.addGap(28)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(btnLevel_1, GroupLayout.PREFERRED_SIZE, 67, GroupLayout.PREFERRED_SIZE)
-						.addComponent(btnLevel, GroupLayout.PREFERRED_SIZE, 67, GroupLayout.PREFERRED_SIZE)
-						.addComponent(btnLevel_2, GroupLayout.PREFERRED_SIZE, 67, GroupLayout.PREFERRED_SIZE)
-						.addComponent(btnLevel_3, GroupLayout.PREFERRED_SIZE, 67, GroupLayout.PREFERRED_SIZE))
+						.addComponent(btnLevel1, GroupLayout.PREFERRED_SIZE, 67, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnLevel2, GroupLayout.PREFERRED_SIZE, 67, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnLevel3, GroupLayout.PREFERRED_SIZE, 67, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnLevel4, GroupLayout.PREFERRED_SIZE, 67, GroupLayout.PREFERRED_SIZE))
 					.addGap(18)
 					.addComponent(btnNewButton)
 					.addContainerGap(55, Short.MAX_VALUE))
