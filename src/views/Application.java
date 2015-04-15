@@ -39,6 +39,7 @@ public class Application extends JFrame implements IApplication{
 		
 		/* After splash vanishes, show the game selector menu */
 		this.frame.getContentPane().add(this.gameSelectorPanel);
+		this.frame.setBounds(100, 100, 1000, 1000);
 		this.frame.pack();
 		this.frame.setVisible(true);
 		

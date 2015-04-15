@@ -18,12 +18,21 @@ public class SplashPanel extends JWindow implements IApplication{
 	}
 	
 	public void showSplash(){
-		this.frame.getContentPane().add(
-		    new JLabel("", new ImageIcon("src/Bunny.gif"), SwingConstants.CENTER));
-		this.frame.setBounds(500, 150, 300, 200);
+		/*
+		 * Place image gif and credits
+		 */
+		JLabel image = new JLabel("", new ImageIcon("src/Bunny.gif"), SwingConstants.CENTER);
+		image.setBounds(100, 100, 100, 100);
+		JLabel credits = new JLabel("", new ImageIcon("resources/namesSplash.gif"), SwingConstants.CENTER);
+		credits.setBounds(150, 300, 600, 200);
+		
+		this.frame.setBounds(150, 150, 600, 600);
+		
+		this.frame.getContentPane().add(image);
+		this.frame.getContentPane().add(credits);
 		this.frame.setVisible(true);
 		try {
-		    Thread.sleep(2000);
+		    Thread.sleep(5000);
 		} catch (InterruptedException e) {
 		    e.printStackTrace();
 		}
