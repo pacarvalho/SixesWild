@@ -9,6 +9,6 @@ public class TileView extends JPanel{
 	
 	public TileView(){
 		
-		this.add(new JLabel("", new ImageIcon("src/Bunny.gif"), SwingConstants.CENTER));
+		this.add(new JLabel("", new ImageIcon("resources/1Tile.gif"), SwingConstants.CENTER));
 	}
 }

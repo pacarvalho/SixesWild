@@ -20,7 +20,7 @@ public class BoardView extends JPanel{
 		for (int i=0; i<9; i++){
 			for (int j=0; j<9; j++){
 				tiles[i][j] = new TileView();
-				this.setBounds(72*i,72*j, 72, 72);
+				this.setBounds(36*i,36*j, 36, 36);
 				this.add(tiles[i][j]);
 			}
 		}

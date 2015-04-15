@@ -40,7 +40,7 @@ public class LevelPanel extends JPanel implements IApplication{
 		 * Create the board and make it appear
 		 */
 		BoardView boardView = new BoardView(this.frame);
-		boardView.setBounds(20, 100, 648, 648);
+		boardView.setBounds(100, 100, 504, 504);
 		this.add(boardView);
 		
 		GroupLayout groupLayout = new GroupLayout(this);
