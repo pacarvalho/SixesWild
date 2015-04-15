@@ -19,14 +19,12 @@ import org.eclipse.wb.swing.FocusTraversalOnArray;
 import java.awt.Component;
 
 
-public class MainPanel extends JPanel implements ActionListener{
+public class GameSelectorPanel extends JPanel implements ActionListener, IApplication{
 	JFrame frame;
-	PuzzleLevelPanel puzzleLevel;
 	JButton btnNewButton;
 	
-	public MainPanel(JFrame frame){
+	public GameSelectorPanel(JFrame frame){
 		this.frame = frame;
-		this.puzzleLevel = new PuzzleLevelPanel();
 		setBackground(UIManager.getColor("FormattedTextField.selectionBackground"));
 		
 		JLabel lblNewLabel = new JLabel("Sixes Wild ! ");
@@ -81,7 +79,7 @@ public class MainPanel extends JPanel implements ActionListener{
 	
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == btnNewButton){
-			PuzzleLevelPanel plevel = new PuzzleLevelPanel();
+			LevelSelectorPanel plevel = new LevelSelectorPanel(this.frame);
 			frame.getContentPane().removeAll();
 			frame.getContentPane().add(plevel);
 			frame.pack();

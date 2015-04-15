@@ -28,10 +28,12 @@ import org.eclipse.wb.swing.FocusTraversalOnArray;
 
 import java.awt.Component;
 
-public class PuzzleLevelPanel extends JPanel{
+public class LevelSelectorPanel extends JPanel implements IApplication{
 	JFrame frame;
 	Image background;
-	public PuzzleLevelPanel() {
+	public LevelSelectorPanel(JFrame frame) {
+		
+		this.frame = frame;
 		
 		JLabel lblSelectLevel = new JLabel("Puzzle Level");
 		lblSelectLevel.setFont(new Font("Comic Sans MS", Font.PLAIN, 45));
@@ -45,6 +47,10 @@ public class PuzzleLevelPanel extends JPanel{
 		JButton btnLevel_2 = new JButton("Level 3");
 		
 		JButton btnLevel_3 = new JButton("Level 4");
+		
+		/*
+		 * Automatically generated code
+		 */
 		
 		JButton btnNewButton = new JButton("Choose Your Own !");
 		GroupLayout groupLayout = new GroupLayout(this);
