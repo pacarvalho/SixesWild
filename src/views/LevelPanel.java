@@ -23,16 +23,17 @@ public class LevelPanel extends JPanel implements IApplication{
 	public LevelPanel(JFrame frame, String title){
 		
 		this.frame = frame;
-		this.frame.setMinimumSize(new Dimension(700, 700));
+		this.frame.setPreferredSize(new Dimension(700, 700));
+		
 		JLabel lblTitle = new JLabel("gameMode");
 		lblTitle.setHorizontalAlignment(SwingConstants.CENTER);
 		
 		JLabel lblNewLabel = new JLabel(title);
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		
-		JLabel lblNewLabel_1 = new JLabel("time");
+		JLabel lblTime = new JLabel("time");
 		
-		JLabel lblNewLabel_2 = new JLabel("score");
+		JLabel lblScore = new JLabel("score");
 		
 		/* 
 		 * Create button to return to main menu and bind it to its controller
@@ -67,9 +68,9 @@ public class LevelPanel extends JPanel implements IApplication{
 					.addGap(17))
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(25)
-					.addComponent(lblNewLabel_1)
+					.addComponent(lblTime)
 					.addPreferredGap(ComponentPlacement.RELATED, 318, Short.MAX_VALUE)
-					.addComponent(lblNewLabel_2)
+					.addComponent(lblScore)
 					.addGap(45))
 		);
 		groupLayout.setVerticalGroup(
@@ -86,8 +87,8 @@ public class LevelPanel extends JPanel implements IApplication{
 							.addComponent(btnMenu)))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblNewLabel_1)
-						.addComponent(lblNewLabel_2))
+						.addComponent(lblTime)
+						.addComponent(lblScore))
 					.addContainerGap(235, Short.MAX_VALUE))
 		);
 		setLayout(groupLayout);

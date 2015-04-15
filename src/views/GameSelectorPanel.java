@@ -9,17 +9,26 @@ import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
+
+import java.awt.Dimension;
 import java.awt.Font;
+
 import javax.swing.LayoutStyle.ComponentPlacement;
+
 import java.awt.Color;
+
 import javax.swing.JButton;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
 import org.eclipse.wb.swing.FocusTraversalOnArray;
+
 import java.awt.Component;
 
 import controllers.ChooseGameController;
 import controllers.StartBuilderController;
+
 import java.awt.SystemColor;
 
 
@@ -28,6 +37,9 @@ public class GameSelectorPanel extends JPanel implements IApplication{
 	
 	public GameSelectorPanel(JFrame frame){
 		this.frame = frame;
+		
+		this.frame.setPreferredSize(new Dimension(500, 400));
+		
 		setBackground(UIManager.getColor("FormattedTextField.selectionBackground"));
 		
 		JLabel lblNewLabel = new JLabel("Sixes Wild ! ");
