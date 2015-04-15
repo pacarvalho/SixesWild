@@ -30,13 +30,9 @@ public class Application extends JFrame implements IApplication{
 		this.frame = new JFrame();
 		this.splashPanel = new SplashPanel(this.frame);
 		this.gameSelectorPanel = new GameSelectorPanel(this.frame);
-		this.puzzleLevelSelectorPanel = new LevelSelectorPanel(this.frame);
-		this.lightningLevelSelectorPanel = new LevelSelectorPanel(this.frame);
-		this.releaseLevelSelectorPanel = new LevelSelectorPanel(this.frame);
-		this.eliminationLevelSelectorPanel = new LevelSelectorPanel(this.frame);
 		
 		/* Set Frame Attributes */
-		this.frame.setTitle("SixesWild Is Wild");
+		this.frame.setTitle("SixesWild Is Wilder!");
 		
 		/* Show the wrath of the splash */
 		splashPanel.showSplash();
@@ -50,6 +46,11 @@ public class Application extends JFrame implements IApplication{
 		this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		
+	}
+
+	@Override
+	public JFrame getFrame() {
+		return this.frame;
 	}
 
 	

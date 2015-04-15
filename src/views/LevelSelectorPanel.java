@@ -97,5 +97,10 @@ public class LevelSelectorPanel extends JPanel implements IApplication{
 		);
 		setLayout(groupLayout);
 	}
+	
+	@Override
+	public JFrame getFrame() {
+		return this.frame;
+	}
 
 }

@@ -23,12 +23,17 @@ public class SplashPanel extends JWindow implements IApplication{
 		this.frame.setBounds(500, 150, 300, 200);
 		this.frame.setVisible(true);
 		try {
-		    Thread.sleep(5000);
+		    Thread.sleep(2000);
 		} catch (InterruptedException e) {
 		    e.printStackTrace();
 		}
 		this.frame.setVisible(false);
 		this.frame.getContentPane().removeAll();
+	}
+	
+	@Override
+	public JFrame getFrame() {
+		return this.frame;
 	}
 
 }

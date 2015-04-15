@@ -18,10 +18,11 @@ import java.awt.event.ActionEvent;
 import org.eclipse.wb.swing.FocusTraversalOnArray;
 import java.awt.Component;
 
+import controllers.ChooseGameController;
 
-public class GameSelectorPanel extends JPanel implements ActionListener, IApplication{
+
+public class GameSelectorPanel extends JPanel implements IApplication{
 	JFrame frame;
-	JButton btnNewButton;
 	
 	public GameSelectorPanel(JFrame frame){
 		this.frame = frame;
@@ -32,14 +33,32 @@ public class GameSelectorPanel extends JPanel implements ActionListener, IApplic
 		
 		JLabel lblSelectAGame = new JLabel("Select a Game Mode : ");
 		
-		this.btnNewButton = new JButton("Puzzle");
-		btnNewButton.addActionListener(this);
-		
+		/*
+		 * Create the buttons
+		 */
+		JButton btnPuzzle = new JButton("Puzzle");
 		JButton btnLightning = new JButton("Lightning");
-		
 		JButton btnRelease = new JButton("Release");
-		
 		JButton btnElimination = new JButton("Elimination");
+		
+		/*
+		 * Create the choose game controller
+		 */
+		ChooseGameController gameController = new ChooseGameController(this, btnPuzzle, 
+				btnLightning, btnRelease, btnElimination);
+		
+		/*
+		 * Bind the buttons to their controllers
+		 */
+		btnPuzzle.addActionListener(gameController);
+		btnLightning.addActionListener(gameController);
+		btnRelease.addActionListener(gameController);
+		btnElimination.addActionListener(gameController);
+		
+		
+		/*
+		 * Auto generated code
+		 */
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -51,7 +70,7 @@ public class GameSelectorPanel extends JPanel implements ActionListener, IApplic
 					.addComponent(lblSelectAGame))
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(18)
-					.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 97, GroupLayout.PREFERRED_SIZE)
+					.addComponent(btnPuzzle, GroupLayout.PREFERRED_SIZE, 97, GroupLayout.PREFERRED_SIZE)
 					.addGap(6)
 					.addComponent(btnLightning, GroupLayout.PREFERRED_SIZE, 97, GroupLayout.PREFERRED_SIZE)
 					.addGap(12)
@@ -68,22 +87,18 @@ public class GameSelectorPanel extends JPanel implements ActionListener, IApplic
 					.addComponent(lblSelectAGame)
 					.addGap(28)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 67, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnPuzzle, GroupLayout.PREFERRED_SIZE, 67, GroupLayout.PREFERRED_SIZE)
 						.addComponent(btnLightning, GroupLayout.PREFERRED_SIZE, 67, GroupLayout.PREFERRED_SIZE)
 						.addComponent(btnRelease, GroupLayout.PREFERRED_SIZE, 67, GroupLayout.PREFERRED_SIZE)
 						.addComponent(btnElimination, GroupLayout.PREFERRED_SIZE, 67, GroupLayout.PREFERRED_SIZE)))
 		);
 		setLayout(groupLayout);
-		setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{lblNewLabel, lblSelectAGame, btnNewButton, btnLightning, btnRelease, btnElimination}));
+		setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{lblNewLabel, lblSelectAGame, btnPuzzle, btnLightning, btnRelease, btnElimination}));
 	}
-	
-	public void actionPerformed(ActionEvent e) {
-		if(e.getSource() == btnNewButton){
-			LevelSelectorPanel plevel = new LevelSelectorPanel(this.frame);
-			frame.getContentPane().removeAll();
-			frame.getContentPane().add(plevel);
-			frame.pack();
-		}
+
+	@Override
+	public JFrame getFrame() {
+		return this.frame;
 	}
 	
 	
