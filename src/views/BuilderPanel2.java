@@ -134,6 +134,48 @@ public class BuilderPanel2 extends JPanel implements IApplication{
 		gbc_lblX.gridy = 4;
 		add(lblX, gbc_lblX);
 		
+		JLabel lblProbabilityOf = new JLabel("Probability of 1");
+		GridBagConstraints gbc_lblProbabilityOf = new GridBagConstraints();
+		gbc_lblProbabilityOf.insets = new Insets(0, 0, 5, 5);
+		gbc_lblProbabilityOf.gridx = 1;
+		gbc_lblProbabilityOf.gridy = 11;
+		add(lblProbabilityOf, gbc_lblProbabilityOf);
+		
+		JLabel lblProbabilityOf_1 = new JLabel("Probability of 2");
+		GridBagConstraints gbc_lblProbabilityOf_1 = new GridBagConstraints();
+		gbc_lblProbabilityOf_1.insets = new Insets(0, 0, 5, 5);
+		gbc_lblProbabilityOf_1.gridx = 2;
+		gbc_lblProbabilityOf_1.gridy = 11;
+		add(lblProbabilityOf_1, gbc_lblProbabilityOf_1);
+		
+		JLabel lblProbabilityOf_2 = new JLabel("Probability of 3");
+		GridBagConstraints gbc_lblProbabilityOf_2 = new GridBagConstraints();
+		gbc_lblProbabilityOf_2.insets = new Insets(0, 0, 5, 5);
+		gbc_lblProbabilityOf_2.gridx = 3;
+		gbc_lblProbabilityOf_2.gridy = 11;
+		add(lblProbabilityOf_2, gbc_lblProbabilityOf_2);
+		
+		JLabel lblProbabilityOf_3 = new JLabel("Probability of 4");
+		GridBagConstraints gbc_lblProbabilityOf_3 = new GridBagConstraints();
+		gbc_lblProbabilityOf_3.insets = new Insets(0, 0, 5, 5);
+		gbc_lblProbabilityOf_3.gridx = 4;
+		gbc_lblProbabilityOf_3.gridy = 11;
+		add(lblProbabilityOf_3, gbc_lblProbabilityOf_3);
+		
+		JLabel lblProbabilityOf_4 = new JLabel("Probability of 5");
+		GridBagConstraints gbc_lblProbabilityOf_4 = new GridBagConstraints();
+		gbc_lblProbabilityOf_4.insets = new Insets(0, 0, 5, 5);
+		gbc_lblProbabilityOf_4.gridx = 5;
+		gbc_lblProbabilityOf_4.gridy = 11;
+		add(lblProbabilityOf_4, gbc_lblProbabilityOf_4);
+		
+		JLabel lblProbabilityOf_5 = new JLabel("Probability of 6");
+		GridBagConstraints gbc_lblProbabilityOf_5 = new GridBagConstraints();
+		gbc_lblProbabilityOf_5.insets = new Insets(0, 0, 5, 5);
+		gbc_lblProbabilityOf_5.gridx = 6;
+		gbc_lblProbabilityOf_5.gridy = 11;
+		add(lblProbabilityOf_5, gbc_lblProbabilityOf_5);
+		
 		JSlider slider_1 = new JSlider();
 		GridBagConstraints gbc_slider_1 = new GridBagConstraints();
 		gbc_slider_1.insets = new Insets(0, 0, 0, 5);
