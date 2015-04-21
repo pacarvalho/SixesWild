@@ -105,7 +105,6 @@ public class GameSelectorPanel extends JPanel implements IApplication{
 		c.gridy = 2; // Row
 		c.gridwidth = 1; // Number of columns it spans
 		c.ipady = 40; // Height in px
-		c.weightx = 1.0;
 		this.add(btnPuzzle, c);
 		
 		// Lightning

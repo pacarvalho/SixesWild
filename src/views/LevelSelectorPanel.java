@@ -73,6 +73,7 @@ public class LevelSelectorPanel extends JPanel implements IApplication{
 		c.gridx = 0;
 		c.gridy = 1;
 		c.gridwidth = 4;
+		c.ipady = 25; // Height in px
 		this.add(lblPuzzleLevels, c);
 		
 		// Place level buttons

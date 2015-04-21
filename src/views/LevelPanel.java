@@ -1,6 +1,7 @@
 package views;
 
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 
@@ -23,17 +24,19 @@ public class LevelPanel extends JPanel implements IApplication{
 	
 	JFrame frame;
 	
-	public LevelPanel(JFrame frame, String title){
+	public LevelPanel(JFrame frame, String title, String levelTitle){
 		super();
 		this.frame = frame;
-		this.frame.setMinimumSize(new Dimension(700, 700));
+		this.frame.setMinimumSize(new Dimension(800, 700));
 		
 		/*
 		 * Create title, subtitle, timer, score labels and bind them to their controllers
 		 */
-		JLabel lblTitle = new JLabel("gameMode");
+		JLabel lblTitle = new JLabel(title + " Mode");
+		lblTitle.setFont(new Font("Source Sans Pro Black", Font.PLAIN, 40));
 		
-		JLabel lblLevel = new JLabel(title);
+		JLabel lblLevel = new JLabel(levelTitle);
+		lblLevel.setFont(new Font("Source Sans Pro Black", Font.PLAIN, 25));
 		
 		JLabel lblTime = new JLabel("time");
 		
@@ -69,6 +72,7 @@ public class LevelPanel extends JPanel implements IApplication{
 		// Create gridBagContraints for setting location of widgets
 		GridBagConstraints c = new GridBagConstraints();
 		
+		
 		// Place Title
 		c.gridx = 0;
 		c.gridy = 0;
@@ -85,18 +89,22 @@ public class LevelPanel extends JPanel implements IApplication{
 		c.gridx = 0;
 		c.gridy = 2;
 		c.gridwidth = 1;
+		c.ipady = 15; // Height in px
 		this.add(lblTime, c);
 		
 		// Place Score
 		c.gridx = 5;
 		c.gridy = 2;
 		c.gridwidth = 1;
+		c.ipady = 15; // Height in px
 		this.add(lblScore, c);
 		
+		// NOTE THAT THE WAY WE PLACE THE BOARD
+		// APPEARS TO DISTORT THE SIZE OF CELLS (3,3) & (4,3)
 		// Place the Board (VERY IMPORTANT!!!)
-		c.gridx = 0;
+		c.gridx = 3;
 		c.gridy = 3;
-		c.gridwidth = 6;
+		c.gridwidth = 2;
 		this.add(boardView, c);
 		
 		// Place Menu Button
@@ -105,8 +113,24 @@ public class LevelPanel extends JPanel implements IApplication{
 		c.gridwidth = 1;
 		this.add(btnMenu, c);
 		
+		// Place Special Move Button 1
+		c.gridx = 5;
+		c.gridy = 4;
+		c.gridwidth = 1;
+		this.add(btnSpecial1, c);
 		
+		// Place Special Move Button 2
+		c.gridx = 6;
+		c.gridy = 4;
+		c.gridwidth = 1;
+		this.add(btnSpecial2, c);
 		
+		// Place Special Move Button 3
+		c.gridx = 7;
+		c.gridy = 4;
+		c.gridwidth = 1;
+		this.add(btnSpecial3, c);
+
 	}
 
 	@Override

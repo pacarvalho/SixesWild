@@ -6,7 +6,6 @@ import java.awt.event.MouseAdapter;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
-
 import views.IApplication;
 import views.BuilderPanel;
 
