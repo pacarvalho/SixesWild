@@ -1,5 +1,7 @@
 package views;
 
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
@@ -18,15 +20,23 @@ public class BoardView extends JPanel{
 		super();
 		this.frame = frame;
 		
+		// Set layout to grid bag
+		this.setLayout(new GridBagLayout());
+		
+		// Create gridBagContraints for setting location of widgets
+		GridBagConstraints c = new GridBagConstraints();
+		
 		for (int i=0; i<9; i++){
 			for (int j=0; j<9; j++){
+				c.gridx = i;
+				c.gridy = j;
+				c.gridwidth = 1;
+				
 				tiles[i][j] = new TileView();
-				this.setBounds(36*i,36*j, 36, 36);
-				this.add(tiles[i][j]);
+				
+				this.add(tiles[i][j], c);
 			}
 		}
 		
-		this.frame.getContentPane().add(this);
-		this.frame.pack();
 	}
 }

@@ -1,38 +1,27 @@
 package views;
 
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JWindow;
-import javax.swing.SwingConstants;
-import javax.swing.UIManager;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
 
 import java.awt.Font;
-import java.awt.Graphics;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.Image;
-import java.awt.Toolkit;
-
-import javax.swing.LayoutStyle.ComponentPlacement;
-
-import java.awt.Color;
 
 import javax.swing.JButton;
 
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-
-import org.eclipse.wb.swing.FocusTraversalOnArray;
-
 import controllers.ChooseLevelController;
 
-import java.awt.Component;
-
 public class LevelSelectorPanel extends JPanel implements IApplication{
+	/**
+	 * ID For Multithreaded runs
+	 */
+	private static final long serialVersionUID = -5640806150838492981L;
+	
 	JFrame frame;
 	Image background;
+	
 	public LevelSelectorPanel(JFrame frame, String title) {
 		
 		this.frame = frame;
@@ -40,10 +29,10 @@ public class LevelSelectorPanel extends JPanel implements IApplication{
 		JLabel lblSelectLevel = new JLabel(title);
 		lblSelectLevel.setFont(new Font("Source Sans Pro Black", Font.PLAIN, 45));
 		
-		JLabel lblPuzzleLevels = new JLabel("Select Level ");
+		JLabel lblPuzzleLevels = new JLabel("Select Level");
 		
 		/*
-		 * Create the buttons and bind them to their controllers
+		 * Create level buttons and bind them to their controllers
 		 */
 		
 		JButton btnLevel1 = new JButton("Level 1");
@@ -59,56 +48,69 @@ public class LevelSelectorPanel extends JPanel implements IApplication{
 		btnLevel3.addActionListener(chooseLevelController);
 		btnLevel4.addActionListener(chooseLevelController);
 		
-		
-		
 		/*
-		 * Automatically generated code
+		 * Create the choose custom level button and bind it to its controller
 		 */
 		
-		JButton btnNewButton = new JButton("Choose Your Own !");
-		GroupLayout groupLayout = new GroupLayout(this);
-		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(17)
-							.addComponent(btnLevel1, GroupLayout.PREFERRED_SIZE, 97, GroupLayout.PREFERRED_SIZE)
-							.addGap(6)
-							.addComponent(btnLevel2, GroupLayout.PREFERRED_SIZE, 97, GroupLayout.PREFERRED_SIZE)
-							.addGap(12)
-							.addComponent(btnLevel3, GroupLayout.PREFERRED_SIZE, 97, GroupLayout.PREFERRED_SIZE)
-							.addGap(6)
-							.addComponent(btnLevel4, GroupLayout.PREFERRED_SIZE, 97, GroupLayout.PREFERRED_SIZE))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(140)
-							.addComponent(btnNewButton))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(181)
-							.addComponent(lblPuzzleLevels))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(90)
-							.addComponent(lblSelectLevel, GroupLayout.PREFERRED_SIZE, 266, GroupLayout.PREFERRED_SIZE)))
-					.addContainerGap(21, Short.MAX_VALUE))
-		);
-		groupLayout.setVerticalGroup(
-			groupLayout.createParallelGroup(Alignment.TRAILING)
-				.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
-					.addGap(17)
-					.addComponent(lblSelectLevel, GroupLayout.PREFERRED_SIZE, 64, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(lblPuzzleLevels)
-					.addGap(28)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(btnLevel1, GroupLayout.PREFERRED_SIZE, 67, GroupLayout.PREFERRED_SIZE)
-						.addComponent(btnLevel2, GroupLayout.PREFERRED_SIZE, 67, GroupLayout.PREFERRED_SIZE)
-						.addComponent(btnLevel3, GroupLayout.PREFERRED_SIZE, 67, GroupLayout.PREFERRED_SIZE)
-						.addComponent(btnLevel4, GroupLayout.PREFERRED_SIZE, 67, GroupLayout.PREFERRED_SIZE))
-					.addGap(18)
-					.addComponent(btnNewButton)
-					.addContainerGap(55, Short.MAX_VALUE))
-		);
-		setLayout(groupLayout);
+		JButton btnCustomLevel = new JButton("Choose Your Own!");
+		
+		// ADD BINDING TO CONTROLLER HERE!!!
+		
+		// Place buttons on correct locations
+		// Set layout to grid bag
+		this.setLayout(new GridBagLayout());
+		
+		// Create gridBagContraints for setting location of widgets
+		GridBagConstraints c = new GridBagConstraints();
+		
+		// Place Title
+		c.gridx = 0;
+		c.gridy = 0;
+		c.gridwidth = 4;
+		this.add(lblSelectLevel, c);
+		
+		// Place Subtitle
+		c.gridx = 0;
+		c.gridy = 1;
+		c.gridwidth = 4;
+		this.add(lblPuzzleLevels, c);
+		
+		// Place level buttons
+		// Level 1
+		c.gridx = 0; // Column 
+		c.gridy = 2; // Row
+		c.gridwidth = 1; // Number of columns it spans
+		c.ipady = 40; // Height in px
+		this.add(btnLevel1, c);
+		
+		// Level 2
+		c.gridx = 1;
+		c.gridy = 2;
+		c.gridwidth = 1;
+		c.ipady = 40;
+		this.add(btnLevel2, c);
+		
+		// Level 3
+		c.gridx = 2;
+		c.gridy = 2;
+		c.gridwidth = 1;
+		c.ipady = 40;
+		this.add(btnLevel3, c);
+		
+		// Level 4
+		c.gridx = 3;
+		c.gridy = 2;
+		c.gridwidth = 1;
+		c.ipady = 40;
+		this.add(btnLevel4, c);
+		
+		// Place custom level button
+		c.gridx = 1;
+		c.gridy = 3;
+		c.gridwidth = 2;
+		c.ipady = 20;
+		this.add(btnCustomLevel, c);
+		
 	}
 	
 	@Override

@@ -12,6 +12,8 @@ import javax.swing.GroupLayout.Alignment;
 
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 
 import javax.swing.LayoutStyle.ComponentPlacement;
 
@@ -42,10 +44,10 @@ public class GameSelectorPanel extends JPanel implements IApplication{
 		
 		setBackground(UIManager.getColor("FormattedTextField.selectionBackground"));
 		
-		JLabel lblNewLabel = new JLabel("Sixes Wild ! ");
-		lblNewLabel.setFont(new Font("Source Sans Pro Black", Font.PLAIN, 45));
+		JLabel lblTitle = new JLabel("Sixes Wild !");
+		lblTitle.setFont(new Font("Source Sans Pro Black", Font.PLAIN, 45));
 		
-		JLabel lblSelectAGame = new JLabel("Select a Game Mode : ");
+		JLabel lblSelectAGame = new JLabel("Select a Game Mode");
 		
 		/*
 		 * Create the buttons
@@ -70,68 +72,69 @@ public class GameSelectorPanel extends JPanel implements IApplication{
 		btnElimination.addActionListener(gameController);
 		
 		/*
-		 * Builder button. (tentative)
+		 * Builder button. 
 		 */
 		JButton btnLevelBuilder = new JButton("Level Builder");
 		StartBuilderController builderStartController  = new StartBuilderController(this,btnLevelBuilder);
 		btnLevelBuilder.addActionListener(builderStartController);
 		
 		
-		/*
-		 * Auto generated code
-		 */
+		// Place buttons on correct locations
+		// Set layout to grid bag
+		this.setLayout(new GridBagLayout());
 		
-		JPanel panel = new JPanel();
-		panel.setOpaque(false);
-		GroupLayout groupLayout = new GroupLayout(this);
-		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(103)
-							.addComponent(lblNewLabel))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(161)
-							.addComponent(lblSelectAGame))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(18)
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addGroup(groupLayout.createSequentialGroup()
-									.addGap(10)
-									.addComponent(panel, GroupLayout.PREFERRED_SIZE, 397, GroupLayout.PREFERRED_SIZE))
-								.addGroup(groupLayout.createSequentialGroup()
-									.addComponent(btnPuzzle, GroupLayout.PREFERRED_SIZE, 97, GroupLayout.PREFERRED_SIZE)
-									.addGap(6)
-									.addComponent(btnLightning, GroupLayout.PREFERRED_SIZE, 97, GroupLayout.PREFERRED_SIZE)
-									.addGap(12)
-									.addComponent(btnRelease, GroupLayout.PREFERRED_SIZE, 97, GroupLayout.PREFERRED_SIZE)
-									.addGap(6)
-									.addComponent(btnElimination, GroupLayout.PREFERRED_SIZE, 97, GroupLayout.PREFERRED_SIZE)))))
-					.addGap(20))
-		);
-		groupLayout.setVerticalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(36)
-					.addComponent(lblNewLabel)
-					.addGap(6)
-					.addComponent(lblSelectAGame)
-					.addGap(28)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(btnPuzzle, GroupLayout.PREFERRED_SIZE, 67, GroupLayout.PREFERRED_SIZE)
-						.addComponent(btnLightning, GroupLayout.PREFERRED_SIZE, 67, GroupLayout.PREFERRED_SIZE)
-						.addComponent(btnRelease, GroupLayout.PREFERRED_SIZE, 67, GroupLayout.PREFERRED_SIZE)
-						.addComponent(btnElimination, GroupLayout.PREFERRED_SIZE, 67, GroupLayout.PREFERRED_SIZE))
-					.addGap(27)
-					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 65, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-		);
+		// Create gridBagContraints for setting location of widgets
+		GridBagConstraints c = new GridBagConstraints();
 		
-	
-		panel.add(btnLevelBuilder);
-		setLayout(groupLayout);
-		setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{lblNewLabel, lblSelectAGame, btnPuzzle, btnLightning, btnRelease, btnElimination}));
+		// Place Title
+		c.gridx = 0;
+		c.gridy = 0;
+		c.gridwidth = 4;
+		this.add(lblTitle, c);
+		
+		// Place Subtitle
+		c.gridx = 0;
+		c.gridy = 1;
+		c.gridwidth = 4;
+		c.ipady = 40; // Height in px
+		this.add(lblSelectAGame, c);
+		
+		// Place level buttons
+		// Puzzle
+		c.gridx = 0; // Column 
+		c.gridy = 2; // Row
+		c.gridwidth = 1; // Number of columns it spans
+		c.ipady = 40; // Height in px
+		c.weightx = 1.0;
+		this.add(btnPuzzle, c);
+		
+		// Lightning
+		c.gridx = 1;
+		c.gridy = 2;
+		c.gridwidth = 1;
+		c.ipady = 40;
+		this.add(btnLightning, c);
+		
+		// Release
+		c.gridx = 2;
+		c.gridy = 2;
+		c.gridwidth = 1;
+		c.ipady = 40;
+		this.add(btnRelease, c);
+		
+		// Elimination
+		c.gridx = 3;
+		c.gridy = 2;
+		c.gridwidth = 1;
+		c.ipady = 40;
+		this.add(btnElimination, c);
+		
+		// Place custom level button
+		c.gridx = 1;
+		c.gridy = 3;
+		c.gridwidth = 2;
+		c.ipady = 20;
+		this.add(btnLevelBuilder, c);
 	}
 
 	@Override
