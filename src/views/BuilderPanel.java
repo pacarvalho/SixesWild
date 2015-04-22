@@ -147,8 +147,9 @@ public class BuilderPanel extends JPanel implements IApplication {
 		JComboBox comboBox = new JComboBox();
 		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Select Mode"}));
 		
-		
-		// SET UP LAYOUT !!
+		// ***********************
+		// ****LAYOUT SET-UP !****
+		// ***********************
 		
 		// Place buttons on correct locations
 		// Set layout to grid bag
