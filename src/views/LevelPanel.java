@@ -76,13 +76,13 @@ public class LevelPanel extends JPanel implements IApplication{
 		// Place Title
 		c.gridx = 0;
 		c.gridy = 0;
-		c.gridwidth = 6;
+		c.gridwidth = 12;
 		this.add(lblTitle, c);
 		
 		// Place Level label
 		c.gridx = 0;
 		c.gridy = 1;
-		c.gridwidth = 6;
+		c.gridwidth = 12;
 		this.add(lblLevel, c);
 		
 		// Place Timer
@@ -93,7 +93,7 @@ public class LevelPanel extends JPanel implements IApplication{
 		this.add(lblTime, c);
 		
 		// Place Score
-		c.gridx = 5;
+		c.gridx = 11;
 		c.gridy = 2;
 		c.gridwidth = 1;
 		c.ipady = 15; // Height in px
@@ -102,9 +102,9 @@ public class LevelPanel extends JPanel implements IApplication{
 		// NOTE THAT THE WAY WE PLACE THE BOARD
 		// APPEARS TO DISTORT THE SIZE OF CELLS (3,3) & (4,3)
 		// Place the Board (VERY IMPORTANT!!!)
-		c.gridx = 3;
+		c.gridx = 2;
 		c.gridy = 3;
-		c.gridwidth = 2;
+		c.gridwidth = 9;
 		this.add(boardView, c);
 		
 		// Place Menu Button
@@ -114,19 +114,19 @@ public class LevelPanel extends JPanel implements IApplication{
 		this.add(btnMenu, c);
 		
 		// Place Special Move Button 1
-		c.gridx = 5;
+		c.gridx = 11;
 		c.gridy = 4;
 		c.gridwidth = 1;
 		this.add(btnSpecial1, c);
 		
 		// Place Special Move Button 2
-		c.gridx = 6;
+		c.gridx = 12;
 		c.gridy = 4;
 		c.gridwidth = 1;
 		this.add(btnSpecial2, c);
 		
 		// Place Special Move Button 3
-		c.gridx = 7;
+		c.gridx = 13;
 		c.gridy = 4;
 		c.gridwidth = 1;
 		this.add(btnSpecial3, c);

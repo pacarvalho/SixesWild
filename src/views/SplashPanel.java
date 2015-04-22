@@ -24,11 +24,11 @@ public class SplashPanel extends JWindow implements IApplication{
 		 * Place image gif and credits
 		 */
 		JLabel image = new JLabel("", new ImageIcon("src/Bunny.gif"), SwingConstants.CENTER);
-		image.setBounds(100, 100, 100, 100);
+		image.setBounds(10, 15, 100, 100);
 		JLabel credits = new JLabel("", new ImageIcon("resources/namesSplash.gif"), SwingConstants.CENTER);
 		credits.setBounds(150, 300, 600, 200);
 		
-		this.frame.setBounds(150, 150, 600, 600);
+		this.frame.setBounds(150, 170, 600, 300);
 		
 		this.frame.getContentPane().add(image);
 		this.frame.getContentPane().add(credits);
