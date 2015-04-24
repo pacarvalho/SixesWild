@@ -9,7 +9,6 @@ import javax.swing.JFrame;
 import model.Model;
 import views.IApplication;
 import views.LevelPanel;
-import views.LevelSelectorPanel;
 
 public class ChooseLevelController implements ActionListener{
 	
