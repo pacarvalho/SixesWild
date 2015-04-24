@@ -11,6 +11,7 @@ import java.awt.Image;
 
 import javax.swing.JButton;
 
+import model.Model;
 import controllers.ChooseLevelController;
 
 public class LevelSelectorPanel extends JPanel implements IApplication{
@@ -20,11 +21,13 @@ public class LevelSelectorPanel extends JPanel implements IApplication{
 	private static final long serialVersionUID = -5640806150838492981L;
 	
 	JFrame frame;
+	Model model;
 	Image background;
 	
-	public LevelSelectorPanel(JFrame frame, String title) {
+	public LevelSelectorPanel(JFrame frame,Model m, String title) {
 		
 		this.frame = frame;
+		this.model = m;
 		
 		JLabel lblSelectLevel = new JLabel(title);
 		lblSelectLevel.setFont(new Font("Source Sans Pro Black", Font.PLAIN, 45));
@@ -40,7 +43,7 @@ public class LevelSelectorPanel extends JPanel implements IApplication{
 		JButton btnLevel3 = new JButton("Level 3");
 		JButton btnLevel4 = new JButton("Level 4");
 		
-		ChooseLevelController chooseLevelController = new ChooseLevelController(this, btnLevel1, btnLevel2,
+		ChooseLevelController chooseLevelController = new ChooseLevelController(model, this, btnLevel1, btnLevel2,
 				btnLevel3, btnLevel4, title);
 		
 		btnLevel1.addActionListener(chooseLevelController);

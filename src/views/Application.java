@@ -11,6 +11,8 @@ import javax.swing.JPanel;
 import javax.swing.JWindow;
 import javax.swing.SwingConstants;
 
+import model.Model;
+
 /*
  * Top level window manager class.
  * BOUNDARY
@@ -26,11 +28,11 @@ public class Application extends JFrame implements IApplication{
 	LevelSelectorPanel eliminationLevelSelectorPanel, releaseLevelSelectorPanel;
 	//LevelPanel levelPanel;
 	
-	public Application(){
+	public Application(Model m){
 		/* Create all Objects */
 		this.frame = new JFrame();
 		this.splashPanel = new SplashPanel(this.frame);
-		this.gameSelectorPanel = new GameSelectorPanel(this.frame);
+		this.gameSelectorPanel = new GameSelectorPanel(this.frame, m);
 		
 
 		/* Set Frame Attributes */

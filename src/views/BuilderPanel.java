@@ -17,6 +17,7 @@ import java.awt.Component;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Rectangle;
 
 import javax.swing.JInternalFrame;
 
@@ -38,6 +39,8 @@ import java.awt.Color;
 import javax.swing.JTable;
 import javax.swing.DefaultComboBoxModel;
 
+import model.Model;
+
 import java.awt.GridLayout;
 
 /*
@@ -47,17 +50,32 @@ import java.awt.GridLayout;
 public class BuilderPanel extends JPanel implements IApplication {
 
 	JFrame frame;
+	Model model;
+	
+	
 	int h=120,w=190;
-
-	public BuilderPanel(JFrame frame){
+	// the constructor takes in model
+	public BuilderPanel(JFrame frame, Model m){
 		super();
+		
 		this.frame = frame;
+		this.model = m;
+		
 		this.frame.setMinimumSize(new Dimension(5*w, 5*h));
 		
+		initailize();
+		 
+	}
+	
+	
+	
+	void initailize(){
 		// ***********************
 		// *****Create Labels*****
 		// ***********************
 		// Title Label
+		
+		
 		JLabel lblLevelBuilder = new JLabel("Level Builder");
 		lblLevelBuilder.setFont(new Font("Tahoma", Font.BOLD, 35));
 		
@@ -88,7 +106,7 @@ public class BuilderPanel extends JPanel implements IApplication {
 		// ****Create Buttons*****
 		// ***********************
 		// Menu Button
-		ExitController exitController = new ExitController(this);
+		ExitController exitController = new ExitController(model, this);
 		JButton btnMenu = new JButton("Menu");
 		btnMenu.addActionListener(exitController);
 		
@@ -364,6 +382,8 @@ public class BuilderPanel extends JPanel implements IApplication {
 		this.add(slider_6, c);		
 
 	}
+	
+	
 
 	@Override
 	public JFrame getFrame() {

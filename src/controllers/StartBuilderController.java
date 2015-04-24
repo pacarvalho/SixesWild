@@ -6,6 +6,8 @@ import java.awt.event.MouseAdapter;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+
+import model.Model;
 import views.IApplication;
 import views.BuilderPanel;
 
@@ -13,10 +15,11 @@ public class StartBuilderController implements ActionListener{
 	
 	JButton btnLvlBuilder;
 	IApplication view;
+	Model model;
 	
 	
-	public StartBuilderController(IApplication view, JButton btnLvlBuilder){
-		
+	public StartBuilderController(Model m, IApplication view, JButton btnLvlBuilder){
+		this.model = m;
 		this.view = view;
 		this.btnLvlBuilder = btnLvlBuilder;
 	
@@ -32,7 +35,7 @@ public class StartBuilderController implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == this.btnLvlBuilder){
 			JFrame frame = this.view.getFrame();
-			BuilderPanel builderPanel = new BuilderPanel(frame);
+			BuilderPanel builderPanel = new BuilderPanel(frame, model);
 			frame.getContentPane().removeAll();
 			frame.getContentPane().add(builderPanel);
 			frame.pack();
