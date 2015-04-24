@@ -5,43 +5,20 @@ import java.awt.Dimension;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.GroupLayout;
-import javax.swing.SwingConstants;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JButton;
 
 import controllers.ExitController;
 
-import java.awt.Component;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.Rectangle;
-
-import javax.swing.JInternalFrame;
-
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
-import javax.swing.JCheckBox;
-
-import java.awt.ComponentOrientation;
-
-import javax.swing.JScrollBar;
-import javax.swing.JSpinner;
 import javax.swing.JSlider;
 
-import java.awt.Color;
-
-import javax.swing.JTable;
 import javax.swing.DefaultComboBoxModel;
 
 import model.Model;
-
-import java.awt.GridLayout;
 
 /*
  * 
