@@ -11,7 +11,7 @@ import java.awt.Image;
 
 import javax.swing.JButton;
 
-import model.SixesWild;
+import model.Model;
 import controllers.ChooseLevelController;
 
 public class LevelSelectorPanel extends JPanel implements IApplication{
@@ -21,10 +21,10 @@ public class LevelSelectorPanel extends JPanel implements IApplication{
 	private static final long serialVersionUID = -5640806150838492981L;
 	
 	JFrame frame;
-	SixesWild model;
+	Model model;
 	Image background;
 	
-	public LevelSelectorPanel(JFrame frame, SixesWild m, String title) {
+	public LevelSelectorPanel(JFrame frame,Model m, String title) {
 		
 		this.frame = frame;
 		this.model = m;

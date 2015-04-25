@@ -6,19 +6,19 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
-import model.SixesWild;
+import model.Model;
 import views.IApplication;
 import views.LevelPanel;
 
 public class ChooseLevelController implements ActionListener{
 	
 	JButton btnLevel1, btnLevel2, btnLevel3, btnLevel4;
-	SixesWild model;
+	Model model;
 	IApplication view;
 	String title;
 	
 	
-	public ChooseLevelController(SixesWild m, IApplication view, JButton btnLevel1, JButton btnLevel2,
+	public ChooseLevelController(Model m, IApplication view, JButton btnLevel1, JButton btnLevel2,
 				JButton btnLevel3, JButton btnLevel4, String title){
 		this.model = m;
 		this.view = view;
@@ -31,7 +31,8 @@ public class ChooseLevelController implements ActionListener{
 		
 	}
 	
-	/**
+	/*
+	 * (non-Javadoc)
 	 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
 	 * 
 	 * This method if called by event listeners upon button click. Once it is called,
@@ -58,7 +59,7 @@ public class ChooseLevelController implements ActionListener{
 		
 		if(e.getSource() == this.btnLevel3){
 			JFrame frame = this.view.getFrame();
-			LevelPanel levelPanel = new LevelPanel(frame, model, title, 
+			LevelPanel levelPanel = new LevelPanel(frame,model, title, 
 					"Level 3");
 			frame.getContentPane().removeAll();
 			frame.getContentPane().add(levelPanel);
