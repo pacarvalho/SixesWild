@@ -12,6 +12,11 @@ import javax.swing.SwingConstants;
 
 public class BoardView extends JPanel{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 987297049106251275L;
+
 	JFrame frame;
 	
 	TileView[][] tiles = new TileView[9][9];

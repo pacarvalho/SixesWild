@@ -7,18 +7,18 @@ import java.awt.event.MouseAdapter;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
-import builder.views.BuilderPanel;
-import model.Model;
+import model.SixesWild;
 import views.IApplication;
+import views.BuilderPanel;
 
 public class StartBuilderController implements ActionListener{
 	
 	JButton btnLvlBuilder;
 	IApplication view;
-	Model model;
+	SixesWild model;
 	
 	
-	public StartBuilderController(Model m, IApplication view, JButton btnLvlBuilder){
+	public StartBuilderController(SixesWild m, IApplication view, JButton btnLvlBuilder){
 		this.model = m;
 		this.view = view;
 		this.btnLvlBuilder = btnLvlBuilder;
