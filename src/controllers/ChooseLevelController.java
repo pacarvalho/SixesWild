@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
+import model.Level;
 import model.SixesWild;
 import views.IApplication;
 import views.LevelPanel;
@@ -38,7 +39,14 @@ public class ChooseLevelController implements ActionListener{
 	 * it checks which button called it and opens the corresponding level selector panel.
 	 */
 	public void actionPerformed(ActionEvent e) {
+		// CREATE A DEFAULT LEVEL FOR DEBUGGING
+		// TODO: Implement proper level creation from de-serialization
+		Level level = new Level();
+		
 		if(e.getSource() == this.btnLevel1){
+			// Initialize the level
+			this.model.initialize(level); // TODO: Pass correct level. This is a dummy!!!
+			
 			JFrame frame = this.view.getFrame();
 			LevelPanel levelPanel = new LevelPanel(frame, model, title, 
 					"Level 1"); //title once entity is implemented
@@ -48,6 +56,9 @@ public class ChooseLevelController implements ActionListener{
 		}
 		
 		if(e.getSource() == this.btnLevel2){
+			// Initialize the level
+			this.model.initialize(level); // TODO: Pass correct level. This is a dummy!!!
+						
 			JFrame frame = this.view.getFrame();
 			LevelPanel levelPanel = new LevelPanel(frame, model, title, 
 					"Level 2");
@@ -57,6 +68,9 @@ public class ChooseLevelController implements ActionListener{
 		}
 		
 		if(e.getSource() == this.btnLevel3){
+			// Initialize the level
+			this.model.initialize(level); // TODO: Pass correct level. This is a dummy!!!
+			
 			JFrame frame = this.view.getFrame();
 			LevelPanel levelPanel = new LevelPanel(frame, model, title, 
 					"Level 3");
@@ -66,6 +80,9 @@ public class ChooseLevelController implements ActionListener{
 		}
 		
 		if(e.getSource() == this.btnLevel4){
+			// Initialize the level
+			this.model.initialize(level); // TODO: Pass correct level. This is a dummy!!!
+			
 			JFrame frame = this.view.getFrame();
 			LevelPanel levelPanel = new LevelPanel(frame, model, title,
 					"Level 4");

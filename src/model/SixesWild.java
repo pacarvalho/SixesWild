@@ -22,7 +22,7 @@ abstract public class SixesWild {
 	/**
 	 * Initializes a game to reflect the loaded settings and variation.
 	 */
-	public void initialize(){
+	public void initialize(Level level){
 		
 	}
 	
