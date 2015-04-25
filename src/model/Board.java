@@ -16,12 +16,12 @@ public class Board {
 
 	ITile[] tiles;
 
+	/**
+	 * Constructor
+	 */
 	public Board(){
 		
 	}
 	
-	void generateBoard(){
-		
-	}
 	
 }
