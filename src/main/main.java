@@ -8,8 +8,7 @@ public class main {
 	public static void main(String[] args){
 			SixesWild model = new SixesWild();
 			Application application = new Application(model); 
-			
-	}
+	} 
 
 }
 
