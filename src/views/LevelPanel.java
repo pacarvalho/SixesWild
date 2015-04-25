@@ -4,6 +4,9 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.GridBagLayoutInfo;
+import java.awt.Rectangle;
+import java.io.ObjectInputStream.GetField;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -17,16 +20,25 @@ import controllers.ExitController;
 
 import javax.swing.SwingConstants;
 
+import model.Model;
+
 /*
  * 
  */
 public class LevelPanel extends JPanel implements IApplication{
 	
 	JFrame frame;
+	SpecialButtonsPanel specialBtnsPanel = null;
+
 	
-	public LevelPanel(JFrame frame, String title, String levelTitle){
+	Model model;
+	
+	public LevelPanel(JFrame frame,Model m, String title, String levelTitle){
 		super();
 		this.frame = frame;
+		this.model =m;
+				
+				
 		this.frame.setMinimumSize(new Dimension(800, 700));
 		
 		/*
@@ -46,18 +58,13 @@ public class LevelPanel extends JPanel implements IApplication{
 		 * Create button to return to main menu and bind it to its controller
 		 */
 		JButton btnMenu = new JButton("Menu");
-		ExitController exitController = new ExitController(this);
+		ExitController exitController = new ExitController(model, this);
 		btnMenu.addActionListener(exitController);
 		
 		/*
 		 * Create special move buttons and bind them to their controllers
 		 */
-		JButton btnSpecial3 = new JButton("S3");
-		
-		JButton btnSpecial2 = new JButton("S2");
-		
-		JButton btnSpecial1 = new JButton("S1");
-		
+
 		/*
 		 * Create the board and make it appear
 		 */
@@ -108,31 +115,31 @@ public class LevelPanel extends JPanel implements IApplication{
 		this.add(boardView, c);
 		
 		// Place Menu Button
-		c.gridx = 0;
-		c.gridy = 4;
+		int menux=c.gridx+c.gridwidth;
+		
+		c.gridx = menux;
+		c.gridy = 0;
 		c.gridwidth = 1;
 		this.add(btnMenu, c);
 		
-		// Place Special Move Button 1
-		c.gridx = 11;
-		c.gridy = 4;
-		c.gridwidth = 1;
-		this.add(btnSpecial1, c);
 		
-		// Place Special Move Button 2
-		c.gridx = 12;
-		c.gridy = 4;
-		c.gridwidth = 1;
-		this.add(btnSpecial2, c);
+		// Place Special MovePanelþ
 		
-		// Place Special Move Button 3
-		c.gridx = 13;
+		c.gridx = menux-1;
 		c.gridy = 4;
-		c.gridwidth = 1;
-		this.add(btnSpecial3, c);
+		c.gridwidth = 3;
+		add(getSpecialButtonsPanel(),c);
 
 	}
-
+	public SpecialButtonsPanel getSpecialButtonsPanel(){
+		if (specialBtnsPanel == null){
+			specialBtnsPanel = new SpecialButtonsPanel(model);
+			
+		}
+		return specialBtnsPanel;
+		
+		
+	}
 	@Override
 	public JFrame getFrame() {
 		return this.frame;

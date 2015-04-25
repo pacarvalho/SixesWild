@@ -7,17 +7,20 @@ import java.awt.event.MouseAdapter;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
+import model.Model;
 import views.IApplication;
 import views.LevelSelectorPanel;
 
 public class ChooseGameController implements ActionListener{
 	
-	JButton btnPuzzle, btnLightning, btnRelease, btnElimination;
+	Model model;
 	IApplication view;
+	JButton btnPuzzle, btnLightning, btnRelease, btnElimination;
 	
-	
-	public ChooseGameController(IApplication view, JButton btnPuzzle, JButton btnLightning,
+	public ChooseGameController(IApplication view, Model m, JButton btnPuzzle, JButton btnLightning,
 				JButton btnRelease, JButton btnElimination){
+		
+		this.model=m;
 		this.view = view;
 		
 		this.btnPuzzle = btnPuzzle;
@@ -26,7 +29,8 @@ public class ChooseGameController implements ActionListener{
 		this.btnElimination = btnElimination;
 	}
 	
-	/**
+	/*
+	 * (non-Javadoc)
 	 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
 	 * 
 	 * This method if called by event listeners upon button click. Once it is called,
@@ -36,7 +40,7 @@ public class ChooseGameController implements ActionListener{
 		if(e.getSource() == this.btnPuzzle){
 			JFrame frame = this.view.getFrame();
 			LevelSelectorPanel puzzleLevelSelectorPanel = new LevelSelectorPanel(frame, 
-					"Puzzle");
+					model, "Puzzle");
 			frame.getContentPane().removeAll();
 			frame.getContentPane().add(puzzleLevelSelectorPanel);
 			frame.pack();
@@ -45,7 +49,7 @@ public class ChooseGameController implements ActionListener{
 		if(e.getSource() == this.btnLightning){
 			JFrame frame = this.view.getFrame();
 			LevelSelectorPanel lightningLevelSelectorPanel = new LevelSelectorPanel(frame, 
-					"Lightning");
+					model, "Lightning");
 			frame.getContentPane().removeAll();
 			frame.getContentPane().add(lightningLevelSelectorPanel);
 			frame.pack();
@@ -54,7 +58,7 @@ public class ChooseGameController implements ActionListener{
 		if(e.getSource() == this.btnRelease){
 			JFrame frame = this.view.getFrame();
 			LevelSelectorPanel releaseLevelSelectorPanel = new LevelSelectorPanel(frame, 
-					"Release");
+					model, "Release");
 			frame.getContentPane().removeAll();
 			frame.getContentPane().add(releaseLevelSelectorPanel);
 			frame.pack();
@@ -63,7 +67,7 @@ public class ChooseGameController implements ActionListener{
 		if(e.getSource() == this.btnElimination){
 			JFrame frame = this.view.getFrame();
 			LevelSelectorPanel eliminationLevelSelectorPanel = new LevelSelectorPanel(frame, 
-					"Elimination");
+					model, "Elimination");
 			frame.getContentPane().removeAll();
 			frame.getContentPane().add(eliminationLevelSelectorPanel);
 			frame.pack();
