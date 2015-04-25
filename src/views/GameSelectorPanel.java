@@ -38,11 +38,9 @@ import java.awt.SystemColor;
 
 public class GameSelectorPanel extends JPanel implements IApplication{
 	JFrame frame;
-	SixesWild model;
 	
-	public GameSelectorPanel(JFrame frame, SixesWild m){
+	public GameSelectorPanel(JFrame frame){
 		this.frame = frame;
-		this.model = m;
 		this.frame.setPreferredSize(new Dimension(500, 400));
 		
 		setBackground(UIManager.getColor("FormattedTextField.selectionBackground"));
@@ -63,7 +61,7 @@ public class GameSelectorPanel extends JPanel implements IApplication{
 		/*
 		 * Create the choose game controller
 		 */
-		ChooseGameController gameController = new ChooseGameController(this, model, btnPuzzle, 
+		ChooseGameController gameController = new ChooseGameController(this, btnPuzzle, 
 				btnLightning, btnRelease, btnElimination);
 		
 		/*
@@ -78,7 +76,7 @@ public class GameSelectorPanel extends JPanel implements IApplication{
 		 * Builder button. 
 		 */
 		JButton btnLevelBuilder = new JButton("Level Builder");
-		StartBuilderController builderStartController  = new StartBuilderController(model, this,btnLevelBuilder);
+		StartBuilderController builderStartController  = new StartBuilderController(this,btnLevelBuilder);
 		btnLevelBuilder.addActionListener(builderStartController);
 		
 		

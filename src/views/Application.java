@@ -33,11 +33,11 @@ public class Application extends JFrame implements IApplication{
 	LevelSelectorPanel eliminationLevelSelectorPanel, releaseLevelSelectorPanel;
 	//LevelPanel levelPanel;
 	
-	public Application(SixesWild m){
+	public Application(){
 		/* Create all Objects */
 		this.frame = new JFrame();
 		this.splashPanel = new SplashPanel(this.frame);
-		this.gameSelectorPanel = new GameSelectorPanel(this.frame, m);
+		this.gameSelectorPanel = new GameSelectorPanel(this.frame);
 		
 
 		/* Set Frame Attributes */

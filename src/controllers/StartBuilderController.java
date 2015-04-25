@@ -15,11 +15,8 @@ public class StartBuilderController implements ActionListener{
 	
 	JButton btnLvlBuilder;
 	IApplication view;
-	SixesWild model;
 	
-	
-	public StartBuilderController(SixesWild m, IApplication view, JButton btnLvlBuilder){
-		this.model = m;
+	public StartBuilderController(IApplication view, JButton btnLvlBuilder){
 		this.view = view;
 		this.btnLvlBuilder = btnLvlBuilder;
 	
@@ -35,7 +32,7 @@ public class StartBuilderController implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == this.btnLvlBuilder){
 			JFrame frame = this.view.getFrame();
-			BuilderPanel builderPanel = new BuilderPanel(frame, model);
+			BuilderPanel builderPanel = new BuilderPanel(frame);
 			frame.getContentPane().removeAll();
 			frame.getContentPane().add(builderPanel);
 			frame.pack();

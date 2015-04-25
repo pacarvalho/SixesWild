@@ -1,6 +1,5 @@
 package model;
 
-<<<<<<< HEAD
 /**
  * Abstract class for SixesWild.
  * 
@@ -48,11 +47,5 @@ abstract public class SixesWild {
 	 */
 	public boolean hasLost(){
 		return false;
-=======
-public class SixesWild {
-	
-	public SixesWild(){
-
->>>>>>> parent of 110062e... Builder packages
 	}
 }

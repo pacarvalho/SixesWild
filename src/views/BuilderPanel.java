@@ -37,21 +37,19 @@ public class BuilderPanel extends JPanel implements IApplication {
 	
 	int h=120,w=190;
 	// the constructor takes in model
-	public BuilderPanel(JFrame frame, SixesWild m){
+	public BuilderPanel(JFrame frame){
 		super();
 		
 		this.frame = frame;
-		this.model = m;
-		
 		this.frame.setMinimumSize(new Dimension(5*w, 5*h));
 		
-		initailize();
+		this.initialize();
 		 
 	}
 	
 	
 	
-	void initailize(){
+	void initialize(){
 		// ***********************
 		// *****Create Labels*****
 		// ***********************
@@ -88,7 +86,7 @@ public class BuilderPanel extends JPanel implements IApplication {
 		// ****Create Buttons*****
 		// ***********************
 		// Menu Button
-		ExitController exitController = new ExitController(model, this);
+		ExitController exitController = new ExitController(this);
 		JButton btnMenu = new JButton("Menu");
 		btnMenu.addActionListener(exitController);
 		
