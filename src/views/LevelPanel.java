@@ -20,7 +20,7 @@ import controllers.ExitController;
 
 import javax.swing.SwingConstants;
 
-import model.SixesWild;
+import model.Model;
 
 /*
  * 
@@ -31,9 +31,9 @@ public class LevelPanel extends JPanel implements IApplication{
 	SpecialButtonsPanel specialBtnsPanel = null;
 
 	
-	SixesWild model;
+	Model model;
 	
-	public LevelPanel(JFrame frame, SixesWild m, String title, String levelTitle){
+	public LevelPanel(JFrame frame,Model m, String title, String levelTitle){
 		super();
 		this.frame = frame;
 		this.model =m;
@@ -123,7 +123,7 @@ public class LevelPanel extends JPanel implements IApplication{
 		this.add(btnMenu, c);
 		
 		
-		// Place Special MovePanelï¿½
+		// Place Special MovePanelþ
 		
 		c.gridx = menux-1;
 		c.gridy = 4;

@@ -1,4 +1,4 @@
-package views;
+package builder.views;
 
 import java.awt.Dimension;
 
@@ -12,13 +12,15 @@ import controllers.ExitController;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
 import javax.swing.JSlider;
-
 import javax.swing.DefaultComboBoxModel;
 
-import model.SixesWild;
+import views.BoardView;
+import views.IApplication;
+import model.Model;
 
 /*
  * 
@@ -26,18 +28,13 @@ import model.SixesWild;
 
 public class BuilderPanel extends JPanel implements IApplication {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -5020862675511089854L;
-	
 	JFrame frame;
-	SixesWild model;
+	Model model;
 	
 	
 	int h=120,w=190;
 	// the constructor takes in model
-	public BuilderPanel(JFrame frame, SixesWild m){
+	public BuilderPanel(JFrame frame, Model m){
 		super();
 		
 		this.frame = frame;
@@ -77,12 +74,12 @@ public class BuilderPanel extends JPanel implements IApplication {
 		JLabel lblScoreLimit = new JLabel("Score Limit : ");
 		
 		// Probability Labels
-		JLabel lblProbabilityOf1 = new JLabel("Probability of 1 : ");
-		JLabel lblProbabilityOf2 = new JLabel("Probability of 2 : ");
-		JLabel lblProbabilityOf3 = new JLabel("Probability of 3 : ");
-		JLabel lblProbabilityOf4 = new JLabel("Probability of 4 : ");
-		JLabel lblProbabilityOf5 = new JLabel("Probability of 5 : ");
-		JLabel lblProbabilityOf6 = new JLabel("Probability of 6 : ");
+		JLabel lblProbabilityOf1 = new JLabel("P(1): ");
+		JLabel lblProbabilityOf2 = new JLabel("P(2): ");
+		JLabel lblProbabilityOf3 = new JLabel("P(3): ");
+		JLabel lblProbabilityOf4 = new JLabel("P(4): ");
+		JLabel lblProbabilityOf5 = new JLabel("P(5): ");
+		JLabel lblProbabilityOf6 = new JLabel("P(6): ");
 		
 		// ***********************
 		// ****Create Buttons*****
