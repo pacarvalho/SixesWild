@@ -29,9 +29,6 @@ public class Application extends JFrame implements IApplication{
 	JFrame frame;
 	SplashPanel splashPanel;
 	GameSelectorPanel gameSelectorPanel;
-	LevelSelectorPanel puzzleLevelSelectorPanel, lightningLevelSelectorPanel;
-	LevelSelectorPanel eliminationLevelSelectorPanel, releaseLevelSelectorPanel;
-	//LevelPanel levelPanel;
 	
 	public Application(){
 		/* Create all Objects */

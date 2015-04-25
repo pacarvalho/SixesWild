@@ -37,6 +37,14 @@ import java.awt.SystemColor;
 
 
 public class GameSelectorPanel extends JPanel implements IApplication{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3090894756601902283L;
+	
+	/**
+	 * Parent container
+	 */
 	JFrame frame;
 	
 	public GameSelectorPanel(JFrame frame){

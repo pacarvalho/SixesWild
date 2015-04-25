@@ -24,12 +24,12 @@ public class LevelSelectorPanel extends JPanel implements IApplication{
 	SixesWild model;
 	Image background;
 	
-	public LevelSelectorPanel(JFrame frame, SixesWild m, String title) {
+	public LevelSelectorPanel(JFrame frame, SixesWild m) {
 		
 		this.frame = frame;
 		this.model = m;
 		
-		JLabel lblSelectLevel = new JLabel(title);
+		JLabel lblSelectLevel = new JLabel(m.getName());
 		lblSelectLevel.setFont(new Font("Source Sans Pro Black", Font.PLAIN, 45));
 		
 		JLabel lblPuzzleLevels = new JLabel("Select Level");
@@ -44,7 +44,7 @@ public class LevelSelectorPanel extends JPanel implements IApplication{
 		JButton btnLevel4 = new JButton("Level 4");
 		
 		ChooseLevelController chooseLevelController = new ChooseLevelController(model, this, btnLevel1, btnLevel2,
-				btnLevel3, btnLevel4, title);
+				btnLevel3, btnLevel4);
 		
 		btnLevel1.addActionListener(chooseLevelController);
 		btnLevel2.addActionListener(chooseLevelController);

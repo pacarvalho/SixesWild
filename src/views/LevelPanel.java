@@ -22,15 +22,22 @@ import javax.swing.SwingConstants;
 
 import model.SixesWild;
 
-/*
+/**
+ * Panel where game is played.
  * 
+ * @author Paulo, Katie, Sean
+ *
  */
 public class LevelPanel extends JPanel implements IApplication{
 	
-	JFrame frame;
-	SpecialButtonsPanel specialBtnsPanel = null;
-
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7240445879684423199L;
 	
+	/** Parent Container */
+	JFrame frame;
+	SpecialButtonsPanel specialBtnsPanel;
 	SixesWild model;
 	
 	public LevelPanel(JFrame frame, SixesWild model, String title, String levelTitle){

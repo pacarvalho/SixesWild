@@ -49,7 +49,7 @@ public class ChooseGameController implements ActionListener{
 			
 			JFrame frame = this.view.getFrame();
 			LevelSelectorPanel puzzleLevelSelectorPanel = new LevelSelectorPanel(frame, 
-					model, "Puzzle");
+					model);
 			frame.getContentPane().removeAll();
 			frame.getContentPane().add(puzzleLevelSelectorPanel);
 			frame.pack();
@@ -61,7 +61,7 @@ public class ChooseGameController implements ActionListener{
 			
 			JFrame frame = this.view.getFrame();
 			LevelSelectorPanel lightningLevelSelectorPanel = new LevelSelectorPanel(frame, 
-					model, "Lightning");
+					model);
 			frame.getContentPane().removeAll();
 			frame.getContentPane().add(lightningLevelSelectorPanel);
 			frame.pack();
@@ -74,7 +74,7 @@ public class ChooseGameController implements ActionListener{
 			
 			JFrame frame = this.view.getFrame();
 			LevelSelectorPanel releaseLevelSelectorPanel = new LevelSelectorPanel(frame, 
-					model, "Release");
+					model);
 			frame.getContentPane().removeAll();
 			frame.getContentPane().add(releaseLevelSelectorPanel);
 			frame.pack();
@@ -86,7 +86,7 @@ public class ChooseGameController implements ActionListener{
 			
 			JFrame frame = this.view.getFrame();
 			LevelSelectorPanel eliminationLevelSelectorPanel = new LevelSelectorPanel(frame, 
-					model, "Elimination");
+					model);
 			frame.getContentPane().removeAll();
 			frame.getContentPane().add(eliminationLevelSelectorPanel);
 			frame.pack();

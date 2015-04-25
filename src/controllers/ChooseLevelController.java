@@ -20,10 +20,10 @@ public class ChooseLevelController implements ActionListener{
 	
 	
 	public ChooseLevelController(SixesWild m, IApplication view, JButton btnLevel1, JButton btnLevel2,
-				JButton btnLevel3, JButton btnLevel4, String title){
+				JButton btnLevel3, JButton btnLevel4){
 		this.model = m;
 		this.view = view;
-		this.title = title;
+		this.title = m.getName(); // Get the variation name
 		
 		this.btnLevel1 = btnLevel1;
 		this.btnLevel2 = btnLevel2;
