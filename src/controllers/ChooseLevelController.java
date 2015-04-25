@@ -27,8 +27,7 @@ public class ChooseLevelController implements ActionListener{
 		this.btnLevel4 = btnLevel4;
 	}
 	
-	/*
-	 * (non-Javadoc)
+	/**
 	 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
 	 * 
 	 * This method if called by event listeners upon button click. Once it is called,
