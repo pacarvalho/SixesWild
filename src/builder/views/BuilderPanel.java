@@ -1,4 +1,4 @@
-package views;
+package builder.views;
 
 import java.awt.Dimension;
 
@@ -12,12 +12,14 @@ import controllers.ExitController;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
 import javax.swing.JSlider;
-
 import javax.swing.DefaultComboBoxModel;
 
+import views.BoardView;
+import views.IApplication;
 import model.SixesWild;
 
 /*

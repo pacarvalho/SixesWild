@@ -7,9 +7,9 @@ import java.awt.event.MouseAdapter;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
+import builder.views.BuilderPanel;
 import model.SixesWild;
 import views.IApplication;
-import views.BuilderPanel;
 
 public class StartBuilderController implements ActionListener{
 	
