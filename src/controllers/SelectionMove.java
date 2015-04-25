@@ -1,14 +1,14 @@
 package controllers;
 
-import model.Model;
+import model.SixesWild;
 import model.Tile;
 
 public class SelectionMove {
 	
-	Model m;
+	SixesWild m;
 	Tile[] tiles;
 
-	public SelectionMove(Model m, Tile[] tiles) {
+	public SelectionMove(SixesWild m, Tile[] tiles) {
 		super();
 		this.tiles = tiles;
 	}

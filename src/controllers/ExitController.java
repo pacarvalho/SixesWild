@@ -8,13 +8,13 @@ import javax.swing.JFrame;
 import views.GameSelectorPanel;
 import views.IApplication;
 
-import model.Model;
+import model.SixesWild;
 
 public class ExitController implements ActionListener{
-	Model model;
+	SixesWild model;
 	IApplication view;
 	
-	public ExitController(Model m, IApplication view){
+	public ExitController(SixesWild m, IApplication view){
 		this.model = m;
 		this.view = view;
 	}

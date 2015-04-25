@@ -18,7 +18,7 @@ import javax.swing.JSlider;
 
 import javax.swing.DefaultComboBoxModel;
 
-import model.Model;
+import model.SixesWild;
 
 /*
  * 
@@ -26,13 +26,18 @@ import model.Model;
 
 public class BuilderPanel extends JPanel implements IApplication {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5020862675511089854L;
+	
 	JFrame frame;
-	Model model;
+	SixesWild model;
 	
 	
 	int h=120,w=190;
 	// the constructor takes in model
-	public BuilderPanel(JFrame frame, Model m){
+	public BuilderPanel(JFrame frame, SixesWild m){
 		super();
 		
 		this.frame = frame;

@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.JWindow;
 import javax.swing.SwingConstants;
 
-import model.Model;
+import model.SixesWild;
 
 /*
  * Top level window manager class.
@@ -21,6 +21,11 @@ import model.Model;
  */
 public class Application extends JFrame implements IApplication{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 508960598896593031L;
+	
 	JFrame frame;
 	SplashPanel splashPanel;
 	GameSelectorPanel gameSelectorPanel;
@@ -28,7 +33,7 @@ public class Application extends JFrame implements IApplication{
 	LevelSelectorPanel eliminationLevelSelectorPanel, releaseLevelSelectorPanel;
 	//LevelPanel levelPanel;
 	
-	public Application(Model m){
+	public Application(SixesWild m){
 		/* Create all Objects */
 		this.frame = new JFrame();
 		this.splashPanel = new SplashPanel(this.frame);
@@ -36,7 +41,7 @@ public class Application extends JFrame implements IApplication{
 		
 
 		/* Set Frame Attributes */
-		this.frame.setTitle("SixesWild?");
+		this.frame.setTitle("SixesWild");
 		
 		/* Show the wrath of the splash */
 		splashPanel.showSplash();

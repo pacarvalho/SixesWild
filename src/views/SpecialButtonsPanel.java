@@ -5,7 +5,7 @@ import java.awt.FlowLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import model.Model;
+import model.SixesWild;
 
 public class SpecialButtonsPanel extends JPanel {
 
@@ -17,9 +17,9 @@ public class SpecialButtonsPanel extends JPanel {
 	JButton btnSpecial2 = null;
 	JButton btnSpecial3 = null;
 	
-	Model model;
+	SixesWild model;
 	
-	public SpecialButtonsPanel(Model m){
+	public SpecialButtonsPanel(SixesWild m){
 		super();
 		
 		this.model = m;

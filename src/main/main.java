@@ -1,12 +1,12 @@
 package main;
 
-import model.Model;
+import model.SixesWild;
 import views.Application;
 
 public class main {
 	
 	public static void main(String[] args){
-			Model model =new Model();
+			SixesWild model = new SixesWild();
 			Application application = new Application(model); 
 			
 	}

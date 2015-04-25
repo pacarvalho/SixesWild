@@ -7,20 +7,20 @@ import java.awt.event.MouseAdapter;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
-import model.Model;
+import model.SixesWild;
 import views.IApplication;
 import views.LevelSelectorPanel;
 
 public class ChooseGameController implements ActionListener{
 	
-	Model model;
+	SixesWild model;
 	IApplication view;
 	JButton btnPuzzle, btnLightning, btnRelease, btnElimination;
 	
-	public ChooseGameController(IApplication view, Model m, JButton btnPuzzle, JButton btnLightning,
+	public ChooseGameController(IApplication view, SixesWild m, JButton btnPuzzle, JButton btnLightning,
 				JButton btnRelease, JButton btnElimination){
 		
-		this.model=m;
+		this.model = m;
 		this.view = view;
 		
 		this.btnPuzzle = btnPuzzle;

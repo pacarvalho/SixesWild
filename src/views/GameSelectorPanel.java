@@ -24,7 +24,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-import model.Model;
+import model.SixesWild;
 
 import org.eclipse.wb.swing.FocusTraversalOnArray;
 
@@ -38,9 +38,9 @@ import java.awt.SystemColor;
 
 public class GameSelectorPanel extends JPanel implements IApplication{
 	JFrame frame;
-	Model model;
+	SixesWild model;
 	
-	public GameSelectorPanel(JFrame frame,Model m){
+	public GameSelectorPanel(JFrame frame, SixesWild m){
 		this.frame = frame;
 		this.model = m;
 		this.frame.setPreferredSize(new Dimension(500, 400));
