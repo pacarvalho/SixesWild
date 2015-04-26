@@ -33,8 +33,13 @@ public class Tile{
 	}
 	
 	/**
-	 * 
+	 * Returns the value of the tile
+	 * @return int
 	 */
+	
+	public int getValue(){
+		return this.value;
+	}
 	
 	
 
