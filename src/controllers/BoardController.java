@@ -4,9 +4,12 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
+import model.EliminationGame;
+import model.IMove;
 import model.Move;
 import model.SixesWild;
 import model.Tile;
+import model.EliminationMove;
 import views.BoardView;
 import views.TileView;
 
@@ -42,9 +45,16 @@ public class BoardController extends MouseAdapter {
 	}
 	
 	public void mouseReleased(MouseEvent me){
-		System.out.println("Ive Stopped ! ");
-		Move move = new Move(selectedTiles, model.getBoard());
+		IMove move;
+		
+		if(model instanceof EliminationGame){
+			move = new EliminationMove(selectedTiles, model);
+		} else {
+			move = new Move(selectedTiles, model);
+		}
+		
 		move.doMove();
+		
 		boardView.updateBoardView();
 		
 		// Empty the list of tiles

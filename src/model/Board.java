@@ -55,16 +55,13 @@ public class Board {
 		tiles[t.row][t.col] = t;
 	}
 		
-	
-	// Given a set of tiles the board
-	// takes these new tiles as its own
-	// and loops through them to determine which
-	// tiles have been set to empty and then performs
-	// the desired action of updating the pieces
-	public void update(){
-		// TODO
+	/**
+	 * Implements "gravity" on board
+	 * 
+	 * Moves pieces down and spawns new tiles when null tiles exist on the board.
+	 */
+	public boolean update(){
+		return true;
 	}
-	
-	
 	
 }

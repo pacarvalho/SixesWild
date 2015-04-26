@@ -52,4 +52,5 @@ public class PuzzleGame extends SixesWild {
 	public Board getBoard(){
 		return this.board;
 	}
+	
 }

@@ -61,7 +61,6 @@ public class TileView extends JPanel{
 	 * Updates the TileView to reflect current state
 	 */
 	public boolean update(){
-		System.out.println(this.tile);
 		this.removeAll();
 		
 		if(this.tile == null){

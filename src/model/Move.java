@@ -19,9 +19,9 @@ public class Move implements IMove{
 	 * @param tiles
 	 * @param board
 	 */
-	public Move(ArrayList<Tile> tiles, Board board){
+	public Move(ArrayList<Tile> tiles, SixesWild model){
 		this.tiles = tiles;
-		this.board = board;
+		this.board = model.getBoard();
 	}
 	
 	/**
@@ -36,13 +36,11 @@ public class Move implements IMove{
 	public boolean doMove(){
 		if(!this.valid()){return false;}
 		
-		System.out.println("DESTROYING"); // FOR DEBUGGING! TODO
 		for (Tile t: tiles){
 			board.destroyTile(t);
 		}	
 		
 		board.update();
-		
 		return true;
 	}
 	
