@@ -70,7 +70,9 @@ public class BoardView extends JPanel{
 			for(int j = 0; j<9; j++){
 				this.tileViews[i][j].setTile(tileSet[i][j]);
 			}
-		}	
+		}
+		
+		this.validate();
 		
 		System.out.println("Updated boardView"); //FOR DEBUGING TODO
 	}

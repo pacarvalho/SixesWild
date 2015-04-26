@@ -61,11 +61,13 @@ public class TileView extends JPanel{
 	 * Updates the TileView to reflect current state
 	 */
 	public boolean update(){
-		System.out.println("Tile!");
+		System.out.println(this.tile);
+		this.removeAll();
 		
 		if(this.tile == null){
 			this.add(new JLabel("", new ImageIcon("resources/NullTile.gif"), SwingConstants.CENTER));
 			return true;
+			
 		} else if (this.tile.getValue() == 1){
 			this.add(new JLabel("", new ImageIcon("resources/1Tile.gif"), SwingConstants.CENTER));
 			return true;
@@ -98,7 +100,7 @@ public class TileView extends JPanel{
 			this.add(new JLabel("", new ImageIcon("resources/ContainerTile.gif"), SwingConstants.CENTER));
 			return true;
 			
-		} else {
+		} else{
 			this.add(new JLabel("", new ImageIcon("resources/WallTile.gif"), SwingConstants.CENTER));
 			return false;
 		}
