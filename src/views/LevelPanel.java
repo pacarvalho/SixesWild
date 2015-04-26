@@ -73,7 +73,7 @@ public class LevelPanel extends JPanel implements IApplication{
 		/*
 		 * Create the board and make it appear
 		 */
-		BoardView boardView = new BoardView(this.frame);
+		BoardView boardView = new BoardView(this.frame, model);
 		
 		/*
 		 * Place everything where they belong using a gridBagLayout
@@ -134,17 +134,15 @@ public class LevelPanel extends JPanel implements IApplication{
 		c.gridy = 4;
 		c.gridwidth = 3;
 		add(getSpecialButtonsPanel(),c);
-
 	}
+	
 	public SpecialButtonsPanel getSpecialButtonsPanel(){
 		if (specialBtnsPanel == null){
 			specialBtnsPanel = new SpecialButtonsPanel(model);
-			
 		}
-		return specialBtnsPanel;
-		
-		
+		return specialBtnsPanel;	
 	}
+	
 	@Override
 	public JFrame getFrame() {
 		return this.frame;

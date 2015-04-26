@@ -9,6 +9,10 @@ package model;
  *
  */
 public class LightningGame extends SixesWild {
+	
+	public LightningGame(){
+		super();
+	}
 
 	
 	/**
@@ -41,5 +45,13 @@ public class LightningGame extends SixesWild {
 	@Override
 	public boolean hasLost(){
 		return false;
+	}
+	
+	/**
+	 * Returns the board
+	 */
+	@Override
+	public Board getBoard(){
+		return this.board;
 	}
 }

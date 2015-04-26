@@ -9,6 +9,10 @@ package model;
  */
 public class ReleaseGame extends SixesWild {
 	
+	public ReleaseGame(){
+		super();
+	}
+	
 	/**
 	 * 
 	 */
@@ -40,5 +44,15 @@ public class ReleaseGame extends SixesWild {
 	public boolean hasLost(){
 		return false;
 	}
+	
+	/**
+	 * Returns the board
+	 */
+	@Override
+	public Board getBoard(){
+		return this.board;
+	}
+	
+	
 
 }

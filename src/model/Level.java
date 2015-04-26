@@ -27,7 +27,7 @@ public class Level implements Serializable{
 	 * Number 0 is a receptable for receiving a 6.
 	 * Number -1 for wall type tile
 	 */
-	int[][] board;
+	Board board;
 	
 	/**
 	 * Game frequencies
@@ -64,10 +64,11 @@ public class Level implements Serializable{
 	 */
 	public Level(){
 		// Create the default board
-		this.board = new int[9][9];
+		this.board = new Board();
 		for (int i=0; i<9; i++){
 			for (int j=0; j<9; j++){
-				this.board[i][j] = 2;
+				Tile t = new Tile(2, i, j);
+				this.board.setTile(t);
 			}
 		}
 		

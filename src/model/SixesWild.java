@@ -19,6 +19,12 @@ abstract public class SixesWild {
 	/** Move attribute */
 	IMove move;
 	
+	/** Constructor */
+	public SixesWild(){
+		//TODO: FIND BETTER SUBSTITUTE FOR NULL ~
+		this.board = null;
+	}
+	
 	/**
 	 * Initializes a game to reflect the loaded settings and variation.
 	 */
@@ -47,5 +53,12 @@ abstract public class SixesWild {
 	 */
 	public boolean hasLost(){
 		return false;
+	}
+	
+	/**
+	 * Returns the board
+	 */
+	public Board getBoard(){
+		return this.board;
 	}
 }

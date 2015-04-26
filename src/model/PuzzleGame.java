@@ -8,13 +8,17 @@ package model;
  *
  */
 public class PuzzleGame extends SixesWild {
+	
+	public PuzzleGame(){
+		super();
+	}
 
 	/**
 	 * 
 	 */
 	@Override
 	public void initialize(Level level){
-		
+		this.board = level.board;
 	}
 	
 	/**
@@ -39,5 +43,13 @@ public class PuzzleGame extends SixesWild {
 	@Override
 	public boolean hasLost(){
 		return false;
+	}
+	
+	/**
+	 * Returns the board
+	 */
+	@Override
+	public Board getBoard(){
+		return this.board;
 	}
 }

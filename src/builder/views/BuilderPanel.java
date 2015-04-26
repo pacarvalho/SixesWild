@@ -141,7 +141,7 @@ public class BuilderPanel extends JPanel implements IApplication {
 		// *****Create Misc*******
 		// ***********************
 		// Create Board View
-		BoardView boardView = new BoardView(this.frame);
+		BoardView boardView = new BoardView(this.frame, this.model);
 		
 		// Create Drop Down Menu 
 		JComboBox comboBox = new JComboBox();

@@ -8,6 +8,10 @@ package model;
  */
 public class EliminationGame extends SixesWild {
 	
+	public EliminationGame(){
+		super();
+	}
+	
 	/**
 	 * 
 	 */
@@ -38,6 +42,14 @@ public class EliminationGame extends SixesWild {
 	@Override
 	public boolean hasLost(){
 		return false;
+	}
+	
+	/**
+	 * Returns the board
+	 */
+	@Override
+	public Board getBoard(){
+		return this.board;
 	}
 
 }
