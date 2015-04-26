@@ -36,6 +36,7 @@ public class Move implements IMove{
 	public boolean doMove(){
 		if(!this.valid()){return false;}
 		
+		System.out.println("DESTROYING"); // FOR DEBUGGING! TODO
 		for (Tile t: tiles){
 			board.destroyTile(t);
 		}	

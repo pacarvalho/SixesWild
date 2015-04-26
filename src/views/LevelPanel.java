@@ -70,13 +70,16 @@ public class LevelPanel extends JPanel implements IApplication{
 		/*
 		 * Create special move buttons and bind them to their controllers
 		 */
+		// TODO: ADD HERE
 
 		/*
 		 * Create the board and make it appear
+		 * Set up boardViews controller
 		 */
 		BoardView boardView = new BoardView(this.frame, model);
-		//boardView.setMouseAdapter(new BoardController(boardView, model));
-		
+		BoardController boardControl = new BoardController(boardView, model);
+		boardView.addMouseMotionListener(boardControl);
+		boardView.addMouseListener(boardControl);
 		/*
 		 * Place everything where they belong using a gridBagLayout
 		 */

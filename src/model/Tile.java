@@ -46,6 +46,14 @@ public class Tile{
 		return this.value;
 	}
 	
+	/**
+	 * Pretty printing of tile value
+	 */
+	@Override
+	public String toString(){
+		return "Tile Value: " + this.value;
+	}
+	
 	
 
 }

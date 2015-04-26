@@ -1,5 +1,7 @@
 package views;
 
+import java.awt.Point;
+
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -46,15 +48,25 @@ public class TileView extends JPanel{
 	}
 	
 	/**
+	 * Returns true if the mouse Drag coordinates are within view
+	 * @param x
+	 * @param y
+	 * @return
+	 */
+	public boolean isSelected(int x, int y){
+		return this.getBounds().contains(new Point(x, y));
+	}
+	
+	/**
 	 * Updates the TileView to reflect current state
 	 */
 	public boolean update(){
+		System.out.println("Tile!");
+		
 		if(this.tile == null){
 			this.add(new JLabel("", new ImageIcon("resources/NullTile.gif"), SwingConstants.CENTER));
 			return true;
-		}
-		
-		if (this.tile.getValue() == 1){
+		} else if (this.tile.getValue() == 1){
 			this.add(new JLabel("", new ImageIcon("resources/1Tile.gif"), SwingConstants.CENTER));
 			return true;
 			
@@ -86,9 +98,12 @@ public class TileView extends JPanel{
 			this.add(new JLabel("", new ImageIcon("resources/ContainerTile.gif"), SwingConstants.CENTER));
 			return true;
 			
+		} else {
+			this.add(new JLabel("", new ImageIcon("resources/WallTile.gif"), SwingConstants.CENTER));
+			return false;
 		}
 		
-		return false;
+		
 	}
 	
 	

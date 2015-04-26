@@ -8,6 +8,7 @@ import model.Move;
 import model.SixesWild;
 import model.Tile;
 import views.BoardView;
+import views.TileView;
 
 public class BoardController extends MouseAdapter {
 	
@@ -26,12 +27,28 @@ public class BoardController extends MouseAdapter {
 		// Loop through tileViews in board View and find out which tiles have been
 		// selected and add to an ArrayList<Tiles>
 		// Each tile should know where in the board it is located
+		String s = "Mouse Drag: " + me.getX() + ", " + me.getY();
+		System.out.println(s);
+		
+		for(int i = 0; i < 9; i++){
+			for(int j = 0; j < 9; j++){
+				TileView tView = boardView.getTileView(i, j);
+				if(tView.isSelected(me.getX(), me.getY()) && !selectedTiles.contains(tView.getTile())){
+					System.out.println("Tile has been added!"); // TODO For debugging!
+					this.selectedTiles.add(tView.getTile());
+				}
+			}
+		}
 	}
 	
 	public void mouseReleased(MouseEvent me){
+		System.out.println("Ive Stopped ! ");
 		Move move = new Move(selectedTiles, model.getBoard());
-		// move.doMove();
-		// boardView.updateBoardView(model.board);
+		move.doMove();
+		boardView.updateBoardView();
+		
+		// Empty the list of tiles
+		this.selectedTiles.clear();
 	}	
 
 }

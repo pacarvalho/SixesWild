@@ -63,16 +63,21 @@ public class BoardView extends JPanel{
 	// It is called in the Board controller
 	// It takes in a board object and sets its TileViews
 	// with the appropriate Tiles
-	public void updateBoard(Board board){
-		this.board = board;
+	public void updateBoardView(){
 		Tile[][] tileSet = this.board.getTiles();
 		
 		for(int i = 0; i<9; i++){
 			for(int j = 0; j<9; j++){
-				Tile tile = tileSet[i][j];
-				tileViews[i][j].setTile(tile);
+				this.tileViews[i][j].setTile(tileSet[i][j]);
 			}
 		}	
+		
+		System.out.println("Updated boardView"); //FOR DEBUGING TODO
+	}
+	
+	
+	public TileView getTileView(int i, int j){
+		return this.tileViews[i][j];
 	}
 	
 }
