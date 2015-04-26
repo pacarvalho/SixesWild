@@ -10,8 +10,11 @@ package model;
  */
 abstract public class SixesWild {
 	
-	/** Keeps the score of the game */
-	int score;
+	/** Keeps the current Score of the game */
+	int currentScore;
+	
+	/** Keeps the max score of the Game */
+	int maxScore;
 	
 	/** Create a board for the game */
 	Board board;
@@ -60,5 +63,13 @@ abstract public class SixesWild {
 	 */
 	public Board getBoard(){
 		return this.board;
+	}
+	
+	/**
+	 * Method that incrememnts the score by 1
+	 * 
+	 */
+	public void updateScore(){
+		this.currentScore += 1;
 	}
 }

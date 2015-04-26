@@ -33,7 +33,7 @@ public class TileView extends JPanel{
 	 */
 	public void setTile(Tile tile){
 		this.tile = tile;
-		
+		this.update();
 	}
 	
 	/**
@@ -49,23 +49,46 @@ public class TileView extends JPanel{
 	 * Updates the TileView to reflect current state
 	 */
 	public boolean update(){
+		if(this.tile == null){
+			this.add(new JLabel("", new ImageIcon("resources/NullTile.gif"), SwingConstants.CENTER));
+			return true;
+		}
+		
 		if (this.tile.getValue() == 1){
 			this.add(new JLabel("", new ImageIcon("resources/1Tile.gif"), SwingConstants.CENTER));
+			return true;
 			
 		} else if (this.tile.getValue() == 2) {
 			this.add(new JLabel("", new ImageIcon("resources/2Tile.gif"), SwingConstants.CENTER));
+			return true;
 			
 		} else if (this.tile.getValue() == 3) {
 			this.add(new JLabel("", new ImageIcon("resources/3Tile.gif"), SwingConstants.CENTER));
+			return true;
 			
 		} else if (this.tile.getValue() == 4) {
 			this.add(new JLabel("", new ImageIcon("resources/4Tile.gif"), SwingConstants.CENTER));
+			return true;
 			
 		} else if (this.tile.getValue() == 5) {
 			this.add(new JLabel("", new ImageIcon("resources/5Tile.gif"), SwingConstants.CENTER));
-		} 
+			return true;
+			
+		} else if (this.tile.getValue() == 6){
+			this.add(new JLabel("", new ImageIcon("resources/6Tile.gif"), SwingConstants.CENTER));
+			return true;
+			
+		}  else if (this.tile.getValue() == -1) {
+			this.add(new JLabel("", new ImageIcon("resources/WallTile.gif"), SwingConstants.CENTER));
+			return true;
+			
+		} else if (this.tile.getValue() == 0) {
+			this.add(new JLabel("", new ImageIcon("resources/ContainerTile.gif"), SwingConstants.CENTER));
+			return true;
+			
+		}
 		
-		return true;
+		return false;
 	}
 	
 	

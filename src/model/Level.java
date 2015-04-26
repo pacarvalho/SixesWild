@@ -67,7 +67,7 @@ public class Level implements Serializable{
 		this.board = new Board();
 		for (int i=0; i<9; i++){
 			for (int j=0; j<9; j++){
-				Tile t = new Tile(2, i, j);
+				Tile t = new Tile(1, i, j);
 				this.board.setTile(t);
 			}
 		}

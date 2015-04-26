@@ -9,7 +9,14 @@ import java.awt.Color;
  *
  */
 public class Tile{
-	
+	/**
+	 * Value Legend
+	 * 
+	 * -1 is a wall tile
+	 * 	0 is a container tile
+	 * 	1-5 are normal tiles
+	 * 	6 is a six tile 
+	 */
 	int value;
 	int row;
 	int col;
@@ -28,7 +35,6 @@ public class Tile{
 	 * @return boolean
 	 */
 	public boolean isSelected(int x, int y) {
-		
 		return false;
 	}
 	
@@ -36,7 +42,6 @@ public class Tile{
 	 * Returns the value of the tile
 	 * @return int
 	 */
-	
 	public int getValue(){
 		return this.value;
 	}

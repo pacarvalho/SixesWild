@@ -1,5 +1,7 @@
 package views;
 
+import gandomi.FortyThievesDeckController;
+
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
@@ -16,6 +18,7 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JButton;
 
+import controllers.BoardController;
 import controllers.ExitController;
 
 import javax.swing.SwingConstants;
@@ -74,6 +77,7 @@ public class LevelPanel extends JPanel implements IApplication{
 		 * Create the board and make it appear
 		 */
 		BoardView boardView = new BoardView(this.frame, model);
+		//boardView.setMouseAdapter(new BoardController(boardView, model));
 		
 		/*
 		 * Place everything where they belong using a gridBagLayout
