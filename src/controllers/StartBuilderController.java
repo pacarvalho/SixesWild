@@ -2,28 +2,38 @@ package controllers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
-
 import builder.views.BuilderPanel;
-import model.SixesWild;
 import views.IApplication;
 
+/**
+ * Starts the Level Builder
+ * 
+ * @author Ozan
+ *
+ */
 public class StartBuilderController implements ActionListener{
 	
+	/** Button for going to level builder */
 	JButton btnLvlBuilder;
+	
+	/** Parent JPanel */
 	IApplication view;
 	
+	/**
+	 * Constructor 
+	 * 
+	 * @param view
+	 * @param btnLvlBuilder
+	 */
 	public StartBuilderController(IApplication view, JButton btnLvlBuilder){
 		this.view = view;
 		this.btnLvlBuilder = btnLvlBuilder;
 	
 	}
 	
-	/*
-	 * (non-Javadoc)
+	/**
 	 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
 	 * 
 	 * This method if called by event listeners upon button click. Once it is called,

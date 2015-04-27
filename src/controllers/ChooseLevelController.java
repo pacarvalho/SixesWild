@@ -67,7 +67,7 @@ public class ChooseLevelController implements ActionListener{
 		// CREATE A DEFAULT LEVEL FOR DEBUGGING
 		// TODO: Implement proper level creation from de-serialization
 		Board level = new Board();
-		level.update(); // Populate the baord
+		level.update(); // Populate the board
 		
 		if(e.getSource() == this.btnLevel1){
 			// Initialize the level

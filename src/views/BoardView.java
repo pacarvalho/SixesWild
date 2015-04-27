@@ -2,18 +2,21 @@ package views;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.util.ArrayList;
-
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.SwingConstants;
-
 import model.Board;
 import model.SixesWild;
 import model.Tile;
 
+/**
+ * Board View
+ * 
+ * Creates and places all tile views. Contains methods for updating tile views once the tiles
+ * which they contain are replaced.
+ * 
+ * @author Katie, Paulo
+ *
+ */
 public class BoardView extends JPanel{
 	
 	/**
@@ -21,11 +24,24 @@ public class BoardView extends JPanel{
 	 */
 	private static final long serialVersionUID = 987297049106251275L;
 
+	/** Parent Frame */
 	JFrame frame;
+	
+	/** Game Mode */
 	SixesWild model;
+	
+	/** Game Board */
 	Board board;
+	
+	/** 2D Array of TileView */
 	TileView[][] tileViews = new TileView[9][9];
 	
+	/**
+	 * Constructor
+	 * 
+	 * @param frame
+	 * @param model
+	 */
 	public BoardView(JFrame frame, SixesWild model){
 		super();
 		this.frame = frame;
@@ -59,10 +75,12 @@ public class BoardView extends JPanel{
 		}
 	}
 	
-	// Update Board View
-	// It is called in the Board controller
-	// It takes in a board object and sets its TileViews
-	// with the appropriate Tiles
+	/**
+	 * Updates the baord view
+	 * 
+	 * Usually called in the board controller
+	 * Updates all tileView to reflect its current tile 
+	 */
 	public void updateBoardView(){
 		Tile[][] tileSet = this.board.getTiles();
 		
@@ -73,11 +91,15 @@ public class BoardView extends JPanel{
 		}
 		
 		this.validate();
-		
-		System.out.println("Updated boardView"); //FOR DEBUGING TODO
 	}
 	
-	
+	/**
+	 * Returns the TileView at the given array coordinates
+	 * 
+	 * @param i
+	 * @param j
+	 * @return TileView 
+	 */
 	public TileView getTileView(int i, int j){
 		return this.tileViews[i][j];
 	}

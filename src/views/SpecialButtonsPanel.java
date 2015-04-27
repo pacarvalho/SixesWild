@@ -1,15 +1,22 @@
 package views;
 
 import java.awt.FlowLayout;
-
 import javax.swing.JButton;
 import javax.swing.JPanel;
-
 import model.SixesWild;
 
+/**
+ * 
+ * @author Ozan
+ *
+ */
 public class SpecialButtonsPanel extends JPanel {
 
-	//Model model;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4492642561373155028L;
+	
 	int height;
 	int width;;
 	/** GUI widgets used only in this class. */

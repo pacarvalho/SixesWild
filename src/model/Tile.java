@@ -1,7 +1,5 @@
 package model;
 
-import java.awt.Color;
-
 /**
  * General type of tile which can be clicked.
  * 
@@ -9,8 +7,9 @@ import java.awt.Color;
  *
  */
 public class Tile{
+	
 	/**
-	 * Value Legend
+	 * Value of the Tile
 	 * 
 	 * -1 is a wall tile
 	 * 	0 is a container tile
@@ -18,7 +17,11 @@ public class Tile{
 	 * 	6 is a six tile 
 	 */
 	int value;
+	
+	/** Row location of the tile in array */
 	int row;
+	
+	/** Column location of the tile in array */
 	int col;
 	
 	/**

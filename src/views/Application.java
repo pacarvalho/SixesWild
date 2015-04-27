@@ -1,19 +1,8 @@
 package views;
 
-import java.awt.CardLayout;
-import java.awt.Color;
-import java.awt.Dimension;
-
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JWindow;
-import javax.swing.SwingConstants;
 
-import model.SixesWild;
-
-/*
+/**
  * Top level window manager class.
  * BOUNDARY
  * 
@@ -26,10 +15,18 @@ public class Application extends JFrame implements IApplication{
 	 */
 	private static final long serialVersionUID = 508960598896593031L;
 	
+	/** Parent Frame */
 	JFrame frame;
+	
+	/** Splash Panel */
 	SplashPanel splashPanel;
+	
+	/** Game Selector Panel */
 	GameSelectorPanel gameSelectorPanel;
 	
+	/** 
+	 * Constructor
+	 */
 	public Application(){
 		/* Create all Objects */
 		this.frame = new JFrame();

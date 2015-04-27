@@ -3,7 +3,6 @@ package controllers;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
-
 import model.EliminationGame;
 import model.IMove;
 import model.Move;
@@ -23,10 +22,21 @@ import views.TileView;
  */
 public class BoardController extends MouseAdapter {
 	
+	/** Stores the BoardView */
 	BoardView boardView;
+	
+	/** Game Model */
 	SixesWild model;
+	
+	/** List of selected tiles */
 	ArrayList<Tile> selectedTiles;
 	
+	/**
+	 * Constructor 
+	 * 
+	 * @param boardView
+	 * @param model
+	 */
 	public BoardController(BoardView boardView, SixesWild model){
 		this.boardView = boardView;
 		this.model = model;
@@ -54,6 +64,9 @@ public class BoardController extends MouseAdapter {
 	
 	/**
 	 * Determines when the user has finished selecting tiles
+	 * 
+	 * Once this even it triggered we call the doMove(). Notice that there are two
+	 * different types of move decided by instanceof.
 	 */
 	public void mouseReleased(MouseEvent me){
 		IMove move;
@@ -64,8 +77,10 @@ public class BoardController extends MouseAdapter {
 			move = new Move(selectedTiles, model);
 		}
 		
+		// Perform the move
 		move.doMove();
 		
+		// Tell the board to update itself such that changes in tiles are relfected in GUI
 		boardView.updateBoardView();
 		
 		// Empty the list of tiles
