@@ -42,20 +42,19 @@ public class BoardController extends MouseAdapter {
 	 */
 	@Override
 	public void mouseDragged(MouseEvent me) {
-		String s = "Mouse Drag: " + me.getX() + ", " + me.getY();
-		System.out.println(s);
-		
 		for(int i = 0; i < 9; i++){
 			for(int j = 0; j < 9; j++){
 				TileView tView = boardView.getTileView(i, j);
 				if(tView.isSelected(me.getX(), me.getY()) && !selectedTiles.contains(tView.getTile())){
-					System.out.println("Tile has been added!"); // TODO For debugging!
 					this.selectedTiles.add(tView.getTile());
 				}
 			}
 		}
 	}
 	
+	/**
+	 * Determines when the user has finished selecting tiles
+	 */
 	public void mouseReleased(MouseEvent me){
 		IMove move;
 		

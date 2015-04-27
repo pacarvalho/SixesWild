@@ -20,9 +20,11 @@ public class LevelSelectorPanel extends JPanel implements IApplication{
 	 */
 	private static final long serialVersionUID = -5640806150838492981L;
 	
+	/** Parent frame */
 	JFrame frame;
+	
+	/** Game Model */
 	SixesWild model;
-	Image background;
 	
 	public LevelSelectorPanel(JFrame frame, SixesWild m) {
 		

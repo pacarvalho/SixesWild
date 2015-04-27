@@ -1,8 +1,13 @@
 package main;
 
-import model.SixesWild;
 import views.Application;
 
+/**
+ * Runs the game
+ * 
+ * @author Paulo
+ *
+ */
 public class main {
 	
 	public static void main(String[] args){

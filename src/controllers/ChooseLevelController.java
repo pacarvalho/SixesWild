@@ -22,9 +22,16 @@ import views.LevelPanel;
  */
 public class ChooseLevelController implements ActionListener{
 	
+	/** Buttons */
 	JButton btnLevel1, btnLevel2, btnLevel3, btnLevel4;
+	
+	/** Game Model */
 	SixesWild model;
+	
+	/** Parent JPanel */
 	IApplication view;
+	
+	/** Title of the JPanel */
 	String title;
 	
 	/**

@@ -4,23 +4,12 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.GridBagLayoutInfo;
-import java.awt.Rectangle;
-import java.io.ObjectInputStream.GetField;
-
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JButton;
-
 import controllers.BoardController;
 import controllers.ExitController;
-
-import javax.swing.SwingConstants;
-
 import model.SixesWild;
 
 /**
@@ -80,6 +69,7 @@ public class LevelPanel extends JPanel implements IApplication{
 		BoardController boardControl = new BoardController(boardView, model);
 		boardView.addMouseMotionListener(boardControl);
 		boardView.addMouseListener(boardControl);
+		
 		/*
 		 * Place everything where they belong using a gridBagLayout
 		 */
@@ -133,8 +123,7 @@ public class LevelPanel extends JPanel implements IApplication{
 		this.add(btnMenu, c);
 		
 		
-		// Place Special MovePanel�
-		
+		// Place Special MovePanel
 		c.gridx = menux-1;
 		c.gridy = 4;
 		c.gridwidth = 3;
