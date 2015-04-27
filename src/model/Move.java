@@ -11,6 +11,7 @@ import java.util.ArrayList;
 public class Move implements IMove{
 	
 	ArrayList<Tile> tiles;
+	SixesWild model;
 	Board board;
 	
 	/**
@@ -21,6 +22,7 @@ public class Move implements IMove{
 	 */
 	public Move(ArrayList<Tile> tiles, SixesWild model){
 		this.tiles = tiles;
+		this.model = model;
 		this.board = model.getBoard();
 	}
 	
@@ -48,12 +50,31 @@ public class Move implements IMove{
 	/**
 	 * Checks if the current selection of tiles is valid.
 	 * 
-	 * No 6 is selected, sum of tiles is 6, no wall or imutable.
+	 * Sum of tiles is 6 and no six, wall, or immutable tiles are selected.
 	 * 
 	 * @return boolean
 	 */
 	public boolean valid(){
-		return true;
+		int count = 0;
+		for (Tile t: tiles){
+			// if the tile is a six, a wall, or a container the move is invalid
+			if(t.getValue() == 6 || t.getValue() == 0 || t.getValue() == -1){
+				return false;
+			}
+			
+			count += t.getValue();
+			
+			// if the sum of the tiles is greater than six the move is invalid
+			if(count > 6){
+				return false;
+			}
+		}
+		
+		if(count == 6){
+			return true;
+		}
+		
+		return false;
 	}
 
 }

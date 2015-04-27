@@ -20,6 +20,7 @@ import javax.swing.DefaultComboBoxModel;
 
 import views.BoardView;
 import views.IApplication;
+import model.Board;
 import model.SixesWild;
 
 /*
@@ -39,19 +40,20 @@ public class BuilderPanel extends JPanel implements IApplication {
 	
 	int h=120,w=190;
 	// the constructor takes in model
-	public BuilderPanel(JFrame frame){
+	public BuilderPanel(JFrame frame, SixesWild model){
 		super();
 		
+		this.model = model;
 		this.frame = frame;
 		this.frame.setMinimumSize(new Dimension(5*w, 5*h));
 		
-		this.initialize();
+		this.init();
 		 
 	}
 	
 	
 	
-	void initialize(){
+	public void init(){
 		// ***********************
 		// *****Create Labels*****
 		// ***********************
@@ -141,6 +143,9 @@ public class BuilderPanel extends JPanel implements IApplication {
 		// *****Create Misc*******
 		// ***********************
 		// Create Board View
+		Board level = new Board();
+		level.createDefaultBoard();
+		this.model.initialize(level);
 		BoardView boardView = new BoardView(this.frame, this.model);
 		
 		// Create Drop Down Menu 

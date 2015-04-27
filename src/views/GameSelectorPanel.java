@@ -12,6 +12,7 @@ import java.awt.GridBagLayout;
 
 import javax.swing.JButton;
 
+import model.SixesWild;
 import controllers.ChooseGameController;
 import controllers.StartBuilderController;
 

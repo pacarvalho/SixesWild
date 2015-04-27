@@ -20,7 +20,6 @@ import views.LevelSelectorPanel;
  */
 public class ChooseGameController implements ActionListener{
 	
-	SixesWild model;
 	IApplication view;
 	JButton btnPuzzle, btnLightning, btnRelease, btnElimination;
 	

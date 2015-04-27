@@ -99,8 +99,11 @@ public class TileView extends JPanel{
 			this.add(new JLabel("", new ImageIcon("resources/ContainerTile.gif"), SwingConstants.CENTER));
 			return true;
 			
-		} else{
-			this.add(new JLabel("", new ImageIcon("resources/WallTile.gif"), SwingConstants.CENTER));
+		} else if (this.tile.getValue() == -2){
+			this.add(new JLabel("", new ImageIcon("resources/EliminatedTile.gif"), SwingConstants.CENTER));
+			return false;
+		} else {
+			this.add(new JLabel("", new ImageIcon("resources/NullTile.gif"), SwingConstants.CENTER));
 			return false;
 		}
 		

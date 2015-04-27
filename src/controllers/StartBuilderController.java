@@ -2,8 +2,12 @@ package controllers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
+
+import model.SixesWild;
+import builder.views.BuilderGameSelectorPanel;
 import builder.views.BuilderPanel;
 import views.IApplication;
 
@@ -20,6 +24,7 @@ public class StartBuilderController implements ActionListener{
 	
 	/** Parent JPanel */
 	IApplication view;
+	SixesWild model;
 	
 	/**
 	 * Constructor 
@@ -42,7 +47,7 @@ public class StartBuilderController implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == this.btnLvlBuilder){
 			JFrame frame = this.view.getFrame();
-			BuilderPanel builderPanel = new BuilderPanel(frame);
+			BuilderGameSelectorPanel builderPanel = new BuilderGameSelectorPanel(frame);
 			frame.getContentPane().removeAll();
 			frame.getContentPane().add(builderPanel);
 			frame.pack();

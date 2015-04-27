@@ -24,6 +24,7 @@ public class Tile{
 	/** Column location of the tile in array */
 	int col;
 	
+	
 	/**
 	 * Constructor
 	 */
@@ -34,19 +35,19 @@ public class Tile{
 	}
 	
 	/**
-	 * Determine whether the tile has been selected.
-	 * @return boolean
+	 * Returns the value of the tile
+	 * @return int
 	 */
-	public boolean isSelected(int x, int y) {
-		return false;
+	public int getValue(){
+		return this.value;
 	}
 	
 	/**
 	 * Returns the value of the tile
 	 * @return int
 	 */
-	public int getValue(){
-		return this.value;
+	public void setValue(int x){
+		this.value = x;
 	}
 	
 	/**

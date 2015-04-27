@@ -86,6 +86,13 @@ public class Board implements Serializable{
 	public void setTile(Tile t){
 		tiles[t.row][t.col] = t;
 	}
+	
+	/**
+	 * 
+	 */
+	public void setEliminationTileValue(Tile t){
+		t.setValue(-2);
+	}
 		
 	/**
 	 * Implements "gravity" on board
@@ -164,6 +171,20 @@ public class Board implements Serializable{
 		}
 		
 		return null;
+	}
+	
+	/**
+	 * Makes this Board a Default Board composed solely of nulls
+	 * 
+	 */
+	public void createDefaultBoard(){
+		System.out.println("IM HERE!");
+		for(int i = 0; i<9; i++){
+			for(int j = 0; j<9; j++){
+				System.out.println("IM HERE!");
+				this.tiles[i][j] = new Tile(1, i, j);
+			}
+		}
 	}
 	
 }
