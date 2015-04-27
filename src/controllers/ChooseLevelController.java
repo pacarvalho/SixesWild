@@ -7,7 +7,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 
 import model.Board;
-import model.Level;
 import model.SixesWild;
 import views.IApplication;
 import views.LevelPanel;

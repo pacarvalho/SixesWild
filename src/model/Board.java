@@ -98,7 +98,7 @@ public class Board implements Serializable{
 		
 		int[] nullLocation = null;
 		int ite = 0;
-		int maxIteration = 10000; 
+		int maxIteration = 500; 
 		
 		while (ite < maxIteration){
 			// Check if there is a null in the tile array
@@ -144,7 +144,7 @@ public class Board implements Serializable{
 			return new Tile(rand.nextInt(5)+1, x, y);
 		}
 		
-		// TODO: Implement frequency normalization to creat tiles following predefined stats
+		// TODO: Implement frequency normalization to create tiles following predefined stats
 		return new Tile(rand.nextInt(5)+1, x, y);
 	}
 	
