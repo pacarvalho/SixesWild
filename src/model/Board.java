@@ -98,7 +98,7 @@ public class Board implements Serializable{
 		
 		int[] nullLocation = null;
 		int ite = 0;
-		int maxIteration = 100; 
+		int maxIteration = 10000; 
 		
 		while (ite < maxIteration){
 			// Check if there is a null in the tile array
@@ -109,9 +109,19 @@ public class Board implements Serializable{
 			// If the null was found on the top row. Spawn a new tile.
 			if (nullLocation[1] == 0){
 				tiles[nullLocation[0]][nullLocation[1]] = this.spawnNewTile(nullLocation[0], nullLocation[1]);
+				
+			} else { // Will move piece above it down
+				// Checks all pieces above the current piece looking for a not-null. Once it is found.
+				// It sets the current tile to that tile and sets that tile to null.
+				if (tiles[nullLocation[0]][nullLocation[1]-1] != null){
+					
+					tiles[nullLocation[0]][nullLocation[1]] =  
+							new Tile(tiles[nullLocation[0]][nullLocation[1]-1].getValue(), nullLocation[0], nullLocation[1]);
+					
+					this.destroyTile(tiles[nullLocation[0]][nullLocation[1]-1]); // Delete Tile
+				}
+				
 			}
-			
-			tiles[nullLocation[0]][nullLocation[1]] = this.spawnNewTile(nullLocation[0], nullLocation[1]);
 			
 			// Increment interation
 			ite += 1;
@@ -149,7 +159,7 @@ public class Board implements Serializable{
 		for (int i=0; i<9; i++){
 			for (int j=0; j<9; j++){
 				if (this.tiles[i][j] == null) { // Update location and return true
-					System.out.println("I found it!");
+					System.out.println("Location: " + i + ", " + j);
 					return new int[]{i, j};
 				}
 			}
