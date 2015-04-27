@@ -164,7 +164,6 @@ public class Board implements Serializable{
 		for (int i=0; i<9; i++){
 			for (int j=0; j<9; j++){
 				if (this.tiles[i][j] == null) { // Update location and return true
-					System.out.println("Location: " + i + ", " + j);
 					return new int[]{i, j};
 				}
 			}
@@ -178,11 +177,9 @@ public class Board implements Serializable{
 	 * 
 	 */
 	public void createDefaultBoard(){
-		System.out.println("IM HERE!");
 		for(int i = 0; i<9; i++){
 			for(int j = 0; j<9; j++){
-				System.out.println("IM HERE!");
-				this.tiles[i][j] = new Tile(1, i, j);
+				this.tiles[i][j] = null;
 			}
 		}
 	}

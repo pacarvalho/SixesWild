@@ -51,8 +51,6 @@ public class BuilderPanel extends JPanel implements IApplication {
 		 
 	}
 	
-	
-	
 	public void init(){
 		// ***********************
 		// *****Create Labels*****
@@ -60,11 +58,8 @@ public class BuilderPanel extends JPanel implements IApplication {
 		// Title Label
 		
 		
-		JLabel lblLevelBuilder = new JLabel("Level Builder");
+		JLabel lblLevelBuilder = new JLabel(model.getName() + " Level Builder");
 		lblLevelBuilder.setFont(new Font("Tahoma", Font.BOLD, 35));
-		
-		//File name Label 
-		JLabel lblfilename = new JLabel("fileName");
 		
 		// X: Label
 		JLabel lblX = new JLabel("X : ");
@@ -148,9 +143,6 @@ public class BuilderPanel extends JPanel implements IApplication {
 		this.model.initialize(level);
 		BoardView boardView = new BoardView(this.frame, this.model);
 		
-		// Create Drop Down Menu 
-		JComboBox comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Select Mode"}));
 		
 		// ***********************
 		// ****LAYOUT SET-UP !****
@@ -168,18 +160,6 @@ public class BuilderPanel extends JPanel implements IApplication {
 		c.gridy = 0;
 		c.gridwidth = 8;
 		this.add(lblLevelBuilder, c);
-		
-		// Place Drop down menu
-		c.gridx = 0;
-		c.gridy = 1;
-		c.gridwidth = 2;
-		this.add(comboBox, c);
-		
-		// Place file name Label 
-		c.gridx = 2;
-		c.gridy = 1;
-		c.gridwidth = 2;
-		this.add(lblfilename, c);
 		
 		// Place menu button 
 		c.gridx = 9; // Column 
