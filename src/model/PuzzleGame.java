@@ -8,17 +8,12 @@ package model;
  *
  */
 public class PuzzleGame extends SixesWild {
-	
+
+	/*
+	 * Constructor
+	 */
 	public PuzzleGame(){
 		super();
-	}
-	
-	/**
-	 * 
-	 */
-	@Override
-	public boolean hasWon(){
-		return false;
 	}
 	
 	/**
@@ -33,8 +28,25 @@ public class PuzzleGame extends SixesWild {
 	 * 
 	 */
 	@Override
+	public boolean hasWon(){
+		return false;
+	}
+	
+	/**
+	 * 
+	 */
+	@Override
 	public boolean hasLost(){
 		return false;
+	}
+	
+	/**
+	 * 
+	 */
+	@Override
+	public void updateScore() {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	/**

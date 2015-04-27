@@ -18,14 +18,6 @@ public class LightningGame extends SixesWild {
 	 * 
 	 */
 	@Override
-	public boolean hasWon(){
-		return false;
-	}
-	
-	/**
-	 * 
-	 */
-	@Override
 	public String getName(){
 		return "Lightning";
 	}
@@ -34,8 +26,25 @@ public class LightningGame extends SixesWild {
 	 * 
 	 */
 	@Override
+	public boolean hasWon(){
+		return false;
+	}
+	
+	/**
+	 * 
+	 */
+	@Override
 	public boolean hasLost(){
 		return false;
+	}
+	
+	/**
+	 * 
+	 */
+	@Override
+	public void updateScore() {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	/**

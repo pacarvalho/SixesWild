@@ -5,7 +5,7 @@ package model;
  * 
  * All variation of the game should extend this class.
  * 
- * @author Paulo
+ * @author Paulo, Katie
  *
  */
 abstract public class SixesWild {
@@ -16,12 +16,9 @@ abstract public class SixesWild {
 	/** Create a board for the game */
 	Board board;
 	
-	/** Move attribute */
-	IMove move;
-	
 	/** Constructor */
 	public SixesWild(){
-		//TODO: FIND BETTER SUBSTITUTE FOR NULL ~
+		this.currentScore = 0;
 		this.board = null;
 	}
 	
@@ -33,40 +30,33 @@ abstract public class SixesWild {
 	}
 	
 	/**
-	 * Returns true if a game is in a won state. Else it returns false.
-	 */
-	public boolean hasWon(){
-		return false;
-	}
-	
-	/**
-	 * Returns the name of the variation
-	 */
-	public String getName(){
-		return null;
-	}
-	
-	/**
-	 * Returns true if the game is at a lost state. 
-	 * 
-	 * Ex: The timer has run out in the lightning variation.
-	 */
-	public boolean hasLost(){
-		return false;
-	}
-	
-	/**
 	 * Returns the board
 	 */
 	public Board getBoard(){
 		return this.board;
 	}
 	
+	//ABSTRACT METHODS
+	/**
+	 * Returns true if a game is in a won state. Else it returns false.
+	 */
+	abstract public boolean hasWon();
+	
+	/**
+	 * Returns the name of the variation
+	 */
+	abstract public String getName();
+	
+	/**
+	 * Returns true if the game is at a lost state. 
+	 * 
+	 * Ex: The timer has run out in the lightning variation.
+	 */
+	abstract public boolean hasLost();
+	
 	/**
 	 * Method that incrememnts the score by 1
 	 * 
 	 */
-	public void updateScore(){
-		this.currentScore += 1;
-	}
+	abstract public void updateScore();
 }

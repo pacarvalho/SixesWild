@@ -16,16 +16,16 @@ public class EliminationGame extends SixesWild {
 	 * 
 	 */
 	@Override
-	public boolean hasWon(){
-		return false;
+	public String getName(){
+		return "Elimination";
 	}
 	
 	/**
 	 * 
 	 */
 	@Override
-	public String getName(){
-		return "Elimination";
+	public boolean hasWon(){
+		return false;
 	}
 	
 	/**
@@ -37,11 +37,21 @@ public class EliminationGame extends SixesWild {
 	}
 	
 	/**
+	 * 
+	 */
+	@Override
+	public void updateScore() {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	/**
 	 * Returns the board
 	 */
 	@Override
 	public Board getBoard(){
 		return this.board;
 	}
+
 
 }

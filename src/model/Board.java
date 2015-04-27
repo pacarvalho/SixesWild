@@ -19,7 +19,7 @@ public class Board implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = -322533594946675843L;
-
+	//TODO : Do the Saving and Loading of values to board class
 	/**
 	 * Game frequencies
 	 * 
