@@ -13,15 +13,6 @@ public class LightningGame extends SixesWild {
 	public LightningGame(){
 		super();
 	}
-
-	
-	/**
-	 * 
-	 */
-	@Override
-	public void initialize(Level level){
-		
-	}
 	
 	/**
 	 * 

@@ -3,6 +3,7 @@ package model;
 import java.awt.Point;
 import java.io.Serializable;
 import java.util.HashMap;
+import java.util.Random;
 
 /**
  * Board class. 
@@ -14,6 +15,11 @@ import java.util.HashMap;
  */
 public class Board implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -322533594946675843L;
+
 	/**
 	 * Game frequencies
 	 * 
@@ -92,7 +98,7 @@ public class Board implements Serializable{
 		
 		int[] nullLocation = null;
 		int ite = 0;
-		int maxIteration = 81; 
+		int maxIteration = 100; 
 		
 		while (ite < maxIteration){
 			// Check if there is a null in the tile array
@@ -102,8 +108,13 @@ public class Board implements Serializable{
 			
 			// If the null was found on the top row. Spawn a new tile.
 			if (nullLocation[1] == 0){
-				tiles[nullLocation[0]][nullLocation[1]] = this.spawnNewTile();
+				tiles[nullLocation[0]][nullLocation[1]] = this.spawnNewTile(nullLocation[0], nullLocation[1]);
 			}
+			
+			tiles[nullLocation[0]][nullLocation[1]] = this.spawnNewTile(nullLocation[0], nullLocation[1]);
+			
+			// Increment interation
+			ite += 1;
 			
 		}
 		
@@ -116,8 +127,15 @@ public class Board implements Serializable{
 	 * Gets the frequency definition outlined in the level and spawns a new tile.
 	 * Note that it normalizes the frequency.
 	 */
-	public Tile spawnNewTile(){
+	public Tile spawnNewTile(int x, int y){
+		Random rand = new Random();
 		
+		if (frequency == null) { // No statistics is defined. All values have same prob
+			return new Tile(rand.nextInt(5)+1, x, y);
+		}
+		
+		// TODO: Implement frequency normalization to creat tiles following predefined stats
+		return new Tile(rand.nextInt(5)+1, x, y);
 	}
 	
 	/**
@@ -131,6 +149,7 @@ public class Board implements Serializable{
 		for (int i=0; i<9; i++){
 			for (int j=0; j<9; j++){
 				if (this.tiles[i][j] == null) { // Update location and return true
+					System.out.println("I found it!");
 					return new int[]{i, j};
 				}
 			}

@@ -16,14 +16,6 @@ public class EliminationGame extends SixesWild {
 	 * 
 	 */
 	@Override
-	public void initialize(Level level){
-		
-	}
-	
-	/**
-	 * 
-	 */
-	@Override
 	public boolean hasWon(){
 		return false;
 	}

@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
+import model.Board;
 import model.Level;
 import model.SixesWild;
 import views.IApplication;
@@ -41,7 +42,8 @@ public class ChooseLevelController implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		// CREATE A DEFAULT LEVEL FOR DEBUGGING
 		// TODO: Implement proper level creation from de-serialization
-		Level level = new Level();
+		Board level = new Board();
+		level.update(); // Populate the baord
 		
 		if(e.getSource() == this.btnLevel1){
 			// Initialize the level

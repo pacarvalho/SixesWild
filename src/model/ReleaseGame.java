@@ -17,14 +17,6 @@ public class ReleaseGame extends SixesWild {
 	 * 
 	 */
 	@Override
-	public void initialize(Level level){
-		
-	}
-	
-	/**
-	 * 
-	 */
-	@Override
 	public boolean hasWon(){
 		return false;
 	}

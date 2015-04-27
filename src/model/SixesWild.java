@@ -16,9 +16,6 @@ abstract public class SixesWild {
 	/** Create a board for the game */
 	Board board;
 	
-	/** Save the level */
-	Level level;
-	
 	/** Move attribute */
 	IMove move;
 	
@@ -31,9 +28,8 @@ abstract public class SixesWild {
 	/**
 	 * Initializes a game to reflect the loaded settings and variation.
 	 */
-	public void initialize(Level level){
-		this.board = level.board;
-		this.level = level;
+	public void initialize(Board board){
+		this.board = board;
 	}
 	
 	/**
