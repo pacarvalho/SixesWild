@@ -12,14 +12,6 @@ public class PuzzleGame extends SixesWild {
 	public PuzzleGame(){
 		super();
 	}
-
-	/**
-	 * 
-	 */
-	@Override
-	public void initialize(Level level){
-		this.board = level.board;
-	}
 	
 	/**
 	 * 

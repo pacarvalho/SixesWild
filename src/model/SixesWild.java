@@ -13,11 +13,11 @@ abstract public class SixesWild {
 	/** Keeps the current Score of the game */
 	int currentScore;
 	
-	/** Keeps the max score of the Game */
-	int maxScore;
-	
 	/** Create a board for the game */
 	Board board;
+	
+	/** Save the level */
+	Level level;
 	
 	/** Move attribute */
 	IMove move;
@@ -32,7 +32,8 @@ abstract public class SixesWild {
 	 * Initializes a game to reflect the loaded settings and variation.
 	 */
 	public void initialize(Level level){
-		
+		this.board = level.board;
+		this.level = level;
 	}
 	
 	/**
