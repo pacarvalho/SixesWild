@@ -11,6 +11,15 @@ import model.SixesWild;
 import views.IApplication;
 import views.LevelPanel;
 
+/**
+ * 
+ * Panel where a level is chosen. 
+ * 
+ * Loads the board from file and instantiates controllers responsible for starting the actual game.
+ * 
+ * @author Paulo, Katie, Sean
+ *
+ */
 public class ChooseLevelController implements ActionListener{
 	
 	JButton btnLevel1, btnLevel2, btnLevel3, btnLevel4;
@@ -18,7 +27,16 @@ public class ChooseLevelController implements ActionListener{
 	IApplication view;
 	String title;
 	
-	
+	/**
+	 * Constructor
+	 * 
+	 * @param m
+	 * @param view
+	 * @param btnLevel1
+	 * @param btnLevel2
+	 * @param btnLevel3
+	 * @param btnLevel4
+	 */
 	public ChooseLevelController(SixesWild m, IApplication view, JButton btnLevel1, JButton btnLevel2,
 				JButton btnLevel3, JButton btnLevel4){
 		this.model = m;

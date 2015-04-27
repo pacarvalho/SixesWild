@@ -13,6 +13,14 @@ import model.EliminationMove;
 import views.BoardView;
 import views.TileView;
 
+/**
+ * Heart of the software. 
+ * 
+ * Determines which tiles have been selected, calls the appropriate move class. 
+ * 
+ * @author Paulo, Katie
+ *
+ */
 public class BoardController extends MouseAdapter {
 	
 	BoardView boardView;
@@ -25,11 +33,15 @@ public class BoardController extends MouseAdapter {
 		this.selectedTiles = new ArrayList<Tile>();
 	}
 	
+	/**
+	 * Determines which tiles have been selected
+	 * 
+	 * Loop through tileViews in board View and find out which tiles have been
+	 * selected and add to an ArrayList<Tiles>
+	 * Each tile should know where in the board it is located
+	 */
+	@Override
 	public void mouseDragged(MouseEvent me) {
-		// Something something...
-		// Loop through tileViews in board View and find out which tiles have been
-		// selected and add to an ArrayList<Tiles>
-		// Each tile should know where in the board it is located
 		String s = "Mouse Drag: " + me.getX() + ", " + me.getY();
 		System.out.println(s);
 		

@@ -2,11 +2,8 @@ package controllers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
-
 import model.EliminationGame;
 import model.LightningGame;
 import model.PuzzleGame;
@@ -15,6 +12,12 @@ import model.SixesWild;
 import views.IApplication;
 import views.LevelSelectorPanel;
 
+/**
+ * Panel for choosing game type
+ * 
+ * @author Paulo, Katie, Sean
+ *
+ */
 public class ChooseGameController implements ActionListener{
 	
 	SixesWild model;
