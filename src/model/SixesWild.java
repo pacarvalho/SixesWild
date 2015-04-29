@@ -36,6 +36,14 @@ abstract public class SixesWild {
 		return this.board;
 	}
 	
+	/**
+	 * Method that incrememnts that changes score by given value
+	 * 
+	 */
+	public boolean updateScore(int change){ // TODO: IMPLEMENT THIS
+		return false;
+	}
+	
 	//ABSTRACT METHODS
 	/**
 	 * Returns true if a game is in a won state. Else it returns false.
@@ -53,10 +61,4 @@ abstract public class SixesWild {
 	 * Ex: The timer has run out in the lightning variation.
 	 */
 	abstract public boolean hasLost();
-	
-	/**
-	 * Method that incrememnts the score by 1
-	 * 
-	 */
-	abstract public void updateScore();
 }

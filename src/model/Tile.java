@@ -8,6 +8,7 @@ package model;
  */
 public class Tile{
 	
+	//TODO Add Multiplier Attribute and Selected boolean 
 	/**
 	 * Value of the Tile
 	 * 

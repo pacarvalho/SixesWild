@@ -54,7 +54,7 @@ public class Move implements IMove{
 	 * 
 	 * @return boolean
 	 */
-	public boolean valid(){
+	public boolean valid(){ // TODO DO NOT ALLOW DIAGONAL MOVES
 		int count = 0;
 		for (Tile t: tiles){
 			// if the tile is a six, a wall, or a container the move is invalid

@@ -58,7 +58,7 @@ public class Board implements Serializable{
 	/**
 	 * Returns the tiles from the board
 	 * 
-	 * @return
+	 * @return Tile[][]
 	 */
 	public Tile[][] getTiles(){
 		return tiles;
@@ -115,7 +115,7 @@ public class Board implements Serializable{
 			if (nullLocation[1] == 0){
 				tiles[nullLocation[0]][nullLocation[1]] = this.spawnNewTile(nullLocation[0], nullLocation[1]);
 				
-			} else { // Will move piece above it down
+			} else { // Will move piece above it down //TODO IMPLEMENT SPAWNING OF TILE UNDER IMMUTABLES
 				// Checks all pieces above the current piece looking for a not-null. Once it is found.
 				// It sets the current tile to that tile and sets that tile to null.
 				if (tiles[nullLocation[0]][nullLocation[1]-1] != null){
