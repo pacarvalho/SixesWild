@@ -61,4 +61,9 @@ abstract public class SixesWild {
 	 * Ex: The timer has run out in the lightning variation.
 	 */
 	abstract public boolean hasLost();
+	
+	/**
+	 * Returns the name of the variation
+	 */
+	abstract public void updateScore();
 }
