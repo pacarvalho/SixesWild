@@ -4,12 +4,20 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JButton;
+
 import controllers.BoardController;
+import controllers.DestroyTileController;
 import controllers.ExitController;
+import controllers.ResetController;
+import controllers.SpecialMovesController;
+import controllers.SwapController;
 import model.SixesWild;
 
 /**
@@ -29,13 +37,16 @@ public class LevelPanel extends JPanel implements IApplication{
 	JFrame frame;
 	SpecialButtonsPanel specialBtnsPanel;
 	SixesWild model;
+	BoardView boardView;
 	
+
+
 	public LevelPanel(JFrame frame, SixesWild model, String title, String levelTitle){
 		super();
 		
 		this.frame = frame;
 		this.frame.setMinimumSize(new Dimension(800, 700));
-		
+		this.boardView = null;
 		/*
 		 * Create title, subtitle, timer, score labels and bind them to their controllers
 		 */
@@ -65,11 +76,9 @@ public class LevelPanel extends JPanel implements IApplication{
 		 * Create the board and make it appear
 		 * Set up boardViews controller
 		 */
-		BoardView boardView = new BoardView(this.frame, model);
+		boardView = new BoardView(this.frame, model);
 		BoardController boardControl = new BoardController(boardView, model);
-		boardView.addMouseMotionListener(boardControl);
-		boardView.addMouseListener(boardControl);
-		
+		boardView.setActiveAdapter(boardControl);
 		/*
 		 * Place everything where they belong using a gridBagLayout
 		 */
@@ -134,7 +143,16 @@ public class LevelPanel extends JPanel implements IApplication{
 		if (specialBtnsPanel == null){
 			specialBtnsPanel = new SpecialButtonsPanel(model);
 		}
+		SpecialMovesController specBtnsCtrl = new SpecialMovesController(specialBtnsPanel.getBtnSpecial1(),
+				specialBtnsPanel.getBtnSpecial2(), specialBtnsPanel.getBtnSpecial3(), boardView, model);
+		specialBtnsPanel.getBtnSpecial1().addActionListener(specBtnsCtrl);
+		specialBtnsPanel.getBtnSpecial2().addActionListener(specBtnsCtrl);
+		specialBtnsPanel.getBtnSpecial3().addActionListener(specBtnsCtrl);
 		return specialBtnsPanel;	
+	}
+	
+	public BoardView getBoardView() {
+		return boardView;
 	}
 	
 	@Override

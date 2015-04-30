@@ -93,7 +93,15 @@ public class Board implements Serializable{
 	public void setEliminationTileValue(Tile t){
 		t.setValue(-2);
 	}
-		
+	
+	/**
+	 * Swaps the valeus of two tiles
+	 */
+	public void swapTwoTiles(Tile t1, Tile t2){
+		int tempVal=t1.getValue();
+		t1.setValue(t2.getValue());
+		t2.setValue(tempVal);
+	}
 	/**
 	 * Implements "gravity" on board
 	 * 
