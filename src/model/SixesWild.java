@@ -52,7 +52,7 @@ abstract public class SixesWild {
 	 * Method that increments the number of moves made by a given value
 	 * 
 	 */
-	public boolean updateMoves(int change){ 
+	public boolean updateMoves(int change){ // Should we check if the game is lost in this method?
 		this.numMoves = this.numMoves + change;
 		return true;
 	}
