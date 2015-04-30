@@ -12,7 +12,7 @@ public class DestroyTileSpecialMove implements IMove {
 		this.tile1 = tile;
 	
 		this.model = model;
-		this.board = model.getBoard();
+		this.board = this.model.getBoard();
 	}
 	/**
 	 *  Destroys a selected tile

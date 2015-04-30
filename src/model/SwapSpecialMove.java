@@ -11,6 +11,7 @@ public class SwapSpecialMove implements IMove{
 	
 	Tile tile1;
 	Tile tile2;
+	
 	//SixesWild model;
 	//Board board;
 	
@@ -34,6 +35,8 @@ public class SwapSpecialMove implements IMove{
 		int tempVal=tile1.getValue();
 		tile1.setValue(tile2.getValue());
 		tile2.setValue(tempVal);
+		
+		//this.model
 		
 		return true;
 	}

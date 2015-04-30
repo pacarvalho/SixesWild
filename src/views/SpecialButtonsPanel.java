@@ -1,8 +1,15 @@
 package views;
 
 import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 import javax.swing.JPanel;
+
+import controllers.DestroyTileController;
+import controllers.ResetController;
+import controllers.SwapController;
 import model.SixesWild;
 
 /**
@@ -41,9 +48,11 @@ public class SpecialButtonsPanel extends JPanel {
 			setLayout(new FlowLayout(FlowLayout.RIGHT));
 			//setSize(width, height);
 			
-			add(getBtnSpecial3());
-			add(getBtnSpecial2());
 			add(getBtnSpecial1());
+			add(getBtnSpecial2());
+			add(getBtnSpecial3());
+			
+			
 		}
 		public JButton getBtnSpecial1(){
 			if(btnSpecial1 == null){

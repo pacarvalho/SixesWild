@@ -4,6 +4,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 
+
 import views.BoardView;
 import views.TileView;
 import model.DestroyTileSpecialMove;
@@ -26,7 +27,7 @@ public class DestroyTileController extends MouseAdapter{
 		this.model = model;
 		this.boardView = boardView;
 		
-		tile = null;
+		this.tile = null;
 		
 	}
 	/**
@@ -38,8 +39,8 @@ public class DestroyTileController extends MouseAdapter{
 	public void mouseClicked(MouseEvent me){
 		if(this.isActive()){
 			if(this.selectTile(me.getX(), me.getY())){
-				
-				DestroyTileSpecialMove move = new DestroyTileSpecialMove(tile, model);
+				System.out.println("Tile selected");
+				DestroyTileSpecialMove move = new DestroyTileSpecialMove(tile, this.model);
 				
 				//Perform
 				move.doMove();
@@ -50,17 +51,22 @@ public class DestroyTileController extends MouseAdapter{
 				//clear tile
 				this.tile=null;
 				this.unregister();
-				//ChangeListener
+
+				//Change MosueAdapter
+				this.unregister();
 			}
 		}
 	}
 	//TODO rightClick to cancel change controller
 
+	
 	private boolean isActive() {
-		// TODO Auto-generated method stub
-		return false;
+		
+		// TODO check if this controller is active. 
+		return true;
 	
 	}
+	
 	
 	private boolean selectTile(int clickX, int clickY){
 		
@@ -78,12 +84,12 @@ public class DestroyTileController extends MouseAdapter{
 	}
 	
 	public void register(){
-		
+		boardView.setActiveAdapter(this);
 	}
 
 	
 	public void unregister(){
-		
+		boardView.setActiveAdapter(new BoardController(boardView, model));
 	}
 	
 }

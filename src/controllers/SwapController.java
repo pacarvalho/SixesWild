@@ -5,12 +5,21 @@ import java.awt.event.MouseEvent;
 
 
 
+
+
+
 import views.BoardView;
 import views.TileView;
-
 import model.SixesWild;
 import model.SwapSpecialMove;
 import model.Tile;
+
+/**
+ * 
+ * 
+ * @author Ozan
+ *
+ */
 
 public class SwapController extends MouseAdapter{
 
@@ -45,27 +54,32 @@ public class SwapController extends MouseAdapter{
 		if(this.isActive()){
 			if(this.selectTile(me.getX(), me.getY())){
 				
-				SwapSpecialMove move = new SwapSpecialMove(tile1,tile2,  model);
+				SwapSpecialMove move = new SwapSpecialMove(tile1,tile2, model);
 				
 				//Perform
 				move.doMove();
-				
-				// Tell the board to update itself such that changes in tiles are relfected in GUI
+				System.out.println("doing move");
+				// Tell the board to update itself such that changes in tiles are reflected in GUI
 				boardView.updateBoardView();
 				
 				//clear tile
+				System.out.println(tile1.getValue());
+				
 				this.tile1 = null;
 				this.tile2 = null;
+				
+				//Change MosueAdapter
 				this.unregister();
-				//ChangeListener
 			}
 		}
 	}
 	//TODO rightClick to cancel change controller
 
+	
 	private boolean isActive() {
-		// TODO Auto-generated method stub
-		return false;
+		
+		// TODO check if this controller is active. 
+		return true;
 	
 	}
 	
@@ -75,15 +89,17 @@ public class SwapController extends MouseAdapter{
 			for(int j = 0; j < 9; j++){
 				TileView tView = boardView.getTileView(i, j);
 				if(tView.isSelected(clickX, clickY)){
-					if(tile1 == null){
+					if(tile1 == null && tView.getTile().getValue() > 0){
 						
 						tile1 = tView.getTile();
+						System.out.println("Tile 1 selected");
 						return false;
 						
 						}
 					else if(tile1 !=  tView.getTile()){
 						
 						tile2 =  tView.getTile();
+						System.out.println("Tile 2 selected");
 						return true;
 					}
 				}
@@ -95,12 +111,12 @@ public class SwapController extends MouseAdapter{
 
 	
 	public void register(){
-		
+		boardView.setActiveAdapter(this);
 	}
 
 	
 	public void unregister(){
-		
+		boardView.setActiveAdapter(new BoardController(boardView, model));
 	}
 	
 }
