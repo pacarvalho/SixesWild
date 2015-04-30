@@ -85,6 +85,7 @@ public class Move implements IMove{
 		
 		if(count == 6){
 			model.updateMoves(1);
+			model.updateScore();
 			return true;
 		}
 		

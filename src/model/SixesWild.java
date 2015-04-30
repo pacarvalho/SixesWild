@@ -41,7 +41,7 @@ abstract public class SixesWild {
 	}
 	
 	/**
-	 * Method that incrememnts that changes score by given value
+	 * Method that increments that changes score by given value
 	 * 
 	 */
 	public boolean updateScore(int change){ // TODO: IMPLEMENT THIS

@@ -64,7 +64,7 @@ public class Tile{
 	 * @return void
 	 */
 	public void setValue(int x){
-		this.value = x;
+		if(x <= 6){this.value = x;}
 	}
 	
 	/**
