@@ -12,15 +12,15 @@ public class SwapSpecialMove implements IMove{
 	Tile tile1;
 	Tile tile2;
 	
-	//SixesWild model;
-	//Board board;
+	SixesWild model;
+	Board board;
 	
 	public SwapSpecialMove(Tile tile1, Tile tile2, SixesWild model){
 		
 		this.tile1 = tile1;
 		this.tile2 = tile2;		
-		//this.model = model;
-		//this.board = model.getBoard();
+		this.model = model;
+		this.board = model.getBoard();
 	}
 	/**
 	 *  Does the swap move.
@@ -32,11 +32,8 @@ public class SwapSpecialMove implements IMove{
 	public boolean doMove() {
 		if(!this.valid()) {return false;}
 		
-		int tempVal=tile1.getValue();
-		tile1.setValue(tile2.getValue());
-		tile2.setValue(tempVal);
-		
-		//this.model
+		board.swapTwoTiles(tile1, tile2);
+	
 		
 		return true;
 	}
