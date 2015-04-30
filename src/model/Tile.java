@@ -3,7 +3,7 @@ package model;
 /**
  * General type of tile which can be clicked.
  * 
- * @author Paulo, Katie
+ * @author Paulo, Katie, Sean
  *
  */
 public class Tile{
@@ -44,8 +44,24 @@ public class Tile{
 	}
 	
 	/**
-	 * Returns the value of the tile
+	 * Returns the column of the tile
 	 * @return int
+	 */
+	public int getColumn(){
+		return this.col;
+	}
+	
+	/**
+	 * Returns the row of the tile
+	 * @return int
+	 */
+	public int getRow(){
+		return this.row;
+	}
+	
+	/**
+	 * Sets the value of the tile
+	 * @return void
 	 */
 	public void setValue(int x){
 		this.value = x;

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /**
  * 
  * 
- * @author katiegandomi
+ * @author Katie, Sean
  *
  */
 public class Move implements IMove{
@@ -61,7 +61,19 @@ public class Move implements IMove{
 			if(t.getValue() == 6 || t.getValue() == 0 || t.getValue() == -1){
 				return false;
 			}
-			
+			for(int i = 0; i < tiles.size()-1; i++){
+				for(int j = i+1; j<=tiles.size()-1;j++){
+					if(tiles.get(i).getRow() == tiles.get(j).getRow()+1 || tiles.get(i).getRow() == tiles.get(j).getRow()-1){
+						if(tiles.get(i).getColumn() == tiles.get(j).getColumn()+8 || tiles.get(i).getColumn() == tiles.get(j).getColumn()-8){
+							return false;
+						}
+						if(tiles.get(i).getColumn() == tiles.get(j).getColumn()+10 || tiles.get(i).getColumn() == tiles.get(j).getColumn()-10){
+							return false;
+						}
+					}
+				}
+			}
+
 			count += t.getValue();
 			
 			// if the sum of the tiles is greater than six the move is invalid

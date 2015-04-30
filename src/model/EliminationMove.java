@@ -2,6 +2,13 @@ package model;
 
 import java.util.ArrayList;
 
+/**
+ * 
+ * 
+ * @author Katie, Sean
+ *
+ */
+
 public class EliminationMove implements IMove {
 	
 	ArrayList<Tile> tiles;
@@ -45,6 +52,20 @@ public class EliminationMove implements IMove {
 	@Override
 	public boolean valid() {
 		int count = 0;
+		// if the any two tiles are diagonal return false
+		for(int i = 0; i < tiles.size()-1; i++){
+			for(int j = i+1; j<=tiles.size()-1;j++){
+				if(tiles.get(i).getRow() == tiles.get(j).getRow()+1 || tiles.get(i).getRow() == tiles.get(j).getRow()-1){
+					if(tiles.get(i).getColumn() == tiles.get(j).getColumn()+8 || tiles.get(i).getColumn() == tiles.get(j).getColumn()-8){
+						return false;
+					}
+					if(tiles.get(i).getColumn() == tiles.get(j).getColumn()+10 || tiles.get(i).getColumn() == tiles.get(j).getColumn()-10){
+						return false;
+					}
+				}
+			}
+		}
+		
 		for (Tile t: tiles){
 			// if the tile is a wall, or a container the move is invalid
 			if(t.getValue() == 6 || t.getValue() == 0 || t.getValue() == -1 || t.getValue() == -2){
