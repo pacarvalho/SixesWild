@@ -53,11 +53,9 @@ public class TestMove extends TestCase{
 		validMoveTiles.add(board.tiles[1][3]);
 		
 		
-		
 		Move validMove = new Move(validMoveTiles,model);
-		assertEquals(validMove.valid(),true);
-		
 		validMove.doMove();
+		assertEquals(validMove.valid(),true);
 		assertEquals(model.currentScore,12);
 		
 		// Check a diagonal move

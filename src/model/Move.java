@@ -67,6 +67,8 @@ public class Move implements IMove{
 				return false;
 			}
 			count += t.getValue();
+			
+			// Note: any time the Move.valid() method is called the multiplier will be incremented
 			this.multiplierTotal = this.multiplierTotal * t.getMultiplier();
 			
 			// if the sum of the tiles is greater than six the move is invalid
