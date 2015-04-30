@@ -25,6 +25,9 @@ public class Tile{
 	/** Column location of the tile in array */
 	int col;
 	
+	/** Vaule of the score multiplier */
+	int multiplier;
+	
 	
 	/**
 	 * Constructor
@@ -33,6 +36,7 @@ public class Tile{
 		this.value = value;
 		this.row = row;
 		this.col = col;
+		this.multiplier = 1;
 	}
 	
 	/**
@@ -63,8 +67,22 @@ public class Tile{
 	 * Sets the value of the tile
 	 * @return void
 	 */
-	public void setValue(int x){
-		if(x <= 6){this.value = x;}
+	public boolean setValue(int x){
+		if(x <= 6){
+			this.value = x;
+			return true;}
+		else return false;
+	}
+	
+	public boolean setMultiplier(int x){
+		if(0 < x ||x < 4){
+			this.multiplier = x;
+			return true;}
+		else return false;
+	}
+	
+	public int getMultiplier(){
+		return this.multiplier;
 	}
 	
 	/**

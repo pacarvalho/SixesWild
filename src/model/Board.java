@@ -124,13 +124,11 @@ public class Board implements Serializable{
 							new Tile(tiles[nullLocation[0]][nullLocation[1]-1].getValue(), nullLocation[0], nullLocation[1]);
 					
 					this.destroyTile(tiles[nullLocation[0]][nullLocation[1]-1]); // Delete Tile
-				}
-				
+				}		
 			}
 			
-			// Increment interation
+			// Increment interaction
 			ite += 1;
-			
 		}
 		
 		return false;

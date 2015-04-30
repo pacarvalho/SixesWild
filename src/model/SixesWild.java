@@ -5,7 +5,7 @@ package model;
  * 
  * All variation of the game should extend this class.
  * 
- * @author Paulo, Katie
+ * @author Paulo, Katie, Sean
  *
  */
 abstract public class SixesWild {
@@ -44,8 +44,9 @@ abstract public class SixesWild {
 	 * Method that increments that changes score by given value
 	 * 
 	 */
-	public boolean updateScore(int change){ // TODO: IMPLEMENT THIS
-		return false;
+	public boolean updateScore(int change){ 
+		this.currentScore = this.currentScore+change;
+		return true;
 	}
 	
 	/**

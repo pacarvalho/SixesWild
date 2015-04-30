@@ -53,15 +53,12 @@ public class EliminationMove implements IMove {
 	public boolean valid() {
 		int count = 0;
 		// if the any two tiles are diagonal return false
+		// if the any two tiles are diagonal return false
 		for(int i = 0; i < tiles.size()-1; i++){
-			for(int j = i+1; j<=tiles.size()-1;j++){
-				if(tiles.get(i).getRow() == tiles.get(j).getRow()+1 || tiles.get(i).getRow() == tiles.get(j).getRow()-1){
-					if(tiles.get(i).getColumn() == tiles.get(j).getColumn()+8 || tiles.get(i).getColumn() == tiles.get(j).getColumn()-8){
-						return false;
-					}
-					if(tiles.get(i).getColumn() == tiles.get(j).getColumn()+10 || tiles.get(i).getColumn() == tiles.get(j).getColumn()-10){
-						return false;
-					}
+			int j = i+1;
+			if(tiles.get(i).getRow() == tiles.get(j).getRow()+1 || tiles.get(i).getRow() == tiles.get(j).getRow()-1){
+				if(tiles.get(i).getColumn() == tiles.get(j).getColumn()+1 || tiles.get(i).getColumn() == tiles.get(j).getColumn()-1){
+					return false;
 				}
 			}
 		}

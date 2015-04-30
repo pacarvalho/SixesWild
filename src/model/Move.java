@@ -13,6 +13,7 @@ public class Move implements IMove{
 	ArrayList<Tile> tiles;
 	SixesWild model;
 	Board board;
+	int multiplierTotal;
 	
 	/**
 	 * Constructor
@@ -24,6 +25,7 @@ public class Move implements IMove{
 		this.tiles = tiles;
 		this.model = model;
 		this.board = model.getBoard();
+		this.multiplierTotal = 1;
 	}
 	
 	/**
@@ -41,6 +43,9 @@ public class Move implements IMove{
 		for (Tile t: tiles){
 			board.destroyTile(t);
 		}	
+		
+		model.updateMoves(1);
+		model.updateScore(this.multiplierTotal*6);
 		
 		board.update();
 		return true;
@@ -61,19 +66,8 @@ public class Move implements IMove{
 			if(t.getValue() == 6 || t.getValue() == 0 || t.getValue() == -1){
 				return false;
 			}
-			// if the any two tiles are diagonal return false
-			for(int i = 0; i < tiles.size()-1; i++){
-				for(int j = i+1; j<=tiles.size()-1;j++){
-					if(tiles.get(i).getRow() == tiles.get(j).getRow()+1 || tiles.get(i).getRow() == tiles.get(j).getRow()-1){
-						if(tiles.get(i).getColumn() == tiles.get(j).getColumn()+1 || tiles.get(i).getColumn() == tiles.get(j).getColumn()-1){
-							return false;
-						}
-
-					}
-				}
-			}
-
 			count += t.getValue();
+			this.multiplierTotal = this.multiplierTotal * t.getMultiplier();
 			
 			// if the sum of the tiles is greater than six the move is invalid
 			if(count > 6){
@@ -81,9 +75,17 @@ public class Move implements IMove{
 			}
 		}
 		
+		// if the any two tiles are diagonal return false
+		for(int i = 0; i < tiles.size()-1; i++){
+			int j = i+1;
+			if(tiles.get(i).getRow() == tiles.get(j).getRow()+1 || tiles.get(i).getRow() == tiles.get(j).getRow()-1){
+				if(tiles.get(i).getColumn() == tiles.get(j).getColumn()+1 || tiles.get(i).getColumn() == tiles.get(j).getColumn()-1){
+					return false;
+				}
+			}
+		}
+		
 		if(count == 6){
-			model.updateMoves(1);
-			model.updateScore();
 			return true;
 		}
 		
