@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 
 import controllers.DestroyTileController;
 import controllers.ResetController;
+import controllers.SpecialMovesController;
 import controllers.SwapController;
 import model.SixesWild;
 
@@ -31,12 +32,18 @@ public class SpecialButtonsPanel extends JPanel {
 	JButton btnSpecial2 = null;
 	JButton btnSpecial3 = null;
 	
+	/** BoardView for setting MouseAdapter*/
+	BoardView boardView;
+	/** game model*/
 	SixesWild model;
 	
-	public SpecialButtonsPanel(SixesWild m){
+	
+	public SpecialButtonsPanel(BoardView boardView, SixesWild m){
 		super();
 		
+		this.boardView = boardView;
 		this.model = m;
+		
 		//this.height = H;
 		//this.width = W;
 		initialize();
@@ -52,31 +59,35 @@ public class SpecialButtonsPanel extends JPanel {
 			add(getBtnSpecial2());
 			add(getBtnSpecial3());
 			
-			
+			SpecialMovesController specBtnsCtrl = new SpecialMovesController(getBtnSpecial1(),
+					getBtnSpecial2(), getBtnSpecial3(), boardView, model);
+			getBtnSpecial1().addActionListener(specBtnsCtrl);
+			getBtnSpecial2().addActionListener(specBtnsCtrl);
+			getBtnSpecial3().addActionListener(specBtnsCtrl);
 		}
 		public JButton getBtnSpecial1(){
-			if(btnSpecial1 == null){
-				btnSpecial1=new JButton();
-				btnSpecial1.setText("S1");
+			if(this.btnSpecial1 == null){
+				this.btnSpecial1=new JButton();
+				this.btnSpecial1.setText("S1");
 				//btnSpecial1.setSize(width/3,height);
 			}
-			return btnSpecial1;
+			return this.btnSpecial1;
 		}
 		public JButton getBtnSpecial2(){
-			if(btnSpecial2 == null){
-				btnSpecial2=new JButton();
-				btnSpecial2.setText("S2");
+			if(this.btnSpecial2 == null){
+				this.btnSpecial2=new JButton();
+				this.btnSpecial2.setText("S2");
 				//btnSpecial2.setSize(width/3,height);
 			}
-			return btnSpecial2;
+			return this.btnSpecial2;
 		}
 		public JButton getBtnSpecial3(){
-			if(btnSpecial3 == null){
-				btnSpecial3=new JButton();
-				btnSpecial3.setText("S3");
+			if(this.btnSpecial3 == null){
+				this.btnSpecial3=new JButton();
+				this.btnSpecial3.setText("S3");
 				//btnSpecial3.setSize(width/3,height);
 			}
-			return btnSpecial3;
+			return this.btnSpecial3;
 		}
 		
 }

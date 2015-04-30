@@ -14,13 +14,6 @@ import model.SixesWild;
 import model.SwapSpecialMove;
 import model.Tile;
 
-/**
- * 
- * 
- * @author Ozan
- *
- */
-
 public class SwapController extends MouseAdapter{
 
 	/** Stores the BoardView */
@@ -54,17 +47,15 @@ public class SwapController extends MouseAdapter{
 		if(this.isActive()){
 			if(this.selectTile(me.getX(), me.getY())){
 				
-				SwapSpecialMove move = new SwapSpecialMove(tile1,tile2, model);
+				SwapSpecialMove move = new SwapSpecialMove(tile1,tile2,  model);
 				
 				//Perform
 				move.doMove();
 				System.out.println("doing move");
-				// Tell the board to update itself such that changes in tiles are reflected in GUI
+				// Tell the board to update itself such that changes in tiles are relfected in GUI
 				boardView.updateBoardView();
 				
 				//clear tile
-				System.out.println(tile1.getValue());
-				
 				this.tile1 = null;
 				this.tile2 = null;
 				

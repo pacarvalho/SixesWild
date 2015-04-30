@@ -140,15 +140,11 @@ public class LevelPanel extends JPanel implements IApplication{
 	}
 	
 	public SpecialButtonsPanel getSpecialButtonsPanel(){
-		if (specialBtnsPanel == null){
-			specialBtnsPanel = new SpecialButtonsPanel(model);
+		if (this.specialBtnsPanel == null){
+			this.specialBtnsPanel = new SpecialButtonsPanel(boardView, model);
 		}
-		SpecialMovesController specBtnsCtrl = new SpecialMovesController(specialBtnsPanel.getBtnSpecial1(),
-				specialBtnsPanel.getBtnSpecial2(), specialBtnsPanel.getBtnSpecial3(), boardView, model);
-		specialBtnsPanel.getBtnSpecial1().addActionListener(specBtnsCtrl);
-		specialBtnsPanel.getBtnSpecial2().addActionListener(specBtnsCtrl);
-		specialBtnsPanel.getBtnSpecial3().addActionListener(specBtnsCtrl);
-		return specialBtnsPanel;	
+		
+		return this.specialBtnsPanel;	
 	}
 	
 	public BoardView getBoardView() {
