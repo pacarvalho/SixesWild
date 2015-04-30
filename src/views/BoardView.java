@@ -2,8 +2,11 @@ package views;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.event.MouseAdapter;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
 import model.Board;
 import model.SixesWild;
 import model.Tile;
@@ -36,6 +39,10 @@ public class BoardView extends JPanel{
 	/** 2D Array of TileView */
 	TileView[][] tileViews = new TileView[9][9];
 	
+	/** Current mouse adapter */
+	MouseAdapter activeAdapter;
+	
+
 	/**
 	 * Constructor
 	 * 
@@ -47,6 +54,7 @@ public class BoardView extends JPanel{
 		this.frame = frame;
 		this.model = model;
 		this.board = model.getBoard();
+		this.activeAdapter = null;
 		
 		Tile[][] tileSet = this.board.getTiles();
 		
@@ -102,6 +110,16 @@ public class BoardView extends JPanel{
 	 */
 	public TileView getTileView(int i, int j){
 		return this.tileViews[i][j];
+	}
+	/** Properly register new listener (and unregister old one if present). */
+	public void setActiveAdapter(MouseAdapter ma) {
+		this.removeMouseListener(activeAdapter);
+		this.removeMouseMotionListener(activeAdapter);
+		this.activeAdapter = ma;
+		if (ma != null) { 
+			this.addMouseListener(ma);
+			this.addMouseMotionListener(activeAdapter);
+		}
 	}
 	
 }

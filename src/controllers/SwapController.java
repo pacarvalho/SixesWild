@@ -7,7 +7,7 @@ import java.awt.event.MouseEvent;
 
 import views.BoardView;
 import views.TileView;
-import model.DestroyTileSpecialMove;
+
 import model.SixesWild;
 import model.SwapSpecialMove;
 import model.Tile;
