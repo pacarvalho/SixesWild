@@ -54,13 +54,14 @@ public class Move implements IMove{
 	 * 
 	 * @return boolean
 	 */
-	public boolean valid(){ // TODO DO NOT ALLOW DIAGONAL MOVES
+	public boolean valid(){ 
 		int count = 0;
 		for (Tile t: tiles){
 			// if the tile is a six, a wall, or a container the move is invalid
 			if(t.getValue() == 6 || t.getValue() == 0 || t.getValue() == -1){
 				return false;
 			}
+			// if the any two tiles are diagonal return false
 			for(int i = 0; i < tiles.size()-1; i++){
 				for(int j = i+1; j<=tiles.size()-1;j++){
 					if(tiles.get(i).getRow() == tiles.get(j).getRow()+1 || tiles.get(i).getRow() == tiles.get(j).getRow()-1){
@@ -83,6 +84,7 @@ public class Move implements IMove{
 		}
 		
 		if(count == 6){
+			model.updateMoves(1);
 			return true;
 		}
 		

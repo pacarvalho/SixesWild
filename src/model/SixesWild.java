@@ -13,12 +13,16 @@ abstract public class SixesWild {
 	/** Keeps the current Score of the game */
 	int currentScore;
 	
+	/** Monitor the number of moves made */
+	int numMoves;
+	
 	/** Create a board for the game */
 	Board board;
 	
 	/** Constructor */
 	public SixesWild(){
 		this.currentScore = 0;
+		this.numMoves = 0;
 		this.board = null;
 	}
 	
@@ -42,6 +46,15 @@ abstract public class SixesWild {
 	 */
 	public boolean updateScore(int change){ // TODO: IMPLEMENT THIS
 		return false;
+	}
+	
+	/**
+	 * Method that increments the number of moves made by a given value
+	 * 
+	 */
+	public boolean updateMoves(int change){ 
+		this.numMoves = this.numMoves + change;
+		return true;
 	}
 	
 	//ABSTRACT METHODS
