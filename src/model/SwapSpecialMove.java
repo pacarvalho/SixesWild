@@ -19,6 +19,7 @@ public class SwapSpecialMove implements IMove{
 		
 		this.tile1 = tile1;
 		this.tile2 = tile2;		
+		
 		this.model = model;
 		this.board = model.getBoard();
 	}
@@ -31,9 +32,10 @@ public class SwapSpecialMove implements IMove{
 	@Override
 	public boolean doMove() {
 		if(!this.valid()) {return false;}
+		System.out.println("doing move");
 		
 		board.swapTwoTiles(tile1, tile2);
-	
+		
 		
 		return true;
 	}
@@ -54,7 +56,7 @@ public class SwapSpecialMove implements IMove{
 	private boolean tileValid(Tile aTile){
 		int value = aTile.getValue();
 		
-		return (value < 0 )&& ( value > 6);
+		return (value > 0 )&& ( value < 6);
 		
 	}
 }

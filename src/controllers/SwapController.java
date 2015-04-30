@@ -44,6 +44,14 @@ public class SwapController extends MouseAdapter{
 	 */
 	@Override
 	public void mouseClicked(MouseEvent me){
+		
+		// cancel move on right click)
+		if (me.getModifiers() == MouseEvent.BUTTON3_MASK) { 
+			this.unregister();
+			System.out.println("right click");
+			return;
+	}
+		
 		if(this.isActive()){
 			if(this.selectTile(me.getX(), me.getY())){
 				
@@ -51,8 +59,8 @@ public class SwapController extends MouseAdapter{
 				
 				//Perform
 				move.doMove();
-				System.out.println("doing move");
-				// Tell the board to update itself such that changes in tiles are relfected in GUI
+				
+				// Tell the board to update itself such that changes in tiles are reflected in GUI
 				boardView.updateBoardView();
 				
 				//clear tile
@@ -83,14 +91,14 @@ public class SwapController extends MouseAdapter{
 					if(tile1 == null && tView.getTile().getValue() > 0){
 						
 						tile1 = tView.getTile();
-						System.out.println("Tile 1 selected");
+						System.out.println(tile1.getValue());
 						return false;
 						
 						}
 					else if(tile1 !=  tView.getTile()){
 						
 						tile2 =  tView.getTile();
-						System.out.println("Tile 2 selected");
+						System.out.println(tile2.getValue());
 						return true;
 					}
 				}

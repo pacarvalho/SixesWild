@@ -35,15 +35,15 @@ public class LevelPanel extends JPanel implements IApplication{
 	
 	/** Parent Container */
 	JFrame frame;
-	SpecialButtonsPanel specialBtnsPanel;
 	SixesWild model;
 	BoardView boardView;
-	
+	SpecialButtonsPanel specialBtnsPanel;
 
 
 	public LevelPanel(JFrame frame, SixesWild model, String title, String levelTitle){
 		super();
 		
+		this.model = model;
 		this.frame = frame;
 		this.frame.setMinimumSize(new Dimension(800, 700));
 		this.boardView = null;
@@ -136,14 +136,13 @@ public class LevelPanel extends JPanel implements IApplication{
 		c.gridx = menux-1;
 		c.gridy = 4;
 		c.gridwidth = 3;
-		add(getSpecialButtonsPanel(),c);
+		add(this.getSpecialButtonsPanel(),c);
 	}
 	
 	public SpecialButtonsPanel getSpecialButtonsPanel(){
 		if (this.specialBtnsPanel == null){
 			this.specialBtnsPanel = new SpecialButtonsPanel(boardView, model);
-		}
-		
+		}	
 		return this.specialBtnsPanel;	
 	}
 	

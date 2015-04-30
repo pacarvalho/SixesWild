@@ -37,6 +37,13 @@ public class DestroyTileController extends MouseAdapter{
 	 */
 	@Override
 	public void mouseClicked(MouseEvent me){
+		
+		// cancel move on right click)
+		if (me.getModifiers() == MouseEvent.BUTTON3_MASK) { 
+			this.unregister();
+			return;
+	}
+			
 		if(this.isActive()){
 			if(this.selectTile(me.getX(), me.getY())){
 				System.out.println("Tile selected");
@@ -50,7 +57,7 @@ public class DestroyTileController extends MouseAdapter{
 				
 				//clear tile
 				this.tile=null;
-				this.unregister();
+			
 
 				//Change MosueAdapter
 				this.unregister();

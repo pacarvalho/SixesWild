@@ -24,8 +24,10 @@ public class DestroyTileSpecialMove implements IMove {
 	@Override
 	public boolean doMove() {
 		if(!this.valid()) {return false;}
+		System.out.println("doing move");
 		
 		board.destroyTile(tile1);
+		board.update();
 		
 		return true;
 	}
@@ -44,8 +46,7 @@ public class DestroyTileSpecialMove implements IMove {
 		
 		int value = this.tile1.getValue();
 		
-		return (value < 0 )&& ( value > 6);
+		return (value > 0 )&& ( value < 6);
 	}
 	
-
 }

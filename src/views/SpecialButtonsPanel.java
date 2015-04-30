@@ -43,7 +43,6 @@ public class SpecialButtonsPanel extends JPanel {
 		
 		this.boardView = boardView;
 		this.model = m;
-		
 		//this.height = H;
 		//this.width = W;
 		initialize();
