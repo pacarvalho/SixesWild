@@ -93,7 +93,9 @@ public class BuilderGameSelectorPanel extends JPanel implements IApplication{
 		c.ipady = 40;
 		this.add(btnElimination, c);
 	}
-	
+	/**
+	 * 
+	 */
 	@Override
 	public JFrame getFrame() {
 		return this.frame;

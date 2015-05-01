@@ -15,7 +15,7 @@ import views.LevelSelectorPanel;
 /**
  * Panel for choosing game type
  * 
- * @author Paulo, Katie, Sean
+ * @author Paulo, Katie, Sean, Ozan
  *
  */
 public class ChooseGameController implements ActionListener{

@@ -10,7 +10,13 @@ import views.TileView;
 import model.DestroyTileSpecialMove;
 import model.SixesWild;
 import model.Tile;
-
+/**
+ * Handles the mouse events for DestroyTile  which is activated by button click.
+ * Creates, validates and realizes the move.
+ * 
+ * @author OAkyildiz
+ *
+ */
 public class DestroyTileController extends MouseAdapter{
 
 	/** Stores the BoardView */
@@ -22,6 +28,13 @@ public class DestroyTileController extends MouseAdapter{
 	/**Selected Tile */
 	Tile tile;
 	
+	
+	/**
+	 * Constructor
+	 * 
+	 * @param boardView
+	 * @param model
+	 */
 	public DestroyTileController(BoardView boardView, SixesWild model ){
 		
 		this.model = model;
@@ -32,7 +45,7 @@ public class DestroyTileController extends MouseAdapter{
 	}
 	/**
 	 * Selects the clicked tile and performs the move if ready
-	 * 
+	 * On right click, Cancels the move and switches to boardView MouseAdatper
 	 * 
 	 */
 	@Override
@@ -44,37 +57,34 @@ public class DestroyTileController extends MouseAdapter{
 			return;
 	}
 			
-		if(this.isActive()){
-			if(this.selectTile(me.getX(), me.getY())){
-				System.out.println("Tile selected");
-				DestroyTileSpecialMove move = new DestroyTileSpecialMove(tile, this.model);
+		
+		if(this.selectTile(me.getX(), me.getY())){
+			System.out.println("Tile selected");
+			DestroyTileSpecialMove move = new DestroyTileSpecialMove(tile, this.model);
 				
-				//Perform
-				move.doMove();
+			//Perform
+			move.doMove();
 				
-				// Tell the board to update itself such that changes in tiles are relfected in GUI
-				boardView.updateBoardView();
+			// Tell the board to update itself such that changes in tiles are relfected in GUI
+			boardView.updateBoardView();
 				
-				//clear tile
-				this.tile=null;
+			//clear tile
+			this.tile=null;
 			
 
-				//Change MosueAdapter
-				this.unregister();
-			}
+			//Change MosueAdapter
+			this.unregister();
 		}
-	}
-	//TODO rightClick to cancel change controller
-
-	
-	private boolean isActive() {
 		
-		// TODO check if this controller is active. 
-		return true;
-	
 	}
 	
-	
+	/**
+	 * Tries to select a tile on mouseClicked location
+	 * 
+	 * @param clickX
+	 * @param clickY
+	 * @return
+	 */
 	private boolean selectTile(int clickX, int clickY){
 		
 		for(int i = 0; i < 9; i++){
@@ -89,12 +99,16 @@ public class DestroyTileController extends MouseAdapter{
 		//no tile selected
 		return false;	
 	}
-	
+	/**
+	 * Activates this mouse adapter to create move
+	 */
 	public void register(){
 		boardView.setActiveAdapter(this);
 	}
-
-	
+	/**
+	 * switches to boardView MouseAdatper
+	 */
+	 
 	public void unregister(){
 		boardView.setActiveAdapter(new BoardController(boardView, model));
 	}

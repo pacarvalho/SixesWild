@@ -12,9 +12,9 @@ import builder.views.BuilderPanel;
 import views.IApplication;
 
 /**
- * Starts the Level Builder
+ * Starts the Level Builder on button click
  * 
- * @author Ozan
+ * @author OAkyildiz
  *
  */
 public class StartBuilderController implements ActionListener{
@@ -24,6 +24,8 @@ public class StartBuilderController implements ActionListener{
 	
 	/** Parent JPanel */
 	IApplication view;
+	
+	/** SixesdWild model*/
 	SixesWild model;
 	
 	/**

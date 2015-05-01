@@ -26,20 +26,28 @@ import model.SixesWild;
 /*
  * 
  */
-
+/**
+ * View class for the Builder
+ * 
+ * @author Anurag, Katie, OAkyildiz
+ *
+ */
 public class BuilderPanel extends JPanel implements IApplication {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -5020862675511089854L;
 	
+	
 	JFrame frame;
+	/**g model*/
 	SixesWild model;
 	
 	
 	int h=120,w=190;
-	// the constructor takes in model
+	/**
+	 * 
+	 * @param frame
+	 * @param model
+	 */
 	public BuilderPanel(JFrame frame, SixesWild model){
 		super();
 		
