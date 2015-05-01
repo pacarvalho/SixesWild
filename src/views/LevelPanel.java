@@ -11,12 +11,14 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JButton;
+import javax.swing.JTextField;
 
 import controllers.BoardController;
 import controllers.DestroyTileController;
 import controllers.ExitController;
 import controllers.ResetController;
 import controllers.SpecialMovesController;
+import controllers.StarUpdater;
 import controllers.SwapController;
 import model.SixesWild;
 
@@ -58,7 +60,8 @@ public class LevelPanel extends JPanel implements IApplication{
 		
 		JLabel lblTime = new JLabel("time");
 		
-		JLabel lblScore = new JLabel("score");
+		JTextField lblScore = new JTextField("score");
+		lblScore.setEnabled(false);
 		
 		/* 
 		 * Create button to return to main menu and bind it to its controller
@@ -142,7 +145,11 @@ public class LevelPanel extends JPanel implements IApplication{
 		c.gridx = menux;
 		c.gridy = 3;
 		c.gridwidth = 1;
-		this.add(new StarPanel(model), c);
+		StarPanel stars = new StarPanel(model);
+		this.add(stars, c);
+		
+		//Listen to score
+		lblScore.getDocument().addDocumentListener(new StarUpdater(model, stars));
 		
 		// Place Special MovePanel
 		c.gridx = menux;
