@@ -10,6 +10,7 @@ public class EliminationGame extends SixesWild {
 	
 	public EliminationGame(){
 		super();
+		this.stars = 7;
 	}
 	
 	/**

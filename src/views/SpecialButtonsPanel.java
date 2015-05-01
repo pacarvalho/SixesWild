@@ -64,7 +64,7 @@ public class SpecialButtonsPanel extends JPanel {
 		}
 		public JButton getBtnSpecial1(){
 			if(this.btnSpecial1 == null){
-				this.btnSpecial1=new JButton();
+				this.btnSpecial1 = new JButton();
 				this.btnSpecial1.setText("S1");
 				//btnSpecial1.setSize(width/3,height);
 			}
@@ -72,7 +72,7 @@ public class SpecialButtonsPanel extends JPanel {
 		}
 		public JButton getBtnSpecial2(){
 			if(this.btnSpecial2 == null){
-				this.btnSpecial2=new JButton();
+				this.btnSpecial2 = new JButton();
 				this.btnSpecial2.setText("S2");
 				//btnSpecial2.setSize(width/3,height);
 			}
@@ -80,7 +80,7 @@ public class SpecialButtonsPanel extends JPanel {
 		}
 		public JButton getBtnSpecial3(){
 			if(this.btnSpecial3 == null){
-				this.btnSpecial3=new JButton();
+				this.btnSpecial3 = new JButton();
 				this.btnSpecial3.setText("S3");
 				//btnSpecial3.setSize(width/3,height);
 			}

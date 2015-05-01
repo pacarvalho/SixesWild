@@ -2,6 +2,7 @@ package views;
 
 import java.awt.FlowLayout;
 
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -16,11 +17,14 @@ import model.SixesWild;
  */
 public class StarPanel extends JPanel{
 	
-	JLabel star1, star2, star3;
+	JLabel[] stars = new JLabel[3];
 	boolean time;
 	
 	/**Game */
 	SixesWild model;
+	
+	static final Icon onStar = new ImageIcon("resources/Star.gif");
+	static final Icon offStar = new ImageIcon("resources/NStar.gif");
 	
 	/**
 	 * 
@@ -31,8 +35,6 @@ public class StarPanel extends JPanel{
 		this.model = model;
 		time = model instanceof LightningGame; 
 		
-		JLabel earnedS = new JLabel("", new ImageIcon("resources/Star"), SwingConstants.CENTER);
-		JLabel notS = new JLabel("", new ImageIcon("resources/NSTAR.gif"), SwingConstants.CENTER);
 		
 		initialize();
 		
@@ -41,13 +43,42 @@ public class StarPanel extends JPanel{
 	
 	private void initialize(){
 		setLayout(new FlowLayout(FlowLayout.RIGHT));
-		//addStars
+		if(!time){
+			for(int m=0; m<3; m++ ){
+				stars[m] = new JLabel("", offStar, SwingConstants.CENTER);
+				this.add(stars[m]);
+			}
+		}
+		else{
+			for(int m=0; m<3; m++ ){
+				stars[m] = new JLabel("", onStar, SwingConstants.CENTER);
+				this.add(stars[m]);
+			}
+		}
+			
 	}
-	private void addStars(){
+	public void updateStars(int toggle){
 		
+		if((toggle & SixesWild.FIRST) == SixesWild.FIRST)
+			toggleStar(0);
+		
+		if((toggle & SixesWild.SECOND) == SixesWild.SECOND)
+			toggleStar(1);
+		
+		if((toggle & SixesWild.SECOND) == SixesWild.SECOND)
+			toggleStar(2);
+	}
+	
+	//*toggle the given star*/
+	private void toggleStar(int i) {
+		
+		if(stars[i].getIcon() == offStar)
+			stars[i].setIcon(onStar);
+		else
+			stars[i].setIcon(offStar);
+		
+		stars[i].repaint();
 	}
 
-	public void assesScore(){
-		
-	}
+	
 }
