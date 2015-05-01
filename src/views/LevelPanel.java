@@ -92,35 +92,40 @@ public class LevelPanel extends JPanel implements IApplication{
 		// Place Title
 		c.gridx = 0;
 		c.gridy = 0;
-		c.gridwidth = 12;
+		c.gridwidth = 13;
 		this.add(lblTitle, c);
 		
 		// Place Level label
 		c.gridx = 0;
 		c.gridy = 1;
-		c.gridwidth = 12;
+		c.gridwidth = 13;
 		this.add(lblLevel, c);
 		
 		// Place Timer
 		c.gridx = 0;
 		c.gridy = 2;
 		c.gridwidth = 1;
+		c.anchor = GridBagConstraints.EAST;
 		c.ipady = 15; // Height in px
 		this.add(lblTime, c);
 		
 		// Place Score
-		c.gridx = 11;
+		c.gridx = 12;
 		c.gridy = 2;
 		c.gridwidth = 1;
+		c.gridheight =1;
 		c.ipady = 15; // Height in px
+		c.anchor = GridBagConstraints.SOUTH;
 		this.add(lblScore, c);
 		
 		// NOTE THAT THE WAY WE PLACE THE BOARD
 		// APPEARS TO DISTORT THE SIZE OF CELLS (3,3) & (4,3)
 		// Place the Board (VERY IMPORTANT!!!)
-		c.gridx = 2;
+		c.gridx = 3;
 		c.gridy = 3;
 		c.gridwidth = 9;
+		c.gridheight = 9;
+		c.anchor = GridBagConstraints.WEST;
 		this.add(boardView, c);
 		
 		// Place Menu Button
@@ -129,18 +134,22 @@ public class LevelPanel extends JPanel implements IApplication{
 		c.gridx = menux;
 		c.gridy = 0;
 		c.gridwidth = 1;
+		c.gridheight =1;
+		c.anchor = GridBagConstraints.NORTHEAST;
 		this.add(btnMenu, c);
 		
 		//Place Star Panel
-		c.gridy = 1;
+		c.gridx = menux;
+		c.gridy = 3;
 		c.gridwidth = 1;
-		c.gridwidth = 3;
 		this.add(new StarPanel(model), c);
 		
 		// Place Special MovePanel
-		c.gridx = menux-1;
+		c.gridx = menux;
 		c.gridy = 4;
-		c.gridwidth = 3;
+		c.gridwidth = 1;
+		c.gridheight = 8;
+		c.anchor = GridBagConstraints.SOUTHEAST;
 		add(this.getSpecialButtonsPanel(),c);
 	}
 	
