@@ -24,9 +24,7 @@ public class SpecialButtonsPanel extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = -4492642561373155028L;
-	
-	int height;
-	int width;;
+
 	/** GUI widgets used only in this class. */
 	JButton btnSpecial1 = null;
 	JButton btnSpecial2 = null;

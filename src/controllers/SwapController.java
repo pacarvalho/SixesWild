@@ -13,7 +13,11 @@ import views.TileView;
 import model.SixesWild;
 import model.SwapSpecialMove;
 import model.Tile;
-
+/**
+ * 
+ * @author OAkyildiz
+ *
+ */
 public class SwapController extends MouseAdapter{
 
 	/** Stores the BoardView */
@@ -28,6 +32,11 @@ public class SwapController extends MouseAdapter{
 	/** Second selected Tile */
 	Tile tile2;
 	
+	/**
+	 * 
+	 * @param boardView
+	 * @param model
+	 */
 	public SwapController(BoardView boardView, SixesWild model ){
 		
 		this.model = model;

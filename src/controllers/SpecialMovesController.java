@@ -8,6 +8,11 @@ import javax.swing.JButton;
 import model.SixesWild;
 import views.BoardView;
 
+/**
+ * 
+ * @author OAkyildiz
+ *
+ */
 public class SpecialMovesController implements ActionListener {
 	
 	/**Buttons*/
