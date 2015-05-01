@@ -13,6 +13,7 @@ abstract public class SixesWild {
 	/** Keeps the current Score of the game */
 	int currentScore;
 	
+
 	/** Monitor the number of moves made */
 	int numMoves;
 	
@@ -77,7 +78,10 @@ abstract public class SixesWild {
 	abstract public boolean hasLost();
 	
 	/**
-	 * Returns the name of the variation
+	 * Returns the currentScore
 	 */
+	public int getCurrentScore() {
+		return this.currentScore;
+	}
 	abstract public void updateScore();
 }

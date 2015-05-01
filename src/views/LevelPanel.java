@@ -135,7 +135,7 @@ public class LevelPanel extends JPanel implements IApplication{
 		c.gridy = 1;
 		c.gridwidth = 1;
 		c.gridwidth = 3;
-		this.add(new StarPanel(), c);
+		this.add(new StarPanel(model), c);
 		
 		// Place Special MovePanel
 		c.gridx = menux-1;
