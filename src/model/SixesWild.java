@@ -116,7 +116,7 @@ abstract public class SixesWild {
 		else if(score >= win1)
 			EVAL = 1;
 		
-		int change = this.stars-EVAL;
+		int change = this.stars^EVAL;
 		this.stars=EVAL;
 		
 		return change;
