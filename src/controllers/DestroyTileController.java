@@ -73,8 +73,9 @@ public class DestroyTileController extends MouseAdapter{
 			System.out.println("Tile selected");
 			DestroyTileSpecialMove move = new DestroyTileSpecialMove(tile, this.model);
 				
-			//Perform
+			//Perform and update remaining moves
 			move.doMove();
+			model.setSpecQuotas(1, -1);
 				
 			// Tell the board to update itself such that changes in tiles are relfected in GUI
 			boardView.updateBoardView();

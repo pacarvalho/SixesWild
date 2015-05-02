@@ -3,7 +3,8 @@ package model;
 /**
  * Method overriding for elimination variation of the game goes here.
  * 
- * @author Paulo, Katie
+ * @author Paulo, Katie, OAkyildiz
+ *
  *
  */
 public class EliminationGame extends SixesWild {
@@ -11,6 +12,7 @@ public class EliminationGame extends SixesWild {
 	public EliminationGame(){
 		super();
 		this.stars = 7;
+		this.specQuotas = new int[]{1,0,1};
 	}
 	
 	/**
