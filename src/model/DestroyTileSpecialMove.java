@@ -1,12 +1,26 @@
 package model;
-
+/**
+ * Destroys a given tile, updates the board and 
+ * switches back to default mouse adapter.
+ * 
+ * @author OAkyildiz
+ *
+ */
 public class DestroyTileSpecialMove implements IMove {
 	
+	/** Tile to be destroyed */
 	Tile tile1;
-
+	/** Game model*/
 	SixesWild model;
+	/**Board model*/
 	Board board;
 	
+	/**
+	 * Constructor
+	 * 
+	 * @param tile
+	 * @param model
+	 */
 	public DestroyTileSpecialMove(Tile tile, SixesWild model){
 		
 		this.tile1 = tile;
@@ -20,7 +34,6 @@ public class DestroyTileSpecialMove implements IMove {
 	 * 
 	 * return boolean()
 	 */
-
 	@Override
 	public boolean doMove() {
 		if(!this.valid()) {return false;}
@@ -40,7 +53,6 @@ public class DestroyTileSpecialMove implements IMove {
 	 * 
 	 * @return boolean
 	 */
-
 	@Override
 	public boolean valid() {
 		
