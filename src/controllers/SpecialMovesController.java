@@ -36,16 +36,16 @@ public class SpecialMovesController implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if(e.getSource()== btnSpec1){
+		if(e.getSource()== btnSpec1 && model.getSpecQuotas(0) != 0){
 			SwapController swapper = new SwapController(boardView, model);
 			swapper.register();
 			
 		}
-		else if(e.getSource()== btnSpec2){
+		else if(e.getSource()== btnSpec2 && model.getSpecQuotas(1) != 0){
 			DestroyTileController destroyer = new DestroyTileController(boardView, model);
 			destroyer.register();
 		}
-		else if(e.getSource()== btnSpec3){
+		else if(e.getSource()== btnSpec3 && model.getSpecQuotas(2) != 0){
 				//Reset move =new ResetMove();
 				//reset.doMove;
 				//voardView.update;

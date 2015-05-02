@@ -11,6 +11,7 @@ public class EliminationGame extends SixesWild {
 	public EliminationGame(){
 		super();
 		this.stars = 7;
+		this.specQuotas = new int[]{1,0,1};
 	}
 	
 	/**
