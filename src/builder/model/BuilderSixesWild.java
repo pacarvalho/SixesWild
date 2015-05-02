@@ -68,6 +68,9 @@ public class BuilderSixesWild {
 	 * @param board
 	 */
 	public boolean createMemento(Board board){
+		// Reset the redo stack
+		this.redoStack.removeAllElements();
+		
 		Board boardClone = (Board)BuilderSixesWild.deepClone(board);
 		return this.undoStack.add(boardClone);
 
@@ -83,6 +86,20 @@ public class BuilderSixesWild {
 		Board boardClone = (Board)BuilderSixesWild.deepClone(board);
 		this.redoStack.add(boardClone);
 		return this.undoStack.pop();
+	}
+	
+	/**
+	 * Redo Memento
+	 * 
+	 * Returns the undone state of the board
+	 * 
+	 * @param currentState
+	 * @return
+	 */
+	public Board redoMemento(Board board) { // TODO Add a check such that you don't add equal states to stack
+		Board boardClone = (Board)BuilderSixesWild.deepClone(board);
+		this.undoStack.add(boardClone);
+		return this.redoStack.pop();
 	}
 	
 	/**

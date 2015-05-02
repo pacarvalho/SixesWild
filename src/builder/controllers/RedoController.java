@@ -1,0 +1,45 @@
+package builder.controllers;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import model.Board;
+import model.SixesWild;
+import builder.model.BuilderSixesWild;
+import builder.views.BuilderPanel;
+
+public class RedoController implements ActionListener{
+	
+	/** Create Boundary Object */
+	BuilderPanel builderPanel;
+	
+	/** Create Game Model Object*/
+	SixesWild model;
+	
+	/** Create Builder Model Object*/
+	BuilderSixesWild builder;
+	
+	
+	public RedoController(BuilderPanel builderPanel, BuilderSixesWild builder, SixesWild model){
+		this.builderPanel = builderPanel;
+		this.builder = builder;
+		this.model = model;
+	}
+
+
+	/**
+	 * Listener for Redo Button Click
+	 * 
+	 * When the Redo button is clicked a "future" board state is restored
+	 * 
+	 * @param e
+	 */
+	public void actionPerformed(ActionEvent e) {
+		Board currentState = this.model.getBoard();
+		Board newState = this.builder.redoMemento(currentState);
+		this.model.initialize(newState);
+		
+		this.builderPanel.updateParameters();
+	}
+
+}
