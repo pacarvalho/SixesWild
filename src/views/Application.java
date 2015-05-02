@@ -24,6 +24,8 @@ public class Application extends JFrame implements IApplication{
 	/** Game Selector Panel */
 	GameSelectorPanel gameSelectorPanel;
 	
+	
+
 	/** 
 	 * Constructor
 	 */
@@ -57,6 +59,11 @@ public class Application extends JFrame implements IApplication{
 	public JFrame getFrame() {
 		return this.frame;
 	}
+	public SplashPanel getSplashPanel() {
+		return splashPanel;
+	}
 
-	
+	public GameSelectorPanel getGameSelectorPanel() {
+		return gameSelectorPanel;
+	}
 }

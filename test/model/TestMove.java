@@ -9,7 +9,7 @@ import junit.framework.TestCase;
  * Test Cases for the move class
  * 
  * 
- * @author Sean
+ * @author Sean, OAkyildiz
  *
  */
 
@@ -170,6 +170,43 @@ public class TestMove extends TestCase{
 		EliminationMove sixMove = new EliminationMove(sixMoveTiles,model);
 		assertEquals(sixMove.valid(),false);	
 	}
-
-	
+		/**
+		 * Tests 
+		 */
+		public void testSwap(){
+			Tile tile1 = board.tiles[1][3];
+			Tile tile2 = board.tiles[2][4];
+			
+			int value1 = tile1.getValue();
+			int value2 = tile2.getValue();
+			
+			SwapSpecialMove validSwapMove = new SwapSpecialMove(tile1, tile2, model);
+			assertEquals(validSwapMove.valid(),true);	
+			
+			validSwapMove.doMove();
+			//assert values swapped
+			assertEquals(tile1.getValue(),value2);
+			assertEquals(tile2.getValue(),value1);
+			//locations are the same
+			assertEquals(tile1.getColumn(),3);		
+			
+			//set tile to immutable
+			board.setTile(new Tile(0,5,3));
+			Tile immutable = board.tiles[5][3];
+			//test new assigned tile
+			assertEquals(immutable.getValue(),0);
+			
+			SwapSpecialMove invalidSwapMove = new SwapSpecialMove(immutable, tile2, model);
+			assertEquals(invalidSwapMove.valid(),false);	
+			
+			//try to do it
+			invalidSwapMove.doMove();
+			assertEquals(immutable.getValue(),0);
+			//TODO test quotas for s. moves after it's implemented
+		}
+		
+		public void testDestroy(){
+			Tile tile1 = board.tiles[1][3];
+			Tile tile2 = board.tiles[2][4];
+		}
 }
