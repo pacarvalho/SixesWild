@@ -104,6 +104,8 @@ public class Board implements Serializable{
 		int tempVal=t1.getValue();
 		t1.setValue(t2.getValue());
 		t2.setValue(tempVal);
+		t1.setSelectedFlag(false);
+		t2.setSelectedFlag(false);
 	}
 	/**
 	 * Implements "gravity" on board

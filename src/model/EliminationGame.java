@@ -3,7 +3,8 @@ package model;
 /**
  * Method overriding for elimination variation of the game goes here.
  * 
- * @author Paulo, Katie
+ * @author Paulo, Katie, OAkyildiz
+ *
  *
  */
 public class EliminationGame extends SixesWild {

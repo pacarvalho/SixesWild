@@ -60,8 +60,7 @@ public class SwapController extends MouseAdapter{
 					this.unregister();
 					System.out.println("right click");
 					
-					if(tile1!=null) tile1.setSelectedFlag(false);
-					if(tile2!=null) tile2.setSelectedFlag(false);
+				
 					boardView.updateBoardView();
 
 			}

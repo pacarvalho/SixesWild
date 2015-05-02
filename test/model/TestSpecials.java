@@ -83,7 +83,7 @@ public class TestSpecials extends TestCase {
 		//test performing it
 		valDEst.doMove();
 		assertEquals(board.tiles[5][6].getValue(), aboveValue);
-		assertNotSame(board.tiles[5][5].getValue(), aboveValue);
+		assertNotSame(board.tiles[5][5], tile2);
 		
 		
 	}
