@@ -87,7 +87,6 @@ public class BuilderPanel extends JPanel implements IApplication {
 		JLabel lblProbabilityOf3 = new JLabel("Probability of 3 : ");
 		JLabel lblProbabilityOf4 = new JLabel("Probability of 4 : ");
 		JLabel lblProbabilityOf5 = new JLabel("Probability of 5 : ");
-		JLabel lblProbabilityOf6 = new JLabel("Probability of 6 : ");
 		
 		// ***********************
 		// ****Create Buttons*****
@@ -140,7 +139,6 @@ public class BuilderPanel extends JPanel implements IApplication {
 		JSlider slider_3 = new JSlider();
 		JSlider slider_4 = new JSlider();
 		JSlider slider_5 = new JSlider();
-		JSlider slider_6 = new JSlider();
 		
 		// ***********************
 		// *****Create Misc*******
@@ -307,13 +305,6 @@ public class BuilderPanel extends JPanel implements IApplication {
 		c.ipady = 25; 
 		this.add(lblProbabilityOf5, c);
 		
-		// Place Probability Label 6
-		c.gridx = 0;
-		c.gridy = 10;
-		c.gridwidth = 1;
-		c.ipady = 25; 
-		this.add(lblProbabilityOf6, c);
-		
 		//Place Slider 1
 		c.gridx = 1;
 		c.gridy = 5;
@@ -348,13 +339,6 @@ public class BuilderPanel extends JPanel implements IApplication {
 		c.gridwidth = 4;
 		c.ipady = 25; 
 		this.add(slider_5, c);
-		
-		//Place Slider 6
-		c.gridx = 1;
-		c.gridy = 10;
-		c.gridwidth = 4;
-		c.ipady = 25; 
-		this.add(slider_6, c);		
 
 	}
 	
