@@ -26,7 +26,7 @@ public class Board implements Serializable{
 	 * Note that index refers to the number 1 greater than it. Ex: index 1
 	 * contains the value of the frequency for 2.
 	 */
-	int[] frequency;
+	int[] frequency = {1,1,1,1,1}; // Default
 	
 	/**
 	 * Score limit
@@ -241,6 +241,27 @@ public class Board implements Serializable{
 		if (limit <= 0) {return false;}
 		
 		this.scoreLimit = limit;
+		return true;
+	}
+	
+	/**
+	 * Getter for frequency
+	 */
+	public int getFrequency(int index){
+		if (index > 4 || index < 0) {index = 0;}
+		
+		return this.frequency[index];
+		
+	}
+	
+	/**
+	 * Setter for frequency
+	 */
+	public boolean setFrequency(int index, int value){
+		if (index > 4 || index < 0) {return false;}
+		
+		this.frequency[index] = value;
+		
 		return true;
 	}
 	

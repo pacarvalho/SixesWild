@@ -13,6 +13,7 @@ import builder.controllers.RedoController;
 import builder.controllers.ResetBoardController;
 import builder.controllers.SaveLevelController;
 import builder.controllers.SelectedTileController;
+import builder.controllers.SliderController;
 import builder.controllers.UndoController;
 import builder.controllers.scoreLimitController;
 import builder.controllers.timeLimitController;
@@ -165,11 +166,23 @@ public class BuilderPanel extends JPanel implements IApplication {
 		// ****Create Sliders*****
 		// ***********************
 		// Create Sliders
-		JSlider slider_1 = new JSlider();
-		JSlider slider_2 = new JSlider();
-		JSlider slider_3 = new JSlider();
-		JSlider slider_4 = new JSlider();
-		JSlider slider_5 = new JSlider();
+		//TODO : Better array of sliders implementation
+		JSlider slider_1 = new JSlider(1, 10, this.model.getBoard().getFrequency(0));
+		JSlider slider_2 = new JSlider(1, 10, this.model.getBoard().getFrequency(1));
+		JSlider slider_3 = new JSlider(1, 10, this.model.getBoard().getFrequency(2));
+		JSlider slider_4 = new JSlider(1, 10, this.model.getBoard().getFrequency(3));
+		JSlider slider_5 = new JSlider(1, 10, this.model.getBoard().getFrequency(4));
+		
+		JSlider sliders[] = {slider_1, slider_2, slider_3, slider_4, slider_5};
+		
+		SliderController sliderController = new SliderController(this, this.builder, this.model, sliders); // Controller
+		
+		slider_1.addChangeListener(sliderController);
+		slider_2.addChangeListener(sliderController);
+		slider_3.addChangeListener(sliderController);
+		slider_4.addChangeListener(sliderController);
+		slider_5.addChangeListener(sliderController);
+	
 		
 		// **************************
 		// ***** Create Board *******
