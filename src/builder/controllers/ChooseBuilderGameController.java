@@ -2,10 +2,8 @@ package builder.controllers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
-
 import builder.views.BuilderPanel;
 import model.EliminationGame;
 import model.LightningGame;
@@ -13,13 +11,30 @@ import model.PuzzleGame;
 import model.ReleaseGame;
 import model.SixesWild;
 import views.IApplication;
-import views.LevelSelectorPanel;
 
+/**
+ * Allows the user to selecte a game to instantiate.
+ * 
+ * @author Paulo, Katie
+ *
+ */
 public class ChooseBuilderGameController implements ActionListener{
 	
+	/** Stores the parent view */
 	IApplication view;
+	
+	/** Stores the buttons */
 	JButton btnPuzzle, btnLightning, btnRelease, btnElimination;
 	
+	/**
+	 * Constructor
+	 * 
+	 * @param view
+	 * @param btnPuzzle
+	 * @param btnLightning
+	 * @param btnRelease
+	 * @param btnElimination
+	 */
 	public ChooseBuilderGameController(IApplication view, JButton btnPuzzle, JButton btnLightning,
 				JButton btnRelease, JButton btnElimination){
 		

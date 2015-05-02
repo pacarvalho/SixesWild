@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.JButton;
 
 import builder.controllers.BuilderBoardController;
+import builder.controllers.SaveLevelController;
 import builder.controllers.SelectedTileController;
 import builder.model.BuilderSixesWild;
 import controllers.BoardController;
@@ -114,7 +115,9 @@ public class BuilderPanel extends JPanel implements IApplication {
 		JButton btnOpen = new JButton("Load");
 		
 		// Save Button
+		SaveLevelController saveLevel = new SaveLevelController(this, this.model);
 		JButton btnSave = new JButton("Save");
+		btnSave.addActionListener(saveLevel);
 		
 		// Review Button
 		JButton btnReview = new JButton("Review");
