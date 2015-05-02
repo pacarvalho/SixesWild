@@ -2,6 +2,7 @@ package builder.controllers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.EmptyStackException;
 
 import builder.model.BuilderSixesWild;
 import builder.views.BuilderPanel;
@@ -45,9 +46,15 @@ public class UndoController implements ActionListener{
 	 * @param e
 	 */
 	public void actionPerformed(ActionEvent e) {
-		Board currentState = this.model.getBoard();
-		Board newState = this.builder.undoMemento(currentState);
-		this.model.initialize(newState);
+		Board board = this.model.getBoard();
+		
+		try{
+			board = this.builder.undoMemento(board);
+		} catch (EmptyStackException z) {
+			return;
+		}
+		
+		this.model.initialize(board);
 		
 		this.builderPanel.updateParameters();
 	}

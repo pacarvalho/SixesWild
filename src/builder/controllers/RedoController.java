@@ -2,6 +2,7 @@ package builder.controllers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.EmptyStackException;
 
 import model.Board;
 import model.SixesWild;
@@ -35,9 +36,15 @@ public class RedoController implements ActionListener{
 	 * @param e
 	 */
 	public void actionPerformed(ActionEvent e) {
-		Board currentState = this.model.getBoard();
-		Board newState = this.builder.redoMemento(currentState);
-		this.model.initialize(newState);
+Board board = this.model.getBoard();
+		
+		try{
+			board = this.builder.redoMemento(board);
+		} catch (EmptyStackException z) {
+			return;
+		}
+		
+		this.model.initialize(board);
 		
 		this.builderPanel.updateParameters();
 	}

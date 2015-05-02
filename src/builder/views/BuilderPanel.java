@@ -14,6 +14,7 @@ import builder.controllers.ResetBoardController;
 import builder.controllers.SaveLevelController;
 import builder.controllers.SelectedTileController;
 import builder.controllers.UndoController;
+import builder.controllers.timeLimitController;
 import builder.model.BuilderSixesWild;
 import controllers.BoardController;
 import controllers.ExitController;
@@ -147,12 +148,14 @@ public class BuilderPanel extends JPanel implements IApplication {
 		// ***Create TextFields***
 		// ***********************
 		
-		// TimeLimit TextFields
-		JTextField timeLimitText = new JTextField();
+		// TimeLimit TextFields and bind to their controllers
+		JTextField timeLimitText = new JTextField(this.model.getBoard().getTimeLimit() + ""); // Integer is cast to string to display
+		timeLimitController timeController = new timeLimitController(this, this.builder, this.model, timeLimitText); // Controller
+		timeLimitText.addActionListener(timeController);
 		timeLimitText.setColumns(5);
 		
 		// ScoreLimit TextFields
-		JTextField scoreLimitText = new JTextField();
+		JTextField scoreLimitText = new JTextField(this.model.getBoard().getScoreLimit() + "");
 		scoreLimitText.setColumns(5);
 		
 		// ***********************
@@ -265,14 +268,14 @@ public class BuilderPanel extends JPanel implements IApplication {
 		c.gridy = 4;
 		c.gridwidth = 1;
 		c.ipady = 3; 
-		this.add(timeLimitText, c);
+		this.add(scoreLimitText, c);
 		
 		// Place ScoreLimit TextField
 		c.gridx = 3;
 		c.gridy = 4;
 		c.gridwidth = 1;
 		c.ipady = 3; 
-		this.add(scoreLimitText, c);
+		this.add(timeLimitText, c);
 		
 		// Place Probability Label 1
 		c.gridx = 0;

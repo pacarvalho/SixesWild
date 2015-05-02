@@ -4,6 +4,7 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.EmptyStackException;
 import java.util.Stack;
 
 import views.TileView;
@@ -82,7 +83,7 @@ public class BuilderSixesWild {
 	 * Returns the previous state of the game for undoing and adds the current
 	 * state of the game to the redo stack.
 	 */
-	public Board undoMemento(Board board){
+	public Board undoMemento(Board board) throws EmptyStackException {
 		Board boardClone = (Board)BuilderSixesWild.deepClone(board);
 		this.redoStack.add(boardClone);
 		return this.undoStack.pop();
@@ -96,7 +97,7 @@ public class BuilderSixesWild {
 	 * @param currentState
 	 * @return
 	 */
-	public Board redoMemento(Board board) { // TODO Add a check such that you don't add equal states to stack
+	public Board redoMemento(Board board) throws EmptyStackException { // TODO Add a check such that you don't add equal states to stack
 		Board boardClone = (Board)BuilderSixesWild.deepClone(board);
 		this.undoStack.add(boardClone);
 		return this.redoStack.pop();

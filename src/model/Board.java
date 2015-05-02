@@ -53,6 +53,9 @@ public class Board implements Serializable{
 	 */
 	public Board(){
 		this.tiles = new Tile[9][9];
+		
+		this.timeLimit = 0; // Default time
+		this.scoreLimit = 0; // Default Max Score
 	}
 	
 	/**
@@ -205,6 +208,40 @@ public class Board implements Serializable{
 		}
 		
 		return info;
+	}
+	
+	/**
+	 * Getter for the time limit attribute
+	 */
+	public int getTimeLimit(){
+		return this.timeLimit;
+	}
+	
+	/**
+	 * Setter for the time limit
+	 */
+	public boolean setTimeLimit(int limit){
+		if (limit <= 0) {return false;}
+		
+		this.timeLimit = limit;
+		return true;
+	}
+
+	/**
+	 * Getter for the score limit attribute
+	 */
+	public int getScoreLimit(){
+		return this.scoreLimit;
+	}
+	
+	/**
+	 * Setter for the score limit
+	 */
+	public boolean setScoreLimit(int limit){
+		if (limit <= 0) {return false;}
+		
+		this.scoreLimit = limit;
+		return true;
 	}
 	
 }
