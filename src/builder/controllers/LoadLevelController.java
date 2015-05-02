@@ -58,7 +58,6 @@ public class LoadLevelController implements ActionListener{
 			} 
 			
 			if (board != null) {
-				System.out.println(board);
 				this.model.initialize(board);
 				this.builderPanel.updateParameters();
 			}

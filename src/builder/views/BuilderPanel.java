@@ -9,8 +9,10 @@ import javax.swing.JButton;
 
 import builder.controllers.BuilderBoardController;
 import builder.controllers.LoadLevelController;
+import builder.controllers.RedoController;
 import builder.controllers.SaveLevelController;
 import builder.controllers.SelectedTileController;
+import builder.controllers.UndoController;
 import builder.model.BuilderSixesWild;
 import controllers.BoardController;
 import controllers.ExitController;
@@ -128,11 +130,15 @@ public class BuilderPanel extends JPanel implements IApplication {
 		JButton btnSave = new JButton("Save");
 		btnSave.addActionListener(saveLevel);
 		
-		// Review Button
-		JButton btnReview = new JButton("Review");
-		
 		// Undo Button
+		UndoController undoController = new UndoController(this, this.builder, this.model);
 		JButton btnUndo = new JButton("Undo");
+		btnUndo.addActionListener(undoController);
+		
+		// Redo Button
+		RedoController redoController = new RedoController(this, this.builder, this.model);
+		JButton btnRedo = new JButton("Redo");
+		btnRedo.addActionListener(redoController);
 		
 		// ***********************
 		// ***Create TextFields***
@@ -229,13 +235,13 @@ public class BuilderPanel extends JPanel implements IApplication {
 		c.gridx = 3;
 		c.gridy = 2;
 		c.gridwidth = 1;
-		this.add(btnReview, c);
+		this.add(btnUndo, c);
 		
 		// Place Review Button
 		c.gridx = 4;
 		c.gridy = 2;
 		c.gridwidth = 1;
-		this.add(btnUndo, c);
+		this.add(btnRedo, c);
 		
 		// Place TimeLimit Label
 		c.gridx = 0;

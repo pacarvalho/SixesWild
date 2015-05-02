@@ -61,4 +61,12 @@ public class BuilderBoardController extends MouseAdapter{
 		
 		this.boardView.validate();
 	}
+	
+	/**
+	 * Upon mouse press save a memento
+	 */
+	@Override
+	public void mousePressed(MouseEvent me){
+		this.model.createMemento(this.game.getBoard());
+	}
 }
