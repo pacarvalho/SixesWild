@@ -14,6 +14,7 @@ import builder.controllers.ResetBoardController;
 import builder.controllers.SaveLevelController;
 import builder.controllers.SelectedTileController;
 import builder.controllers.UndoController;
+import builder.controllers.scoreLimitController;
 import builder.controllers.timeLimitController;
 import builder.model.BuilderSixesWild;
 import controllers.BoardController;
@@ -156,6 +157,8 @@ public class BuilderPanel extends JPanel implements IApplication {
 		
 		// ScoreLimit TextFields
 		JTextField scoreLimitText = new JTextField(this.model.getBoard().getScoreLimit() + "");
+		scoreLimitController scoreController = new scoreLimitController(this, this.builder, this.model, scoreLimitText); // Controller
+		scoreLimitText.addActionListener(scoreController);
 		scoreLimitText.setColumns(5);
 		
 		// ***********************
