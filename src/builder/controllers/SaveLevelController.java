@@ -64,6 +64,8 @@ public class SaveLevelController implements ActionListener{
 		ObjectOutputStream oos = new ObjectOutputStream(fos);
 		oos.writeObject(obj);
 		
+		System.out.println(obj);
+		
 		fos.close();
 	}
 	

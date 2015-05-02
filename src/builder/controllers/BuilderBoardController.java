@@ -3,6 +3,7 @@ package builder.controllers;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import model.SixesWild;
 import model.Tile;
 import builder.model.BuilderSixesWild;
 import views.BoardView;
@@ -22,15 +23,19 @@ public class BuilderBoardController extends MouseAdapter{
 	/** Stores the Boundary */
 	BoardView boardView;
 	
+	/** Stores the game */
+	SixesWild game;
+	
 	/**
 	 * Constructor
 	 * 
 	 * @param boardView
 	 * @param model
 	 */
-	public BuilderBoardController(BoardView boardView, BuilderSixesWild model){
+	public BuilderBoardController(BoardView boardView, BuilderSixesWild model, SixesWild game){
 		this.boardView = boardView;
 		this.model = model;
+		this.game = game;
 	}
 	
 	/**
@@ -44,7 +49,11 @@ public class BuilderBoardController extends MouseAdapter{
 			for (int j=0; j<9; j++){
 				TileView tv = this.boardView.getTileView(i,j);
 				if (tv.isSelected(me.getX(), me.getY())){
-					tv.setTile(new Tile(this.model.getTile().getValue(), i, j));
+					Tile tile = new Tile(this.model.getTile().getValue(), i, j);
+					tv.setTile(tile);
+					
+					this.game.getBoard().setTile(tile); // Update the overall board
+					
 					tv.update();
 				}
 			}

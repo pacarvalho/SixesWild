@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.JButton;
 
 import builder.controllers.BuilderBoardController;
+import builder.controllers.LoadLevelController;
 import builder.controllers.SaveLevelController;
 import builder.controllers.SelectedTileController;
 import builder.model.BuilderSixesWild;
@@ -70,6 +71,12 @@ public class BuilderPanel extends JPanel implements IApplication {
 		// Make the builder model
 		this.builder = new BuilderSixesWild();
 		
+		// Create a default board
+		Board board = new Board();
+		board.createDefaultBoard();
+		this.model.initialize(board);
+		
+		// Initialize the view
 		this.init();
 		 
 	}
@@ -112,7 +119,9 @@ public class BuilderPanel extends JPanel implements IApplication {
 		JButton btnNew = new JButton("New");
 		
 		// Load Button
+		LoadLevelController loadLevel = new LoadLevelController(this, this.model);
 		JButton btnOpen = new JButton("Load");
+		btnOpen.addActionListener(loadLevel);
 		
 		// Save Button
 		SaveLevelController saveLevel = new SaveLevelController(this, this.model);
@@ -151,12 +160,9 @@ public class BuilderPanel extends JPanel implements IApplication {
 		// ***** Create Board *******
 		// **************************
 		// Create Board View and bound it to controller
-		Board level = new Board();
-		level.createDefaultBoard();
-		this.model.initialize(level);
 		BoardView boardView = new BoardView(this.frame, this.model);
 		
-		BuilderBoardController boardController = new BuilderBoardController(boardView, this.builder);
+		BuilderBoardController boardController = new BuilderBoardController(boardView, this.builder, this.model);
 		boardView.setActiveAdapter(boardController);
 		
 		// ****************************************
@@ -345,5 +351,20 @@ public class BuilderPanel extends JPanel implements IApplication {
 	@Override
 	public JFrame getFrame() {
 		return this.frame;
+	}
+	
+	/** 
+	 * Updates all parameters from the model
+	 * 
+	 * Usually called after a new board is loaded
+	 */
+	public boolean updateParameters(){
+		this.removeAll();
+		
+		this.init();
+		
+		this.validate();
+		
+		return true;
 	}
 }

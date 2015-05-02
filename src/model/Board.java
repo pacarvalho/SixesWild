@@ -190,4 +190,21 @@ public class Board implements Serializable{
 		}
 	}
 	
+	/**
+	 * Prints neatly for debugging
+	 */
+	@Override
+	public String toString(){
+		String info = new String();
+		
+		for (int i=0; i<9; i++){
+			for (int j=0; j<9; j++){
+				info += this.tiles[i][j] +  " ";
+			}
+			info += "\n";
+		}
+		
+		return info;
+	}
+	
 }

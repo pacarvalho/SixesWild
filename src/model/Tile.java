@@ -1,12 +1,14 @@
 package model;
 
+import java.io.Serializable;
+
 /**
  * General type of tile which can be clicked.
  * 
  * @author Paulo, Katie, Sean
  *
  */
-public class Tile{
+public class Tile implements Serializable{
 	
 	//TODO Add Multiplier Attribute and Selected boolean 
 	/**
