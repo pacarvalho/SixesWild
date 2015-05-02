@@ -44,21 +44,32 @@ public class DestroyTileController extends MouseAdapter{
 		
 	}
 	/**
-	 * Selects the clicked tile and performs the move if ready
+	 * Selects a tile on mouse press.
+	 * 
+	 */
+	@Override
+	public void mousePressed(MouseEvent me){
+		if (me.getModifiers() == MouseEvent.BUTTON3_MASK) { 
+			tile.setSelectedFlag(false);
+			boardView.updateBoardView();
+			this.unregister();
+			return;
+			
+		}
+		else this.selectTile(me.getX(), me.getY());
+	}
+	/**
+	 * On mouse press performs the move if ready
 	 * On right click, Cancels the move and switches to boardView MouseAdatper
 	 * 
 	 */
 	@Override
-	public void mouseClicked(MouseEvent me){
+	public void mouseReleased(MouseEvent me){
 		
 		// cancel move on right click)
-		if (me.getModifiers() == MouseEvent.BUTTON3_MASK) { 
-			this.unregister();
-			return;
-	}
-			
+	
 		
-		if(this.selectTile(me.getX(), me.getY())){
+		if(tile != null){
 			System.out.println("Tile selected");
 			DestroyTileSpecialMove move = new DestroyTileSpecialMove(tile, this.model);
 				
@@ -69,7 +80,7 @@ public class DestroyTileController extends MouseAdapter{
 			boardView.updateBoardView();
 				
 			//clear tile
-			this.tile=null;
+			
 			
 
 			//Change MosueAdapter
@@ -92,6 +103,8 @@ public class DestroyTileController extends MouseAdapter{
 				TileView tView = boardView.getTileView(i, j);
 				if(tView.isSelected(clickX, clickY)){
 					this.tile=tView.getTile();
+					tView.getTile().setSelectedFlag(true);
+					tView.update();
 					return true;
 				}
 			}

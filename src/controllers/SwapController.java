@@ -47,22 +47,36 @@ public class SwapController extends MouseAdapter{
 		
 	}
 	/**
-	 * Selects the clicked tile and performs the move if ready
+	 *  Selects tiles on mouse press,
+	 *  
+	 *  On right click de-selects tiles and switches 
+	 *  to default MouseAdapter.
 	 * 
+	 */
+	public void mousePressed(MouseEvent me){
+		// cancel move on right click)
+				if (me.getModifiers() == MouseEvent.BUTTON3_MASK) { 
+					
+					this.unregister();
+					System.out.println("right click");
+					
+					if(tile1!=null) tile1.setSelectedFlag(false);
+					if(tile2!=null) tile2.setSelectedFlag(false);
+					boardView.updateBoardView();
+
+			}
+				this.selectTile(me.getX(), me.getY());
+	}
+	/**
+	 * a performs the move if ready
 	 * 
 	 */
 	@Override
-	public void mouseClicked(MouseEvent me){
+	public void mouseReleased(MouseEvent me){
 		
-		// cancel move on right click)
-		if (me.getModifiers() == MouseEvent.BUTTON3_MASK) { 
-			this.unregister();
-			System.out.println("right click");
-			return;
-	}
 		
-		if(this.isActive()){
-			if(this.selectTile(me.getX(), me.getY())){
+		
+		if(tile2!=null){
 				
 				SwapSpecialMove move = new SwapSpecialMove(tile1,tile2,  model);
 				
@@ -73,13 +87,12 @@ public class SwapController extends MouseAdapter{
 				boardView.updateBoardView();
 				
 				//clear tile
-				this.tile1 = null;
-				this.tile2 = null;
-				
+				tile1.setSelectedFlag(false);
+				tile2.setSelectedFlag(false);
 				//Change MosueAdapter
 				this.unregister();
-			}
 		}
+		
 	}
 	//TODO rightClick to cancel change controller
 
@@ -101,6 +114,8 @@ public class SwapController extends MouseAdapter{
 						
 						tile1 = tView.getTile();
 						System.out.println(tile1.getValue());
+						tile1.setSelectedFlag(true);
+						tView.update();
 						return false;
 						
 						}
@@ -108,6 +123,9 @@ public class SwapController extends MouseAdapter{
 						
 						tile2 =  tView.getTile();
 						System.out.println(tile2.getValue());
+						tile2.setSelectedFlag(true);
+						tView.update();
+						
 						return true;
 					}
 				}
