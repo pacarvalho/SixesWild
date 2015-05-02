@@ -5,7 +5,7 @@ package model;
  * 
  * All variation of the game should extend this class.
  * 
- * @author Paulo, Katie, Sean
+ * @author Paulo, Katie, Sean, OAKyildiz
  *
  */
 abstract public class SixesWild {
