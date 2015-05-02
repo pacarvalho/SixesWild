@@ -25,8 +25,16 @@ public class Tile{
 	/** Column location of the tile in array */
 	int col;
 	
-	/** Vaule of the score multiplier */
+	/** Value of the score multiplier */
 	int multiplier;
+	
+	/**
+	 * Indicates the tile is selected
+	 * 
+	 * Used by the builder to indicate which tile should be added to the board. It is also used in the 
+	 * game to indicate which tiles are currently selected during a move.
+	 */
+	boolean selectedFlag;
 	
 	
 	/**
@@ -37,6 +45,7 @@ public class Tile{
 		this.row = row;
 		this.col = col;
 		this.multiplier = 1;
+		this.selectedFlag = false;
 	}
 	
 	/**
@@ -74,11 +83,29 @@ public class Tile{
 		else return false;
 	}
 	
+	/**
+	 * Getter method for has been selected attribute
+	 */
+	public boolean getSelectedFlag(){
+		return this.selectedFlag;
+	}
+	
+	/**
+	 * Setter method for the has been selected attribute
+	 */
+	public boolean setSelectedFlag(boolean value){
+		this.selectedFlag = value;
+		
+		return true;
+	}
+	
 	public boolean setMultiplier(int x){
 		if(0 < x ||x < 4){
 			this.multiplier = x;
-			return true;}
-		else return false;
+			return true;
+		} else {
+			return false;
+		}
 	}
 	
 	public int getMultiplier(){

@@ -111,7 +111,10 @@ public class BoardView extends JPanel{
 	public TileView getTileView(int i, int j){
 		return this.tileViews[i][j];
 	}
-	/** Properly register new listener (and unregister old one if present). */
+	
+	/** 
+	 * Properly register new listener (and unregister old one if present). 
+	 */
 	public void setActiveAdapter(MouseAdapter ma) {
 		this.removeMouseListener(activeAdapter);
 		this.removeMouseMotionListener(activeAdapter);

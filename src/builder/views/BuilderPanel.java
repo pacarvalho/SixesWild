@@ -7,6 +7,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JButton;
 
+import builder.controllers.BuilderBoardController;
+import builder.controllers.SelectedTileController;
+import builder.model.BuilderSixesWild;
+import controllers.BoardController;
 import controllers.ExitController;
 
 import java.awt.Font;
@@ -37,13 +41,20 @@ public class BuilderPanel extends JPanel implements IApplication {
 	private static final long serialVersionUID = -5020862675511089854L;
 	
 	
+	/** Parent Frame */
 	JFrame frame;
-	/**g model*/
+	
+	/** Game Model*/
 	SixesWild model;
 	
-	
+	/** Height and Width of the panel */
 	int h=120,w=190;
+	
+	/** Overall Builder Model */
+	BuilderSixesWild builder;
+	
 	/**
+	 * Constructor
 	 * 
 	 * @param frame
 	 * @param model
@@ -55,10 +66,16 @@ public class BuilderPanel extends JPanel implements IApplication {
 		this.frame = frame;
 		this.frame.setMinimumSize(new Dimension(5*w, 5*h));
 		
+		// Make the builder model
+		this.builder = new BuilderSixesWild();
+		
 		this.init();
 		 
 	}
 	
+	/**
+	 * Initializes the view
+	 */
 	public void init(){
 		// ***********************
 		// *****Create Labels*****
@@ -68,12 +85,6 @@ public class BuilderPanel extends JPanel implements IApplication {
 		
 		JLabel lblLevelBuilder = new JLabel(model.getName() + " Level Builder");
 		lblLevelBuilder.setFont(new Font("Tahoma", Font.BOLD, 35));
-		
-		// X: Label
-		JLabel lblX = new JLabel("X : ");
-		
-		// Y: Label
-		JLabel lblY = new JLabel("Y : ");
 		
 		// TimeLimit Label
 		JLabel lblTimeLimit = new JLabel("Time Limit : ");
@@ -114,13 +125,6 @@ public class BuilderPanel extends JPanel implements IApplication {
 		// ***********************
 		// ***Create TextFields***
 		// ***********************
-		// X: Text Fields
-		JTextField xTextField = new JTextField();
-		xTextField.setColumns(5);
-		
-		// Y: Text Fields
-		JTextField yTextField = new JTextField();
-		yTextField.setColumns(5);
 		
 		// TimeLimit TextFields
 		JTextField timeLimitText = new JTextField();
@@ -140,15 +144,25 @@ public class BuilderPanel extends JPanel implements IApplication {
 		JSlider slider_4 = new JSlider();
 		JSlider slider_5 = new JSlider();
 		
-		// ***********************
-		// *****Create Misc*******
-		// ***********************
-		// Create Board View
+		// **************************
+		// ***** Create Board *******
+		// **************************
+		// Create Board View and bound it to controller
 		Board level = new Board();
 		level.createDefaultBoard();
 		this.model.initialize(level);
 		BoardView boardView = new BoardView(this.frame, this.model);
 		
+		BuilderBoardController boardController = new BuilderBoardController(boardView, this.builder);
+		boardView.setActiveAdapter(boardController);
+		
+		// ****************************************
+		// ***** Create Tile Selector Panel *******
+		// ****************************************
+		// And bind it to controller
+		BuilderTileSelectorPanel tileSelector = new BuilderTileSelectorPanel(this.frame, this.builder);
+		SelectedTileController selectedTileController = new SelectedTileController(tileSelector, this.builder);
+		tileSelector.setActiveAdapter(selectedTileController);
 		
 		// ***********************
 		// ****LAYOUT SET-UP !****
@@ -213,34 +227,6 @@ public class BuilderPanel extends JPanel implements IApplication {
 		c.gridy = 2;
 		c.gridwidth = 1;
 		this.add(btnUndo, c);
-		
-		// Place X: Label
-		c.gridx = 0;
-		c.gridy = 3;
-		c.gridwidth = 1;
-		c.ipady = 25; 
-		this.add(lblX, c);
-		
-		// Place Y: Label
-		c.gridx = 2;
-		c.gridy = 3;
-		c.gridwidth = 1;
-		c.ipady = 25; 
-		this.add(lblY, c);
-		
-		// Place X: TextField
-		c.gridx = 1;
-		c.gridy = 3;
-		c.gridwidth = 1;
-		c.ipady = 3; 
-		this.add(xTextField, c);
-		
-		// Place Y: TextField
-		c.gridx = 3;
-		c.gridy = 3;
-		c.gridwidth = 1;
-		c.ipady = 3; 
-		this.add(yTextField, c);
 		
 		// Place TimeLimit Label
 		c.gridx = 0;
@@ -339,11 +325,20 @@ public class BuilderPanel extends JPanel implements IApplication {
 		c.gridwidth = 4;
 		c.ipady = 25; 
 		this.add(slider_5, c);
+		
+		// Add TileSelectorPanel
+		c.gridx = 0;
+		c.gridy = 10;
+		c.gridwidth = 5;
+		c.ipady = 25;
+		this.add(tileSelector, c);
 
 	}
 	
 	
-
+	/**
+	 * Returns the JFrame
+	 */
 	@Override
 	public JFrame getFrame() {
 		return this.frame;
