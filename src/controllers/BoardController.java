@@ -57,6 +57,8 @@ public class BoardController extends MouseAdapter {
 				TileView tView = boardView.getTileView(i, j);
 				if(tView.isSelected(me.getX(), me.getY()) && !selectedTiles.contains(tView.getTile())){
 					this.selectedTiles.add(tView.getTile());
+					tView.getTile().setSelectedFlag(true);
+					tView.update();
 				}
 			}
 		}
@@ -70,6 +72,10 @@ public class BoardController extends MouseAdapter {
 	 */
 	public void mouseReleased(MouseEvent me){
 		IMove move;
+		
+		for (Tile t: this.selectedTiles){
+			t.setSelectedFlag(false);
+		}
 		
 		if(model instanceof EliminationGame){
 			move = new EliminationMove(selectedTiles, model);
