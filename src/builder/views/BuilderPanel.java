@@ -10,6 +10,7 @@ import javax.swing.JButton;
 import builder.controllers.BuilderBoardController;
 import builder.controllers.LoadLevelController;
 import builder.controllers.RedoController;
+import builder.controllers.ResetBoardController;
 import builder.controllers.SaveLevelController;
 import builder.controllers.SelectedTileController;
 import builder.controllers.UndoController;
@@ -117,8 +118,10 @@ public class BuilderPanel extends JPanel implements IApplication {
 		JButton btnMenu = new JButton("Menu");
 		btnMenu.addActionListener(exitController);
 		
-		// New Button
-		JButton btnNew = new JButton("New");
+		// Reset Button
+		ResetBoardController resetController = new ResetBoardController(this, this.builder, this.model);
+		JButton btnNew = new JButton("Reset");
+		btnNew.addActionListener(resetController);
 		
 		// Load Button
 		LoadLevelController loadLevel = new LoadLevelController(this, this.model);
