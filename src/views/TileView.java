@@ -1,11 +1,14 @@
 package views;
 
+import java.awt.Color;
 import java.awt.Point;
+
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.BevelBorder;
+import javax.swing.border.LineBorder;
 
 import model.Tile;
 
@@ -110,6 +113,12 @@ public class TileView extends JPanel{
 			
 		} else if (this.tile.getEliminatedFlag()){
 			this.setBorder(new BevelBorder(BevelBorder.RAISED));
+			
+		} else if (this.tile.getMultiplier() == 2) { // 2X multiplier
+			this.setBorder(new LineBorder(Color.blue, 3));
+			
+		} else if (this.tile.getMultiplier() == 3) { // 3X multiplier
+			this.setBorder(new LineBorder(Color.red, 3));
 			
 		} else {
 			// TODO: Create an invisible border that keeps the tiles from moving by having same size as normal border
