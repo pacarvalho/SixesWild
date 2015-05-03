@@ -2,7 +2,10 @@ package controllers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.JFrame;
+
+import model.SixesWild;
 import views.GameSelectorPanel;
 import views.IApplication;
 
@@ -15,15 +18,24 @@ import views.IApplication;
  *
  */
 public class ExitController implements ActionListener{
+	/** Stores Boundary */
 	IApplication view;
+	
+	/** Stores Model */ 
+	SixesWild model;
+	
+	/** Stores Level */
+	int level;
 	
 	/**
 	 * Constructor
 	 * 
 	 * @param view
 	 */
-	public ExitController(IApplication view){
+	public ExitController(IApplication view, SixesWild model, int level){
 		this.view = view;
+		this.model = model; 
+		this.level = level;
 	}
 	
 	/**
@@ -33,6 +45,8 @@ public class ExitController implements ActionListener{
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		this.model.updateLevelTracker(level); //When a level is closed update Level Tracker
+		
 		JFrame frame = this.view.getFrame();
 		GameSelectorPanel gameSelectorPanel = new GameSelectorPanel(frame);
 		frame.getContentPane().removeAll();

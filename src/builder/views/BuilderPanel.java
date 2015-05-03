@@ -21,7 +21,7 @@ import builder.controllers.scoreLimitController;
 import builder.controllers.timeLimitController;
 import builder.model.BuilderSixesWild;
 import controllers.BoardController;
-import controllers.ExitController;
+import builder.controllers.ExitController;
 
 import java.awt.Font;
 import java.awt.GridBagConstraints;

@@ -51,7 +51,7 @@ public class LevelPanel extends JPanel implements IApplication{
 	 * @param title
 	 * @param levelTitle
 	 */
-	public LevelPanel(JFrame frame, SixesWild model, String title, String levelTitle){
+	public LevelPanel(JFrame frame, SixesWild model, String title, String levelTitle, int level){
 		super();
 		
 		this.model = model;
@@ -81,7 +81,7 @@ public class LevelPanel extends JPanel implements IApplication{
 		 * Create button to return to main menu and bind it to its controller
 		 */
 		JButton btnMenu = new JButton("Menu");
-		ExitController exitController = new ExitController(this);
+		ExitController exitController = new ExitController(this, model, level);
 		btnMenu.addActionListener(exitController);
 		
 		/*
