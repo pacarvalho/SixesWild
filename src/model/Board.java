@@ -17,7 +17,7 @@ public class Board implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = -322533594946675843L;
-	//TODO : Do the Saving and Loading of values to board class
+	
 	/**
 	 * Game frequencies
 	 * 
@@ -167,6 +167,9 @@ public class Board implements Serializable{
 					tiles[nullLocation[0]][nullLocation[1]] =  
 							new Tile(tiles[nullLocation[0]][nullLocation[1]-1].getValue(), nullLocation[0], nullLocation[1]);
 					
+					// Don't forget the multiplier!
+					tiles[nullLocation[0]][nullLocation[1]].setMultiplier(tiles[nullLocation[0]][nullLocation[1]-1].getMultiplier());
+					
 					this.destroyTile(tiles[nullLocation[0]][nullLocation[1]-1]); // Delete Tile
 				}		
 			}
@@ -213,6 +216,7 @@ public class Board implements Serializable{
 	 */
 	public Tile spawnNewTile(int x, int y){
 		Random rand = new Random();
+		Tile t = null;
 				
 		if (frequency == null) { // No statistics is defined. All values have same prob
 			return new Tile(rand.nextInt(5) + 1, x, y);
@@ -228,16 +232,32 @@ public class Board implements Serializable{
 		int chance = rand.nextInt(totalFrequency) + 1;
 		// Decide which tile to spawn
 		if (chance <= frequency[0]){
-			return new Tile(1, x, y);
+			t = new Tile(1, x, y);
 		} else if (chance <= (frequency[0] + frequency[1])) {
-			return new Tile(2, x, y);
+			t = new Tile(2, x, y);
 		} else if (chance <= (frequency[0] + frequency[1] + frequency[2])){
-			return new Tile(3, x, y);
+			t = new Tile(3, x, y);
 		} else if (chance <= (frequency[0] + frequency[1] + frequency[2] + frequency[3])){
-			return new Tile(4, x, y);
+			t = new Tile(4, x, y);
 		} else {
-			return new Tile(5, x, y);
+			t = new Tile(5, x, y);
 		}
+		
+		// Set the multiplier for the tile
+		int chanceM = this.getChanceMultiplierFrequency();
+		
+		if (chanceM > rand.nextInt(100) + 1) { // Chance of having a multiplier at ALL
+			int sumChance = this.get2x3xFrequency(0) + this.get2x3xFrequency(1);
+			
+			if (this.get2x3xFrequency(1) < rand.nextInt(sumChance) + 1) { // Chance of having a 2X
+				t.setMultiplier(2);
+				
+			} else {
+				t.setMultiplier(3);
+			}
+		}
+		
+		return t;
 		
 		
 	}
