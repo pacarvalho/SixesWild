@@ -123,7 +123,7 @@ public class Board implements Serializable{
 			// Check if there is a null in the tile array
 			nullLocation = this.findNull();
 			
-			if (nullLocation == null) {return true;} // No nulls found
+			if (nullLocation == null) {break;} // No nulls found
 			
 			// If the null was found on the top row. Spawn a new tile.
 			if (nullLocation[1] == 0){
@@ -152,8 +152,9 @@ public class Board implements Serializable{
 			ite += 1;
 		}
 		
+		// Do logic for falling sixes
 		this.releaseGravity();
-		
+				
 		return false;
 	}
 	
@@ -166,11 +167,15 @@ public class Board implements Serializable{
 	public void releaseGravity(){
 		for(int i = 0; i<9; i++){
 			for(int j = 1; j<9; j++){
-				if(this.tiles[i][j].getValue() == 0){
-					if(this.tiles[i][j-1].getValue() == 6){
-						this.destroyTile(this.tiles[i][j-1]);
-						this.tiles[i][j].setValue(-3);
-						this.update();
+				if (this.tiles[i][j] != null && this.tiles[i][j-1] != null) {
+					if(this.tiles[i][j].getValue() == 0){
+						System.out.println("IM HERE?");
+						if(this.tiles[i][j-1].getValue() == 6){
+							System.out.println("IM HERE!");
+							this.destroyTile(this.tiles[i][j-1]);
+							this.tiles[i][j].setValue(-3);
+							this.update();
+						}
 					}
 				}
 			}
