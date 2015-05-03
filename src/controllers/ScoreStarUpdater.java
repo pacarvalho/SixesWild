@@ -2,6 +2,7 @@ package controllers;
 
 
 import views.LevelPanel;
+import model.LightningGame;
 import model.SixesWild;
 
 /**
@@ -48,11 +49,14 @@ public class ScoreStarUpdater{
 	 */
 	public void scoreUpdated() {
 		if(levelView != null){
-			
+			//update score and moves
 			int score = this.model.getCurrentScore();
 			this.levelView.getScoreView().setText("" + score);
-			//this.levelView.getScoreView().repaint();
 			
+			if(!(this.model instanceof LightningGame))
+				this.levelView.getCountdownView().setText("" + this.model.getNumMoves());
+			
+			//update stars if needed
 			int change = assessScore(score);
 			if (change != 0) // if no change don't call the method		 
 				this.levelView.getStarView().updateStars(change);

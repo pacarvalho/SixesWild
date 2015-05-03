@@ -12,14 +12,27 @@ import java.util.Timer;
  */
 public class LightningGame extends SixesWild {
 	
-	//Timer levelTimer;
+	/**Timer for lightnig level, internal Controller*/
+//	Timer levelTimer;
+	private int remainingTime;
+	
 	public LightningGame(){
 		super();
-		//this.countDown = 120;
-		//levelTimer = new Timer(1000, updateRemainingTime);
-		//levelTimer.start();
+		this.numMoves = this.board.getTimeLimit();
+//		levelTimer = new Timer(1000, updateRemainingTime());
+//		levelTimer.start();
 	}
 	
+	public int getRemainingTime() {
+		return remainingTime;
+	}
+
+	public void setRemainingTime(int remainingTime) {
+		this.remainingTime = remainingTime;
+	}
+
+
+
 	/**
 	 * 
 	 */
@@ -52,7 +65,12 @@ public class LightningGame extends SixesWild {
 	public void updateScore() {
 	}
 	
-
+	@Override
+	public boolean updateMoves(int change) {
+		this.numMoves += change;
+		return true;
+	}
+	
 	
 	
 	/**
@@ -62,4 +80,5 @@ public class LightningGame extends SixesWild {
 	public Board getBoard(){
 		return this.board;
 	}
+
 }

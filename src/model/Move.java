@@ -51,7 +51,7 @@ public class Move implements IMove{
 			board.destroyTile(t);
 		}	
 		
-		model.updateMoves(1);
+		model.updateMoves(-1);
 		model.updateScore(this.multiplierTotal*6);
 		
 		board.update();

@@ -30,11 +30,10 @@ abstract public class SixesWild {
 	/**Listener for score changes*/
 	private ScoreStarUpdater updater;
 
-	/** Monitor the number of moves made */
+	/** Monitor the number of moves remiaining */
 	int numMoves;
 	
-	
-	
+
 	/** Create a board for the game */
 	Board board;
 	
@@ -53,7 +52,6 @@ abstract public class SixesWild {
 	/** Constructor */
 	public SixesWild(){
 		this.currentScore = 0;
-		this.numMoves = 0;
 		this.board = null;
 		this.stars = 0;
 		this.specQuotas = new int[]{3,1,1};
@@ -68,6 +66,7 @@ abstract public class SixesWild {
 		this.win1 *= board.scoreLimit;
 		this.win2 *= board.scoreLimit;
 		this.win3 *= board.scoreLimit;
+		this.numMoves = board.getMaxMoves();
 	}
 	
 	/**
@@ -77,6 +76,12 @@ abstract public class SixesWild {
 		return this.board;
 	}
 	
+	/**
+	 * Returns the number of moves remaining.
+	 */
+	public int getNumMoves() {
+		return numMoves;
+	}
 	/**
 	 * Calls the hasWon and hasLost methods. 
 	 * 
@@ -108,7 +113,7 @@ abstract public class SixesWild {
 	 * 
 	 */
 	public boolean updateMoves(int change){ // Should we check if the game is lost in this method?
-		this.numMoves = this.numMoves + change;
+		this.numMoves += change;
 		return true;
 	}
 	

@@ -37,6 +37,8 @@ public class EliminationMove implements IMove {
 		
 		for(Tile t: tiles){
 			board.setEliminationTileValue(t);
+			model.updateMoves(-1);
+			model.updateScore(0);
 		}
 		
 		// Check if game has been won or lost

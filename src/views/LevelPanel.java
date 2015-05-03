@@ -6,16 +6,17 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 
 
+
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JButton;
 
 
+
 import controllers.BoardController;
-
 import controllers.ExitController;
-
+import model.LightningGame;
 import model.SixesWild;
 
 /**
@@ -62,8 +63,12 @@ public class LevelPanel extends JPanel implements IApplication{
 		this.boardView = null;
 		this.starView = new StarPanel(model);
 		this.scoreView = new JLabel(""+model.getCurrentScore());
-		this.countdownView = new JLabel();
 		
+		if(this.model instanceof LightningGame)
+			this.countdownView = new JLabel(""+ ((LightningGame) model).getRemainingTime());
+		else
+			this.countdownView = new JLabel(""+ model.getNumMoves());
+			
 		this.scoreView.setFont(new Font("Source Sans Pro Black", Font.PLAIN, 24));
 		//Plug in levelView to updater
 		this.model.getUpdater().setLevelView(this);
@@ -123,12 +128,12 @@ public class LevelPanel extends JPanel implements IApplication{
 		this.add(lblLevel, c);
 		
 //		// Place Timer
-//		c.gridx = 0;
-//		c.gridy = 2;
-//		c.gridwidth = 1;
-//		c.anchor = GridBagConstraints.EAST;
-//		c.ipady = 15; // Height in px
-//		this.add(lblTime, c);
+		c.gridx = 0;
+		c.gridy = 1;
+		c.gridwidth = 1;
+		c.anchor = GridBagConstraints.EAST;
+		c.ipady = 15; // Height in px
+		this.add(countdownView, c);
 		
 		// Place Score
 		c.gridx = 12;
@@ -178,6 +183,10 @@ public class LevelPanel extends JPanel implements IApplication{
 		add(this.getSpecialButtonsPanel(),c);
 	}
 	
+	public JLabel getCountdownView() {
+		return countdownView;
+	}
+
 	/**
 	 * Getter for Special Button Panel
 	 * 

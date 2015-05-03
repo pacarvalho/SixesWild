@@ -34,7 +34,7 @@ public class StarPanel extends JPanel{
 	public StarPanel(SixesWild model){
 		
 		this.model = model;
-		time = model instanceof LightningGame; 
+		//time = model instanceof LightningGame; 
 		
 		
 		initialize();
@@ -44,18 +44,18 @@ public class StarPanel extends JPanel{
 	
 	private void initialize(){
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-		if(!time){
+//		if(!time){
 			for(int m=0; m<3; m++ ){
 				stars[m] = new JLabel("", offStar, SwingConstants.CENTER);
 				this.add(stars[m]);
 			}
-		}
-		else{
-			for(int m=0; m<3; m++ ){
-				stars[m] = new JLabel("", onStar, SwingConstants.CENTER);
-				this.add(stars[m]);
-			}
-		}
+//		}
+//		else{
+//			for(int m=0; m<3; m++ ){
+//				stars[m] = new JLabel("", onStar, SwingConstants.CENTER);
+//				this.add(stars[m]);
+//			}
+//		}
 			
 	}
 	public void updateStars(int toggle){
