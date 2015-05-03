@@ -2,9 +2,14 @@ package builder.views;
 
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -100,5 +105,22 @@ public class BuilderGameSelectorPanel extends JPanel implements IApplication{
 	public JFrame getFrame() {
 		return this.frame;
 	}
+	
+	/**
+	 * Create background image
+	 */
+	 @Override
+	 protected void paintComponent(Graphics g) {
+	     super.paintComponent(g); // paint the background image and scale it to fill the entire space
+	     Image image = null;
+		try {
+			image = ImageIO.read(new File("Resources/gradient.png"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		if(image != null){
+			g.drawImage(image, 0, 0, 1000, 800, this);	
+		}
+	 }
 
 }

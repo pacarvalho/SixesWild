@@ -1,5 +1,6 @@
 package views;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
 /**
@@ -23,8 +24,6 @@ public class Application extends JFrame implements IApplication{
 	
 	/** Game Selector Panel */
 	GameSelectorPanel gameSelectorPanel;
-	
-	
 
 	/** 
 	 * Constructor
@@ -34,7 +33,6 @@ public class Application extends JFrame implements IApplication{
 		this.frame = new JFrame();
 		this.splashPanel = new SplashPanel(this.frame);
 		this.gameSelectorPanel = new GameSelectorPanel(this.frame);
-		
 
 		/* Set Frame Attributes */
 		this.frame.setTitle("SixesWild");
@@ -51,7 +49,6 @@ public class Application extends JFrame implements IApplication{
 		
 		/* Close everything when done */
 		this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
 		
 	}
 
