@@ -6,9 +6,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
-
 import javax.swing.JFileChooser;
-
 import model.SixesWild;
 import builder.views.BuilderPanel;
 
