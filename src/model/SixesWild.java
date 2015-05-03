@@ -189,6 +189,22 @@ abstract public class SixesWild {
 		
 	}
 	
+	/**
+	 * Resets the Level Tracker 
+	 * 
+	 * This method is for debugging, it resets the level tracker values to 
+	 * relock all levels
+	 */
+	public void resetLevelTracker(){
+		LevelTracker lt = new LevelTracker();
+		
+		try {
+			serialize(lt, "resources/levels/level_tracker.txt");
+		} catch (IOException z) {
+			z.printStackTrace();
+		} 
+	}
+	
 	
 	/**
 	 * Serializes the LevelTracker
