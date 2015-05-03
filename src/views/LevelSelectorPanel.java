@@ -21,6 +21,7 @@ import model.LightningGame;
 import model.PuzzleGame;
 import model.ReleaseGame;
 import model.SixesWild;
+import controllers.ChooseCustomLevelController;
 import controllers.ChooseLevelController;
 
 /**
@@ -117,10 +118,9 @@ public class LevelSelectorPanel extends JPanel implements IApplication{
 		/*
 		 * Create the choose custom level button and bind it to its controller
 		 */
-		
+		ChooseCustomLevelController customController = new ChooseCustomLevelController(this.model, this);
 		JButton btnCustomLevel = new JButton("Choose Your Own!");
-		
-		// ADD BINDING TO CONTROLLER HERE!!!
+		btnCustomLevel.addActionListener(customController);
 		
 		// Place buttons on correct locations
 		// Set layout to grid bag
