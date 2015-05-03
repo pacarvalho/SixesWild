@@ -77,6 +77,10 @@ public class Move implements IMove{
 			if(t.getValue() == 6 || t.getValue() == 0 || t.getValue() == -1){
 				return false;
 			}
+			
+			if(model.getNumMoves() <= 0){
+				return false;
+			}
 			count += t.getValue();
 			
 			// Note: any time the Move.valid() method is called the multiplier will be incremented

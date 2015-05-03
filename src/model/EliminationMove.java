@@ -57,6 +57,12 @@ public class EliminationMove implements IMove {
 	@Override
 	public boolean valid() {
 		int count = 0;
+		
+		//If the move limit has been reached
+		if(model.getNumMoves() <= 0){
+			return false;
+		}
+		
 		// if the any two tiles are diagonal return false
 		// if the any two tiles are diagonal return false
 		for(int i = 0; i < tiles.size()-1; i++){
@@ -74,12 +80,12 @@ public class EliminationMove implements IMove {
 				return false;
 			}
 			
-			count += t.getValue();
-			
-			// if the sum of the tiles is greater than six the move is invalid
-			if(count > 6){
+			if(model.getNumMoves() <= 0){
 				return false;
 			}
+			
+			count += t.getValue();
+			
 		}
 		
 		if(count == 6){

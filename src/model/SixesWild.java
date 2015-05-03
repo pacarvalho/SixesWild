@@ -28,7 +28,7 @@ abstract public class SixesWild {
 	int[] specQuotas = new int[3];
 	
 	/**Listener for score changes*/
-	private ScoreStarUpdater updater;
+	ScoreStarUpdater updater;
 
 	/** Monitor the number of moves remiaining */
 	int numMoves;
@@ -46,7 +46,6 @@ abstract public class SixesWild {
 	public static final int FIRST = 1; 	// 2^^0
 	public static final int SECOND = 2; // 2^^1
 	public static final int THIRD = 4;  // 2^^2
-	
 	public static final int DEFAULT =1;
 	
 	/** Constructor */
