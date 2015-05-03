@@ -20,9 +20,21 @@ import views.LevelSelectorPanel;
  */
 public class ChooseGameController implements ActionListener{
 	
+	/** Parent JPanel */
 	IApplication view;
+	
+	/** Buttons Bounds to Controller */
 	JButton btnPuzzle, btnLightning, btnRelease, btnElimination;
 	
+	/** 
+	 * Constructor 
+	 * 
+	 * @param view
+	 * @param btnPuzzle
+	 * @param btnLightning
+	 * @param btnRelease
+	 * @param btnElimination
+	 */
 	public ChooseGameController(IApplication view, JButton btnPuzzle, JButton btnLightning,
 				JButton btnRelease, JButton btnElimination){
 		
