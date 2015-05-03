@@ -152,7 +152,29 @@ public class Board implements Serializable{
 			ite += 1;
 		}
 		
+		this.releaseGravity();
+		
 		return false;
+	}
+	
+	/**
+	 * Release Gravity logic
+	 * 
+	 * Checks the board for container tiles if a container tile is found it checks the tile above it
+	 * If the tile above it is a 6 it is set to null and the container updates itself to a full container.
+	 */
+	public void releaseGravity(){
+		for(int i = 0; i<9; i++){
+			for(int j = 1; j<9; j++){
+				if(this.tiles[i][j].getValue() == 0){
+					if(this.tiles[i][j-1].getValue() == 6){
+						this.destroyTile(this.tiles[i][j-1]);
+						this.tiles[i][j].setValue(-3);
+						this.update();
+					}
+				}
+			}
+		}
 	}
 	
 	/**

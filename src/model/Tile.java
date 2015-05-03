@@ -10,10 +10,15 @@ import java.io.Serializable;
  */
 public class Tile implements Serializable{
 	
-	//TODO Add Multiplier Attribute and Selected boolean 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3051808425738414764L;
+
 	/**
 	 * Value of the Tile
 	 * 
+	 * -3 is a container tile with a six in it
 	 * -1 is a wall tile
 	 * 	0 is a container tile
 	 * 	1-5 are normal tiles
