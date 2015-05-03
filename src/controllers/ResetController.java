@@ -13,10 +13,9 @@ import views.BoardView;
  * @author OAkyildiz
  *
  */
-public class SpecialMovesController implements ActionListener {
+public class ResetController implements ActionListener {
 	
-	/**Buttons*/
-	JButton btnSpec1, btnSpec2, btnSpec3;
+
 	 
 	/**BoardView*/
 	BoardView boardView;
@@ -24,33 +23,24 @@ public class SpecialMovesController implements ActionListener {
 	/** Level model*/
 	SixesWild model;
 	
-	public SpecialMovesController(JButton btnSpec1, JButton btnSpec2,
-			JButton btnSpec3, BoardView boardView, SixesWild model) {
-		super();
-		this.btnSpec1 = btnSpec1;
-		this.btnSpec2 = btnSpec2;
-		this.btnSpec3 = btnSpec3;
+	/**Button to control*/
+	JButton resetBtn;
+	
+	public ResetController(JButton resetBtn, BoardView boardView, SixesWild model) {
+		this.resetBtn = resetBtn;
 		this.boardView = boardView;
 		this.model = model;
 	}
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		if(e.getSource()== btnSpec1 && model.getSpecQuotas(0) != 0){
-			SwapController swapper = new SwapController(boardView, model);
-			swapper.register();
-			
-		}
-		else if(e.getSource()== btnSpec2 && model.getSpecQuotas(1) != 0){
-			DestroyTileController destroyer = new DestroyTileController(boardView, model);
-			destroyer.register();
-		}
-		else if(e.getSource()== btnSpec3 && model.getSpecQuotas(2) != 0){
-				//Reset move =new ResetMove();
-				//reset.doMove;
-				//voardView.update;
-		}
 
-	}
-
+		public void actionPerformed(ActionEvent e) {
+				if(model.getSpecQuotas(2) != 0){
+					model.changeSpecQuotas(2, -1);
+					//model.setSpecQuotas(1, SixesWild.DEFAULT);
+					//model.setSpecQuotas(0, SixesWild.DEFAULT);
+//					Reset move =new ResetMove();
+//					reset.doMove;
+//					boardView.update();7
+				}
+		}
 }

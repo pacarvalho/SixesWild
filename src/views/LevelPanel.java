@@ -2,29 +2,20 @@ package views;
 
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.Image;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.IOException;
 
-import javax.imageio.ImageIO;
+
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JButton;
-import javax.swing.JTextField;
+
 
 import controllers.BoardController;
-import controllers.DestroyTileController;
+
 import controllers.ExitController;
-import controllers.ResetController;
-import controllers.SpecialMovesController;
-import controllers.ScoreStarUpdater;
-import controllers.SwapController;
+
 import model.SixesWild;
 
 /**
@@ -65,7 +56,7 @@ public class LevelPanel extends JPanel implements IApplication{
 		
 		this.model = model;
 		this.frame = frame;
-		this.frame.setMinimumSize(new Dimension(800, 550));
+		this.frame.setMinimumSize(new Dimension(700, 550));
 		this.boardView = null;
 		this.starView = new StarPanel(model);
 		this.scoreView = new JLabel(""+model.getCurrentScore());

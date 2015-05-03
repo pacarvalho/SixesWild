@@ -17,8 +17,7 @@ abstract public class SixesWild {
 	
 	/**Number of stars earned*/
 	public int stars;
-	
-	
+
 	/**Array of number of remaining special moves*/
 	int[] specQuotas = new int[3];
 	
@@ -41,7 +40,7 @@ abstract public class SixesWild {
 	public static final int SECOND = 2; // 2^^1
 	public static final int THIRD = 4;  // 2^^2
 	
-	public static final int DEFAULt =1;
+	public static final int DEFAULT =1;
 	
 	/** Constructor */
 	public SixesWild(){
@@ -49,7 +48,7 @@ abstract public class SixesWild {
 		this.numMoves = 0;
 		this.board = null;
 		this.stars = 0;
-		this.specQuotas = new int[]{1,1,1};
+		this.specQuotas = new int[]{3,1,1};
 		this.setUpdater(new ScoreStarUpdater(this));
 	}
 	
@@ -119,8 +118,12 @@ abstract public class SixesWild {
 		return specQuotas[i];
 	}
 
-	public boolean setSpecQuotas(int index, int change) {
+	public boolean changeSpecQuotas(int index, int change) {
 		this.specQuotas[index] += change;
+		return true;
+	}
+	public boolean setSpecQuotas(int index, int number) {
+		this.specQuotas[index] = number;
 		return true;
 	}
 

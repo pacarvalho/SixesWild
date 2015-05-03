@@ -2,6 +2,7 @@ package views;
 
 import java.awt.FlowLayout;
 
+import javax.swing.BoxLayout;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -42,7 +43,7 @@ public class StarPanel extends JPanel{
 	}
 	
 	private void initialize(){
-		setLayout(new FlowLayout(FlowLayout.RIGHT));
+		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		if(!time){
 			for(int m=0; m<3; m++ ){
 				stars[m] = new JLabel("", offStar, SwingConstants.CENTER);

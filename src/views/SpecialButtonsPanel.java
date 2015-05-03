@@ -1,9 +1,16 @@
 package views;
 
-import java.awt.FlowLayout;
+import java.awt.Color;
+
+import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
-import controllers.SpecialMovesController;
+import javax.swing.plaf.basic.BasicInternalFrameTitlePane.RestoreAction;
+
+import controllers.DestroyTileController;
+import controllers.ResetController;
+import controllers.SwapController;
 import model.SixesWild;
 
 /**
@@ -48,17 +55,20 @@ public class SpecialButtonsPanel extends JPanel {
 	 * Creates and organizes the panel
 	 */
 	void initialize(){
-		setLayout(new FlowLayout(FlowLayout.RIGHT));
+		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+		
 		
 		add(getBtnSpecial1());
 		add(getBtnSpecial2());
 		add(getBtnSpecial3());
 		
-		SpecialMovesController specBtnsCtrl = new SpecialMovesController(getBtnSpecial1(),
-				getBtnSpecial2(), getBtnSpecial3(), boardView, model);
-		getBtnSpecial1().addActionListener(specBtnsCtrl);
-		getBtnSpecial2().addActionListener(specBtnsCtrl);
-		getBtnSpecial3().addActionListener(specBtnsCtrl);
+		SwapController swapper = new SwapController(getBtnSpecial1(),boardView, model);
+		DestroyTileController destroyer = new DestroyTileController(getBtnSpecial2(), boardView, model);
+		ResetController shuffler = new ResetController(btnSpecial3, boardView, model);
+		
+		getBtnSpecial1().addActionListener(swapper);
+		getBtnSpecial2().addActionListener(destroyer);
+		getBtnSpecial3().addActionListener(shuffler);
 	}
 	
 	/**
@@ -69,7 +79,9 @@ public class SpecialButtonsPanel extends JPanel {
 	public JButton getBtnSpecial1(){
 		if(this.btnSpecial1 == null){
 			this.btnSpecial1 = new JButton();
-			this.btnSpecial1.setText("SW");
+			this.btnSpecial1.setBackground(Color.WHITE);
+			this.btnSpecial1.setIcon(new ImageIcon("resources/Swap.gif"));
+			this.btnSpecial1.setText("" + model.getSpecQuotas(0));
 		}
 		return this.btnSpecial1;
 	}
@@ -82,7 +94,9 @@ public class SpecialButtonsPanel extends JPanel {
 	public JButton getBtnSpecial2(){
 		if(this.btnSpecial2 == null){
 			this.btnSpecial2 = new JButton();
-			this.btnSpecial2.setText("EL");
+			this.btnSpecial2.setBackground(Color.WHITE);
+			this.btnSpecial2.setIcon(new ImageIcon("resources/Destroy.gif"));
+			this.btnSpecial2.setText("" + model.getSpecQuotas(0));
 		}
 		return this.btnSpecial2;
 	}
