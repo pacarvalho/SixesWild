@@ -95,8 +95,6 @@ public class BuilderPanel extends JPanel implements IApplication {
 		// *****Create Labels*****
 		// ***********************
 		// Title Label
-		
-		
 		JLabel lblLevelBuilder = new JLabel(model.getName() + " Level Builder");
 		lblLevelBuilder.setFont(new Font("Tahoma", Font.BOLD, 35));
 		
@@ -106,12 +104,21 @@ public class BuilderPanel extends JPanel implements IApplication {
 		// ScoreLimit Label
 		JLabel lblScoreLimit = new JLabel("Score Limit : ");
 		
-		// Probability Labels
+		// ChanceOfMultiplier Label
+		JLabel lblChance = new JLabel("Mulitplier Chance : ");
+		
+		//MaxMove Label
+		JLabel lblMaxMove = new JLabel("Max Moves : ");
+		
+		// Probability of Tile Labels
 		JLabel lblProbabilityOf1 = new JLabel("Probability of 1 : ");
 		JLabel lblProbabilityOf2 = new JLabel("Probability of 2 : ");
 		JLabel lblProbabilityOf3 = new JLabel("Probability of 3 : ");
 		JLabel lblProbabilityOf4 = new JLabel("Probability of 4 : ");
 		JLabel lblProbabilityOf5 = new JLabel("Probability of 5 : ");
+		
+		// Chance of Multiplier Labels
+		JLabel lblChanceOfMultiplier = new JLabel("Chance 2x/3x : ");
 		
 		// ***********************
 		// ****Create Buttons*****
@@ -162,6 +169,14 @@ public class BuilderPanel extends JPanel implements IApplication {
 		scoreLimitText.addActionListener(scoreController);
 		scoreLimitText.setColumns(5);
 		
+		// chanceOfMultiplier TextField
+		JTextField chanceMultiplier = new JTextField(this.model.getBoard().getMultiplierFrequency() + "");
+		chanceMultiplier.setColumns(5);
+		
+		// MaxMove TextField
+		JTextField maxMove = new JTextField(this.model.getBoard().getMaxMoves() + "");
+		maxMove.setColumns(5);
+		
 		// ***********************
 		// ****Create Sliders*****
 		// ***********************
@@ -182,6 +197,8 @@ public class BuilderPanel extends JPanel implements IApplication {
 		slider_3.addChangeListener(sliderController);
 		slider_4.addChangeListener(sliderController);
 		slider_5.addChangeListener(sliderController);
+		
+		JSlider slider_x = new JSlider(1, 10, this.model.getBoard().getFrequency(0));
 	
 		
 		// **************************
@@ -279,6 +296,20 @@ public class BuilderPanel extends JPanel implements IApplication {
 		c.ipady = 25; 
 		this.add(lblTimeLimit, c);
 		
+		// Place Chance of Multiplier Label
+		c.gridx = 0;
+		c.gridy = 5;
+		c.gridwidth = 1;
+		c.ipady = 25; 
+		this.add(lblChance, c);
+		
+		// Place Chance of Multiplier Label
+		c.gridx = 2;
+		c.gridy = 5;
+		c.gridwidth = 1;
+		c.ipady = 25; 
+		this.add(lblMaxMove, c);
+		
 		// Place TimeLimit TextField
 		c.gridx = 1;
 		c.gridy = 4;
@@ -293,79 +324,108 @@ public class BuilderPanel extends JPanel implements IApplication {
 		c.ipady = 3; 
 		this.add(timeLimitText, c);
 		
+		// Place  Chance of Multiplier TextField
+		c.gridx = 1;
+		c.gridy = 5;
+		c.gridwidth = 1;
+		c.ipady = 3; 
+		this.add(chanceMultiplier, c);
+		
+		// Place  Chance of Multiplier TextField
+		c.gridx = 3;
+		c.gridy = 5;
+		c.gridwidth = 1;
+		c.ipady = 3; 
+		this.add(maxMove, c);
+		
 		// Place Probability Label 1
 		c.gridx = 0;
-		c.gridy = 5;
+		c.gridy = 6;
 		c.gridwidth = 1;
 		c.ipady = 25; 
 		this.add(lblProbabilityOf1, c);
 		
 		// Place Probability Label 2
 		c.gridx = 0;
-		c.gridy = 6;
+		c.gridy = 7;
 		c.gridwidth = 1;
 		c.ipady = 25; 
 		this.add(lblProbabilityOf2, c);
 		
 		// Place Probability Label 3
 		c.gridx = 0;
-		c.gridy = 7;
+		c.gridy = 8;
 		c.gridwidth = 1;
 		c.ipady = 25; 
 		this.add(lblProbabilityOf3, c);
 		
 		// Place Probability Label 4
 		c.gridx = 0;
-		c.gridy = 8;
+		c.gridy = 9;
 		c.gridwidth = 1;
 		c.ipady = 25; 
 		this.add(lblProbabilityOf4, c);
 		
 		// Place Probability Label 5
 		c.gridx = 0;
-		c.gridy = 9;
+		c.gridy = 10;
 		c.gridwidth = 1;
 		c.ipady = 25; 
 		this.add(lblProbabilityOf5, c);
 		
+		// Place Chance of Multiplier Label
+		c.gridx = 0;
+		c.gridy = 11;
+		c.gridwidth = 1;
+		c.ipady = 15; 
+		this.add(lblChanceOfMultiplier, c);
+		
+		
 		//Place Slider 1
 		c.gridx = 1;
-		c.gridy = 5;
+		c.gridy = 6;
 		c.gridwidth = 4;
 		c.ipady = 25; 
 		this.add(slider_1, c);
 		
 		//Place Slider 2
 		c.gridx = 1;
-		c.gridy = 6;
+		c.gridy = 7;
 		c.gridwidth = 4;
 		c.ipady = 25; 
 		this.add(slider_2, c);
 		
 		//Place Slider 3
 		c.gridx = 1;
-		c.gridy = 7;
+		c.gridy = 8;
 		c.gridwidth = 4;
 		c.ipady = 25; 
 		this.add(slider_3, c);
 		
 		//Place Slider 4
 		c.gridx = 1;
-		c.gridy = 8;
+		c.gridy = 9;
 		c.gridwidth = 4;
 		c.ipady = 25; 
 		this.add(slider_4, c);
 		
 		//Place Slider 5
 		c.gridx = 1;
-		c.gridy = 9;
+		c.gridy = 10;
 		c.gridwidth = 4;
 		c.ipady = 25; 
 		this.add(slider_5, c);
 		
+		//Place Multiplier Slider
+		c.gridx = 1;
+		c.gridy = 11;
+		c.gridwidth = 4;
+		c.ipady = 15; 
+		this.add(slider_x, c);
+		
 		// Add TileSelectorPanel
-		c.gridx = 0;
-		c.gridy = 10;
+		c.gridx = 2;
+		c.gridy = 15;
 		c.gridwidth = 5;
 		c.ipady = 25;
 		this.add(tileSelector, c);

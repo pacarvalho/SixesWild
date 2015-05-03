@@ -3,32 +3,13 @@ package views;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-
 import javax.swing.JButton;
-
-import model.EliminationGame;
-import model.LevelTracker;
-import model.LightningGame;
-import model.PuzzleGame;
-import model.ReleaseGame;
 import model.SixesWild;
 import controllers.ChooseLevelController;
 
-/**
- * Allows user to select which level he intends to play
- * 
- * @author Katie, Paulo
- *
- */
 public class LevelSelectorPanel extends JPanel implements IApplication{
 	/**
 	 * ID For Multithreaded runs
@@ -41,36 +22,10 @@ public class LevelSelectorPanel extends JPanel implements IApplication{
 	/** Game Model */
 	SixesWild model;
 	
-	/**
-	 * Constructor
-	 * 
-	 * @param frame
-	 * @param m
-	 */
 	public LevelSelectorPanel(JFrame frame, SixesWild m) {
 		
 		this.frame = frame;
 		this.model = m;
-		
-		// De-serialize data regarding level unlocking
-		LevelTracker lt = null;
-		try {
-			lt = (LevelTracker)this.deserialize("resources/levels/level_tracker.txt");
-			
-		} catch (IOException e){ // If file does not exist create a new one and save it to disk
-			System.out.println("Level tracker could not be found. New tracker created.");
-			
-			lt = new LevelTracker();
-			
-			try{
-				serialize(lt,"resources/levels/level_tracker.txt"); // Save to disk
-			} catch (IOException z) {
-				z.printStackTrace();
-			}
-			
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}
 		
 		JLabel lblSelectLevel = new JLabel(m.getName());
 		lblSelectLevel.setFont(new Font("Source Sans Pro Black", Font.PLAIN, 45));
@@ -89,30 +44,10 @@ public class LevelSelectorPanel extends JPanel implements IApplication{
 		ChooseLevelController chooseLevelController = new ChooseLevelController(model, this, btnLevel1, btnLevel2,
 				btnLevel3, btnLevel4);
 		
-		// Determine which game we are playing
-		boolean lockedLevels[] = new boolean[4];
-		if (this.model instanceof PuzzleGame){
-			lockedLevels = lt.puzzleLocked;
-		} else if (this.model instanceof EliminationGame) {
-			lockedLevels = lt.eliminationLocked;
-		} else if (this.model instanceof LightningGame) {
-			lockedLevels = lt.lightningLocked;
-		} else if (this.model instanceof ReleaseGame) {
-			lockedLevels = lt.releaseLocked;
-		}
-		
-				
-		// Only bind to controllers the levels that have been UNLOCKED!
 		btnLevel1.addActionListener(chooseLevelController);
 		btnLevel2.addActionListener(chooseLevelController);
 		btnLevel3.addActionListener(chooseLevelController);
 		btnLevel4.addActionListener(chooseLevelController);
-		
-		// Enable or Disable buttons based on available levels
-		btnLevel1.setEnabled(!lockedLevels[0]);
-		btnLevel2.setEnabled(!lockedLevels[1]);
-		btnLevel3.setEnabled(!lockedLevels[2]);
-		btnLevel4.setEnabled(!lockedLevels[3]);
 		
 		/*
 		 * Create the choose custom level button and bind it to its controller
@@ -180,37 +115,9 @@ public class LevelSelectorPanel extends JPanel implements IApplication{
 		
 	}
 	
-	/**
-	 * Return parent JFrame
-	 */
 	@Override
 	public JFrame getFrame() {
 		return this.frame;
-	}
-	
-	/**
-	 * Loads a serialized object
-	 */
-	public Object deserialize(String fileName) throws IOException, ClassNotFoundException{
-		FileInputStream fis = new FileInputStream(fileName);
-		ObjectInputStream ois = new ObjectInputStream(fis);
-		
-		Object obj = ois.readObject();
-		
-		ois.close();
-		
-		return obj;
-	}
-	
-	/**
-	 * Serializes a given serializable object
-	 */
-	public void serialize(Object obj, String fileName) throws IOException{
-		FileOutputStream fos = new FileOutputStream(fileName);
-		ObjectOutputStream oos = new ObjectOutputStream(fos);
-		oos.writeObject(obj);
-		
-		fos.close();
 	}
 
 }

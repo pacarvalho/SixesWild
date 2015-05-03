@@ -29,6 +29,27 @@ public class Board implements Serializable{
 	int[] frequency = {1,1,1,1,1}; // Default
 	
 	/**
+	 * Multiplier frequencies
+	 * 
+	 * Denotes the frequency with which x2/ x3 multiplier appears
+	 */
+	int[] multiplierFreq = {1,1};
+	
+	/**
+	 * Chance of a multiplier appearing
+	 * 
+	 * Denotes the chance of a multiplier appearing opposed to no multiplier
+	 */
+	int chanceMultiplier;
+	
+	/**
+	 * Max Move Limit
+	 * 
+	 * Determines the number of available moves in a given level
+	 */
+	int maxMoves;
+	
+	/**
 	 * Score limit
 	 * 
 	 * Determines the score upon which a game is considered as having been won.
@@ -56,6 +77,8 @@ public class Board implements Serializable{
 		
 		this.timeLimit = 0; // Default time
 		this.scoreLimit = 0; // Default Max Score
+		this.maxMoves = 30; // Default Max Moves
+		this.chanceMultiplier = 0; // Default chance of multiplier
 	}
 	
 	/**
@@ -301,5 +324,37 @@ public class Board implements Serializable{
 		
 		return true;
 	}
+	
+	/**
+	 * Getter for max moves
+	 */
+	public int getMaxMoves(){
+		return this.maxMoves;
+	}
+	
+	/**
+	 * Setter for max moves
+	 */
+	public boolean setMaxMoves(int max){
+		this.maxMoves = max;
+		return true;
+	}
+	
+	/**
+	 * Getter for multiplierFrequencies moves
+	 */
+	public int getMultiplierFrequency(){
+		return this.chanceMultiplier;
+	}
+	
+	/**
+	 * Setter for multiplierFrequencies moves
+	 */
+	public boolean setMultiplierFrequency(int m){
+		this.chanceMultiplier = m;
+		return true;
+	}
+	
+	
 	
 }
