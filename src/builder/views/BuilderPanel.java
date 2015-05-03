@@ -165,6 +165,7 @@ public class BuilderPanel extends JPanel implements IApplication {
 		timeLimitText.addActionListener(timeController);
 		timeLimitText.setColumns(5);
 		
+		
 		// ScoreLimit TextFields
 		JTextField scoreLimitText = new JTextField(this.model.getBoard().getScoreLimit() + "");
 		scoreLimitController scoreController = new scoreLimitController(this, this.builder, this.model, scoreLimitText); // Controller
@@ -326,12 +327,17 @@ public class BuilderPanel extends JPanel implements IApplication {
 		this.add(scoreLimitText, c);
 		
 		// Place TimeLimit TextField
-		if(this.model.getName() == "Lightning"){
-			c.gridx = 3;
-			c.gridy = 4;
-			c.gridwidth = 1;
-			c.ipady = 3; 
-			this.add(timeLimitText, c);
+		c.gridx = 3;
+		c.gridy = 4;
+		c.gridwidth = 1;
+		c.ipady = 3; 
+		this.add(timeLimitText, c);
+		
+		//Enable and disable the Lightning Text Field depending on game type
+		if(this.model.getName() != "Lightning"){
+			timeLimitText.setEnabled(false);
+		} else {
+			timeLimitText.setEnabled(true);
 		}
 		
 		// Place  Chance of Multiplier TextField
