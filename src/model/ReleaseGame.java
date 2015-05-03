@@ -22,7 +22,9 @@ public class ReleaseGame extends SixesWild {
 	}
 	
 	/**
+	 * Returns true when game is won
 	 * 
+	 * All containers have been filled
 	 */
 	@Override
 	public boolean hasWon(){
@@ -36,22 +38,11 @@ public class ReleaseGame extends SixesWild {
 	public boolean hasLost(){
 		return false;
 	}
-	
-	/**
-	 * 
-	 */
+
 	@Override
 	public void updateScore() {
 		// TODO Auto-generated method stub
 		
-	}
-	
-	/**
-	 * Returns the board
-	 */
-	@Override
-	public Board getBoard(){
-		return this.board;
 	}
 	
 	

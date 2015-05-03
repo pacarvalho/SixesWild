@@ -3,7 +3,7 @@ package model;
 import java.util.ArrayList;
 
 /**
- * 
+ * Move class for the elimination move.
  * 
  * @author Katie, Sean
  *
@@ -38,6 +38,10 @@ public class EliminationMove implements IMove {
 		for(Tile t: tiles){
 			board.setEliminationTileValue(t);
 		}
+		
+		
+		// Check if game has been won or lost
+		this.model.checkGameState();
 		
 		return true;
 	}

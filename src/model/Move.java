@@ -48,6 +48,10 @@ public class Move implements IMove{
 		model.updateScore(this.multiplierTotal*6);
 		
 		board.update();
+		
+		// Check if game has been won or lost
+		this.model.checkGameState();
+		
 		return true;
 	}
 	
