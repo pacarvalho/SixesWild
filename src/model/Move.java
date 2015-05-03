@@ -78,9 +78,11 @@ public class Move implements IMove{
 				return false;
 			}
 			
-			if(model.getNumMoves() <= 0){
+			// Do now allow moves if there are no moves left unless it is a lightning game
+			if((model.getNumMoves() <= 0) && !(this.model instanceof LightningGame)){
 				return false;
 			}
+			
 			count += t.getValue();
 			
 			// Note: any time the Move.valid() method is called the multiplier will be incremented
