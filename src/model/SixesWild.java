@@ -13,7 +13,7 @@ import controllers.ScoreStarUpdater;
 abstract public class SixesWild {
 	
 	/** Keeps the current Score of the game */
-	Integer currentScore;
+	int currentScore;
 	
 	/**Number of stars earned*/
 	public int stars;
