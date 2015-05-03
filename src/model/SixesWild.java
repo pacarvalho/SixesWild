@@ -129,6 +129,8 @@ abstract public class SixesWild {
 	 */
 	public boolean updateLevelTracker(int currentLevel){
 		
+		if (currentLevel == 5) {return false;} // Custom levels are not tracked!
+		
 		currentLevel -= 1; // Recall that level 1 should be level 0!
 		
 		// Deserialize the level tracker
