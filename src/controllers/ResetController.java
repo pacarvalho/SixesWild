@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 
+import model.ResetMove;
 import model.SixesWild;
 import views.BoardView;
 
@@ -14,18 +15,18 @@ import views.BoardView;
  *
  */
 public class ResetController implements ActionListener {
-	
 
-	 
+
+
 	/**BoardView*/
 	BoardView boardView;
-	
+
 	/** Level model*/
 	SixesWild model;
-	
+
 	/**Button to control*/
 	JButton resetBtn;
-	
+
 	public ResetController(JButton resetBtn, BoardView boardView, SixesWild model) {
 		this.resetBtn = resetBtn;
 		this.boardView = boardView;
@@ -33,14 +34,21 @@ public class ResetController implements ActionListener {
 	}
 
 
-		public void actionPerformed(ActionEvent e) {
-				if(model.getSpecQuotas(2) != 0){
-					model.changeSpecQuotas(2, -1);
-					//model.setSpecQuotas(1, SixesWild.DEFAULT);
-					//model.setSpecQuotas(0, SixesWild.DEFAULT);
-//					Reset move =new ResetMove();
-//					reset.doMove;
-//					boardView.update();7
-				}
+	public void actionPerformed(ActionEvent e) {
+		ResetMove reset =new ResetMove(model);	
+		if(model.getSpecQuotas(2) != 0){
+			if(reset.doMove()){
+				model.changeSpecQuotas(2, -1);
+				//model.setSpecQuotas(1, SixesWild.DEFAULT);
+				//model.setSpecQuotas(0, SixesWild.DEFAULT);
+
+
+				if(model.getSpecQuotas(2) < 1)
+					this.resetBtn.setEnabled(false);
+
+				boardView.updateBoardView();
+
+			}
 		}
+	}
 }

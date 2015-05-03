@@ -52,7 +52,7 @@ public class Board implements Serializable{
 	/**
 	 * Score limit
 	 * 
-	 * Determines the score upon which a game is considered as having been won.
+	 * Determines the score upon which a game is considered as won.
 	 */
 	int scoreLimit;
 	

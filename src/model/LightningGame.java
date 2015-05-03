@@ -1,17 +1,23 @@
 package model;
 
+import java.util.Timer;
+
 
 /**
  * 
- * Method overiding for Lightning variation of the game goes here.
+ * Method overriding for Lightning variation of the game goes here.
  * 
  * @author Paulo, Katie
  *
  */
 public class LightningGame extends SixesWild {
 	
+	//Timer levelTimer;
 	public LightningGame(){
 		super();
+		//this.countDown = 120;
+		//levelTimer = new Timer(1000, updateRemainingTime);
+		//levelTimer.start();
 	}
 	
 	/**
@@ -41,11 +47,13 @@ public class LightningGame extends SixesWild {
 	/**
 	 * 
 	 */
+	//no need to override
 	@Override
 	public void updateScore() {
-		// TODO Auto-generated method stub
-		
 	}
+	
+
+	
 	
 	/**
 	 * Returns the board

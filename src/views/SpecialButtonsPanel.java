@@ -6,7 +6,7 @@ import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
-import javax.swing.plaf.basic.BasicInternalFrameTitlePane.RestoreAction;
+
 
 import controllers.DestroyTileController;
 import controllers.ResetController;
@@ -15,7 +15,7 @@ import model.SixesWild;
 
 /**
  * 
- * @author Ozan
+ * @author OAkyildiz
  *
  */
 public class SpecialButtonsPanel extends JPanel {

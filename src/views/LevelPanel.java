@@ -42,6 +42,8 @@ public class LevelPanel extends JPanel implements IApplication{
 	
 	JLabel scoreView;
 	
+	JLabel countdownView;
+	
 	StarPanel starView;
 	/**
 	 * Constructor
@@ -60,6 +62,7 @@ public class LevelPanel extends JPanel implements IApplication{
 		this.boardView = null;
 		this.starView = new StarPanel(model);
 		this.scoreView = new JLabel(""+model.getCurrentScore());
+		this.countdownView = new JLabel();
 		
 		this.scoreView.setFont(new Font("Source Sans Pro Black", Font.PLAIN, 24));
 		//Plug in levelView to updater

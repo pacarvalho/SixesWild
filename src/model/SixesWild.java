@@ -27,6 +27,8 @@ abstract public class SixesWild {
 	/** Monitor the number of moves made */
 	int numMoves;
 	
+	
+	
 	/** Create a board for the game */
 	Board board;
 	

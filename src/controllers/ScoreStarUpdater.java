@@ -1,11 +1,7 @@
 package controllers;
 
 
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
-
 import views.LevelPanel;
-import views.StarPanel;
 import model.SixesWild;
 
 /**
