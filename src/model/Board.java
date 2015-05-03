@@ -213,13 +213,33 @@ public class Board implements Serializable{
 	 */
 	public Tile spawnNewTile(int x, int y){
 		Random rand = new Random();
-		
+				
 		if (frequency == null) { // No statistics is defined. All values have same prob
-			return new Tile(rand.nextInt(5)+1, x, y);
+			return new Tile(rand.nextInt(5) + 1, x, y);
 		}
 		
-		// TODO: Implement frequency normalization to create tiles following predefined stats
-		return new Tile(rand.nextInt(5)+1, x, y);
+		// Sum up all the frequency values
+		int totalFrequency = 0; 
+		for (int f: this.frequency){
+			totalFrequency += f;
+		}
+		
+		// Generate random number up to sum
+		int chance = rand.nextInt(totalFrequency) + 1;
+		// Decide which tile to spawn
+		if (chance <= frequency[0]){
+			return new Tile(1, x, y);
+		} else if (chance <= (frequency[0] + frequency[1])) {
+			return new Tile(2, x, y);
+		} else if (chance <= (frequency[0] + frequency[1] + frequency[2])){
+			return new Tile(3, x, y);
+		} else if (chance <= (frequency[0] + frequency[1] + frequency[2] + frequency[3])){
+			return new Tile(4, x, y);
+		} else {
+			return new Tile(5, x, y);
+		}
+		
+		
 	}
 	
 	/**

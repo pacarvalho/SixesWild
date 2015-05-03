@@ -1,12 +1,16 @@
 package views;
 
+import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import java.awt.Font;
+import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Image;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -212,5 +216,22 @@ public class LevelSelectorPanel extends JPanel implements IApplication{
 		
 		fos.close();
 	}
+	
+	/**
+	 * Create background image
+	 */
+	 @Override
+	 protected void paintComponent(Graphics g) {
+	     super.paintComponent(g); // paint the background image and scale it to fill the entire space
+	     Image image = null;
+		try {
+			image = ImageIO.read(new File("Resources/gradient.png"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		if(image != null){
+			g.drawImage(image, 0, 0, 1000, 800, this);	
+		}
+	 }
 
 }

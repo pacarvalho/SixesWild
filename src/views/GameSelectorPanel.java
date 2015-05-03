@@ -1,5 +1,6 @@
 package views;
 
+import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -7,8 +8,12 @@ import javax.swing.UIManager;
 
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
 
 import javax.swing.JButton;
 
@@ -31,7 +36,7 @@ public class GameSelectorPanel extends JPanel implements IApplication{
 	
 	public GameSelectorPanel(JFrame frame){
 		this.frame = frame;
-		this.frame.setPreferredSize(new Dimension(500, 400));
+		this.frame.setPreferredSize(new Dimension(1000, 600));
 		
 		setBackground(UIManager.getColor("FormattedTextField.selectionBackground"));
 		
@@ -131,4 +136,21 @@ public class GameSelectorPanel extends JPanel implements IApplication{
 	public JFrame getFrame() {
 		return this.frame;
 	}
+	
+	/**
+	 * Create background image
+	 */
+	 @Override
+	 protected void paintComponent(Graphics g) {
+	     super.paintComponent(g); // paint the background image and scale it to fill the entire space
+	     Image image = null;
+		try {
+			image = ImageIO.read(new File("Resources/gradient.png"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		if(image != null){
+			g.drawImage(image, 0, 0, 1000, 800, this);	
+		}
+	 }
 }

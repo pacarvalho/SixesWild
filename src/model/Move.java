@@ -77,8 +77,6 @@ public class Move implements IMove{
 			}
 		}
 		
-		//Heineman would love an Iterator here.
-		
 		// if the any two tiles are diagonal return false
 		for(int i = 0; i < tiles.size()-1; i++){
 			int j = i+1;
