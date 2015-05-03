@@ -107,6 +107,12 @@ public class TileView extends JPanel{
 		this.setBorder(null);
 		if (this.tile.getSelectedFlag()){
 			this.setBorder(new BevelBorder(BevelBorder.LOWERED));
+			
+		} else if (this.tile.getEliminatedFlag()){
+			this.setBorder(new BevelBorder(BevelBorder.RAISED));
+			
+		} else {
+			// TODO: Create an invisible border that keeps the tiles from moving by having same size as normal border
 		}
 		
 		return true;

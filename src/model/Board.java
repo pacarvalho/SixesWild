@@ -94,7 +94,7 @@ public class Board implements Serializable{
 	 * 
 	 */
 	public void setEliminationTileValue(Tile t){
-		t.setValue(-2);
+		t.setEliminatedFlag(true);
 	}
 	
 	/**

@@ -43,6 +43,13 @@ public class Tile implements Serializable{
 	 */
 	boolean selectedFlag;
 	
+	/**
+	 * Indicates the tile has been eliminated
+	 * 
+	 * Used by the elimination game in computing which tiles have been eliminated
+	 */
+	boolean eliminatedFlag;
+	
 	
 	/**
 	 * Constructor
@@ -51,8 +58,10 @@ public class Tile implements Serializable{
 		this.value = value;
 		this.row = row;
 		this.col = col;
+		
 		this.multiplier = 1;
 		this.selectedFlag = false;
+		this.eliminatedFlag = false;
 	}
 	
 	/**
@@ -106,6 +115,12 @@ public class Tile implements Serializable{
 		return true;
 	}
 	
+	/**
+	 * Sets the score multiplier 
+	 * 
+	 * @param x
+	 * @return
+	 */
 	public boolean setMultiplier(int x){
 		if(0 < x ||x < 4){
 			this.multiplier = x;
@@ -115,6 +130,11 @@ public class Tile implements Serializable{
 		}
 	}
 	
+	/**
+	 * Returns the multiplier for the tile
+	 * 
+	 * @return
+	 */
 	public int getMultiplier(){
 		return this.multiplier;
 	}
@@ -125,6 +145,24 @@ public class Tile implements Serializable{
 	@Override
 	public String toString(){
 		return "Tile Value: " + this.value;
+	}
+
+	/**
+	 * Getter method for eliminated flag
+	 * 
+	 * @return
+	 */
+	public boolean getEliminatedFlag() {
+		return this.eliminatedFlag;
+	}
+	
+	/**
+	 * Setter method for eliminated flag
+	 */
+	public boolean setEliminatedFlag(boolean value){
+		this.eliminatedFlag = value;
+		
+		return true;
 	}
 	
 	
