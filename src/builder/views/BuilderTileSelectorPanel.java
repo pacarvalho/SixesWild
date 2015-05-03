@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import builder.model.BuilderSixesWild;
+import model.SixesWild;
 import model.Tile;
 import views.TileView;
 
@@ -40,24 +41,33 @@ public class BuilderTileSelectorPanel extends JPanel{
 	/** Overall Model */
 	BuilderSixesWild builder;
 	
+	/** Game Model */
+	SixesWild model;
+	
 	/**
 	 * Constructor
 	 */
-	BuilderTileSelectorPanel(JFrame frame, BuilderSixesWild builder){
+	BuilderTileSelectorPanel(JFrame frame, BuilderSixesWild builder, SixesWild model){
 		
 		this.frame = frame;
-		
 		this.builder = builder;
+		this.model = model;
 		
 		// Create tile views
-		this.tileViews = new TileView[8];
-		for (int i=0; i<8; i++){
+		if(this.model.getName() == "Release"){
+			this.tileViews = new TileView[8];
+			this.tiles = new Tile[8];
+		} else {
+			this.tileViews = new TileView[7];
+			this.tiles = new Tile[7];
+		}
+		
+		for (int i=0; i<tileViews.length; i++){
 			this.tileViews[i] = new TileView();
 		}
 
 		// Create Normal Tiles and populate views
-		this.tiles = new Tile[8];
-		for (int i=1; i<7; i++){
+		for (int i=1; i<tiles.length; i++){
 			this.tiles[i] = new Tile(i, i, 0);
 			this.tileViews[i].setTile(this.tiles[i]);
 		}
@@ -69,15 +79,17 @@ public class BuilderTileSelectorPanel extends JPanel{
 		this.tileViews[0].setTile(this.tiles[0]);
 		
 		// Container Tile
-		this.tiles[7] = new Tile(0,7,0);
-		this.tileViews[7].setTile(this.tiles[7]);
+		if(this.model.getName() == "Release"){
+			this.tiles[7] = new Tile(0,7,0);
+			this.tileViews[7].setTile(this.tiles[7]);
+		}
 		
 		// Place tileViews in appropriate locations
 		this.setLayout(new GridBagLayout());
 		
 		GridBagConstraints c = new GridBagConstraints();
 		
-		for (int i=0; i<8; i++){
+		for (int i=0; i<tileViews.length; i++){
 			c.gridx = i;
 			c.gridy = 0;
 			

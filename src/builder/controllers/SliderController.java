@@ -43,13 +43,26 @@ public class SliderController implements ChangeListener {
 		this.sliders = sliders;
 	}
 
+	/**
+	 * Slider stateChange Listener
+	 * 
+	 * Watches for changes in the sliders and makes the corresponding change to the
+	 * frequencies
+	 */
 	@Override
 	public void stateChanged(ChangeEvent e) {
 		
 		this.builder.createMemento(this.model.getBoard()); // Create memento
 		
-		for (int i=0; i<5; i++){
-			if (e.getSource() == this.sliders[i]){
+		for (int i=0; i<6; i++){
+			//Probability of each type of multiplier
+			if(e.getSource() == this.sliders[5]){
+				this.model.getBoard().set2x3xFrequency(0, this.sliders[i].getValue());
+				this.model.getBoard().set2x3xFrequency(1, this.sliders[i].getMaximum()-this.sliders[i].getValue());
+			}
+			
+			// Probability of each type of tile
+			else{
 				this.model.getBoard().setFrequency(i, this.sliders[i].getValue());
 			}
 		}

@@ -15,6 +15,8 @@ import builder.controllers.SaveLevelController;
 import builder.controllers.SelectedTileController;
 import builder.controllers.SliderController;
 import builder.controllers.UndoController;
+import builder.controllers.chanceMultiplierController;
+import builder.controllers.maxMoveController;
 import builder.controllers.scoreLimitController;
 import builder.controllers.timeLimitController;
 import builder.model.BuilderSixesWild;
@@ -170,11 +172,15 @@ public class BuilderPanel extends JPanel implements IApplication {
 		scoreLimitText.setColumns(5);
 		
 		// chanceOfMultiplier TextField
-		JTextField chanceMultiplier = new JTextField(this.model.getBoard().getMultiplierFrequency() + "");
+		JTextField chanceMultiplier = new JTextField(this.model.getBoard().getChanceMultiplierFrequency() + "");
+		chanceMultiplierController multiController = new chanceMultiplierController(this, this.builder, this.model, chanceMultiplier); // Controller
+		chanceMultiplier.addActionListener(multiController);
 		chanceMultiplier.setColumns(5);
 		
 		// MaxMove TextField
 		JTextField maxMove = new JTextField(this.model.getBoard().getMaxMoves() + "");
+		maxMoveController maxMoveController = new maxMoveController(this, this.builder, this.model, maxMove);// Controller
+		maxMove.addActionListener(maxMoveController);
 		maxMove.setColumns(5);
 		
 		// ***********************
@@ -188,7 +194,10 @@ public class BuilderPanel extends JPanel implements IApplication {
 		JSlider slider_4 = new JSlider(1, 10, this.model.getBoard().getFrequency(3));
 		JSlider slider_5 = new JSlider(1, 10, this.model.getBoard().getFrequency(4));
 		
-		JSlider sliders[] = {slider_1, slider_2, slider_3, slider_4, slider_5};
+		// Create Multiplier Frequency Slider
+		JSlider slider_x = new JSlider(1, 10, this.model.getBoard().get2x3xFrequency(0));
+		
+		JSlider sliders[] = {slider_1, slider_2, slider_3, slider_4, slider_5, slider_x};
 		
 		SliderController sliderController = new SliderController(this, this.builder, this.model, sliders); // Controller
 		
@@ -197,8 +206,7 @@ public class BuilderPanel extends JPanel implements IApplication {
 		slider_3.addChangeListener(sliderController);
 		slider_4.addChangeListener(sliderController);
 		slider_5.addChangeListener(sliderController);
-		
-		JSlider slider_x = new JSlider(1, 10, this.model.getBoard().getFrequency(0));
+		slider_x.addChangeListener(sliderController);
 	
 		
 		// **************************
@@ -214,7 +222,7 @@ public class BuilderPanel extends JPanel implements IApplication {
 		// ***** Create Tile Selector Panel *******
 		// ****************************************
 		// And bind it to controller
-		BuilderTileSelectorPanel tileSelector = new BuilderTileSelectorPanel(this.frame, this.builder);
+		BuilderTileSelectorPanel tileSelector = new BuilderTileSelectorPanel(this.frame, this.builder, this.model);
 		SelectedTileController selectedTileController = new SelectedTileController(tileSelector, this.builder);
 		tileSelector.setActiveAdapter(selectedTileController);
 		
@@ -282,14 +290,14 @@ public class BuilderPanel extends JPanel implements IApplication {
 		c.gridwidth = 1;
 		this.add(btnRedo, c);
 		
-		// Place TimeLimit Label
+		// Place ScoreLimit Label
 		c.gridx = 0;
 		c.gridy = 4;
 		c.gridwidth = 1;
 		c.ipady = 25; 
 		this.add(lblScoreLimit, c);
 		
-		// Place ScoreLimit Label
+		// Place TimeLimit Label
 		c.gridx = 2;
 		c.gridy = 4;
 		c.gridwidth = 1;
@@ -310,19 +318,21 @@ public class BuilderPanel extends JPanel implements IApplication {
 		c.ipady = 25; 
 		this.add(lblMaxMove, c);
 		
-		// Place TimeLimit TextField
+		// Place ScoreLimit TextField
 		c.gridx = 1;
 		c.gridy = 4;
 		c.gridwidth = 1;
 		c.ipady = 3; 
 		this.add(scoreLimitText, c);
 		
-		// Place ScoreLimit TextField
-		c.gridx = 3;
-		c.gridy = 4;
-		c.gridwidth = 1;
-		c.ipady = 3; 
-		this.add(timeLimitText, c);
+		// Place TimeLimit TextField
+		if(this.model.getName() == "Lightning"){
+			c.gridx = 3;
+			c.gridy = 4;
+			c.gridwidth = 1;
+			c.ipady = 3; 
+			this.add(timeLimitText, c);
+		}
 		
 		// Place  Chance of Multiplier TextField
 		c.gridx = 1;

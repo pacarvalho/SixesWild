@@ -343,18 +343,35 @@ public class Board implements Serializable{
 	/**
 	 * Getter for multiplierFrequencies moves
 	 */
-	public int getMultiplierFrequency(){
+	public int getChanceMultiplierFrequency(){
 		return this.chanceMultiplier;
 	}
 	
 	/**
 	 * Setter for multiplierFrequencies moves
 	 */
-	public boolean setMultiplierFrequency(int m){
+	public boolean setChanceMultiplierFrequency(int m){
 		this.chanceMultiplier = m;
 		return true;
 	}
 	
+	/**
+	 * Getter for Frequencies of each multiplier
+	 */
+	public int get2x3xFrequency(int index){
+		if(index > 1 || index < 0) {return 0;}
+		
+		return this.multiplierFreq[index];
+	}
 	
+	/**
+	 * Getter for Frequencies of each multiplier
+	 */
+	public boolean set2x3xFrequency(int index, int value){
+		if(index > 1 || index < 0) {return false;}
+		
+		this.multiplierFreq[index] = value;
+		return true;
+	}
 	
 }
