@@ -7,15 +7,17 @@ import java.awt.GridBagLayout;
 
 
 
+
+
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JButton;
-
-
+import javax.swing.Timer;
 
 import controllers.BoardController;
 import controllers.ExitController;
+import controllers.LevelTimer;
 import model.LightningGame;
 import model.SixesWild;
 
@@ -64,8 +66,14 @@ public class LevelPanel extends JPanel implements IApplication{
 		this.starView = new StarPanel(model);
 		this.scoreView = new JLabel(""+model.getCurrentScore());
 		
-		if(this.model instanceof LightningGame)
+		if(this.model instanceof LightningGame){
+			int time = this.model.getBoard().getTimeLimit();
+			System.out.println(time);
+			((LightningGame) this.model).addToRemainingTime(time);
 			this.countdownView = new JLabel(""+ ((LightningGame) model).getRemainingTime());
+			LevelTimer thisTim = new LevelTimer((LightningGame) this.model, this);
+			((LightningGame) this.model).setTimer(new Timer(1000, thisTim));
+		}
 		else
 			this.countdownView = new JLabel(""+ model.getNumMoves());
 			

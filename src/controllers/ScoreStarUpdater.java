@@ -8,6 +8,7 @@ import model.SixesWild;
 /**
  * Listens to the changes in Boundary object for score.
  * 
+ * 
  * Updates the stars if the player has lost or earned a star.
  * (there are many and more direct ways to implement this, 
  * but this is a controller based on toggle bits 
@@ -17,7 +18,7 @@ import model.SixesWild;
  * @author OAkyildiz
  *
  */
-public class ScoreStarUpdater{
+public class ScoreStarUpdater {
 	/** Game Model */
 	SixesWild model;
 
