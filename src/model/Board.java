@@ -107,6 +107,7 @@ public class Board implements Serializable{
 		t1.setSelectedFlag(false);
 		t2.setSelectedFlag(false);
 	}
+	
 	/**
 	 * Implements "gravity" on board
 	 * 
@@ -128,10 +129,17 @@ public class Board implements Serializable{
 			if (nullLocation[1] == 0){
 				tiles[nullLocation[0]][nullLocation[1]] = this.spawnNewTile(nullLocation[0], nullLocation[1]);
 				
-			} else { // Will move piece above it down //TODO IMPLEMENT SPAWNING OF TILE UNDER IMMUTABLES
-				// Checks all pieces above the current piece looking for a not-null. Once it is found.
-				// It sets the current tile to that tile and sets that tile to null.
-				if (tiles[nullLocation[0]][nullLocation[1]-1] != null){
+			} else { // Will move piece above it down 
+				
+				// If the piece above the current one is an unmovable type spawn new tile
+				if (tiles[nullLocation[0]][nullLocation[1]-1].getValue() == -1 || // Wall 
+							tiles[nullLocation[0]][nullLocation[1]-1].getValue() == 0){ // Container
+					
+					tiles[nullLocation[0]][nullLocation[1]] = this.spawnNewTile(nullLocation[0], nullLocation[1]); // Spawn
+			
+				} else if (tiles[nullLocation[0]][nullLocation[1]-1] != null){
+					// Checks all pieces above the current piece looking for a not-null. Once it is found.
+					// It sets the current tile to that tile and sets that tile to null.
 					
 					tiles[nullLocation[0]][nullLocation[1]] =  
 							new Tile(tiles[nullLocation[0]][nullLocation[1]-1].getValue(), nullLocation[0], nullLocation[1]);
