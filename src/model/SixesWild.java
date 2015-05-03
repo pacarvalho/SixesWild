@@ -39,8 +39,8 @@ abstract public class SixesWild {
 	
 	/** Star unlock multipliers */
 	public static final double WIN1 = 1;
-	public static final double WIN2 = 1.3;
-	public static final double WIN3 = 1.7;
+	public static final double WIN2 = 1.5;
+	public static final double WIN3 = 1.9;
 	
 	/**Star flags*/
 	public static final int FIRST = 1; 	// 2^^0

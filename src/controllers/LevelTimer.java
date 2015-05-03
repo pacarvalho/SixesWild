@@ -39,7 +39,7 @@ public class LevelTimer implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		this.level.addToRemainingTime(-1);
 		String time = this.level.getRemainingTimeString();
-		System.out.println(time);
+		//System.out.println(time);
 		this.levelView.getCountdownView().setText(time);
 
 	}
