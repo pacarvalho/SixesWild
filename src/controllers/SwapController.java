@@ -110,7 +110,7 @@ public class SwapController extends MouseAdapter implements ActionListener{
 					System.out.println("SwapQuoata:" + model.getSpecQuotas(0));
 					this.swapBtn.setText("" + model.getSpecQuotas(0));
 					
-					if(model.getSpecQuotas(0) < 1);
+					if(model.getSpecQuotas(0) < 1)
 						this.swapBtn.setEnabled(false);
 						
 						this.swapBtn.repaint();
