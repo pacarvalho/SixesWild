@@ -114,22 +114,6 @@ public class LevelSelectorPanel extends JPanel implements IApplication{
 		btnLevel3.setEnabled(!lockedLevels[2]);
 		btnLevel4.setEnabled(!lockedLevels[3]);
 		
-//		if (!lockedLevels[0]) {
-//			btnLevel1.addActionListener(chooseLevelController);
-//		}
-//		
-//		if (!lockedLevels[1]) {
-//			btnLevel2.addActionListener(chooseLevelController);
-//		}
-//		
-//		if (!lockedLevels[2]) {
-//			btnLevel3.addActionListener(chooseLevelController);
-//		}
-//		
-//		if (!lockedLevels[3]) {
-//			btnLevel4.addActionListener(chooseLevelController);
-//		}
-		
 		/*
 		 * Create the choose custom level button and bind it to its controller
 		 */

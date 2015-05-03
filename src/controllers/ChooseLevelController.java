@@ -2,6 +2,9 @@ package controllers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -64,14 +67,28 @@ public class ChooseLevelController implements ActionListener{
 	 * it checks which button called it and opens the corresponding level selector panel.
 	 */
 	public void actionPerformed(ActionEvent e) {
-		// CREATE A DEFAULT LEVEL FOR DEBUGGING
-		// TODO: Implement proper level creation from de-serialization
-		Board level = new Board();
-		level.update(); // Populate the board
 		
 		if(e.getSource() == this.btnLevel1){
+			// Desirialize Appropriate level
+			Board level = null;
+			try{
+				level = (Board)deserialize("resources/levels/test_level.txt");
+			} catch (IOException z) {
+				z.printStackTrace();
+				
+			} catch (ClassNotFoundException z) {
+				z.printStackTrace();
+				
+			} 
+			
+			if (level == null) { // Protect against level being null
+				level = new Board();
+			}
+			
+			level.update();
+			
 			// Initialize the level
-			this.model.initialize(level); // TODO: Pass correct level. This is a dummy!!!
+			this.model.initialize(level); 
 			
 			JFrame frame = this.view.getFrame();
 			LevelPanel levelPanel = new LevelPanel(frame, model, title, 
@@ -82,6 +99,24 @@ public class ChooseLevelController implements ActionListener{
 		}
 		
 		if(e.getSource() == this.btnLevel2){
+			// Desirialize Appropriate level
+			Board level = null;
+			try{
+				level = (Board)deserialize("resources/levels/test_level.txt");
+			} catch (IOException z) {
+				z.printStackTrace();
+				
+			} catch (ClassNotFoundException z) {
+				z.printStackTrace();
+				
+			} 
+			
+			if (level == null) { // Protect against level being null
+				level = new Board();
+			}
+			
+			level.update();
+
 			// Initialize the level
 			this.model.initialize(level); // TODO: Pass correct level. This is a dummy!!!
 						
@@ -94,6 +129,24 @@ public class ChooseLevelController implements ActionListener{
 		}
 		
 		if(e.getSource() == this.btnLevel3){
+			// Desirialize Appropriate level
+			Board level = null;
+			try{
+				level = (Board)deserialize("resources/levels/test_level.txt");
+			} catch (IOException z) {
+				z.printStackTrace();
+				
+			} catch (ClassNotFoundException z) {
+				z.printStackTrace();
+				
+			} 
+			
+			if (level == null) { // Protect against level being null
+				level = new Board();
+			}
+			
+			level.update();
+			
 			// Initialize the level
 			this.model.initialize(level); // TODO: Pass correct level. This is a dummy!!!
 			
@@ -106,6 +159,24 @@ public class ChooseLevelController implements ActionListener{
 		}
 		
 		if(e.getSource() == this.btnLevel4){
+			// Desirialize Appropriate level
+			Board level = null;
+			try{
+				level = (Board)deserialize("resources/levels/test_level.txt");
+			} catch (IOException z) {
+				z.printStackTrace();
+				
+			} catch (ClassNotFoundException z) {
+				z.printStackTrace();
+				
+			} 
+			
+			if (level == null) { // Protect against level being null
+				level = new Board();
+			}
+			
+			level.update();
+			
 			// Initialize the level
 			this.model.initialize(level); // TODO: Pass correct level. This is a dummy!!!
 			
@@ -116,5 +187,19 @@ public class ChooseLevelController implements ActionListener{
 			frame.getContentPane().add(levelPanel);
 			frame.pack();
 		}
+	}
+	
+	/**
+	 * Loads a serialized object
+	 */
+	public Object deserialize(String fileName) throws IOException, ClassNotFoundException{
+		FileInputStream fis = new FileInputStream(fileName);
+		ObjectInputStream ois = new ObjectInputStream(fis);
+		
+		Object obj = ois.readObject();
+		
+		ois.close();
+		
+		return obj;
 	}
 }
