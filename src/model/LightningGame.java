@@ -21,7 +21,7 @@ public class LightningGame extends SixesWild {
 	public LightningGame(){
 		super();
 		this.remainingTime = 0;
-		this.evryTim = null;
+		this.evryTim = new Timer(1000,null);
 //		
 	}
 	
@@ -37,13 +37,19 @@ public class LightningGame extends SixesWild {
 		this.remainingTime += change;
 		return remainingTime;
 	}
+	
+	public void setRemainingTime(int remainingTime) {
+		this.remainingTime = remainingTime;
+	}
+	
+	public Timer getTimer() {
+		 return this.evryTim;
+	}
 	public boolean setTimer(Timer tim) {
 		 this.evryTim = tim;
 		 return true;
 	}
-	public void setRemainingTime(int remainingTime) {
-		this.remainingTime = remainingTime;
-	}
+	
 
 
 

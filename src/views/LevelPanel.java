@@ -67,12 +67,16 @@ public class LevelPanel extends JPanel implements IApplication{
 		this.scoreView = new JLabel(""+model.getCurrentScore());
 		
 		if(this.model instanceof LightningGame){
+			
 			int time = this.model.getBoard().getTimeLimit();
 			System.out.println(time);
 			((LightningGame) this.model).addToRemainingTime(time);
+			
 			this.countdownView = new JLabel(""+ ((LightningGame) model).getRemainingTime());
+			
 			LevelTimer thisTim = new LevelTimer((LightningGame) this.model, this);
-			((LightningGame) this.model).setTimer(new Timer(1000, thisTim));
+			((LightningGame) this.model).getTimer().addActionListener(thisTim);
+			((LightningGame) this.model).getTimer().start();
 		}
 		else
 			this.countdownView = new JLabel(""+ model.getNumMoves());

@@ -24,7 +24,7 @@ public class LevelTimer implements ActionListener{
 	 * @param levelView
 	 */
 	public LevelTimer(LightningGame level, LevelPanel levelView) {
-		super();
+
 		this.level = level;
 		this.levelView = levelView;
 	
