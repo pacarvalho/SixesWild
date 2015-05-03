@@ -1,26 +1,29 @@
 package model;
 
+import controllers.ScoreStarUpdater;
+
 /**
  * Abstract class for SixesWild.
  * 
  * All variation of the game should extend this class.
  * 
- * @author Paulo, Katie, Sean, OAKyildiz
+ * @author Paulo, Katie, Sean, OAkyildiz
  *
  */
 abstract public class SixesWild {
 	
 	/** Keeps the current Score of the game */
-	int currentScore;
+	Integer currentScore;
 	
 	/**Number of stars earned*/
-	int stars;
+	public int stars;
 	
 	
 	/**Array of number of remaining special moves*/
 	int[] specQuotas = new int[3];
 	
-
+	/**Listener for score changes*/
+	private ScoreStarUpdater updater;
 
 	/** Monitor the number of moves made */
 	int numMoves;
@@ -29,9 +32,9 @@ abstract public class SixesWild {
 	Board board;
 	
 	/** Star unlock multipliers */
-	private double win1 = 1;
-	private double win2 = 1.3;
-	private double win3 = 1.7;
+	public double win1 = 1;
+	public double win2 = 1.3;
+	public double win3 = 1.7;
 	
 	/**Star flags*/
 	public static final int FIRST = 1; 	// 2^^0
@@ -47,6 +50,7 @@ abstract public class SixesWild {
 		this.board = null;
 		this.stars = 0;
 		this.specQuotas = new int[]{1,1,1};
+		this.setUpdater(new ScoreStarUpdater(this));
 	}
 	
 	/**
@@ -72,6 +76,7 @@ abstract public class SixesWild {
 	 */
 	public boolean updateScore(int change){ 
 		this.currentScore = this.currentScore+change;
+		this.getUpdater().scoreUpdated();
 		return true;
 	}
 	
@@ -110,26 +115,6 @@ abstract public class SixesWild {
 	}
 	abstract public void updateScore();
 	
-	/** evaluates if a star is earned or lost */
-	// migth be moved to Board
-	public int assessScore(){
-		int EVAL = 0;
-		int score = getCurrentScore();
-		
-		if(score >= win3)
-			EVAL= 7;
-		
-		else if(score >= win2)
-			EVAL = 3;
-		
-		else if(score >= win1)
-			EVAL = 1;
-		
-		int change = this.stars^EVAL;
-		this.stars=EVAL;
-		
-		return change;
-	}
 	public int getSpecQuotas(int i) {
 		return specQuotas[i];
 	}
@@ -137,5 +122,13 @@ abstract public class SixesWild {
 	public boolean setSpecQuotas(int index, int change) {
 		this.specQuotas[index] += change;
 		return true;
+	}
+
+	public ScoreStarUpdater getUpdater() {
+		return updater;
+	}
+
+	public void setUpdater(ScoreStarUpdater updater) {
+		this.updater = updater;
 	}
 }

@@ -18,7 +18,7 @@ import controllers.DestroyTileController;
 import controllers.ExitController;
 import controllers.ResetController;
 import controllers.SpecialMovesController;
-import controllers.StarUpdater;
+import controllers.ScoreStarUpdater;
 import controllers.SwapController;
 import model.SixesWild;
 
@@ -37,10 +37,16 @@ public class LevelPanel extends JPanel implements IApplication{
 	
 	/** Parent Container */
 	JFrame frame;
+	
 	SixesWild model;
+	
 	BoardView boardView;
+	
 	SpecialButtonsPanel specialBtnsPanel;
-
+	
+	JLabel scoreView;
+	
+	StarPanel starView;
 	/**
 	 * Constructor
 	 * 
@@ -54,9 +60,14 @@ public class LevelPanel extends JPanel implements IApplication{
 		
 		this.model = model;
 		this.frame = frame;
-		this.frame.setMinimumSize(new Dimension(800, 700));
+		this.frame.setMinimumSize(new Dimension(800, 550));
 		this.boardView = null;
+		this.starView = new StarPanel(model);
+		this.scoreView = new JLabel(""+model.getCurrentScore());
 		
+		this.scoreView.setFont(new Font("Source Sans Pro Black", Font.PLAIN, 24));
+		//Plug in levelView to updater
+		this.model.getUpdater().setLevelView(this);
 		/*
 		 * Create title, subtitle, timer, score labels and bind them to their controllers
 		 */
@@ -66,10 +77,9 @@ public class LevelPanel extends JPanel implements IApplication{
 		JLabel lblLevel = new JLabel(levelTitle);
 		lblLevel.setFont(new Font("Source Sans Pro Black", Font.PLAIN, 25));
 		
-		JLabel lblTime = new JLabel("time");
+		//JLabel lblTime = new JLabel("time");
 		
-		JTextField lblScore = new JTextField("score");
-		lblScore.setEnabled(false);
+		
 		
 		/* 
 		 * Create button to return to main menu and bind it to its controller
@@ -113,13 +123,13 @@ public class LevelPanel extends JPanel implements IApplication{
 		c.gridwidth = 13;
 		this.add(lblLevel, c);
 		
-		// Place Timer
-		c.gridx = 0;
-		c.gridy = 2;
-		c.gridwidth = 1;
-		c.anchor = GridBagConstraints.EAST;
-		c.ipady = 15; // Height in px
-		this.add(lblTime, c);
+//		// Place Timer
+//		c.gridx = 0;
+//		c.gridy = 2;
+//		c.gridwidth = 1;
+//		c.anchor = GridBagConstraints.EAST;
+//		c.ipady = 15; // Height in px
+//		this.add(lblTime, c);
 		
 		// Place Score
 		c.gridx = 12;
@@ -127,14 +137,14 @@ public class LevelPanel extends JPanel implements IApplication{
 		c.gridwidth = 1;
 		c.gridheight =1;
 		c.ipady = 15; // Height in px
-		c.anchor = GridBagConstraints.SOUTH;
-		this.add(lblScore, c);
+		c.anchor = GridBagConstraints.SOUTHEAST;
+		this.add(scoreView, c);
 		
 		// NOTE THAT THE WAY WE PLACE THE BOARD
 		// APPEARS TO DISTORT THE SIZE OF CELLS (3,3) & (4,3)
 		// Place the Board (VERY IMPORTANT!!!)
 		c.gridx = 3;
-		c.gridy = 3;
+		c.gridy = 2;
 		c.gridwidth = 9;
 		c.gridheight = 9;
 		c.anchor = GridBagConstraints.WEST;
@@ -154,17 +164,17 @@ public class LevelPanel extends JPanel implements IApplication{
 		c.gridx = menux;
 		c.gridy = 3;
 		c.gridwidth = 1;
-		StarPanel stars = new StarPanel(model);
-		this.add(stars, c);
+		
+		this.add(starView, c);
 		
 		//Listen to score
-		lblScore.getDocument().addDocumentListener(new StarUpdater(model, stars));
+		//scoreView.addPropertyChangeListener("text",new StarUpdater(model, stars));
 		
 		// Place Special MovePanel
 		c.gridx = menux;
 		c.gridy = 4;
 		c.gridwidth = 1;
-		c.gridheight = 8;
+		c.gridheight = 7;
 		c.anchor = GridBagConstraints.SOUTHEAST;
 		add(this.getSpecialButtonsPanel(),c);
 	}
@@ -182,14 +192,29 @@ public class LevelPanel extends JPanel implements IApplication{
 	}
 	
 	/**
-	 * Getter for BoardView
+	 * G Return the boardView
 	 * 
 	 * @return
 	 */
 	public BoardView getBoardView() {
-		return boardView;
+		return this.boardView;
 	}
 	
+	/**
+	 *  Return the starView
+	 * @return
+	 */
+	public StarPanel getStarView() {
+		return this.starView;
+	}
+	/**
+	 *  Return the scoreView
+	 * @return
+	 */
+	public JLabel getScoreView(){
+		return this.scoreView;
+
+	}
 	/**
 	 * Return the parent JFrame
 	 */
