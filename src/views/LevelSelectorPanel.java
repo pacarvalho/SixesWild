@@ -8,6 +8,7 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import javax.swing.JButton;
 import model.SixesWild;
+import controllers.ChooseCustomLevelController;
 import controllers.ChooseLevelController;
 
 public class LevelSelectorPanel extends JPanel implements IApplication{
@@ -52,10 +53,9 @@ public class LevelSelectorPanel extends JPanel implements IApplication{
 		/*
 		 * Create the choose custom level button and bind it to its controller
 		 */
-		
 		JButton btnCustomLevel = new JButton("Choose Your Own!");
-		
-		// ADD BINDING TO CONTROLLER HERE!!!
+		ChooseCustomLevelController customController = new ChooseCustomLevelController(this.model, this);
+		btnCustomLevel.addActionListener(customController);
 		
 		// Place buttons on correct locations
 		// Set layout to grid bag

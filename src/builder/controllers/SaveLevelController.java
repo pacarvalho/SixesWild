@@ -2,6 +2,7 @@ package builder.controllers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
@@ -42,6 +43,7 @@ public class SaveLevelController implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		// Open the file saving dialog
 		final JFileChooser fc = new JFileChooser();
+		fc.setCurrentDirectory(new File("."));
 		int returnVal = fc.showSaveDialog(fc);
 		
 		if (returnVal == JFileChooser.APPROVE_OPTION){

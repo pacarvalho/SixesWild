@@ -1,4 +1,4 @@
-package builder.controllers;
+package controllers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -8,39 +8,41 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 
 import javax.swing.JFileChooser;
+import javax.swing.JFrame;
 
-import builder.views.BuilderPanel;
 import model.Board;
 import model.SixesWild;
+import views.IApplication;
+import views.LevelPanel;
 
-/**
+/** 
+ * Allows for selection of a custom level to be played
  * 
- * @author Katie, Paulo
+ * @author Paulo, Katie
  *
  */
-public class LoadLevelController implements ActionListener{
+public class ChooseCustomLevelController implements ActionListener{
 	
-	/** Stores the boudnary */
-	BuilderPanel builderPanel;
-	
-	/** Stores the Model */
+	/** Stores Model */
 	SixesWild model;
 	
-	/**
-	 * Constructor
-	 */
-	public LoadLevelController(BuilderPanel builderPanel, SixesWild model){
-		this.builderPanel = builderPanel;
-		this.model = model;
-	}
+	/** Parent View */
+	IApplication view;
 	
 	/**
-	 * Listener for button click. 
+	 * Constructor 
 	 * 
-	 * Loads the board upon clicking
+	 * @param m
+	 * @param view
+	 * @param button
 	 */
+	public ChooseCustomLevelController(SixesWild m, IApplication view){
+		this.model = m;
+		this.view = view;
+	}
+
 	@Override
-	public void actionPerformed(ActionEvent e) {
+	public void actionPerformed(ActionEvent arg0) {
 		// Open the file saving dialog
 		final JFileChooser fc = new JFileChooser();
 		fc.setCurrentDirectory(new File("."));
@@ -60,11 +62,18 @@ public class LoadLevelController implements ActionListener{
 			} 
 			
 			if (board != null) {
-				this.model.initialize(board);
-				this.builderPanel.updateParameters();
+				// Initialize the level
+				this.model.initialize(board); 
+				this.model.getBoard().update();
+				
+				JFrame frame = this.view.getFrame();
+				LevelPanel levelPanel = new LevelPanel(frame, this.model, this.model.getName(), 
+						"Custom Level"); //title once entity is implemented
+				frame.getContentPane().removeAll();
+				frame.getContentPane().add(levelPanel);
+				frame.pack();
 			}
 		}
-				
 		
 	}
 	
@@ -81,5 +90,4 @@ public class LoadLevelController implements ActionListener{
 		
 		return obj;
 	}
-	
 }

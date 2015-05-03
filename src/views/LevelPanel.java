@@ -41,7 +41,14 @@ public class LevelPanel extends JPanel implements IApplication{
 	BoardView boardView;
 	SpecialButtonsPanel specialBtnsPanel;
 
-
+	/**
+	 * Constructor
+	 * 
+	 * @param frame
+	 * @param model
+	 * @param title
+	 * @param levelTitle
+	 */
 	public LevelPanel(JFrame frame, SixesWild model, String title, String levelTitle){
 		super();
 		
@@ -49,6 +56,7 @@ public class LevelPanel extends JPanel implements IApplication{
 		this.frame = frame;
 		this.frame.setMinimumSize(new Dimension(800, 700));
 		this.boardView = null;
+		
 		/*
 		 * Create title, subtitle, timer, score labels and bind them to their controllers
 		 */
@@ -82,6 +90,7 @@ public class LevelPanel extends JPanel implements IApplication{
 		boardView = new BoardView(this.frame, model);
 		BoardController boardControl = new BoardController(boardView, model);
 		boardView.setActiveAdapter(boardControl);
+		
 		/*
 		 * Place everything where they belong using a gridBagLayout
 		 */
@@ -160,6 +169,11 @@ public class LevelPanel extends JPanel implements IApplication{
 		add(this.getSpecialButtonsPanel(),c);
 	}
 	
+	/**
+	 * Getter for Special Button Panel
+	 * 
+	 * @return
+	 */
 	public SpecialButtonsPanel getSpecialButtonsPanel(){
 		if (this.specialBtnsPanel == null){
 			this.specialBtnsPanel = new SpecialButtonsPanel(boardView, model);
@@ -167,10 +181,18 @@ public class LevelPanel extends JPanel implements IApplication{
 		return this.specialBtnsPanel;	
 	}
 	
+	/**
+	 * Getter for BoardView
+	 * 
+	 * @return
+	 */
 	public BoardView getBoardView() {
 		return boardView;
 	}
 	
+	/**
+	 * Return the parent JFrame
+	 */
 	@Override
 	public JFrame getFrame() {
 		return this.frame;
