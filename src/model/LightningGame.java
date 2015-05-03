@@ -22,10 +22,23 @@ public class LightningGame extends SixesWild {
 		super();
 		this.remainingTime = 0;
 		this.evryTim = new Timer(1000,null);
-//		
-	}
+		
+		}
 	
-	public String getRemainingTime() {
+		public void initialize(Board board){
+			
+			super.initialize(board);
+			int time = this.getBoard().getTimeLimit();
+			this.addToRemainingTime(time);
+			System.out.println(time);
+			
+		}
+		
+	
+	public int getRemainingTime(){
+		return this.remainingTime;
+	}
+	public String getRemainingTimeString() {
 		int mins = remainingTime/60;
 		int secs = remainingTime%60;
 		if (secs >= 10)
