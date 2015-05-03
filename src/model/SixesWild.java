@@ -70,6 +70,22 @@ abstract public class SixesWild {
 	}
 	
 	/**
+	 * Calls the hasWon and hasLost methods. 
+	 * 
+	 * Serializes the LevelTracker when appropriate
+	 */
+	public void checkGameState() {
+		if (this.hasWon()) {
+			// TODO
+			
+		} else if (this.hasLost()) {
+			// TODO
+			
+		}
+		
+	}
+	
+	/**
 	 * Method that increments that changes score by given value
 	 * 
 	 */
@@ -134,4 +150,5 @@ abstract public class SixesWild {
 	public void setUpdater(ScoreStarUpdater updater) {
 		this.updater = updater;
 	}
+
 }
