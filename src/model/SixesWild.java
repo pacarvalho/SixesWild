@@ -1,5 +1,11 @@
 package model;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+
 import controllers.ScoreStarUpdater;
 
 /**
@@ -104,6 +110,127 @@ abstract public class SixesWild {
 	public boolean updateMoves(int change){ // Should we check if the game is lost in this method?
 		this.numMoves = this.numMoves + change;
 		return true;
+	}
+	
+	/**
+	 * Update the Level Tracker
+	 * 
+	 * If upon calling this method the current score is greater than that stored in the level tracker
+	 * It updates the level tracker.
+	 * 
+	 * Also unlocks the next level when a previous leve is won. Winning check is performed by hasWon()
+	 * 
+	 * @return boolean
+	 */
+	public boolean updateLevelTracker(int currentLevel){
+		
+		currentLevel -= 1; // Recall that level 1 should be level 0!
+		
+		// Deserialize the level tracker
+		LevelTracker lt = null;
+		try{
+			lt = (LevelTracker) deserialize("resources/levels/level_tracker.txt");
+		} catch (IOException e){
+			e.printStackTrace();
+		} catch (ClassNotFoundException e){
+			e.printStackTrace();
+		}
+		
+		// Check that a level tracker was opened
+		if(lt == null){ 
+			System.out.println("LevelTracker not found");
+			return false; 
+		}
+		
+		// Update current instance of level tracker
+		if( this instanceof PuzzleGame){
+			if (this.currentScore > lt.puzzleScore[currentLevel]){
+				lt.puzzleScore[currentLevel] = currentScore;
+			}
+			
+			if (this.hasWon() && (currentLevel < 4)) {
+				lt.puzzleLocked[currentLevel +1] = false;
+			}
+			
+		} else if (this instanceof EliminationGame){
+			if (this.currentScore > lt.eliminationScore[currentLevel]){
+				lt.eliminationScore[currentLevel] = currentScore;
+			}
+			
+			if (this.hasWon() && (currentLevel < 4)) {
+				lt.eliminationLocked[currentLevel +1] = false;
+			}
+			
+		}  else if (this instanceof LightningGame){
+			if (this.currentScore > lt.lightningScore[currentLevel]){
+				lt.lightningScore[currentLevel] = currentScore;
+			}
+			
+			if (this.hasWon() && (currentLevel < 4)) {
+				lt.lightningLocked[currentLevel +1] = false;
+			}
+			
+		}  else if (this instanceof ReleaseGame){
+			if (this.currentScore > lt.releaseScore[currentLevel]){
+				lt.releaseScore[currentLevel] = currentScore;
+			}
+			
+			if (this.hasWon() && (currentLevel < 4)) {
+				lt.releaseLocked[currentLevel +1] = false;
+			}
+		}
+		
+		// Serialize the level tracker
+		try {
+			serialize(lt, "resources/levels/level_tracker.txt");
+		} catch (IOException z) {
+			z.printStackTrace();
+		} 
+		
+		return true;
+		
+	}
+	
+	/**
+	 * Resets the Level Tracker 
+	 * 
+	 * This method is for debugging, it resets the level tracker values to 
+	 * relock all levels
+	 */
+	public void resetLevelTracker(){
+		LevelTracker lt = new LevelTracker();
+		
+		try {
+			serialize(lt, "resources/levels/level_tracker.txt");
+		} catch (IOException z) {
+			z.printStackTrace();
+		} 
+	}
+	
+	
+	/**
+	 * Serializes the LevelTracker
+	 */
+	public void serialize(Object obj, String fileName) throws IOException{
+		FileOutputStream fos = new FileOutputStream(fileName);
+		ObjectOutputStream oos = new ObjectOutputStream(fos);
+		oos.writeObject(obj);
+		
+		fos.close();
+	}
+	
+	/**
+	 * Loads a serialized object
+	 */
+	public Object deserialize(String fileName) throws IOException, ClassNotFoundException{
+		FileInputStream fis = new FileInputStream(fileName);
+		ObjectInputStream ois = new ObjectInputStream(fis);
+		
+		Object obj = ois.readObject();
+		
+		ois.close();
+		
+		return obj;
 	}
 	
 	//ABSTRACT METHODS

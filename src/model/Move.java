@@ -3,16 +3,23 @@ package model;
 import java.util.ArrayList;
 
 /**
- * 
+ * Class for performing the normal move.
  * 
  * @author Katie, Sean
  *
  */
 public class Move implements IMove{
 	
+	/** Array of selected tiles */
 	ArrayList<Tile> tiles;
+	
+	/** Game Model */
 	SixesWild model;
+	
+	/** Game board */
 	Board board;
+	
+	/** Multiplier for extra score */
 	int multiplierTotal;
 	
 	/**

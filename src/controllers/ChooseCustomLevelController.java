@@ -68,7 +68,7 @@ public class ChooseCustomLevelController implements ActionListener{
 				
 				JFrame frame = this.view.getFrame();
 				LevelPanel levelPanel = new LevelPanel(frame, this.model, this.model.getName(), 
-						"Custom Level"); //title once entity is implemented
+						"Custom Level", 5); //title once entity is implemented
 				frame.getContentPane().removeAll();
 				frame.getContentPane().add(levelPanel);
 				frame.pack();

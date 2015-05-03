@@ -92,7 +92,7 @@ public class ChooseLevelController implements ActionListener{
 			
 			JFrame frame = this.view.getFrame();
 			LevelPanel levelPanel = new LevelPanel(frame, model, title, 
-					"Level 1"); //title once entity is implemented
+					"Level 1", 1); //title once entity is implemented
 			frame.getContentPane().removeAll();
 			frame.getContentPane().add(levelPanel);
 			frame.pack();
@@ -122,7 +122,7 @@ public class ChooseLevelController implements ActionListener{
 						
 			JFrame frame = this.view.getFrame();
 			LevelPanel levelPanel = new LevelPanel(frame, model, title, 
-					"Level 2");
+					"Level 2", 2);
 			frame.getContentPane().removeAll();
 			frame.getContentPane().add(levelPanel);
 			frame.pack();
@@ -152,7 +152,7 @@ public class ChooseLevelController implements ActionListener{
 			
 			JFrame frame = this.view.getFrame();
 			LevelPanel levelPanel = new LevelPanel(frame, model, title, 
-					"Level 3");
+					"Level 3", 3);
 			frame.getContentPane().removeAll();
 			frame.getContentPane().add(levelPanel);
 			frame.pack();
@@ -182,7 +182,7 @@ public class ChooseLevelController implements ActionListener{
 			
 			JFrame frame = this.view.getFrame();
 			LevelPanel levelPanel = new LevelPanel(frame, model, title,
-					"Level 4");
+					"Level 4", 4);
 			frame.getContentPane().removeAll();
 			frame.getContentPane().add(levelPanel);
 			frame.pack();
