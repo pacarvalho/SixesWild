@@ -1,40 +1,56 @@
 package controllers;
 
-import views.IApplication;
-import model.Board;
-import model.SixesWild;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
+
+import model.SixesWild;
+import views.BoardView;
 
 /**
- * Reset the model to initial state of the level on button click
  * 
  * @author OAkyildiz
  *
  */
-public class ResetController {
+public class SpecialMovesController implements ActionListener {
 	
-	/**Sixes wild model*/
+	/**Buttons*/
+	JButton btnSpec1, btnSpec2, btnSpec3;
+	 
+	/**BoardView*/
+	BoardView boardView;
+	
+	/** Level model*/
 	SixesWild model;
 	
-	/**BoardView*/
-	IApplication view;
-	
-	/** Board to read from and load into SixesWild */
-	Board initalBoard;
-
-	/**
-	 * Constructor
-	 * 
-	 * @param model
-	 * @param view
-	 */
-	public ResetController(SixesWild model, IApplication view) {
+	public SpecialMovesController(JButton btnSpec1, JButton btnSpec2,
+			JButton btnSpec3, BoardView boardView, SixesWild model) {
 		super();
+		this.btnSpec1 = btnSpec1;
+		this.btnSpec2 = btnSpec2;
+		this.btnSpec3 = btnSpec3;
+		this.boardView = boardView;
 		this.model = model;
-		this.view = view;
-		//read from file
-		//this.initalBoard = initalBoard;
 	}
-	
-	
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if(e.getSource()== btnSpec1 && model.getSpecQuotas(0) != 0){
+			SwapController swapper = new SwapController(boardView, model);
+			swapper.register();
+			
+		}
+		else if(e.getSource()== btnSpec2 && model.getSpecQuotas(1) != 0){
+			DestroyTileController destroyer = new DestroyTileController(boardView, model);
+			destroyer.register();
+		}
+		else if(e.getSource()== btnSpec3 && model.getSpecQuotas(2) != 0){
+				//Reset move =new ResetMove();
+				//reset.doMove;
+				//voardView.update;
+		}
+
+	}
+
 }
