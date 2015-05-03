@@ -48,7 +48,10 @@ abstract public class SixesWild {
 	public static final int THIRD = 4;  // 2^^2
 	public static final int DEFAULT =1;
 	
-	/** Constructor */
+	/**
+	 *  Constructor
+	 * 
+	 */
 	public SixesWild(){
 		this.currentScore = 0;
 		this.board = null;

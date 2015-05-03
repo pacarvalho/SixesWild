@@ -77,7 +77,7 @@ public class Board implements Serializable{
 		
 		this.timeLimit = 0; // Default time
 		this.scoreLimit = 0; // Default Max Score
-		this.maxMoves = 30; // Default Max Moves
+		this.maxMoves = 20; // Default Max Moves
 		this.chanceMultiplier = 0; // Default chance of multiplier
 	}
 	

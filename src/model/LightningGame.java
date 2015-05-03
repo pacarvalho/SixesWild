@@ -1,6 +1,6 @@
 package model;
 
-import java.util.Timer;
+import javax.swing.Timer;
 
 
 /**
@@ -12,24 +12,44 @@ import java.util.Timer;
  */
 public class LightningGame extends SixesWild {
 	
-	/**Timer for lightnig level, internal Controller*/
-//	Timer levelTimer;
+	/**Timer for lightning level, internal Controller*/
+	private Timer evryTim;
+	/** remaining Time*/
 	private int remainingTime;
+	
 	
 	public LightningGame(){
 		super();
-		this.numMoves = this.board.getTimeLimit();
-//		levelTimer = new Timer(1000, updateRemainingTime());
-//		levelTimer.start();
+		this.remainingTime = 0;
+		this.evryTim = new Timer(1000,null);
+//		
 	}
 	
-	public int getRemainingTime() {
+	public String getRemainingTime() {
+		int mins = remainingTime/60;
+		int secs = remainingTime%60;
+		if (secs >= 10)
+			return (mins + ":"+ secs);
+		else
+			return (mins + ":0"+ secs);
+	}
+	public int addToRemainingTime(int change) {
+		this.remainingTime += change;
 		return remainingTime;
 	}
-
+	
 	public void setRemainingTime(int remainingTime) {
 		this.remainingTime = remainingTime;
 	}
+	
+	public Timer getTimer() {
+		 return this.evryTim;
+	}
+	public boolean setTimer(Timer tim) {
+		 this.evryTim = tim;
+		 return true;
+	}
+	
 
 
 
