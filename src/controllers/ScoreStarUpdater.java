@@ -79,7 +79,7 @@ public class ScoreStarUpdater {
 	 * @param sixesWild TODO*/
 	// migth be moved to Board
 	public int assessScore(int score){
-		System.out.print("stars:" + model.stars);
+	//	System.out.print("stars:" + model.stars);
 		int EVAL = 0;
 		
 		
@@ -94,7 +94,7 @@ public class ScoreStarUpdater {
 		
 		int change = model.stars^EVAL;
 		model.stars=EVAL;
-		System.out.print("EVAL:" + EVAL + ", change:" + change);
+		//System.out.print("EVAL:" + EVAL + ", change:" + change);
 		return change;
 	}
 	
