@@ -7,7 +7,7 @@ import javax.swing.Timer;
  * 
  * Method overriding for Lightning variation of the game goes here.
  * 
- * @author Paulo, Katie
+ * @author Paulo, Katie, OAkyildiz
  *
  */
 public class LightningGame extends SixesWild {
@@ -47,7 +47,7 @@ public class LightningGame extends SixesWild {
 			return (mins + ":0"+ secs);
 	}
 	public int addToRemainingTime(int change) {
-		if(remainingTime>=change)
+		if(change + remainingTime >= 0)
 			this.remainingTime += change;
 		return remainingTime;
 	}

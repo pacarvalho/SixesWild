@@ -35,8 +35,8 @@ public class ResetMove implements IMove{
 				Tile tile = board.tiles[i][j];
 				if ( tileValid(tile)){
 					board.destroyTile(tile);
-					board.spawnNewTile(i, j);
-					board.update();
+					Tile newTile =board.spawnNewTile(i, j);
+					board.setTile(newTile);;
 				}
 			}
 		}
