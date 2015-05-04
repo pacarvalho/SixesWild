@@ -56,7 +56,9 @@ public class EliminationMove implements IMove {
 	 */
 	@Override
 	public boolean valid() {
-		int count = 0;
+		
+		// If the game is lost do not allow more moves
+		if (this.model.hasLost()) {return false;}
 		
 		//If the move limit has been reached
 		if(model.getNumMoves() <= 0){
@@ -74,6 +76,7 @@ public class EliminationMove implements IMove {
 			}
 		}
 		
+		int count = 0;
 		for (Tile t: tiles){
 			// if the tile is a wall, or a container the move is invalid
 			if(t.getValue() == 6 || t.getValue() == 0 || t.getValue() == -1 || t.getValue() == -2){

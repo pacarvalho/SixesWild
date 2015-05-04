@@ -242,6 +242,15 @@ abstract public class SixesWild {
 		return obj;
 	}
 	
+	/**
+	 * Returns true if the game is at a lost state. 
+	 * 
+	 * Ex: The timer has run out in the lightning variation.
+	 */
+	public boolean hasLost(){
+		return false; //For now...
+	}
+	
 	//ABSTRACT METHODS
 	/**
 	 * Returns true if a game is in a won state. Else it returns false.
@@ -253,12 +262,6 @@ abstract public class SixesWild {
 	 */
 	abstract public String getName();
 	
-	/**
-	 * Returns true if the game is at a lost state. 
-	 * 
-	 * Ex: The timer has run out in the lightning variation.
-	 */
-	abstract public boolean hasLost();
 	
 	/**
 	 * Returns the currentScore

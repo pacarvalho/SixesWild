@@ -31,27 +31,10 @@ public class PuzzleGame extends SixesWild {
 	 */
 	@Override
 	public boolean hasWon(){
-		
 		// Check for max score.
 		if (this.board.getScoreLimit() <= this.getCurrentScore()){
 			return true;
 		}
-		
-		return false;
-	}
-	
-	/**
-	 * Determines that a game has been lost
-	 * 
-	 * Maximum number of moves has been reached but score has not
-	 */
-	@Override
-	public boolean hasLost(){
-		
-//		// Check for max score. // TODO
-//		if ((this.board.getScoreLimit() > this.getCurrentScore())){
-//			return true;
-//		}
 		
 		return false;
 	}

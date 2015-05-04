@@ -24,20 +24,22 @@ public class ReleaseGame extends SixesWild {
 	/**
 	 * Returns true when game is won
 	 * 
-	 * All containers have been filled
+	 * Checks that all containers have been filled
 	 */
 	@Override
 	public boolean hasWon(){
-		return false;
+		Tile[][] tiles = this.board.getTiles();
+		for(int i = 0; i < 9; i++){
+			for(int j = 0; j < 9; j++){
+				if(tiles[i][j].getValue() == 0){
+					return false;
+				}
+			}
+		}
+		
+		return true;
 	}
 	
-	/**
-	 * 
-	 */
-	@Override
-	public boolean hasLost(){
-		return false;
-	}
 
 	@Override
 	public void updateScore() {

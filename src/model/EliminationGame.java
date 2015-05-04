@@ -24,11 +24,23 @@ public class EliminationGame extends SixesWild {
 	}
 	
 	/**
+	 * Returns true if the game is won
 	 * 
+	 * Checks to see if there are any tiles that have 
+	 * not yet been eliminated
 	 */
 	@Override
 	public boolean hasWon(){
-		return false;
+		Tile[][] tiles = this.board.getTiles();
+		for(int i = 0; i < 9; i++){
+			for(int j = 0; j < 9; j++){
+				if(!tiles[i][j].eliminatedFlag){
+					return false;
+				}
+			}
+		}
+		
+		return true;
 	}
 	
 	/**

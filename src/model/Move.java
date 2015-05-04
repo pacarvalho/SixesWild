@@ -71,6 +71,10 @@ public class Move implements IMove{
 	 * @return boolean
 	 */
 	public boolean valid(){ 
+		
+		// If the game is lost do not allow more moves
+		if (this.model.hasLost()) {return false;}
+		
 		int count = 0;
 		for (Tile t: tiles){
 			// if the tile is a six, a wall, or a container the move is invalid

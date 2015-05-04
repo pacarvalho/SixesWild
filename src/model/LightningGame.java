@@ -49,9 +49,6 @@ public class LightningGame extends SixesWild {
 		 this.evryTim = tim;
 		 return true;
 	}
-	
-
-
 
 	/**
 	 * 
@@ -62,18 +59,31 @@ public class LightningGame extends SixesWild {
 	}
 	
 	/**
-	 * 
+	 *  hasWon Lightning Game
+	 *  
+	 *  checks if a certain score has been reached to be consider a win 
+	 *  for lightning
 	 */
 	@Override
 	public boolean hasWon(){
+		// Check for max score.
+		if (this.board.getScoreLimit() <= this.getCurrentScore()){
+			return true;
+		}
+		
 		return false;
 	}
 	
 	/**
+	 * Checks if a lightning game has been lost
 	 * 
+	 * checks to see if the timer is up
 	 */
 	@Override
 	public boolean hasLost(){
+		if(this.remainingTime <= 0){
+			return true;
+		}
 		return false;
 	}
 	
