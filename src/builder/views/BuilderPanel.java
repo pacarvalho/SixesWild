@@ -319,7 +319,7 @@ public class BuilderPanel extends JPanel implements IApplication {
 		c.ipady = 25; 
 		this.add(lblChance, c);
 		
-		// Place Chance of Multiplier Label
+		// Place Max Move Label
 		c.gridx = 2;
 		c.gridy = 5;
 		c.gridwidth = 1;
@@ -354,12 +354,18 @@ public class BuilderPanel extends JPanel implements IApplication {
 		c.ipady = 3; 
 		this.add(chanceMultiplier, c);
 		
-		// Place  Chance of Multiplier TextField
+		// Place  MaxMove TextField
 		c.gridx = 3;
 		c.gridy = 5;
 		c.gridwidth = 1;
 		c.ipady = 3; 
 		this.add(maxMove, c);
+		
+		if(this.model.getName() == "Lightning"){
+			maxMove.setEnabled(false);
+		} else {
+			maxMove.setEnabled(true);
+		}
 		
 		// Place Probability Label 1
 		c.gridx = 0;
