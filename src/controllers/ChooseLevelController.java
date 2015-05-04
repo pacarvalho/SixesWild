@@ -72,7 +72,7 @@ public class ChooseLevelController implements ActionListener{
 			// Desirialize Appropriate level
 			Board level = null;
 			try{
-				level = (Board)deserialize("resources/levels/" + this.model.getName() + "/test_level.txt");
+				level = (Board)deserialize("resources/levels/" + this.model.getName() + "/test_level1.txt");
 			} catch (IOException z) {
 				z.printStackTrace();
 				
@@ -102,7 +102,7 @@ public class ChooseLevelController implements ActionListener{
 			// Desirialize Appropriate level
 			Board level = null;
 			try{
-				level = (Board)deserialize("resources/levels/" + this.model.getName() + "test_level.txt");
+				level = (Board)deserialize("resources/levels/" + this.model.getName() + "/test_level2.txt");
 			} catch (IOException z) {
 				z.printStackTrace();
 				
@@ -132,7 +132,7 @@ public class ChooseLevelController implements ActionListener{
 			// Desirialize Appropriate level
 			Board level = null;
 			try{
-				level = (Board)deserialize("resources/levels/" + this.model.getName() + "test_level.txt");
+				level = (Board)deserialize("resources/levels/" + this.model.getName() + "/test_level3.txt");
 			} catch (IOException z) {
 				z.printStackTrace();
 				
@@ -162,7 +162,7 @@ public class ChooseLevelController implements ActionListener{
 			// Desirialize Appropriate level
 			Board level = null;
 			try{
-				level = (Board)deserialize("resources/levels/" + this.model.getName() + "test_level.txt");
+				level = (Board)deserialize("resources/levels/" + this.model.getName() + "/test_level4.txt");
 			} catch (IOException z) {
 				z.printStackTrace();
 				

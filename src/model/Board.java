@@ -195,9 +195,7 @@ public class Board implements Serializable{
 			for(int j = 1; j<9; j++){
 				if (this.tiles[i][j] != null && this.tiles[i][j-1] != null) {
 					if(this.tiles[i][j].getValue() == 0){
-						System.out.println("IM HERE?");
 						if(this.tiles[i][j-1].getValue() == 6){
-							System.out.println("IM HERE!");
 							this.destroyTile(this.tiles[i][j-1]);
 							this.tiles[i][j].setValue(-3);
 							this.update();
