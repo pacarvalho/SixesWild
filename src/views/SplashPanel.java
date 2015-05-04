@@ -1,5 +1,6 @@
 package views;
 
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.io.File;
@@ -53,9 +54,13 @@ public class SplashPanel extends JWindow implements IApplication{
 		background.setBounds(0, 0, 500, 500);
 		JLabel credits = new JLabel("", new ImageIcon("resources/namesSplash.gif"), SwingConstants.CENTER);
 		credits.setBounds(0, 40, 600, 200);
+		JLabel title = new JLabel("Team Hyperion~", SwingConstants.CENTER);
+		title.setFont(new Font("Source Sans Pro Black", Font.PLAIN, 30));
+		title.setBounds(0, 5, 600, 150);
 		
 		this.frame.setBounds(150, 170, 600, 300);
 		this.frame.getContentPane().add(image);
+		this.frame.getContentPane().add(title);
 		this.frame.getContentPane().add(credits);
 		this.frame.getContentPane().add(background);
 		this.frame.setVisible(true);
