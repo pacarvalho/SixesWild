@@ -2,10 +2,12 @@ package builder.views;
 
 import java.awt.Dimension;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JButton;
+import javax.swing.SwingConstants;
 
 import builder.controllers.BuilderBoardController;
 import builder.controllers.LoadLevelController;
@@ -58,7 +60,7 @@ public class BuilderPanel extends JPanel implements IApplication {
 	SixesWild model;
 	
 	/** Height and Width of the panel */
-	int h=120,w=190;
+	int h=125,w=195;
 	
 	/** Overall Builder Model */
 	BuilderSixesWild builder;
@@ -227,6 +229,11 @@ public class BuilderPanel extends JPanel implements IApplication {
 		SelectedTileController selectedTileController = new SelectedTileController(tileSelector, this.builder);
 		tileSelector.setActiveAdapter(selectedTileController);
 		
+		// **************************
+		// ***** Create Bunny*******
+		// **************************
+		JLabel bunny = new JLabel("", new ImageIcon("resources/BunnyBuilder.gif"), SwingConstants.CENTER);
+
 		// ***********************
 		// ****LAYOUT SET-UP !****
 		// ***********************
@@ -445,6 +452,13 @@ public class BuilderPanel extends JPanel implements IApplication {
 		c.gridwidth = 5;
 		c.ipady = 25;
 		this.add(tileSelector, c);
+		
+		// Add Bunny
+		c.gridx = 9;
+		c.gridy = 15;
+		c.gridwidth = 1;
+		c.ipady = 0;
+		this.add(bunny, c);
 
 	}
 	
