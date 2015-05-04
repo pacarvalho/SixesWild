@@ -38,9 +38,9 @@ abstract public class SixesWild {
 	Board board;
 	
 	/** Star unlock multipliers */
-	public double win1 = 1;
-	public double win2 = 1.3;
-	public double win3 = 1.7;
+	public static final double WIN1 = 1;
+	public static final double WIN2 = 1.5;
+	public static final double WIN3 = 1.9;
 	
 	/**Star flags*/
 	public static final int FIRST = 1; 	// 2^^0
@@ -57,7 +57,7 @@ abstract public class SixesWild {
 		this.board = null;
 		this.stars = 0;
 		this.specQuotas = new int[]{3,1,1};
-		this.setUpdater(new ScoreStarUpdater(this));
+		
 	}
 	
 	/**
@@ -65,9 +65,7 @@ abstract public class SixesWild {
 	 */
 	public void initialize(Board board){
 		this.board = board;
-		this.win1 *= board.scoreLimit;
-		this.win2 *= board.scoreLimit;
-		this.win3 *= board.scoreLimit;
+		this.setUpdater(new ScoreStarUpdater(this));
 		this.numMoves = board.getMaxMoves();
 	}
 	

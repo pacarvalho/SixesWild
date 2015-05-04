@@ -28,10 +28,20 @@ public class ScoreStarUpdater {
 	/**Star Panel to update*/
 	private LevelPanel levelView;
 	
+	/**ScoreLimits*/
+	double[] starScores =new double[3];
+	
 	public ScoreStarUpdater(SixesWild model) {
 		super();
 		this.model = model;
 		this.levelView = null;
+		
+		int scoreLimit = model.getBoard().getScoreLimit();
+		this.starScores =new double[]{scoreLimit * SixesWild.WIN1,
+			scoreLimit*SixesWild.WIN2,
+			scoreLimit*SixesWild.WIN3};
+			
+		
 	}
 	
 	
@@ -69,21 +79,22 @@ public class ScoreStarUpdater {
 	 * @param sixesWild TODO*/
 	// migth be moved to Board
 	public int assessScore(int score){
+	//	System.out.print("stars:" + model.stars);
 		int EVAL = 0;
 		
 		
-		if(score >= model.win3)
+		if(score >= starScores[2])
 			EVAL= 7;
 		
-		else if(score >= model.win2)
+		else if(score >= starScores[1])
 			EVAL = 3;
 		
-		else if(score >= model.win1)
+		else if(score >= starScores[0])
 			EVAL = 1;
 		
 		int change = model.stars^EVAL;
 		model.stars=EVAL;
-		
+		//System.out.print("EVAL:" + EVAL + ", change:" + change);
 		return change;
 	}
 	
