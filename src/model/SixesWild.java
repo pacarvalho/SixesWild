@@ -155,8 +155,8 @@ abstract public class SixesWild {
 				lt.puzzleScore[currentLevel] = currentScore;
 			}
 			
-			if (this.hasWon() && (currentLevel < 4)) {
-				lt.puzzleLocked[currentLevel +1] = false;
+			if (this.hasWon() && (currentLevel < 3)) {
+				lt.puzzleLocked[currentLevel +1 ] = false;
 			}
 			
 		} else if (this instanceof EliminationGame){
@@ -164,8 +164,8 @@ abstract public class SixesWild {
 				lt.eliminationScore[currentLevel] = currentScore;
 			}
 			
-			if (this.hasWon() && (currentLevel < 4)) {
-				lt.eliminationLocked[currentLevel +1] = false;
+			if (this.hasWon() && (currentLevel < 3)) {
+				lt.eliminationLocked[currentLevel + 1] = false;
 			}
 			
 		}  else if (this instanceof LightningGame){
@@ -173,8 +173,8 @@ abstract public class SixesWild {
 				lt.lightningScore[currentLevel] = currentScore;
 			}
 			
-			if (this.hasWon() && (currentLevel < 4)) {
-				lt.lightningLocked[currentLevel +1] = false;
+			if (this.hasWon() && (currentLevel < 3)) {
+				lt.lightningLocked[currentLevel + 1] = false;
 			}
 			
 		}  else if (this instanceof ReleaseGame){
@@ -182,8 +182,8 @@ abstract public class SixesWild {
 				lt.releaseScore[currentLevel] = currentScore;
 			}
 			
-			if (this.hasWon() && (currentLevel < 4)) {
-				lt.releaseLocked[currentLevel +1] = false;
+			if (this.hasWon() && (currentLevel < 3)) {
+				lt.releaseLocked[currentLevel + 1] = false;
 			}
 		}
 		
