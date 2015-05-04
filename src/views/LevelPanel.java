@@ -71,14 +71,15 @@ public class LevelPanel extends JPanel implements IApplication{
 		if(this.model instanceof LightningGame){
 	
 			this.countdownView = new JLabel(""+ ((LightningGame) model).getRemainingTimeString());
-			
+			countdownView.setFont(new Font("Source Sans Pro Black", Font.PLAIN, 25));
 			LevelTimer thisTim = new LevelTimer((LightningGame) this.model, this);
 			((LightningGame) this.model).getTimer().addActionListener(thisTim);
 			((LightningGame) this.model).getTimer().start();
 		}
 		else
 			this.countdownView = new JLabel(""+ model.getNumMoves());
-			
+		
+		countdownView.setFont(new Font("Source Sans Pro Black", Font.PLAIN, 24));
 		this.scoreView.setFont(new Font("Source Sans Pro Black", Font.PLAIN, 24));
 		//Plug in levelView to updater
 		this.model.getUpdater().setLevelView(this);
@@ -127,7 +128,7 @@ public class LevelPanel extends JPanel implements IApplication{
 			}	
 		}
 		
-		JLabel lblHighScore = new JLabel("HighScore: " + highScore);
+		JLabel lblHighScore = new JLabel("HI: " + highScore); // NES games reference
 		lblHighScore.setFont(new Font("Source Sans Pro Black", Font.PLAIN, 24));
 		
 		
@@ -186,11 +187,12 @@ public class LevelPanel extends JPanel implements IApplication{
 		this.add(scoreView, c);
 		
 		//Place HighScore
-		c.gridx = 13;
+		c.gridx = 12;
 		c.gridy = 4;		
 		c.gridwidth = 1;
 		c.gridheight = 1;
 		c.ipady = 15; // Height in px
+		c.anchor = GridBagConstraints.WEST;
 		this.add(lblHighScore, c);
 		
 		// NOTE THAT THE WAY WE PLACE THE BOARD
@@ -225,9 +227,9 @@ public class LevelPanel extends JPanel implements IApplication{
 		
 		// Place Special MovePanel
 		c.gridx = menux;
-		c.gridy = 4;
+		c.gridy = 5;
 		c.gridwidth = 1;
-		c.gridheight = 7;
+		c.gridheight =6;
 		c.anchor = GridBagConstraints.SOUTHEAST;
 		add(this.getSpecialButtonsPanel(),c);
 	}
