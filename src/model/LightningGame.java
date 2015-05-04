@@ -47,7 +47,8 @@ public class LightningGame extends SixesWild {
 			return (mins + ":0"+ secs);
 	}
 	public int addToRemainingTime(int change) {
-		this.remainingTime += change;
+		if(remainingTime>=change)
+			this.remainingTime += change;
 		return remainingTime;
 	}
 	
