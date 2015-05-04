@@ -121,7 +121,7 @@ public class Board implements Serializable{
 	}
 	
 	/**
-	 * Swaps the valeus of two tiles
+	 * Swaps the values of two tiles
 	 */
 	public void swapTwoTiles(Tile t1, Tile t2){
 		int tempVal=t1.getValue();

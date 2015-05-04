@@ -52,7 +52,7 @@ public class Move implements IMove{
 		}	
 		
 		model.updateMoves(-1);
-		model.updateScore(this.multiplierTotal*6);
+		model.updateScore(this.multiplierTotal*10*this.tiles.size());
 		
 		board.update();
 		
