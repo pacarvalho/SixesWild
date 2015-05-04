@@ -15,10 +15,14 @@ public class EliminationMove implements IMove {
 	SixesWild model;
 	Board board;
 	
+	/** Multiplier for extra score */
+	int multiplierTotal;
+	
 	public EliminationMove(ArrayList<Tile> tiles, SixesWild model){
 		this.tiles = tiles;
 		this.model = model;
 		this.board = model.getBoard();
+		this.multiplierTotal = 1;
 	}
 
 	
@@ -40,7 +44,7 @@ public class EliminationMove implements IMove {
 		}
 		
 		model.updateMoves(-1);
-		model.updateScore(0);
+		model.updateScore(this.multiplierTotal*10*this.tiles.size());
 		
 		// Check if game has been won or lost
 		this.model.checkGameState();
@@ -89,6 +93,9 @@ public class EliminationMove implements IMove {
 			}
 			
 			count += t.getValue();
+			
+			// Note: any time the Move.valid() method is called the multiplier will be incremented
+			this.multiplierTotal = this.multiplierTotal * t.getMultiplier();
 			
 		}
 		
