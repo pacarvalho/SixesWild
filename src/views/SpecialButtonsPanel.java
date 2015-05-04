@@ -110,7 +110,7 @@ public class SpecialButtonsPanel extends JPanel {
 		if(this.btnSpecial3 == null){
 			this.btnSpecial3 = new JButton();
 			this.btnSpecial3.setBackground(Color.WHITE);
-			//this.btnSpecial2.setIcon(new ImageIcon("resources/Destroy.gif"));
+			this.btnSpecial3.setIcon(new ImageIcon("resources/Shuffle.gif"));
 			this.btnSpecial3.setText("" + model.getSpecQuotas(2));
 		}
 		return this.btnSpecial3;
