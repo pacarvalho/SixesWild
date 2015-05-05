@@ -6,6 +6,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
 
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -14,6 +15,7 @@ import java.awt.GridBagLayout;
 import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 
 import javax.swing.JButton;
 
@@ -34,6 +36,12 @@ public class GameSelectorPanel extends JPanel implements IApplication{
 	 */
 	JFrame frame;
 	
+	/**
+	 * Hashmap of all components
+	 * @param hashmap
+	 */
+	private HashMap<String, Component> componentMap;
+	
 	public GameSelectorPanel(JFrame frame){
 		this.frame = frame;
 		this.frame.setPreferredSize(new Dimension(1000, 600));
@@ -46,12 +54,16 @@ public class GameSelectorPanel extends JPanel implements IApplication{
 		JLabel lblSelectAGame = new JLabel("Select a Game Mode");
 		
 		/*
-		 * Create the buttons
+		 * Create the buttons and set name
 		 */
 		JButton btnPuzzle = new JButton("Puzzle");
+		btnPuzzle.setName("Puzzle");
 		JButton btnLightning = new JButton("Lightning");
+		btnLightning.setName("Lightning");
 		JButton btnRelease = new JButton("Release");
+		btnRelease.setName("Release");
 		JButton btnElimination = new JButton("Elimination");
+		btnElimination.setName("Elimination");
 		
 		/*
 		 * Create the choose game controller
@@ -71,6 +83,7 @@ public class GameSelectorPanel extends JPanel implements IApplication{
 		 * Builder button. 
 		 */
 		JButton btnLevelBuilder = new JButton("Level Builder");
+		btnLevelBuilder.setName("Level Builder");
 		StartBuilderController builderStartController  = new StartBuilderController(this,btnLevelBuilder);
 		btnLevelBuilder.addActionListener(builderStartController);
 		
@@ -130,6 +143,9 @@ public class GameSelectorPanel extends JPanel implements IApplication{
 		c.gridwidth = 2;
 		c.ipady = 20;
 		this.add(btnLevelBuilder, c);
+		
+		// Add the buttons to the hashmap. This is to make testing easier
+		createComponentMap();
 	}
 
 	@Override
@@ -153,4 +169,20 @@ public class GameSelectorPanel extends JPanel implements IApplication{
 			g.drawImage(image, 0, 0, 1000, 800, this);	
 		}
 	 }
+	 
+	 private void createComponentMap() {
+	        componentMap = new HashMap<String,Component>();
+	        Component[] components = this.getComponents();
+	        for (int i=0; i < components.length; i++) {
+	                componentMap.put(components[i].getName(), components[i]);
+	        }
+	}
+
+	public Component getComponentByName(String name) {
+	        if (componentMap.containsKey(name)) {
+	                return (Component) componentMap.get(name);
+	        }
+	        else return null;
+	}
+
 }

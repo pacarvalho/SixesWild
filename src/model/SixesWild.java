@@ -30,7 +30,7 @@ abstract public class SixesWild {
 	/**Listener for score changes*/
 	ScoreStarUpdater updater;
 
-	/** Monitor the number of moves remiaining */
+	/** Monitor the number of moves remaining */
 	int numMoves;
 	
 
