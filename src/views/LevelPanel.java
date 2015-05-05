@@ -68,17 +68,20 @@ public class LevelPanel extends JPanel implements IApplication{
 		this.starView = new StarPanel(model);
 		this.scoreView = new JLabel(""+model.getCurrentScore());
 		
+		//If the level is a LightningGame set up and dispaly timer.
 		if(this.model instanceof LightningGame){
 	
 			this.countdownView = new JLabel(""+ ((LightningGame) model).getRemainingTimeString());
 			countdownView.setFont(new Font("Source Sans Pro Black", Font.PLAIN, 25));
 			LevelTimer thisTim = new LevelTimer((LightningGame) this.model, this);
+			//Action listener for timer.
 			((LightningGame) this.model).getTimer().addActionListener(thisTim);
 			((LightningGame) this.model).getTimer().start();
 		}
+		//else, use move counter
 		else
 			this.countdownView = new JLabel(""+ model.getNumMoves());
-		
+		//Set a few fonts
 		countdownView.setFont(new Font("Source Sans Pro Black", Font.PLAIN, 24));
 		this.scoreView.setFont(new Font("Source Sans Pro Black", Font.PLAIN, 24));
 		//Plug in levelView to updater
@@ -128,6 +131,7 @@ public class LevelPanel extends JPanel implements IApplication{
 			}	
 		}
 		
+		//PRevious High score
 		JLabel lblHighScore = new JLabel("HI: " + highScore); // NES games reference
 		lblHighScore.setFont(new Font("Source Sans Pro Black", Font.PLAIN, 24));
 		
@@ -234,12 +238,16 @@ public class LevelPanel extends JPanel implements IApplication{
 		add(this.getSpecialButtonsPanel(),c);
 	}
 	
+	/**
+	 * Get the CountdownView.
+	 * @return
+	 */
 	public JLabel getCountdownView() {
 		return countdownView;
 	}
 
 	/**
-	 * Getter for Special Button Panel
+	 * Return the Special Button Panel
 	 * 
 	 * @return
 	 */
@@ -251,7 +259,7 @@ public class LevelPanel extends JPanel implements IApplication{
 	}
 	
 	/**
-	 * G Return the boardView
+	 * Return the boardView
 	 * 
 	 * @return
 	 */

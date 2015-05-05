@@ -269,23 +269,41 @@ abstract public class SixesWild {
 	}
 	abstract public void updateScore();
 	
+	/**
+	 *  Returns the remaining allowed special moves
+	 *  
+	 */
 	public int getSpecQuotas(int i) {
 		return specQuotas[i];
 	}
-
+	
+	/**
+	 * Increments or decrements the specified special move quota buy int change"
+	 * 
+	 */
 	public boolean changeSpecQuotas(int index, int change) {
 		this.specQuotas[index] += change;
 		return true;
 	}
+	/**
+	 *  Sets the quota for given special move
+	 */
 	public boolean setSpecQuotas(int index, int number) {
 		this.specQuotas[index] = number;
 		return true;
 	}
-
+	/**
+	 * Returns the score related GUI updater for this  model
+	 * @return
+	 */
 	public ScoreStarUpdater getUpdater() {
 		return updater;
 	}
-
+	
+	/**
+	 * Sets the score GUI updater (controller)
+	 * @param updater
+	 */
 	public void setUpdater(ScoreStarUpdater updater) {
 		this.updater = updater;
 	}

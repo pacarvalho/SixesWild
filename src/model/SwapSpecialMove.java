@@ -9,12 +9,24 @@ package model;
 
 public class SwapSpecialMove implements IMove{
 	
+	/** Tile 1 to swap*/
 	Tile tile1;
+	
+	/** Tile 2 to swap*/
 	Tile tile2;
 	
+	/** Game model to make move*/
 	SixesWild model;
+	
+	/** Board of the game instance*/
 	Board board;
 	
+	/**
+	 * Constructor
+	 * @param tile1
+	 * @param tile2
+	 * @param model
+	 */
 	public SwapSpecialMove(Tile tile1, Tile tile2, SixesWild model){
 		
 		this.tile1 = tile1;

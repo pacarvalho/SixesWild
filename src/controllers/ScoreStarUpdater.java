@@ -31,6 +31,11 @@ public class ScoreStarUpdater {
 	/**ScoreLimits*/
 	double[] starScores =new double[3];
 	
+	
+	/**
+	 * Constructor
+	 * @param model
+	 */
 	public ScoreStarUpdater(SixesWild model) {
 		super();
 		this.model = model;
