@@ -1,5 +1,6 @@
 package builder.views;
 
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -8,6 +9,7 @@ import java.awt.GridBagLayout;
 import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
@@ -21,9 +23,27 @@ import views.IApplication;
 import controllers.ChooseGameController;
 import model.SixesWild;
 
+
+/**
+ * Allows user to select which game to build a level for
+ * 
+ * @author Ozan, Sean
+ *
+ */
+
 public class BuilderGameSelectorPanel extends JPanel implements IApplication{
 	
 	JFrame frame;
+	
+	/**
+	 * Hashmap of all components
+	 * @param hashmap
+	 */
+	private HashMap<String, Component> componentMap;
+	
+	/**
+	 * Constructor
+	 */
 	
 	public BuilderGameSelectorPanel(JFrame frame){
 		this.frame = frame;
@@ -38,9 +58,13 @@ public class BuilderGameSelectorPanel extends JPanel implements IApplication{
 		 * Create the buttons
 		 */
 		JButton btnPuzzle = new JButton("Puzzle");
+		btnPuzzle.setName("Puzzle");
 		JButton btnLightning = new JButton("Lightning");
+		btnLightning.setName("Lightning");
 		JButton btnRelease = new JButton("Release");
+		btnRelease.setName("Release");
 		JButton btnElimination = new JButton("Elimination");
+		btnElimination.setName("Elimination");
 		
 		/*
 		 * Create the choose game controller
@@ -97,6 +121,9 @@ public class BuilderGameSelectorPanel extends JPanel implements IApplication{
 		c.gridwidth = 1;
 		c.ipady = 40;
 		this.add(btnElimination, c);
+		
+		// Add the buttons to the hashmap. This is to make testing easier
+		createComponentMap();
 	}
 	/**
 	 * 
@@ -122,5 +149,27 @@ public class BuilderGameSelectorPanel extends JPanel implements IApplication{
 			g.drawImage(image, 0, 0, 1000, 800, this);	
 		}
 	 }
+	 
+	 /**
+	  * Create hashmap of components (buttons) on the panel
+	  */
+	 private void createComponentMap() {
+	        componentMap = new HashMap<String,Component>();
+	        Component[] components = this.getComponents();
+	        for (int i=0; i < components.length; i++) {
+	                componentMap.put(components[i].getName(), components[i]);
+	        }
+	}
+	 
+	 /**
+	  * Get a component by its name
+	  */
+
+	public Component getComponentByName(String name) {
+	        if (componentMap.containsKey(name)) {
+	                return (Component) componentMap.get(name);
+	        }
+	        else return null;
+	}
 
 }
