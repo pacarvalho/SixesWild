@@ -57,15 +57,17 @@ public class SpecialButtonsPanel extends JPanel {
 	void initialize(){
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		
-		
+		//add buttons to the panel
 		add(getBtnSpecial1());
 		add(getBtnSpecial2());
 		add(getBtnSpecial3());
 		
+		//Instantiate controllers
 		SwapController swapper = new SwapController(getBtnSpecial1(),boardView, model);
 		DestroyTileController destroyer = new DestroyTileController(getBtnSpecial2(), boardView, model);
 		ResetController shuffler = new ResetController(btnSpecial3, boardView, model);
 		
+		// Assign controllers to buttons
 		getBtnSpecial1().addActionListener(swapper);
 		getBtnSpecial2().addActionListener(destroyer);
 		getBtnSpecial3().addActionListener(shuffler);

@@ -5,7 +5,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-
 import controllers.ScoreStarUpdater;
 
 /**
@@ -82,6 +81,7 @@ abstract public class SixesWild {
 	public int getNumMoves() {
 		return numMoves;
 	}
+	
 	/**
 	 * Calls the hasWon and hasLost methods. 
 	 * 
@@ -155,8 +155,8 @@ abstract public class SixesWild {
 				lt.puzzleScore[currentLevel] = currentScore;
 			}
 			
-			if (this.hasWon() && (currentLevel < 4)) {
-				lt.puzzleLocked[currentLevel +1] = false;
+			if (this.hasWon() && (currentLevel < 3)) {
+				lt.puzzleLocked[currentLevel +1 ] = false;
 			}
 			
 		} else if (this instanceof EliminationGame){
@@ -164,8 +164,8 @@ abstract public class SixesWild {
 				lt.eliminationScore[currentLevel] = currentScore;
 			}
 			
-			if (this.hasWon() && (currentLevel < 4)) {
-				lt.eliminationLocked[currentLevel +1] = false;
+			if (this.hasWon() && (currentLevel < 3)) {
+				lt.eliminationLocked[currentLevel + 1] = false;
 			}
 			
 		}  else if (this instanceof LightningGame){
@@ -173,8 +173,8 @@ abstract public class SixesWild {
 				lt.lightningScore[currentLevel] = currentScore;
 			}
 			
-			if (this.hasWon() && (currentLevel < 4)) {
-				lt.lightningLocked[currentLevel +1] = false;
+			if (this.hasWon() && (currentLevel < 3)) {
+				lt.lightningLocked[currentLevel + 1] = false;
 			}
 			
 		}  else if (this instanceof ReleaseGame){
@@ -182,8 +182,8 @@ abstract public class SixesWild {
 				lt.releaseScore[currentLevel] = currentScore;
 			}
 			
-			if (this.hasWon() && (currentLevel < 4)) {
-				lt.releaseLocked[currentLevel +1] = false;
+			if (this.hasWon() && (currentLevel < 3)) {
+				lt.releaseLocked[currentLevel + 1] = false;
 			}
 		}
 		
@@ -249,6 +249,54 @@ abstract public class SixesWild {
 		return false; //For now...
 	}
 	
+	/**
+	 *  Returns the remaining allowed special moves
+	 *  
+	 */
+	public int getSpecQuotas(int i) {
+		return specQuotas[i];
+	}
+	
+	/**
+	 * Increments or decrements the specified special move quota buy int change"
+	 * 
+	 */
+	public boolean changeSpecQuotas(int index, int change) {
+		this.specQuotas[index] += change;
+		return true;
+	}
+	
+	/**
+	 *  Sets the quota for given special move
+	 */
+	public boolean setSpecQuotas(int index, int number) {
+		this.specQuotas[index] = number;
+		return true;
+	}
+	
+	/**
+	 * Returns the score related GUI updater for this  model
+	 * @return
+	 */
+	public ScoreStarUpdater getUpdater() {
+		return updater;
+	}
+	
+	/**
+	 * Sets the score GUI updater (controller)
+	 * @param updater
+	 */
+	public void setUpdater(ScoreStarUpdater updater) {
+		this.updater = updater;
+	}
+	
+	/**
+	 * Returns the currentScore
+	 */
+	public int getCurrentScore() {
+		return this.currentScore;
+	}
+	
 	//ABSTRACT METHODS
 	/**
 	 * Returns true if a game is in a won state. Else it returns false.
@@ -260,34 +308,11 @@ abstract public class SixesWild {
 	 */
 	abstract public String getName();
 	
-	
 	/**
-	 * Returns the currentScore
+	 * Updates the score with game specific metrics.
+	 * 
+	 * Has not been used in any of the game implementations.
 	 */
-	public int getCurrentScore() {
-		return this.currentScore;
-	}
 	abstract public void updateScore();
-	
-	public int getSpecQuotas(int i) {
-		return specQuotas[i];
-	}
-
-	public boolean changeSpecQuotas(int index, int change) {
-		this.specQuotas[index] += change;
-		return true;
-	}
-	public boolean setSpecQuotas(int index, int number) {
-		this.specQuotas[index] = number;
-		return true;
-	}
-
-	public ScoreStarUpdater getUpdater() {
-		return updater;
-	}
-
-	public void setUpdater(ScoreStarUpdater updater) {
-		this.updater = updater;
-	}
 
 }

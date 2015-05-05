@@ -13,6 +13,10 @@ public class ResetMove implements IMove{
 	/**Board of that game*/
 	Board board;
 	
+	/**
+	 * Constructor
+	 * @param model
+	 */
 	public ResetMove(SixesWild model){
 		
 ;		
@@ -44,9 +48,7 @@ public class ResetMove implements IMove{
 	}
 	
 	/**
-	 * Checks if the current selection of tiles is valid.
-	 * 
-	 * Any two different tiles that has a value between 1 and 5 is selected.
+	 * Checks if the move is valid. This move is currently always valid.
 	 * 
 	 * @return boolean
 	 */
@@ -56,6 +58,11 @@ public class ResetMove implements IMove{
 		return true;
 	}
 	
+	/**
+	 * Checks if the tiles are valid, eligible to be destroyed.
+	 * @param aTile
+	 * @return
+	 */
 	private boolean tileValid(Tile aTile){
 		int value = aTile.getValue();
 		
