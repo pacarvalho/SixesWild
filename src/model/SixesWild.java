@@ -5,7 +5,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-
 import controllers.ScoreStarUpdater;
 
 /**
@@ -82,6 +81,7 @@ abstract public class SixesWild {
 	public int getNumMoves() {
 		return numMoves;
 	}
+	
 	/**
 	 * Calls the hasWon and hasLost methods. 
 	 * 
@@ -249,26 +249,6 @@ abstract public class SixesWild {
 		return false; //For now...
 	}
 	
-	//ABSTRACT METHODS
-	/**
-	 * Returns true if a game is in a won state. Else it returns false.
-	 */
-	abstract public boolean hasWon();
-	
-	/**
-	 * Returns the name of the variation
-	 */
-	abstract public String getName();
-	
-	
-	/**
-	 * Returns the currentScore
-	 */
-	public int getCurrentScore() {
-		return this.currentScore;
-	}
-	abstract public void updateScore();
-	
 	/**
 	 *  Returns the remaining allowed special moves
 	 *  
@@ -285,6 +265,7 @@ abstract public class SixesWild {
 		this.specQuotas[index] += change;
 		return true;
 	}
+	
 	/**
 	 *  Sets the quota for given special move
 	 */
@@ -292,6 +273,7 @@ abstract public class SixesWild {
 		this.specQuotas[index] = number;
 		return true;
 	}
+	
 	/**
 	 * Returns the score related GUI updater for this  model
 	 * @return
@@ -307,5 +289,30 @@ abstract public class SixesWild {
 	public void setUpdater(ScoreStarUpdater updater) {
 		this.updater = updater;
 	}
+	
+	/**
+	 * Returns the currentScore
+	 */
+	public int getCurrentScore() {
+		return this.currentScore;
+	}
+	
+	//ABSTRACT METHODS
+	/**
+	 * Returns true if a game is in a won state. Else it returns false.
+	 */
+	abstract public boolean hasWon();
+	
+	/**
+	 * Returns the name of the variation
+	 */
+	abstract public String getName();
+	
+	/**
+	 * Updates the score with game specific metrics.
+	 * 
+	 * Has not been used in any of the game implementations.
+	 */
+	abstract public void updateScore();
 
 }
