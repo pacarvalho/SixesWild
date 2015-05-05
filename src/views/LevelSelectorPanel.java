@@ -5,6 +5,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import java.awt.Component;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.GridBagConstraints;
@@ -16,6 +17,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.HashMap;
 
 import javax.swing.JButton;
 
@@ -31,7 +33,7 @@ import controllers.ChooseLevelController;
 /**
  * Allows user to select which level he intends to play
  * 
- * @author Katie, Paulo
+ * @author Katie, Paulo, Sean
  *
  */
 public class LevelSelectorPanel extends JPanel implements IApplication{
@@ -45,6 +47,12 @@ public class LevelSelectorPanel extends JPanel implements IApplication{
 	
 	/** Game Model */
 	SixesWild model;
+	
+	/**
+	 * Hashmap of all components
+	 * @param hashmap
+	 */
+	private HashMap<String, Component> componentMap;
 	
 	/**
 	 * Constructor
@@ -87,9 +95,13 @@ public class LevelSelectorPanel extends JPanel implements IApplication{
 		 */
 		
 		JButton btnLevel1 = new JButton("Level 1");
+		btnLevel1.setName("Level 1");
 		JButton btnLevel2 = new JButton("Level 2");
+		btnLevel2.setName("Level 2");
 		JButton btnLevel3 = new JButton("Level 3");
+		btnLevel3.setName("Level 3");
 		JButton btnLevel4 = new JButton("Level 4");
+		btnLevel4.setName("Level 4");
 		
 		ChooseLevelController chooseLevelController = new ChooseLevelController(model, this, btnLevel1, btnLevel2,
 				btnLevel3, btnLevel4);
@@ -124,6 +136,7 @@ public class LevelSelectorPanel extends JPanel implements IApplication{
 		 */
 		ChooseCustomLevelController customController = new ChooseCustomLevelController(this.model, this);
 		JButton btnCustomLevel = new JButton("Choose Your Own!");
+		btnCustomLevel.setName("Choose Your Own!");
 		btnCustomLevel.addActionListener(customController);
 		
 		// Place buttons on correct locations
@@ -182,6 +195,8 @@ public class LevelSelectorPanel extends JPanel implements IApplication{
 		c.ipady = 20;
 		this.add(btnCustomLevel, c);
 		
+		// Add the buttons to the hashmap. This is to make testing easier
+		createComponentMap();
 	}
 	
 	/**
@@ -233,5 +248,27 @@ public class LevelSelectorPanel extends JPanel implements IApplication{
 			g.drawImage(image, 0, 0, 1000, 800, this);	
 		}
 	 }
+	 
+	 /**
+	  * Create hashmap of components (buttons) on the panel
+	  */
+	 private void createComponentMap() {
+	        componentMap = new HashMap<String,Component>();
+	        Component[] components = this.getComponents();
+	        for (int i=0; i < components.length; i++) {
+	                componentMap.put(components[i].getName(), components[i]);
+	        }
+	}
+	 
+	 /**
+	  * Get a component by its name
+	  */
+
+	public Component getComponentByName(String name) {
+	        if (componentMap.containsKey(name)) {
+	                return (Component) componentMap.get(name);
+	        }
+	        else return null;
+	}
 
 }
