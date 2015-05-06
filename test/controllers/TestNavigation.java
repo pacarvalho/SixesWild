@@ -4,12 +4,18 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.ImageIcon;
 
+import model.LevelTracker;
 import builder.views.BuilderGameSelectorPanel;
 import views.GameSelectorPanel;
 import views.LevelSelectorPanel;
 import junit.framework.TestCase;
 
 import java.awt.event.MouseEvent;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
 /**
  * Test Cases for the board navigation
@@ -27,7 +33,24 @@ public class TestNavigation extends TestCase {
 	/** Game Selector Panel */
 	GameSelectorPanel gameSelectorPanel;
 	
+	@Override
 	protected void setUp(){
+		
+		// Serialize a new level tracker to ensure all levels are unlocked at the beginning of this test
+		LevelTracker lt = new LevelTracker();
+		for (int i=0;i<4;i++){
+			lt.eliminationLocked[i] = false;
+			lt.puzzleLocked[i] = false;
+			lt.releaseLocked[i] = false;
+			lt.lightningLocked[i] = false;
+		}
+		
+		try{
+			this.serialize(lt, "resources/levels/level_tracker.txt");
+		} catch (IOException e){
+			e.printStackTrace();
+		}
+		
 		this.frame = new JFrame();
 		this.gameSelectorPanel = new GameSelectorPanel(this.frame);
 
@@ -46,7 +69,15 @@ public class TestNavigation extends TestCase {
 	}
 	
 	/** Tear down the model when done testing */
+	@Override
 	protected void tearDown(){
+		
+		try{
+			this.serialize(new LevelTracker(), "resources/levels/level_tracker.txt");
+		} catch (IOException e){
+			e.printStackTrace();
+		}
+		
 		this.frame.dispose();
 	}
 	
@@ -112,6 +143,30 @@ public class TestNavigation extends TestCase {
 		lvlButton.doClick();
 	}
 	
+	public void testSelectThird(){
+		JButton selectButton = (JButton) this.gameSelectorPanel.getComponentByName("Puzzle");
+		assertEquals(selectButton.getText(),"Puzzle");
+		selectButton.doClick();
+		// Select the first available level
+		LevelSelectorPanel lvlPanel = (LevelSelectorPanel) this.frame.getContentPane().getComponent(0);
+		assertNotNull(lvlPanel);
+		JButton lvlButton = (JButton) lvlPanel.getComponentByName("Level 3");
+		assertEquals(lvlButton.getText(),"Level 3");
+		lvlButton.doClick();
+	}
+	
+	public void testSelectFourth(){
+		JButton selectButton = (JButton) this.gameSelectorPanel.getComponentByName("Puzzle");
+		assertEquals(selectButton.getText(),"Puzzle");
+		selectButton.doClick();
+		// Select the first available level
+		LevelSelectorPanel lvlPanel = (LevelSelectorPanel) this.frame.getContentPane().getComponent(0);
+		assertNotNull(lvlPanel);
+		JButton lvlButton = (JButton) lvlPanel.getComponentByName("Level 4");
+		assertEquals(lvlButton.getText(),"Level 4");
+		lvlButton.doClick();
+	}
+	
 	public void testSelectBuilder(){
 		JButton selectButton = (JButton) this.gameSelectorPanel.getComponentByName("Level Builder");
 		assertEquals(selectButton.getText(),"Level Builder");
@@ -123,6 +178,32 @@ public class TestNavigation extends TestCase {
 		assertEquals(lvlButton.getText(),"Puzzle");
 		lvlButton.doClick();
 		
+	}
+	
+	
+	/**
+	 * Loads a serialized object
+	 */
+	public Object deserialize(String fileName) throws IOException, ClassNotFoundException{
+		FileInputStream fis = new FileInputStream(fileName);
+		ObjectInputStream ois = new ObjectInputStream(fis);
+		
+		Object obj = ois.readObject();
+		
+		ois.close();
+		
+		return obj;
+	}
+	
+	/**
+	 * Serializes a given serializable object
+	 */
+	public void serialize(Object obj, String fileName) throws IOException{
+		FileOutputStream fos = new FileOutputStream(fileName);
+		ObjectOutputStream oos = new ObjectOutputStream(fos);
+		oos.writeObject(obj);
+		
+		fos.close();
 	}
 	
 }

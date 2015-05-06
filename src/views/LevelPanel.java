@@ -56,6 +56,9 @@ public class LevelPanel extends JPanel implements IApplication{
 	/** Label for countdown */
 	JLabel countdownView;
 	
+	/** Menu Button */
+	JButton btnMenu;
+	
 	/** Star view */
 	StarPanel starView;
 	
@@ -82,7 +85,7 @@ public class LevelPanel extends JPanel implements IApplication{
 		this.boardView = null;
 		this.starView = new StarPanel(model);
 		this.starView.setName("Star");
-		this.scoreView = new JLabel(""+model.getCurrentScore());
+		this.scoreView = new JLabel("" + model.getCurrentScore());
 		this.scoreView.setName("Score");
 		
 		//If the level is a LightningGame set up and display timer.
@@ -161,10 +164,10 @@ public class LevelPanel extends JPanel implements IApplication{
 		/* 
 		 * Create button to return to main menu and bind it to its controller
 		 */
-		JButton btnMenu = new JButton("Menu");
-		btnMenu.setName("Menu");
+		this.btnMenu = new JButton("Menu");
+		this.btnMenu.setName("Menu");
 		ExitController exitController = new ExitController(this, model, level);
-		btnMenu.addActionListener(exitController);
+		this.btnMenu.addActionListener(exitController);
 
 		/*
 		 * Create the board and make it appear
@@ -241,7 +244,7 @@ public class LevelPanel extends JPanel implements IApplication{
 		c.gridwidth = 1;
 		c.gridheight =1;
 		c.anchor = GridBagConstraints.NORTHEAST;
-		this.add(btnMenu, c);
+		this.add(this.btnMenu, c);
 		
 		//Place Star Panel
 		c.gridx = menux;
@@ -249,9 +252,6 @@ public class LevelPanel extends JPanel implements IApplication{
 		c.gridwidth = 1;
 		
 		this.add(starView, c);
-		
-		//Listen to score
-		//scoreView.addPropertyChangeListener("text",new StarUpdater(model, stars));
 		
 		// Place Special MovePanel
 		c.gridx = menux;
@@ -302,6 +302,13 @@ public class LevelPanel extends JPanel implements IApplication{
 	 */
 	public SixesWild getModel(){
 		return this.model;
+	}
+	
+	/**
+	 * Returns the menu button
+	 */
+	public JButton getMenuButton(){
+		return this.btnMenu;
 	}
 	
 	/**

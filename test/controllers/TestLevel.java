@@ -1,10 +1,16 @@
 package controllers;
 
 import java.awt.event.MouseEvent;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
+import model.LevelTracker;
 import junit.framework.TestCase;
 import views.GameSelectorPanel;
 import views.LevelPanel;
@@ -23,6 +29,7 @@ public class TestLevel extends TestCase {
 	LevelPanel levelPanel;
 	
 	protected void setUp(){
+		
 		this.frame = new JFrame();
 		this.gameSelectorPanel = new GameSelectorPanel(this.frame);
 
@@ -54,6 +61,7 @@ public class TestLevel extends TestCase {
 	
 	/** Tear down the model when done testing */
 	protected void tearDown(){
+	
 		this.frame.dispose();
 		
 		// Wait 500ms
@@ -158,8 +166,23 @@ public class TestLevel extends TestCase {
 		
 		swapControl.mouseReleased(meEnd2);
 		
-		
-		
 	}
+	
+	// Test the menu button
+	public void testMenu(){
+		// Wait 500ms
+		try {
+		    Thread.sleep(500);
+		} catch (InterruptedException e) {
+		    e.printStackTrace();
+		}
+		
+		JButton menuButton = (JButton) this.levelPanel.getMenuButton();
+		assertNotNull(menuButton);
+		
+		menuButton.doClick();
+			
+	}
+
 	
 }
