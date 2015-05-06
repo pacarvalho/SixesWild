@@ -100,6 +100,18 @@ public class TestNavigation extends TestCase {
 		lvlButton.doClick();
 	}
 	
+	public void testSelectSecond(){
+		JButton selectButton = (JButton) this.gameSelectorPanel.getComponentByName("Puzzle");
+		assertEquals(selectButton.getText(),"Puzzle");
+		selectButton.doClick();
+		// Select the first available level
+		LevelSelectorPanel lvlPanel = (LevelSelectorPanel) this.frame.getContentPane().getComponent(0);
+		assertNotNull(lvlPanel);
+		JButton lvlButton = (JButton) lvlPanel.getComponentByName("Level 2");
+		assertEquals(lvlButton.getText(),"Level 2");
+		lvlButton.doClick();
+	}
+	
 	public void testSelectBuilder(){
 		JButton selectButton = (JButton) this.gameSelectorPanel.getComponentByName("Level Builder");
 		assertEquals(selectButton.getText(),"Level Builder");

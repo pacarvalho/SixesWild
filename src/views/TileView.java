@@ -2,6 +2,7 @@ package views;
 
 import java.awt.Color;
 import java.awt.Point;
+import java.awt.event.MouseEvent;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -59,6 +60,7 @@ public class TileView extends JPanel{
 	public boolean isSelected(int x, int y){
 		return this.getBounds().contains(new Point(x, y));
 	}
+	
 	
 	/**
 	 * Updates the TileView to reflect current state

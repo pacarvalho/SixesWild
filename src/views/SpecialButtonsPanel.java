@@ -1,11 +1,15 @@
 package views;
 
 import java.awt.Color;
+import java.awt.Component;
+import java.util.HashMap;
 
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
+
+
 
 
 import controllers.DestroyTileController;
@@ -30,6 +34,11 @@ public class SpecialButtonsPanel extends JPanel {
 	JButton btnSpecial2 = null;
 	JButton btnSpecial3 = null;
 	
+	/**
+	 * Hashmap of all components
+	 */
+	private HashMap<String, Component> componentMap;
+	
 	/** BoardView for setting MouseAdapter*/
 	BoardView boardView;
 	
@@ -48,6 +57,9 @@ public class SpecialButtonsPanel extends JPanel {
 		this.boardView = boardView;
 		this.model = m;
 		initialize();
+		
+		// Add the buttons to the hashmap. This is to make testing easier
+		createComponentMap();
 		
 	}
 	
@@ -84,6 +96,7 @@ public class SpecialButtonsPanel extends JPanel {
 			this.btnSpecial1.setBackground(Color.WHITE);
 			this.btnSpecial1.setIcon(new ImageIcon("resources/Swap.gif"));
 			this.btnSpecial1.setText("" + model.getSpecQuotas(0));
+			this.btnSpecial1.setName("Swap");
 		}
 		return this.btnSpecial1;
 	}
@@ -99,6 +112,7 @@ public class SpecialButtonsPanel extends JPanel {
 			this.btnSpecial2.setBackground(Color.WHITE);
 			this.btnSpecial2.setIcon(new ImageIcon("resources/Destroy.gif"));
 			this.btnSpecial2.setText("" + model.getSpecQuotas(1));
+			this.btnSpecial2.setName("Destroy");
 		}
 		return this.btnSpecial2;
 	}
@@ -114,8 +128,32 @@ public class SpecialButtonsPanel extends JPanel {
 			this.btnSpecial3.setBackground(Color.WHITE);
 			this.btnSpecial3.setIcon(new ImageIcon("resources/Shuffle.gif"));
 			this.btnSpecial3.setText("" + model.getSpecQuotas(2));
+			this.btnSpecial3.setName("Shuffle");
 		}
 		return this.btnSpecial3;
+	}
+	
+	
+	 /**
+	  * Create hashmap of components (buttons) on the panel
+	  */
+	 private void createComponentMap() {
+	        componentMap = new HashMap<String,Component>();
+	        Component[] components = this.getComponents();
+	        for (int i=0; i < components.length; i++) {
+	                componentMap.put(components[i].getName(), components[i]);
+	        }
+	}
+	 
+	 /**
+	  * Get a component by its name
+	  */
+
+	public Component getComponentByName(String name) {
+	        if (componentMap.containsKey(name)) {
+	                return (Component) componentMap.get(name);
+	        }
+	        else return null;
 	}
 		
 }

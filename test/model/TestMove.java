@@ -127,7 +127,14 @@ public class TestMove extends TestCase{
 		validMoveTiles.add(board.tiles[1][3]);
 		
 		EliminationMove validMove = new EliminationMove(validMoveTiles,model);
+		validMove.doMove();
 		assertEquals(validMove.valid(),true);
+		assertEquals(model.currentScore,30);
+		
+		// Reset the value of the moved tiles
+		board.tiles[1][1].setValue(2);
+		board.tiles[1][2].setValue(2);
+		board.tiles[1][3].setValue(2);
 		
 		// Check a diagonal move
 		ArrayList<Tile> diagonalMoveTiles1 = new ArrayList<Tile>();

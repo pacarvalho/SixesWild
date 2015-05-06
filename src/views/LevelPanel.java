@@ -1,5 +1,6 @@
 package views;
 
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
@@ -7,6 +8,7 @@ import java.awt.GridBagLayout;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.util.HashMap;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -50,6 +52,13 @@ public class LevelPanel extends JPanel implements IApplication{
 	JLabel countdownView;
 	
 	StarPanel starView;
+	
+	/**
+	 * Hashmap of all components
+	 * 
+	 */
+	private HashMap<String, Component> componentMap;
+	
 	/**
 	 * Constructor
 	 * 
@@ -66,12 +75,15 @@ public class LevelPanel extends JPanel implements IApplication{
 		this.frame.setMinimumSize(new Dimension(700, 550));
 		this.boardView = null;
 		this.starView = new StarPanel(model);
+		this.starView.setName("Star");
 		this.scoreView = new JLabel(""+model.getCurrentScore());
+		this.scoreView.setName("Score");
 		
-		//If the level is a LightningGame set up and dispaly timer.
+		//If the level is a LightningGame set up and display timer.
 		if(this.model instanceof LightningGame){
 	
 			this.countdownView = new JLabel(""+ ((LightningGame) model).getRemainingTimeString());
+			this.countdownView.setName("Timer");
 			countdownView.setFont(new Font("Source Sans Pro Black", Font.PLAIN, 25));
 			LevelTimer thisTim = new LevelTimer((LightningGame) this.model, this);
 			//Action listener for timer.
@@ -81,6 +93,7 @@ public class LevelPanel extends JPanel implements IApplication{
 		//else, use move counter
 		else
 			this.countdownView = new JLabel(""+ model.getNumMoves());
+			this.countdownView.setName("Moves");
 		//Set a few fonts
 		countdownView.setFont(new Font("Source Sans Pro Black", Font.PLAIN, 24));
 		this.scoreView.setFont(new Font("Source Sans Pro Black", Font.PLAIN, 24));
@@ -90,9 +103,11 @@ public class LevelPanel extends JPanel implements IApplication{
 		 * Create title, subtitle, timer, score labels and bind them to their controllers
 		 */
 		JLabel lblTitle = new JLabel(title + " Mode");
+		lblTitle.setName("Title");
 		lblTitle.setFont(new Font("Source Sans Pro Black", Font.PLAIN, 40));
 		
 		JLabel lblLevel = new JLabel(levelTitle);
+		lblLevel.setName("Level");
 		lblLevel.setFont(new Font("Source Sans Pro Black", Font.PLAIN, 25));
 		
 		// Deserialize Level Tracker for high score
@@ -133,6 +148,7 @@ public class LevelPanel extends JPanel implements IApplication{
 		
 		//PRevious High score
 		JLabel lblHighScore = new JLabel("HI: " + highScore); // NES games reference
+		lblHighScore.setName("High Score");
 		lblHighScore.setFont(new Font("Source Sans Pro Black", Font.PLAIN, 24));
 		
 		
@@ -140,6 +156,7 @@ public class LevelPanel extends JPanel implements IApplication{
 		 * Create button to return to main menu and bind it to its controller
 		 */
 		JButton btnMenu = new JButton("Menu");
+		btnMenu.setName("Menu");
 		ExitController exitController = new ExitController(this, model, level);
 		btnMenu.addActionListener(exitController);
 
@@ -148,6 +165,7 @@ public class LevelPanel extends JPanel implements IApplication{
 		 * Set up boardViews controller
 		 */
 		boardView = new BoardView(this.frame, model);
+		boardView.setName("Board");
 		BoardController boardControl = new BoardController(boardView, model);
 		boardView.setActiveAdapter(boardControl);
 		
@@ -236,6 +254,9 @@ public class LevelPanel extends JPanel implements IApplication{
 		c.gridheight =6;
 		c.anchor = GridBagConstraints.SOUTHEAST;
 		add(this.getSpecialButtonsPanel(),c);
+		
+		// Add the buttons to the hashmap. This is to make testing easier
+		createComponentMap();
 	}
 	
 	/**
@@ -254,6 +275,7 @@ public class LevelPanel extends JPanel implements IApplication{
 	public SpecialButtonsPanel getSpecialButtonsPanel(){
 		if (this.specialBtnsPanel == null){
 			this.specialBtnsPanel = new SpecialButtonsPanel(boardView, model);
+			this.specialBtnsPanel.setName("Special");
 		}	
 		return this.specialBtnsPanel;	
 	}
@@ -265,6 +287,15 @@ public class LevelPanel extends JPanel implements IApplication{
 	 */
 	public BoardView getBoardView() {
 		return this.boardView;
+	}
+	
+	/**
+	 * Return the model -- FOR TESTING ONLY
+	 * 
+	 * @return
+	 */
+	public SixesWild getModel(){
+		return this.model;
 	}
 	
 	/**
@@ -302,5 +333,27 @@ public class LevelPanel extends JPanel implements IApplication{
 		ois.close();
 		
 		return obj;
+	}
+	
+	 /**
+	  * Create hashmap of components (buttons) on the panel
+	  */
+	 private void createComponentMap() {
+	        componentMap = new HashMap<String,Component>();
+	        Component[] components = this.getComponents();
+	        for (int i=0; i < components.length; i++) {
+	                componentMap.put(components[i].getName(), components[i]);
+	        }
+	}
+	 
+	 /**
+	  * Get a component by its name
+	  */
+
+	public Component getComponentByName(String name) {
+	        if (componentMap.containsKey(name)) {
+	                return (Component) componentMap.get(name);
+	        }
+	        else return null;
 	}
 }

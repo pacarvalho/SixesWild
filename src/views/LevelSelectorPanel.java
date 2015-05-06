@@ -50,7 +50,6 @@ public class LevelSelectorPanel extends JPanel implements IApplication{
 	
 	/**
 	 * Hashmap of all components
-	 * @param hashmap
 	 */
 	private HashMap<String, Component> componentMap;
 	

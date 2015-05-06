@@ -57,7 +57,6 @@ public class DestroyTileSpecialMove implements IMove {
 	public boolean valid() {
 		
 		int value = this.tile1.getValue();
-		
 		return (value > 0 )&& ( value < 6);
 	}
 	

@@ -1,8 +1,10 @@
 package views;
 
+import java.awt.Component;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.MouseAdapter;
+import java.util.HashMap;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -42,6 +44,11 @@ public class BoardView extends JPanel{
 	/** Current mouse adapter */
 	MouseAdapter activeAdapter;
 	
+	/**
+	 * Hashmap of all components
+	 */
+	private HashMap<String, Component> componentMap;
+	
 
 	/**
 	 * Constructor
@@ -76,11 +83,15 @@ public class BoardView extends JPanel{
 				
 				Tile tile = tileSet[i][j];
 				TileView tView = new TileView();
+				tView.setName("Tile" + i + j);
 				tView.setTile(tile);
 				tileViews[i][j] = tView;
 				this.add(tileViews[i][j], c);
 			}
 		}
+		
+		// Add the buttons to the hashmap. This is to make testing easier
+		createComponentMap();
 	}
 	
 	/**
@@ -123,6 +134,28 @@ public class BoardView extends JPanel{
 			this.addMouseListener(ma);
 			this.addMouseMotionListener(activeAdapter);
 		}
+	}
+	
+	 /**
+	  * Create hashmap of components (buttons) on the panel
+	  */
+	 private void createComponentMap() {
+	        componentMap = new HashMap<String,Component>();
+	        Component[] components = this.getComponents();
+	        for (int i=0; i < components.length; i++) {
+	                componentMap.put(components[i].getName(), components[i]);
+	        }
+	}
+	 
+	 /**
+	  * Get a component by its name
+	  */
+
+	public Component getComponentByName(String name) {
+	        if (componentMap.containsKey(name)) {
+	                return (Component) componentMap.get(name);
+	        }
+	        else return null;
 	}
 	
 }
