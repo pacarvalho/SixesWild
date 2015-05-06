@@ -11,7 +11,7 @@ import java.io.Serializable;
 public class Tile implements Serializable{
 	
 	/**
-	 * 
+	 * Serial ID
 	 */
 	private static final long serialVersionUID = -3051808425738414764L;
 

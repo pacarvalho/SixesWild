@@ -14,6 +14,7 @@ public class LightningGame extends SixesWild {
 
 	/**Timer for lightning level, internal Controller*/
 	private Timer evryTim; //also called best attribute name after doge.
+	
 	/** remaining Time*/
 	private int remainingTime;
 
@@ -59,6 +60,7 @@ public class LightningGame extends SixesWild {
 		else
 			return (mins + ":0"+ secs);
 	}
+	
 	/**
 	 * Increments the remainingTime by given amount if the result is not smaller than zero, and returns it.
 	 * @param change
@@ -69,6 +71,7 @@ public class LightningGame extends SixesWild {
 			this.remainingTime += change;
 		return remainingTime;
 	}
+	
 	/**
 	 * Sets the remaining time.
 	 * @param remainingTime
@@ -79,18 +82,26 @@ public class LightningGame extends SixesWild {
 	
 	/**
 	 * Returns the timer of the model.
+	 * 
 	 * @return
 	 */
 	public Timer getTimer() {
 		return this.evryTim;
 	}
+	
+	/**
+	 * Sets the timer
+	 * 
+	 * @param tim
+	 * @return
+	 */
 	public boolean setTimer(Timer tim) {
 		this.evryTim = tim;
 		return true;
 	}
 
 	/**
-	 * 
+	 * Returns the name of the variation
 	 */
 	@Override
 	public String getName(){
@@ -127,30 +138,12 @@ public class LightningGame extends SixesWild {
 	}
 
 	/**
-	 * 
-	 */
-	//no need to override
-	@Override
-	public void updateScore() {
-	}
-
-	/**
 	 * Increments the numMoves (remaining moves) by given number.
 	 */
 	@Override
 	public boolean updateMoves(int change) {
 		this.numMoves += change;
 		return true;
-	}
-
-
-
-	/**
-	 * Returns the board
-	 */
-	@Override
-	public Board getBoard(){
-		return this.board;
 	}
 
 }

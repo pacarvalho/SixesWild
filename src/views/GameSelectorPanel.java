@@ -5,7 +5,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
-
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -16,10 +15,7 @@ import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
-
 import javax.swing.JButton;
-
-import model.SixesWild;
 import controllers.ChooseGameController;
 import controllers.StartBuilderController;
 
@@ -27,7 +23,7 @@ import controllers.StartBuilderController;
 
 public class GameSelectorPanel extends JPanel implements IApplication{
 	/**
-	 * 
+	 * Serial ID
 	 */
 	private static final long serialVersionUID = 3090894756601902283L;
 	
@@ -42,6 +38,11 @@ public class GameSelectorPanel extends JPanel implements IApplication{
 	 */
 	private HashMap<String, Component> componentMap;
 	
+	/** 
+	 * Constructor
+	 * 
+	 * @param frame
+	 */
 	public GameSelectorPanel(JFrame frame){
 		this.frame = frame;
 		this.frame.setPreferredSize(new Dimension(1000, 600));
@@ -148,6 +149,9 @@ public class GameSelectorPanel extends JPanel implements IApplication{
 		createComponentMap();
 	}
 
+	/** 
+	 * Returns the parent JFrame
+	 */
 	@Override
 	public JFrame getFrame() {
 		return this.frame;
@@ -170,6 +174,10 @@ public class GameSelectorPanel extends JPanel implements IApplication{
 		}
 	 }
 	 
+	 /**
+	  * Returns a map to the components
+	  * 
+	  */
 	 private void createComponentMap() {
 	        componentMap = new HashMap<String,Component>();
 	        Component[] components = this.getComponents();
@@ -178,6 +186,12 @@ public class GameSelectorPanel extends JPanel implements IApplication{
 	        }
 	}
 
+	 /**
+	  * Returns a given component by name from the hashMap
+	  * 
+	  * @param name
+	  * @return
+	  */
 	public Component getComponentByName(String name) {
 	        if (componentMap.containsKey(name)) {
 	                return (Component) componentMap.get(name);

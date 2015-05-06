@@ -25,7 +25,7 @@ import model.SixesWild;
 public class SpecialButtonsPanel extends JPanel {
 
 	/**
-	 * 
+	 * Serial ID
 	 */
 	private static final long serialVersionUID = -4492642561373155028L;
 
@@ -148,7 +148,6 @@ public class SpecialButtonsPanel extends JPanel {
 	 /**
 	  * Get a component by its name
 	  */
-
 	public Component getComponentByName(String name) {
 	        if (componentMap.containsKey(name)) {
 	                return (Component) componentMap.get(name);

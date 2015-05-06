@@ -4,7 +4,6 @@ import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
 import java.awt.Component;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -18,9 +17,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.HashMap;
-
 import javax.swing.JButton;
-
 import model.EliminationGame;
 import model.LevelTracker;
 import model.LightningGame;
@@ -37,6 +34,7 @@ import controllers.ChooseLevelController;
  *
  */
 public class LevelSelectorPanel extends JPanel implements IApplication{
+	
 	/**
 	 * ID For Multithreaded runs
 	 */

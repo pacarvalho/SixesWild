@@ -34,23 +34,29 @@ import model.SixesWild;
 public class LevelPanel extends JPanel implements IApplication{
 	
 	/**
-	 * 
+	 * Serial ID
 	 */
 	private static final long serialVersionUID = 7240445879684423199L;
 	
 	/** Parent Container */
 	JFrame frame;
 	
+	/** Game model */
 	SixesWild model;
 	
+	/** Board view */
 	BoardView boardView;
 	
+	/** JPanel for special buttons */
 	SpecialButtonsPanel specialBtnsPanel;
 	
+	/** Label for score */
 	JLabel scoreView;
 	
+	/** Label for countdown */
 	JLabel countdownView;
 	
+	/** Star view */
 	StarPanel starView;
 	
 	/**
@@ -313,6 +319,7 @@ public class LevelPanel extends JPanel implements IApplication{
 		return this.scoreView;
 
 	}
+	
 	/**
 	 * Return the parent JFrame
 	 */

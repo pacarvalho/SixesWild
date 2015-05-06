@@ -67,7 +67,6 @@ public class TileView extends JPanel{
 		return this.getBounds().contains(new Point(x, y));
 	}
 	
-	
 	/**
 	 * Updates the TileView to reflect current state
 	 */

@@ -5,10 +5,8 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.MouseAdapter;
 import java.util.HashMap;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-
 import model.Board;
 import model.SixesWild;
 import model.Tile;
@@ -25,7 +23,7 @@ import model.Tile;
 public class BoardView extends JPanel{
 	
 	/**
-	 * 
+	 * Serial ID
 	 */
 	private static final long serialVersionUID = 987297049106251275L;
 
@@ -130,6 +128,7 @@ public class BoardView extends JPanel{
 		this.removeMouseListener(activeAdapter);
 		this.removeMouseMotionListener(activeAdapter);
 		this.activeAdapter = ma;
+		
 		if (ma != null) { 
 			this.addMouseListener(ma);
 			this.addMouseMotionListener(activeAdapter);
@@ -140,22 +139,22 @@ public class BoardView extends JPanel{
 	  * Create hashmap of components (buttons) on the panel
 	  */
 	 private void createComponentMap() {
-	        componentMap = new HashMap<String,Component>();
-	        Component[] components = this.getComponents();
-	        for (int i=0; i < components.length; i++) {
-	                componentMap.put(components[i].getName(), components[i]);
-	        }
+        componentMap = new HashMap<String,Component>();
+        Component[] components = this.getComponents();
+        
+        for (int i=0; i < components.length; i++) {
+                componentMap.put(components[i].getName(), components[i]);
+        }
 	}
 	 
 	 /**
 	  * Get a component by its name
 	  */
-
 	public Component getComponentByName(String name) {
-	        if (componentMap.containsKey(name)) {
-	                return (Component) componentMap.get(name);
-	        }
-	        else return null;
+        if (componentMap.containsKey(name)) {
+                return (Component) componentMap.get(name);
+        }
+        else return null;
 	}
 	
 }

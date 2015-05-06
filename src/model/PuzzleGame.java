@@ -9,7 +9,7 @@ package model;
  */
 public class PuzzleGame extends SixesWild {
 
-	/*
+	/**
 	 * Constructor
 	 */
 	public PuzzleGame(){
@@ -37,12 +37,6 @@ public class PuzzleGame extends SixesWild {
 		}
 		
 		return false;
-	}
-
-	@Override
-	public void updateScore() {
-		// TODO Auto-generated method stub
-		
 	}
 	
 }

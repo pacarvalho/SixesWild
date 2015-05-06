@@ -9,6 +9,9 @@ package model;
  */
 public class ReleaseGame extends SixesWild {
 	
+	/** 
+	 * Constructor
+	 */
 	public ReleaseGame(){
 		super();
 	}
@@ -38,13 +41,6 @@ public class ReleaseGame extends SixesWild {
 		}
 		
 		return true;
-	}
-	
-
-	@Override
-	public void updateScore() {
-		// TODO Auto-generated method stub
-		
 	}
 	
 	

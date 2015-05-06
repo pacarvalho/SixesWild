@@ -246,7 +246,7 @@ abstract public class SixesWild {
 	 * Ex: The timer has run out in the lightning variation.
 	 */
 	public boolean hasLost(){
-		return false; //For now...
+		return false; // TODO 
 	}
 	
 	/**
@@ -297,6 +297,15 @@ abstract public class SixesWild {
 		return this.currentScore;
 	}
 	
+	/**
+	 * Updates the score with game specific metrics.
+	 * 
+	 * Has not been used in any of the game implementations.
+	 */
+	public void updateScore(){
+		
+	}
+	
 	//ABSTRACT METHODS
 	/**
 	 * Returns true if a game is in a won state. Else it returns false.
@@ -307,12 +316,5 @@ abstract public class SixesWild {
 	 * Returns the name of the variation
 	 */
 	abstract public String getName();
-	
-	/**
-	 * Updates the score with game specific metrics.
-	 * 
-	 * Has not been used in any of the game implementations.
-	 */
-	abstract public void updateScore();
 
 }

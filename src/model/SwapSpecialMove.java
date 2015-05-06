@@ -1,7 +1,7 @@
 package model;
 
 /**
- * 
+ * Special move: Swapping
  * 
  * @author Ozan
  *
@@ -35,6 +35,7 @@ public class SwapSpecialMove implements IMove{
 		this.model = model;
 		this.board = model.getBoard();
 	}
+	
 	/**
 	 *  Does the swap move.
 	 * 
@@ -65,10 +66,16 @@ public class SwapSpecialMove implements IMove{
 		return (tile1 != tile2 && tileValid(tile1) && tileValid(tile2));
 	}
 	
+	/**
+	 * Determines if selected tile is a swappable tile
+	 * 
+	 * @param aTile
+	 * @return
+	 */
 	private boolean tileValid(Tile aTile){
 		int value = aTile.getValue();
 		
-		return (value > 0 )&& ( value < 6);
+		return (value > 0 ) && ( value < 6);
 		
 	}
 }

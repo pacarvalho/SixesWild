@@ -16,7 +16,7 @@ public class EliminationGame extends SixesWild {
 	}
 	
 	/**
-	 * 
+	 * Returns the name of this variation
 	 */
 	@Override
 	public String getName(){
@@ -41,31 +41,6 @@ public class EliminationGame extends SixesWild {
 		}
 		
 		return true;
-	}
-	
-	/**
-	 * 
-	 */
-	@Override
-	public boolean hasLost(){
-		return false;
-	}
-	
-	/**
-	 * 
-	 */
-	@Override
-	public void updateScore() {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	/**
-	 * Returns the board
-	 */
-	@Override
-	public Board getBoard(){
-		return this.board;
 	}
 
 

@@ -1,15 +1,16 @@
 package model;
+
 /**
  * Shuffles the board
  * 
  * @author OAkyildiz
  *
  */
-
 public class ResetMove implements IMove{
 	
 	/** Game model */
 	SixesWild model;
+	
 	/**Board of that game*/
 	Board board;
 	
@@ -17,13 +18,12 @@ public class ResetMove implements IMove{
 	 * Constructor
 	 * @param model
 	 */
-	public ResetMove(SixesWild model){
-		
-;		
-		
+	public ResetMove(SixesWild model){		
 		this.model = model;
 		this.board = model.getBoard();
+		
 	}
+	
 	/**
 	 *  Shuffles the board
 	 * 

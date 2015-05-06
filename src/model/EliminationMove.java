@@ -11,13 +11,24 @@ import java.util.ArrayList;
 
 public class EliminationMove implements IMove {
 	
+	/** Array of selected tiles */
 	ArrayList<Tile> tiles;
+	
+	/** Game Model */
 	SixesWild model;
+	
+	/** Game Board */
 	Board board;
 	
 	/** Multiplier for extra score */
 	int multiplierTotal;
 	
+	/**
+	 * Constructor
+	 * 
+	 * @param tiles
+	 * @param model
+	 */
 	public EliminationMove(ArrayList<Tile> tiles, SixesWild model){
 		this.tiles = tiles;
 		this.model = model;

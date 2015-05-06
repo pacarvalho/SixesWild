@@ -1,6 +1,5 @@
 package views;
 
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
 /**
@@ -12,7 +11,7 @@ import javax.swing.JFrame;
 public class Application extends JFrame implements IApplication{
 	
 	/**
-	 * 
+	 * Serial ID
 	 */
 	private static final long serialVersionUID = 508960598896593031L;
 	
@@ -52,14 +51,28 @@ public class Application extends JFrame implements IApplication{
 		
 	}
 
+	/**
+	 * Return the parent JFrame
+	 */
 	@Override
 	public JFrame getFrame() {
 		return this.frame;
 	}
+	
+	/**
+	 * Returns the splash panel
+	 * 
+	 * @return
+	 */
 	public SplashPanel getSplashPanel() {
 		return splashPanel;
 	}
 
+	/**
+	 * Returns the game selector panel
+	 * 
+	 * @return
+	 */
 	public GameSelectorPanel getGameSelectorPanel() {
 		return gameSelectorPanel;
 	}
