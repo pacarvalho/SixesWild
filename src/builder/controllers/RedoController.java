@@ -3,7 +3,6 @@ package builder.controllers;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.EmptyStackException;
-
 import model.Board;
 import model.SixesWild;
 import builder.model.BuilderSixesWild;
@@ -20,7 +19,13 @@ public class RedoController implements ActionListener{
 	/** Create Builder Model Object*/
 	BuilderSixesWild builder;
 	
-	
+	/** 
+	 * Constructor
+	 * 
+	 * @param builderPanel
+	 * @param builder
+	 * @param model
+	 */
 	public RedoController(BuilderPanel builderPanel, BuilderSixesWild builder, SixesWild model){
 		this.builderPanel = builderPanel;
 		this.builder = builder;

@@ -2,9 +2,7 @@ package controllers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JFrame;
-
 import model.SixesWild;
 import views.GameSelectorPanel;
 import views.IApplication;
@@ -18,6 +16,7 @@ import views.IApplication;
  *
  */
 public class ExitController implements ActionListener{
+	
 	/** Stores Boundary */
 	IApplication view;
 	

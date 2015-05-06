@@ -2,12 +2,17 @@ package builder.controllers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import model.Board;
 import model.SixesWild;
 import builder.model.BuilderSixesWild;
 import builder.views.BuilderPanel;
 
+/**
+ * Resets the builder to default settings.
+ * 
+ * @author Paulo
+ *
+ */
 public class ResetBoardController implements ActionListener{
 	
 	/** Create Boundary Object */

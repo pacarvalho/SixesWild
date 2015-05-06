@@ -11,7 +11,7 @@ import model.SixesWild;
 import builder.views.BuilderPanel;
 
 /**
- * 
+ * Controller for saving a board.
  * 
  * @author Paulo, Katie
  *

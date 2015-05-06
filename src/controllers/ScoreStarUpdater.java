@@ -1,6 +1,5 @@
 package controllers;
 
-
 import views.LevelPanel;
 import model.LightningGame;
 import model.SixesWild;
@@ -21,9 +20,6 @@ import model.SixesWild;
 public class ScoreStarUpdater {
 	/** Game Model */
 	SixesWild model;
-
-	// /** TextView to listen*/
-	// JTextField scoreView;
 	
 	/**Star Panel to update*/
 	private LevelPanel levelView;
@@ -49,12 +45,20 @@ public class ScoreStarUpdater {
 		
 	}
 	
-	
+	/**
+	 * Returns the level view
+	 * 
+	 * @return
+	 */
 	public LevelPanel getLevelView() {
 		return levelView;
 	}
 
-
+	/**
+	 * Setter for the level view
+	 * 
+	 * @param levelView
+	 */
 	public void setLevelView(LevelPanel levelView) {
 		this.levelView = levelView;
 	}
@@ -81,25 +85,26 @@ public class ScoreStarUpdater {
 
 
 	/** evaluates if a star is earned or lost 
-	 * @param sixesWild TODO*/
-	// migth be moved to Board
+	 * @param sixesWild */
+	// TODO might be moved to Board
 	public int assessScore(int score){
-	//	System.out.print("stars:" + model.stars);
 		int EVAL = 0;
 		
-		
-		if(score >= starScores[2])
+		if(score >= starScores[2]){
 			EVAL= 7;
 		
-		else if(score >= starScores[1])
+		} else if(score >= starScores[1]) {
 			EVAL = 3;
 		
-		else if(score >= starScores[0])
+		} else if(score >= starScores[0]) {
 			EVAL = 1;
+			
+		}
 		
 		int change = model.stars^EVAL;
+		
 		model.stars=EVAL;
-		//System.out.print("EVAL:" + EVAL + ", change:" + change);
+		
 		return change;
 	}
 	

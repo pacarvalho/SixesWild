@@ -2,9 +2,6 @@ package builder.controllers;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-
-import javax.swing.JPanel;
-
 import builder.model.BuilderSixesWild;
 import builder.views.BuilderTileSelectorPanel;
 import views.TileView;

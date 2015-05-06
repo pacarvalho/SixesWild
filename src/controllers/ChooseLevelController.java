@@ -118,7 +118,7 @@ public class ChooseLevelController implements ActionListener{
 			level.update();
 
 			// Initialize the level
-			this.model.initialize(level); // TODO: Pass correct level. This is a dummy!!!
+			this.model.initialize(level); 
 						
 			JFrame frame = this.view.getFrame();
 			LevelPanel levelPanel = new LevelPanel(frame, model, title, 
@@ -148,7 +148,7 @@ public class ChooseLevelController implements ActionListener{
 			level.update();
 			
 			// Initialize the level
-			this.model.initialize(level); // TODO: Pass correct level. This is a dummy!!!
+			this.model.initialize(level); 
 			
 			JFrame frame = this.view.getFrame();
 			LevelPanel levelPanel = new LevelPanel(frame, model, title, 
@@ -178,7 +178,7 @@ public class ChooseLevelController implements ActionListener{
 			level.update();
 			
 			// Initialize the level
-			this.model.initialize(level); // TODO: Pass correct level. This is a dummy!!!
+			this.model.initialize(level); 
 			
 			JFrame frame = this.view.getFrame();
 			LevelPanel levelPanel = new LevelPanel(frame, model, title,

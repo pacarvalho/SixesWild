@@ -5,21 +5,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-
-
-
-
-
-
-
 import javax.swing.JButton;
-
 import views.BoardView;
 import views.TileView;
 import model.SixesWild;
 import model.SwapSpecialMove;
 import model.Tile;
+
 /**
+ * Controller for special swapping move.
  * 
  * @author OAkyildiz
  *
@@ -91,15 +85,14 @@ public class SwapController extends MouseAdapter implements ActionListener{
 		}
 		this.selectTile(me.getX(), me.getY());
 	}
+	
 	/**
 	 * a performs the move if ready
 	 * 
 	 */
 	@Override
 	public void mouseReleased(MouseEvent me){
-
-
-
+		
 		if(tile2!=null){
 
 			SwapSpecialMove move = new SwapSpecialMove(tile1,tile2,  model);
@@ -107,7 +100,6 @@ public class SwapController extends MouseAdapter implements ActionListener{
 			//Perform and update if valid
 			if(move.doMove()){
 				model.changeSpecQuotas(0, -1);
-				System.out.println("SwapQuoata:" + model.getSpecQuotas(0));
 				this.swapBtn.setText("" + model.getSpecQuotas(0));
 
 				if(model.getSpecQuotas(0) < 1)
@@ -141,7 +133,6 @@ public class SwapController extends MouseAdapter implements ActionListener{
 					if(tile1 == null && tView.getTile().getValue() > 0){
 
 						tile1 = tView.getTile();
-						System.out.println(tile1.getValue());
 						tile1.setSelectedFlag(true);
 						tView.update();
 						return false;
@@ -150,7 +141,6 @@ public class SwapController extends MouseAdapter implements ActionListener{
 					else if(tile1 !=  tView.getTile()){
 
 						tile2 =  tView.getTile();
-						System.out.println(tile2.getValue());
 						tile2.setSelectedFlag(true);
 						tView.update();
 
@@ -162,16 +152,18 @@ public class SwapController extends MouseAdapter implements ActionListener{
 		//no tile selected
 		return false;
 	}
+
+
 	/**
-	 * Change to this mouseAdapter on button click,
+	 * Sets this mouseAdapter to the view
 	 */
-
-
 	public void register(){
 		boardView.setActiveAdapter(this);
 	}
 
-
+	/**
+	 * Removes this mouseAdapter from the view
+	 */
 	public void unregister(){
 		boardView.setActiveAdapter(new BoardController(boardView, model));
 	}

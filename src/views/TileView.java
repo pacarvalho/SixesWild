@@ -2,17 +2,23 @@ package views;
 
 import java.awt.Color;
 import java.awt.Point;
-import java.awt.event.MouseEvent;
-
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.BevelBorder;
+import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
-
 import model.Tile;
 
+/**
+ * View for the tiles.
+ * 
+ * Places appropriate gif depending on the value of the tile and surrounds with appropriate border.
+ * 
+ * @author Paulo, Katie
+ *
+ */
 public class TileView extends JPanel{
 	
 	/**
@@ -70,6 +76,7 @@ public class TileView extends JPanel{
 		
 		if(this.tile == null){
 			this.add(new JLabel("", new ImageIcon("resources/NullTile.gif"), SwingConstants.CENTER));
+			this.setBorder(new EmptyBorder(3,3,3,3));
 			
 			return true; // Important!
 			
@@ -123,7 +130,8 @@ public class TileView extends JPanel{
 			this.setBorder(new LineBorder(Color.red, 3));
 			
 		} else {
-			// TODO: Create an invisible border that keeps the tiles from moving by having same size as normal border
+			this.setBorder(new EmptyBorder(3,3,3,3));
+			
 		}
 		
 		return true;

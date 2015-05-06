@@ -6,12 +6,11 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.EmptyStackException;
 import java.util.Stack;
-
-import views.TileView;
 import model.Board;
 import model.Tile;
 
 /**
+ * Keeps builder specific state such as the stack for undo and redo
  * 
  * @author Katie, Paulo
  *

@@ -1,15 +1,14 @@
 package builder.controllers;
 
 import javax.swing.JSlider;
-import javax.swing.JTextField;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
-
 import model.SixesWild;
 import builder.model.BuilderSixesWild;
 import builder.views.BuilderPanel;
 
 /**
+ * Listener for builder sliders.
  * 
  * @author katiegandomi, Paulo
  *

@@ -2,13 +2,10 @@ package controllers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
-
 import model.SixesWild;
 import builder.views.BuilderGameSelectorPanel;
-import builder.views.BuilderPanel;
 import views.IApplication;
 
 /**

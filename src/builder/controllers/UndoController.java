@@ -3,17 +3,17 @@ package builder.controllers;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.EmptyStackException;
-
 import builder.model.BuilderSixesWild;
 import builder.views.BuilderPanel;
 import model.Board;
 import model.SixesWild;
+
 /**
+ * Undo controller for the builder
  * 
  * @author Paulo, Katie
  *
  */
-
 public class UndoController implements ActionListener{
 	
 	/** Create Boundary Object */

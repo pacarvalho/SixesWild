@@ -22,7 +22,7 @@ import views.TileView;
 public class BuilderTileSelectorPanel extends JPanel{
 
 	/**
-	 * 
+	 * Serial ID
 	 */
 	private static final long serialVersionUID = -5494638038395128897L;
 	

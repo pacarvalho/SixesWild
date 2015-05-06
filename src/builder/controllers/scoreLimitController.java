@@ -2,20 +2,19 @@ package builder.controllers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JTextField;
-
 import model.SixesWild;
 import builder.model.BuilderSixesWild;
 import builder.views.BuilderPanel;
 
 /**
+ * Controller for setting the winning score limit for a game
  * 
  * @author Paulo, Katie
  *
  */
-
 public class scoreLimitController implements ActionListener{
+	
 	/** Create Boundary Object */
 	BuilderPanel builderPanel;
 	

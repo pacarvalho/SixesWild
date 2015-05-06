@@ -1,14 +1,12 @@
 package builder.views;
 
 import java.awt.Dimension;
-
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
-
 import builder.controllers.BuilderBoardController;
 import builder.controllers.LoadLevelController;
 import builder.controllers.RedoController;
@@ -22,18 +20,12 @@ import builder.controllers.maxMoveController;
 import builder.controllers.scoreLimitController;
 import builder.controllers.timeLimitController;
 import builder.model.BuilderSixesWild;
-import controllers.BoardController;
 import builder.controllers.ExitController;
-
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-
-import javax.swing.JComboBox;
 import javax.swing.JTextField;
 import javax.swing.JSlider;
-import javax.swing.DefaultComboBoxModel;
-
 import views.BoardView;
 import views.IApplication;
 import model.Board;
@@ -50,6 +42,7 @@ import model.SixesWild;
  */
 public class BuilderPanel extends JPanel implements IApplication {
 
+	/** Serial ID */
 	private static final long serialVersionUID = -5020862675511089854L;
 	
 	
@@ -60,7 +53,7 @@ public class BuilderPanel extends JPanel implements IApplication {
 	SixesWild model;
 	
 	/** Height and Width of the panel */
-	int h=125,w=195;
+	int h = 140, w = 210;
 	
 	/** Overall Builder Model */
 	BuilderSixesWild builder;

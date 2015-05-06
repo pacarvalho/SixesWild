@@ -10,18 +10,14 @@ import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
-
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
-
 import builder.controllers.ChooseBuilderGameController;
 import views.IApplication;
-import controllers.ChooseGameController;
-import model.SixesWild;
 
 
 /**
@@ -33,6 +29,12 @@ import model.SixesWild;
 
 public class BuilderGameSelectorPanel extends JPanel implements IApplication{
 	
+	/**
+	 * For multithreading
+	 */
+	private static final long serialVersionUID = -1459792517425140176L;
+
+	/** Parent JFrame */
 	JFrame frame;
 	
 	/**
@@ -44,7 +46,6 @@ public class BuilderGameSelectorPanel extends JPanel implements IApplication{
 	/**
 	 * Constructor
 	 */
-	
 	public BuilderGameSelectorPanel(JFrame frame){
 		this.frame = frame;
 		

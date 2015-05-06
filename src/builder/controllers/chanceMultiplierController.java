@@ -2,14 +2,13 @@ package builder.controllers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JTextField;
-
 import model.SixesWild;
 import builder.model.BuilderSixesWild;
 import builder.views.BuilderPanel;
 
 /**
+ * Controller for frequency of multipliers.
  * 
  * @author Paulo, katiegandomi
  *

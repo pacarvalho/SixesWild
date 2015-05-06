@@ -1,13 +1,16 @@
 package controllers;
 
-
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import views.LevelPanel;
 import model.LightningGame;
 
+/**
+ * Controller for the timer
+ * 
+ * @author Ozan
+ *
+ */
 public class LevelTimer implements ActionListener{
 	
 	/** only for Lightning games*/
@@ -15,7 +18,6 @@ public class LevelTimer implements ActionListener{
 
 	/**LevelPanel of the level*/
 	LevelPanel levelView;
-	
 	
 	/**
 	 * Constructor 
@@ -31,7 +33,6 @@ public class LevelTimer implements ActionListener{
 		
 	}
 
-
 	/**
 	 * Updates remaining time and the view
 	 */
@@ -39,7 +40,6 @@ public class LevelTimer implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		this.level.addToRemainingTime(-1);
 		String time = this.level.getRemainingTimeString();
-		//System.out.println(time);
 		this.levelView.getCountdownView().setText(time);
 
 	}
